@@ -1,1 +1,5 @@
-This is the readme.
+Download git client (Git Desktop, git bash, whatever. The desktop client is super easy).
+open desktop client
+settings -> open in git shell
+navigate to whatever folder you're storing it in
+git clone "url"

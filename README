@@ -2,4 +2,7 @@ Download git client (Git Desktop, git bash, whatever. The desktop client is supe
 open desktop client
 settings -> open in git shell
 navigate to whatever folder you're storing it in
-git clone "url"
+enter in   
+    git clone https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens.git
+(You might have to enter in credentials)
+back in the desktop client, click the plus -> add, then browse to the folder and click add!

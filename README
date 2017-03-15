@@ -1,8 +1,25 @@
-Download git client (Git Desktop, git bash, whatever. The desktop client is super easy).
-open desktop client
-settings -> open in git shell
-navigate to whatever folder you're storing it in
-enter in   
-    git clone https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens.git
-(You might have to enter in credentials)
-back in the desktop client, click the plus -> add, then browse to the folder and click add!
+Definition of Done:
+
+    Boundary Value Analysis Guidelines: http://www.exampler.com/testing-com/writings/catalog.pdf
+
+    1. All boolean functions that check if a user can perform an action are tested with the rules for Booleans in Boundary Value Analysis.
+    
+    2. All counts (hand size, deck size, card inclusions) are tested with the rules for Counts in Boundary Value Analysis.
+    
+    3. All intervals (See The Future, Pairs, Three of a Kinds, Five of a Kinds, putting cards into the deck) are tested with the rules for Intervals in Boundary Value Analysis.
+    
+    4. All strings (Card identifiers) are tested with the rules for Strings in Boundary Value Analysis.
+    
+    5. All collections (lists of cards, lists of players, etc) are tested with the rules for Sizes of Collections in Boundary Value Analysis.
+    
+    6. Selection of elements in a collection (players hands) are tested with the rules for Using an Element of a Sequencable Collection in Boundary Value Analysis.
+    
+    7. Subsets of collections (Pairs, Three of a Kinds, Five of a Kinds) are tested with the rules for Using a Subset of a Collection in Boundary Value Analysis.
+    
+    8. All pairs of counts and intervals are tested with the rules for Pairs of Counts/Intervals in Boundary Value Analysis
+    
+    9. All pairs of collections (players' hands) are tested with the rules for Pairs of Collections in Boundary Value Analysis. 
+    
+Edge Cases for Rules:
+
+    

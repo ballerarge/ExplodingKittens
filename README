@@ -146,3 +146,12 @@ PLAYING CARDS
 			three cards, and verify that the deck has 0 cards left.
 			-Test case: There are less than 3 cards in the deck. Check(draw) out
 			the deck and verify that there are 0 cards left in the deck.
+			
+Priority System
+    Similar to Magic: The Gathering, our system will have a priority system in place for
+        handling the complex interactions of Nope cards. After a player plays a card, 
+        priority will have to be passed to each other player before that card can be
+        resolved, as to give each player a chance to Nope their card. Nopes will only be
+        able to target things already in the priority stack, and if there is every a case
+        for a Nope being on the stack and not having a valid target, it will be considered
+        played and will be discarded.

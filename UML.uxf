@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="11.5.1">
+<diagram program="umlet" version="14.2">
   <zoom_level>9</zoom_level>
   <element>
-    <type>com.umlet.element.Class</type>
+    <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>468</x>
-      <y>594</y>
+      <y>639</y>
       <w>306</w>
       <h>54</h>
     </coordinates>
@@ -16,10 +16,10 @@ createCard(cardID: int, numCards: ind): List&lt;Card&gt;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.umlet.element.Class</type>
+    <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>414</x>
-      <y>684</y>
+      <y>729</y>
       <w>342</w>
       <h>63</h>
     </coordinates>
@@ -31,10 +31,10 @@ cardAction(activePlayer: Player, targetPlayer: Player): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.umlet.element.Class</type>
+    <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>387</x>
-      <y>801</y>
+      <y>846</y>
       <w>117</w>
       <h>45</h>
     </coordinates>
@@ -44,10 +44,10 @@ cardAction(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.umlet.element.Class</type>
+    <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>387</x>
-      <y>873</y>
+      <y>918</y>
       <w>117</w>
       <h>45</h>
     </coordinates>
@@ -57,10 +57,10 @@ cardAction(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.umlet.element.Class</type>
+    <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>387</x>
-      <y>945</y>
+      <y>990</y>
       <w>117</w>
       <h>45</h>
     </coordinates>
@@ -70,10 +70,10 @@ cardAction(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.umlet.element.Class</type>
+    <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>387</x>
-      <y>1017</y>
+      <y>1062</y>
       <w>117</w>
       <h>45</h>
     </coordinates>
@@ -83,10 +83,10 @@ cardAction(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.umlet.element.Class</type>
+    <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>531</x>
-      <y>1071</y>
+      <y>1116</y>
       <w>117</w>
       <h>45</h>
     </coordinates>
@@ -96,10 +96,10 @@ cardAction(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.umlet.element.Class</type>
+    <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>666</x>
-      <y>1017</y>
+      <y>1062</y>
       <w>117</w>
       <h>45</h>
     </coordinates>
@@ -109,10 +109,10 @@ cardAction(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.umlet.element.Class</type>
+    <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>666</x>
-      <y>945</y>
+      <y>990</y>
       <w>117</w>
       <h>45</h>
     </coordinates>
@@ -122,10 +122,10 @@ cardAction(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.umlet.element.Class</type>
+    <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>666</x>
-      <y>873</y>
+      <y>918</y>
       <w>117</w>
       <h>45</h>
     </coordinates>
@@ -135,10 +135,10 @@ cardAction(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.umlet.element.Class</type>
+    <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>666</x>
-      <y>801</y>
+      <y>846</y>
       <w>117</w>
       <h>45</h>
     </coordinates>
@@ -148,10 +148,10 @@ cardAction(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>558</x>
-      <y>720</y>
+      <y>765</y>
       <w>44</w>
       <h>368</h>
     </coordinates>
@@ -159,10 +159,10 @@ cardAction(): void</panel_attributes>
     <additional_attributes>27;27;27;351</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>576</x>
-      <y>720</y>
+      <y>765</y>
       <w>107</w>
       <h>341</h>
     </coordinates>
@@ -170,10 +170,10 @@ cardAction(): void</panel_attributes>
     <additional_attributes>27;27;27;324;90;324</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>594</x>
-      <y>720</y>
+      <y>765</y>
       <w>89</w>
       <h>269</h>
     </coordinates>
@@ -181,10 +181,10 @@ cardAction(): void</panel_attributes>
     <additional_attributes>27;27;27;252;72;252</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>612</x>
-      <y>720</y>
+      <y>765</y>
       <w>71</w>
       <h>197</h>
     </coordinates>
@@ -192,10 +192,10 @@ cardAction(): void</panel_attributes>
     <additional_attributes>27;27;27;180;54;180</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>630</x>
-      <y>720</y>
+      <y>765</y>
       <w>53</w>
       <h>125</h>
     </coordinates>
@@ -203,10 +203,10 @@ cardAction(): void</panel_attributes>
     <additional_attributes>27;27;27;108;36;108</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>477</x>
-      <y>720</y>
+      <y>765</y>
       <w>107</w>
       <h>341</h>
     </coordinates>
@@ -214,10 +214,10 @@ cardAction(): void</panel_attributes>
     <additional_attributes>90;27;90;324;27;324</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>477</x>
-      <y>720</y>
+      <y>765</y>
       <w>89</w>
       <h>260</h>
     </coordinates>
@@ -225,10 +225,10 @@ cardAction(): void</panel_attributes>
     <additional_attributes>72;27;72;243;27;243</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>477</x>
-      <y>720</y>
+      <y>765</y>
       <w>71</w>
       <h>197</h>
     </coordinates>
@@ -236,10 +236,10 @@ cardAction(): void</panel_attributes>
     <additional_attributes>54;27;54;180;27;180</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>477</x>
-      <y>720</y>
+      <y>765</y>
       <w>53</w>
       <h>125</h>
     </coordinates>
@@ -247,10 +247,10 @@ cardAction(): void</panel_attributes>
     <additional_attributes>36;27;36;108;27;108</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>558</x>
-      <y>621</y>
+      <y>666</y>
       <w>44</w>
       <h>80</h>
     </coordinates>
@@ -259,10 +259,10 @@ cardAction(): void</panel_attributes>
     <additional_attributes>27;63;27;27</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Class</type>
+    <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>963</x>
-      <y>810</y>
+      <y>855</y>
       <w>324</w>
       <h>162</h>
     </coordinates>
@@ -281,10 +281,10 @@ setPlayerManager(playerManager: PlayerManager): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.umlet.element.Class</type>
+    <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>1404</x>
-      <y>846</y>
+      <y>891</y>
       <w>288</w>
       <h>126</h>
     </coordinates>
@@ -300,10 +300,10 @@ setDeadPlayers(deadPlayers: List&lt;Player&gt;): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.umlet.element.Class</type>
+    <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>1494</x>
-      <y>342</y>
+      <y>387</y>
       <w>423</w>
       <h>180</h>
     </coordinates>
@@ -322,10 +322,10 @@ setTurnPriorityManager(turnPriorityManager: TurnPriorityManager: void</panel_att
     <additional_attributes/>
   </element>
   <element>
-    <type>com.umlet.element.Class</type>
+    <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>828</x>
-      <y>27</y>
+      <y>72</y>
       <w>279</w>
       <h>207</h>
     </coordinates>
@@ -347,22 +347,22 @@ setCardFactory(cardFactory: CardFactory): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>729</x>
-      <y>666</y>
+      <y>720</y>
       <w>269</w>
-      <h>53</h>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..n</panel_attributes>
-    <additional_attributes>27;36;252;27</additional_attributes>
+    <additional_attributes>27;27;252;27</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>1260</x>
-      <y>864</y>
+      <y>909</y>
       <w>161</w>
       <h>44</h>
     </coordinates>
@@ -371,10 +371,10 @@ m1=0..n</panel_attributes>
     <additional_attributes>27;27;144;27</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>1620</x>
-      <y>495</y>
+      <y>540</y>
       <w>44</w>
       <h>368</h>
     </coordinates>
@@ -382,21 +382,21 @@ m1=0..n</panel_attributes>
     <additional_attributes>27;351;27;27</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>1386</x>
-      <y>225</y>
-      <w>224</w>
-      <h>134</h>
+      <x>1476</x>
+      <y>252</y>
+      <w>134</w>
+      <h>152</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>27;27;207;117</additional_attributes>
+    <additional_attributes>27;27;117;27;117;135</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>1260</x>
-      <y>837</y>
+      <y>882</y>
       <w>161</w>
       <h>44</h>
     </coordinates>
@@ -404,10 +404,10 @@ m1=0..n</panel_attributes>
     <additional_attributes>144;27;27;27</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Class</type>
+    <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>2016</x>
-      <y>441</y>
+      <y>486</y>
       <w>198</w>
       <h>99</h>
     </coordinates>
@@ -421,10 +421,10 @@ setGame(game: Game): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>1890</x>
-      <y>459</y>
+      <y>504</y>
       <w>143</w>
       <h>44</h>
     </coordinates>
@@ -432,10 +432,10 @@ setGame(game: Game): void</panel_attributes>
     <additional_attributes>27;27;126;27</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Class</type>
+    <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>1989</x>
-      <y>261</y>
+      <y>306</y>
       <w>216</w>
       <h>54</h>
     </coordinates>
@@ -446,10 +446,10 @@ fg=white</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>2079</x>
-      <y>288</y>
+      <y>333</y>
       <w>44</w>
       <h>170</h>
     </coordinates>
@@ -457,12 +457,12 @@ fg=white</panel_attributes>
     <additional_attributes>27;153;27;27</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Class</type>
+    <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>1233</x>
-      <y>117</y>
+      <y>144</y>
       <w>270</w>
-      <h>135</h>
+      <h>153</h>
     </coordinates>
     <panel_attributes>DiscardDeck
 &lt;&lt;singleton&gt;&gt;
@@ -473,14 +473,15 @@ getCards(): List&lt;Card&gt;
 setCards(cards: List&lt;Card&gt;): void
 getCardCount(): int
 addCard(card: Card): void
-removeCard(card: Card): void</panel_attributes>
+removeCard(card: Card): void
+removeAllCards(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.umlet.element.Class</type>
+    <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>981</x>
-      <y>549</y>
+      <y>594</y>
       <w>270</w>
       <h>198</h>
     </coordinates>
@@ -501,43 +502,43 @@ moveSelectedToStack(): boolean</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>936</x>
-      <y>207</y>
-      <w>179</w>
+      <x>945</x>
+      <y>252</y>
+      <w>170</w>
       <h>359</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>27;27;162;342</additional_attributes>
+    <additional_attributes>27;27;27;135;153;135;153;342</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>855</x>
-      <y>351</y>
+      <y>414</y>
       <w>656</w>
-      <h>62</h>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>27;45;639;27</additional_attributes>
+    <additional_attributes>27;27;639;27</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>1044</x>
-      <y>207</y>
+      <y>252</y>
       <w>530</w>
       <h>152</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>27;27;513;135</additional_attributes>
+    <additional_attributes>27;27;27;81;513;81;513;135</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>1080</x>
-      <y>720</y>
+      <y>765</y>
       <w>44</w>
       <h>107</h>
     </coordinates>
@@ -545,10 +546,10 @@ moveSelectedToStack(): boolean</panel_attributes>
     <additional_attributes>27;27;27;90</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Class</type>
+    <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>612</x>
-      <y>342</y>
+      <y>387</y>
       <w>270</w>
       <h>171</h>
     </coordinates>
@@ -567,43 +568,43 @@ moveCardToDiscardDeck(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>801</x>
-      <y>207</y>
-      <w>116</w>
-      <h>152</h>
+      <x>720</x>
+      <y>216</y>
+      <w>125</w>
+      <h>188</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>99;27;27;135</additional_attributes>
+    <additional_attributes>108;27;27;27;27;171</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
-    <coordinates>
-      <x>855</x>
-      <y>198</y>
-      <w>395</w>
-      <h>161</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>378;27;27;144</additional_attributes>
-  </element>
-  <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>855</x>
-      <y>396</y>
-      <w>143</w>
-      <h>215</h>
+      <y>270</y>
+      <w>458</w>
+      <h>170</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>27;27;126;198</additional_attributes>
+    <additional_attributes>441;27;441;153;27;153</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Class</type>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>810</x>
+      <y>531</y>
+      <w>188</w>
+      <h>125</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>27;27;27;108;171;108</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>0</x>
-      <y>711</y>
+      <y>756</y>
       <w>252</w>
       <h>72</h>
     </coordinates>
@@ -616,10 +617,10 @@ cardAction(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.umlet.element.Class</type>
+    <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>81</x>
-      <y>801</y>
+      <y>846</y>
       <w>261</w>
       <h>72</h>
     </coordinates>
@@ -632,10 +633,10 @@ cardAction(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.umlet.element.Class</type>
+    <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>0</x>
-      <y>621</y>
+      <y>666</y>
       <w>252</w>
       <h>72</h>
     </coordinates>
@@ -648,10 +649,10 @@ cardAction(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>225</x>
-      <y>612</y>
+      <y>657</y>
       <w>242</w>
       <h>89</h>
     </coordinates>
@@ -659,10 +660,10 @@ cardAction(): void</panel_attributes>
     <additional_attributes>225;72;225;27;27;27</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>297</x>
-      <y>720</y>
+      <y>765</y>
       <w>134</w>
       <h>98</h>
     </coordinates>
@@ -670,10 +671,10 @@ cardAction(): void</panel_attributes>
     <additional_attributes>117;27;27;27;27;81</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>225</x>
-      <y>693</y>
+      <y>738</y>
       <w>206</w>
       <h>44</h>
     </coordinates>
@@ -681,10 +682,10 @@ cardAction(): void</panel_attributes>
     <additional_attributes>189;27;54;27;27;27</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>225</x>
-      <y>630</y>
+      <y>675</y>
       <w>215</w>
       <h>71</h>
     </coordinates>
@@ -693,10 +694,10 @@ m1=2</panel_attributes>
     <additional_attributes>198;54;198;27;27;27</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>225</x>
-      <y>702</y>
+      <y>747</y>
       <w>206</w>
       <h>44</h>
     </coordinates>
@@ -705,10 +706,10 @@ m1=3</panel_attributes>
     <additional_attributes>189;27;27;27</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>306</x>
-      <y>720</y>
+      <y>765</y>
       <w>143</w>
       <h>98</h>
     </coordinates>
@@ -717,10 +718,10 @@ m1=5</panel_attributes>
     <additional_attributes>126;27;126;45;27;45;27;81</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>540</x>
-      <y>117</y>
+      <y>162</y>
       <w>305</w>
       <h>494</h>
     </coordinates>
@@ -728,10 +729,10 @@ m1=5</panel_attributes>
     <additional_attributes>27;477;27;27;288;27</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Class</type>
+    <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>1323</x>
-      <y>558</y>
+      <y>603</y>
       <w>288</w>
       <h>216</h>
     </coordinates>
@@ -754,21 +755,21 @@ endTurn(): void
     <additional_attributes/>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>1485</x>
-      <y>495</y>
-      <w>89</w>
+      <x>1494</x>
+      <y>540</y>
+      <w>44</w>
       <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>27;63;72;27</additional_attributes>
+    <additional_attributes>27;63;27;27</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>1413</x>
-      <y>747</y>
+      <y>792</y>
       <w>44</w>
       <h>116</h>
     </coordinates>
@@ -776,14 +777,14 @@ endTurn(): void
     <additional_attributes>27;99;27;27</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>855</x>
-      <y>387</y>
-      <w>485</w>
-      <h>197</h>
+      <y>432</y>
+      <w>521</w>
+      <h>188</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>27;27;468;180</additional_attributes>
+    <additional_attributes>27;27;504;27;504;171</additional_attributes>
   </element>
 </diagram>

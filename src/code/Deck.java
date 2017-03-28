@@ -1,12 +1,13 @@
 package code;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Deck {
 	private List<Card> cards;
 	
 	public Deck() {
-		
+		this.cards = new ArrayList<Card>();
 	}
 
 	public Deck(List<Card> cards) {
@@ -19,5 +20,9 @@ public class Deck {
 
 	public void setCards(List<Card> cards) {
 		this.cards = cards;		
+	}
+
+	public void addCard(Card card, int i) {
+		cards.add(card);	
 	}
 }

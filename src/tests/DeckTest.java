@@ -34,5 +34,15 @@ public class DeckTest {
 		
 		assertEquals(cards, deck.getCards());
 	}
+	
+	@Test
+	public void testSetCards() {
+		List<Card> cards = new ArrayList<Card>();
+		Deck deck = new Deck();
+		
+		deck.setCards(cards);
+		
+		assertEquals(cards, deck.getCards());
+	}
 
 }

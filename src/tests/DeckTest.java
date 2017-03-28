@@ -56,5 +56,16 @@ public class DeckTest {
 		
 		assertEquals(cards, deck.getCards());
 	}
+	
+	@Test
+	public void testAddCardToZeroElements() {
+		Deck deck = new Deck();
+		Card firstCard = new Card();
+		
+		deck.add(firstCard, 1);
+		
+		assertEquals(0, deck.getCards().size());
+		assertEquals(firstCard, deck.getCards().get(0));
+	}
 
 }

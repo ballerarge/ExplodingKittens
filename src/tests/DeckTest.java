@@ -67,5 +67,21 @@ public class DeckTest {
 		assertEquals(1, deck.getCards().size());
 		assertEquals(firstCard, deck.getCards().get(0));
 	}
+	
+	@Test
+	public void testAddCardToOneElement() {
+		Deck deck = new Deck();
+		List<Card> cards = new ArrayList<Card>();
+		Card firstCard = new Card();
+		Card secondCard = new Card();
+		cards.add(firstCard);
+	
+		deck.setCards(cards);
+		deck.addCard(secondCard, 1);
+		
+		assertEquals(2, deck.getCards().size());
+		assertEquals(secondCard, deck.getCards().get(1));
+		
+	}
 
 }

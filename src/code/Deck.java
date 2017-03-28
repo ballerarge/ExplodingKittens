@@ -1,5 +1,8 @@
 package code;
 
-public interface Deck {
-
+public class Deck {
+	
+	public Deck() {
+		
+	}
 }

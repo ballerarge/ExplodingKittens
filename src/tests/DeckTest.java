@@ -138,5 +138,19 @@ public class DeckTest {
 		assertEquals(1, deck.getCards().size());
 		assertEquals(firstCard, deck.getCards().get(0));
 	}
+	
+	@Test
+	public void testRemoveAllDuplicates() {
+		List<Card> cards = new ArrayList<Card>();
+		Card firstCard = new Card();
+		cards.add(firstCard);
+		cards.add(firstCard);
+		Deck deck = new Deck(cards);
+		
+		deck.removeCard(firstCard);
+		deck.removeCard(firstCard);
+		
+		assertEquals(0, deck.getCards().size());
+	}
 
 }

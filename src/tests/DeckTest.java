@@ -97,5 +97,17 @@ public class DeckTest {
 		assertEquals(2, deck.getCards().size());
 		assertEquals(secondCard, deck.getCards().get(0));
 	}
+	
+	@Test
+	public void testRemoveCard() {
+		List<Card> cards = new ArrayList<Card>();
+		Card firstCard = new Card();
+		cards.add(firstCard);
+		Deck deck = new Deck(cards);
+		
+		deck.removeCard(firstCard);
+		
+		assertEquals(0, deck.getCards().size());
+	}
 
 }

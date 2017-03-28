@@ -19,4 +19,8 @@ public class MainDeck {
 		return this.deck.getCards();
 	}
 
+	public int getCardCount() {
+		return 0;
+	}
+
 }

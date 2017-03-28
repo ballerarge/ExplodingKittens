@@ -1,443 +1,459 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="14.2">
-  <zoom_level>9</zoom_level>
+<diagram program="umlet" version="11.5.1">
+  <zoom_level>8</zoom_level>
   <element>
-    <type>com.baselet.element.old.element.Class</type>
+    <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>468</x>
-      <y>639</y>
-      <w>306</w>
-      <h>54</h>
+      <x>416</x>
+      <y>688</y>
+      <w>272</w>
+      <h>48</h>
     </coordinates>
-    <panel_attributes>CardFactory
+    <panel_attributes>bg=red
+CardFactory
 --
 createCard(cardID: int): Card
 createCard(cardID: int, numCards: ind): List&lt;Card&gt;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Class</type>
+    <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>414</x>
-      <y>729</y>
-      <w>342</w>
-      <h>63</h>
+      <x>368</x>
+      <y>768</y>
+      <w>304</w>
+      <h>56</h>
     </coordinates>
-    <panel_attributes>/Card/
+    <panel_attributes>bg=red
+/Card/
 --
-cardIcon: int
+cardID: int
 --
 cardAction(activePlayer: Player, targetPlayer: Player): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Class</type>
+    <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>387</x>
-      <y>846</y>
-      <w>117</w>
-      <h>45</h>
+      <x>344</x>
+      <y>872</y>
+      <w>104</w>
+      <h>40</h>
     </coordinates>
-    <panel_attributes>Normal
+    <panel_attributes>bg=red
+Normal
 --
 cardAction(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Class</type>
+    <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>387</x>
-      <y>918</y>
-      <w>117</w>
-      <h>45</h>
+      <x>344</x>
+      <y>936</y>
+      <w>104</w>
+      <h>40</h>
     </coordinates>
-    <panel_attributes>Nope
+    <panel_attributes>bg=red
+Nope
 --
 cardAction(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Class</type>
+    <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>387</x>
-      <y>990</y>
-      <w>117</w>
-      <h>45</h>
+      <x>344</x>
+      <y>1000</y>
+      <w>104</w>
+      <h>40</h>
     </coordinates>
-    <panel_attributes>Defuse
+    <panel_attributes>bg=red
+Defuse
 --
 cardAction(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Class</type>
+    <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>387</x>
-      <y>1062</y>
-      <w>117</w>
-      <h>45</h>
+      <x>344</x>
+      <y>1064</y>
+      <w>104</w>
+      <h>40</h>
     </coordinates>
-    <panel_attributes>Attack
+    <panel_attributes>bg=red
+Attack
 --
 cardAction(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Class</type>
+    <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>531</x>
-      <y>1116</y>
-      <w>117</w>
-      <h>45</h>
+      <x>472</x>
+      <y>1112</y>
+      <w>104</w>
+      <h>40</h>
     </coordinates>
-    <panel_attributes>Skip
+    <panel_attributes>bg=red
+Skip
 --
 cardAction(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Class</type>
+    <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>666</x>
-      <y>1062</y>
-      <w>117</w>
-      <h>45</h>
+      <x>592</x>
+      <y>1064</y>
+      <w>104</w>
+      <h>40</h>
     </coordinates>
-    <panel_attributes>ExplodingKitten
+    <panel_attributes>bg=red
+ExplodingKitten
 --
 cardAction(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Class</type>
+    <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>666</x>
-      <y>990</y>
-      <w>117</w>
-      <h>45</h>
+      <x>592</x>
+      <y>1000</y>
+      <w>104</w>
+      <h>40</h>
     </coordinates>
-    <panel_attributes>Shuffle
+    <panel_attributes>bg=red
+Shuffle
 --
 cardAction(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Class</type>
+    <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>666</x>
-      <y>918</y>
-      <w>117</w>
-      <h>45</h>
+      <x>592</x>
+      <y>936</y>
+      <w>104</w>
+      <h>40</h>
     </coordinates>
-    <panel_attributes>Skip
+    <panel_attributes>bg=red
+Skip
 --
 cardAction(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Class</type>
+    <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>666</x>
-      <y>846</y>
-      <w>117</w>
-      <h>45</h>
+      <x>592</x>
+      <y>872</y>
+      <w>104</w>
+      <h>40</h>
     </coordinates>
-    <panel_attributes>Scry3
+    <panel_attributes>bg=red
+Scry3
 --
 cardAction(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>558</x>
-      <y>765</y>
-      <w>44</w>
-      <h>368</h>
+      <x>496</x>
+      <y>800</y>
+      <w>40</w>
+      <h>328</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>27;27;27;351</additional_attributes>
+    <additional_attributes>24;24;24;312</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>576</x>
-      <y>765</y>
-      <w>107</w>
-      <h>341</h>
+      <x>512</x>
+      <y>800</y>
+      <w>96</w>
+      <h>304</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>27;27;27;324;90;324</additional_attributes>
+    <additional_attributes>24;24;24;288;80;288</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>594</x>
-      <y>765</y>
-      <w>89</w>
-      <h>269</h>
+      <x>528</x>
+      <y>800</y>
+      <w>80</w>
+      <h>240</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>27;27;27;252;72;252</additional_attributes>
+    <additional_attributes>24;24;24;224;64;224</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>612</x>
-      <y>765</y>
-      <w>71</w>
-      <h>197</h>
+      <x>544</x>
+      <y>800</y>
+      <w>64</w>
+      <h>176</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>27;27;27;180;54;180</additional_attributes>
+    <additional_attributes>24;24;24;160;48;160</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>630</x>
-      <y>765</y>
-      <w>53</w>
-      <h>125</h>
+      <x>560</x>
+      <y>800</y>
+      <w>48</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>27;27;27;108;36;108</additional_attributes>
+    <additional_attributes>24;24;24;96;32;96</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>477</x>
-      <y>765</y>
-      <w>107</w>
-      <h>341</h>
+      <x>424</x>
+      <y>800</y>
+      <w>96</w>
+      <h>304</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>90;27;90;324;27;324</additional_attributes>
+    <additional_attributes>80;24;80;288;24;288</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>477</x>
-      <y>765</y>
-      <w>89</w>
-      <h>260</h>
+      <x>424</x>
+      <y>800</y>
+      <w>80</w>
+      <h>232</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>72;27;72;243;27;243</additional_attributes>
+    <additional_attributes>64;24;64;216;24;216</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>477</x>
-      <y>765</y>
-      <w>71</w>
-      <h>197</h>
+      <x>424</x>
+      <y>800</y>
+      <w>64</w>
+      <h>176</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>54;27;54;180;27;180</additional_attributes>
+    <additional_attributes>48;24;48;160;24;160</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>477</x>
-      <y>765</y>
-      <w>53</w>
-      <h>125</h>
+      <x>424</x>
+      <y>800</y>
+      <w>48</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>36;27;36;108;27;108</additional_attributes>
+    <additional_attributes>32;24;32;96;24;96</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>558</x>
-      <y>666</y>
-      <w>44</w>
-      <h>80</h>
+      <x>496</x>
+      <y>712</y>
+      <w>40</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 </panel_attributes>
-    <additional_attributes>27;63;27;27</additional_attributes>
+    <additional_attributes>24;56;24;24</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Class</type>
+    <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>963</x>
-      <y>855</y>
-      <w>324</w>
-      <h>162</h>
+      <x>856</x>
+      <y>880</y>
+      <w>288</w>
+      <h>176</h>
     </coordinates>
-    <panel_attributes>Player
+    <panel_attributes>bg=red
+Player
 --
 name: String
 handManager: HandManager
 playerManager: PlayerManager
+hasPriority: boolean
 --
 getName(): String
 setName(name: String): void
 getHandManager(): HandManager
-setHandManager(handManager: HandManager): void
-getPlayerManager(): PlayerManager
-setPlayerManager(playerManager: PlayerManager): void</panel_attributes>
+passPriority(): void
+receivePriority(): void
+getHand(): List&lt;Card&gt;
+drawCard(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Class</type>
+    <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>1404</x>
-      <y>891</y>
-      <w>288</w>
-      <h>126</h>
+      <x>1248</x>
+      <y>912</y>
+      <w>256</w>
+      <h>104</h>
     </coordinates>
-    <panel_attributes>PlayerManager
+    <panel_attributes>bg=red
+PlayerManager
 --
 players: List&lt;Player&gt;
 deadPlayers: List&lt;Player&gt;
 --
+getHands(): Map&lt;Player, List&lt;Card&gt;&gt;
+getPlayerStatus(): Map&lt;Player, Boolean&gt;
 getPlayers(): List&lt;Player&gt;
-setPlayers(players: List&lt;Player&gt;): void
-getDeadPlayers(): List&lt;Player&gt;
-setDeadPlayers(deadPlayers: List&lt;Player&gt;): void</panel_attributes>
+addPlayers(numPlayers: int): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Class</type>
+    <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>1494</x>
-      <y>387</y>
-      <w>423</w>
-      <h>180</h>
+      <x>1328</x>
+      <y>448</y>
+      <w>376</w>
+      <h>176</h>
     </coordinates>
-    <panel_attributes>Game
+    <panel_attributes>bg=red
+Game
 --
-mainDeck: Deck
-discardDeck: Deck
+mainDeck: MainDeck
+discardDeck: DiscardDeck
 playerManager: PlayerManager
 turnPriorityManager: TurnPriorityManager
 stack: CardStack
 --
-getPlayerManager(): PlayerManager
-setPlayerManager(playerManager: PlayerManager): void
-getTurnPriorityManager(): TurnPriorityManager
-setTurnPriorityManager(turnPriorityManager: TurnPriorityManager: void</panel_attributes>
+start(numPlayers: int): void
+nextTurn(): void
+isMainDeckEmpty(): boolean
+isDiscardDeckEmpty(): boolean
+getPlayerHands(): Map&lt;Player, List&lt;Card&gt;&gt;
+getPlayerStatus(): Map&lt;Player, Boolean&gt;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Class</type>
+    <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>828</x>
-      <y>72</y>
-      <w>279</w>
-      <h>207</h>
+      <x>736</x>
+      <y>216</y>
+      <w>248</w>
+      <h>152</h>
     </coordinates>
-    <panel_attributes>MainDeck
+    <panel_attributes>bg=red
+MainDeck
 &lt;&lt;singleton&gt;&gt;
 --
-cards: List&lt;Card&gt;
+deck: Deck
 cardFactory: CardFactory
 --
 getCards(): List&lt;Card&gt;
-setCards(cards: List&lt;Card&gt;): void
 getCardCount(): int
 insertCard(card: Card, index: int): void
 initStartingDeck(): void
 populateDeck(players: int): void
-shuffleDeck(): void
-getCardFactory(): CardFactory
-setCardFactory(cardFactory: CardFactory): void</panel_attributes>
+shuffleDeck(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>729</x>
-      <y>720</y>
-      <w>269</w>
-      <h>44</h>
+      <x>648</x>
+      <y>760</y>
+      <w>240</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..n</panel_attributes>
-    <additional_attributes>27;27;252;27</additional_attributes>
+    <additional_attributes>24;24;224;24</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>1260</x>
-      <y>909</y>
-      <w>161</w>
-      <h>44</h>
+      <x>1120</x>
+      <y>928</y>
+      <w>144</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..n</panel_attributes>
-    <additional_attributes>27;27;144;27</additional_attributes>
+    <additional_attributes>24;24;128;24</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>1620</x>
-      <y>540</y>
-      <w>44</w>
-      <h>368</h>
+      <x>1440</x>
+      <y>600</y>
+      <w>40</w>
+      <h>328</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>27;351;27;27</additional_attributes>
+    <additional_attributes>24;312;24;24</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>1476</x>
-      <y>252</y>
-      <w>134</w>
-      <h>152</h>
+      <x>1312</x>
+      <y>344</y>
+      <w>120</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>27;27;117;27;117;135</additional_attributes>
+    <additional_attributes>24;24;104;24;104;104</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>1260</x>
-      <y>882</y>
-      <w>161</w>
-      <h>44</h>
+      <x>1120</x>
+      <y>904</y>
+      <w>144</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>144;27;27;27</additional_attributes>
+    <additional_attributes>128;24;24;24</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Class</type>
+    <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>2016</x>
-      <y>486</y>
-      <w>198</w>
-      <h>99</h>
+      <x>1792</x>
+      <y>552</y>
+      <w>176</w>
+      <h>72</h>
     </coordinates>
-    <panel_attributes>GameController
+    <panel_attributes>bg=red
+GameController
 --
 game: Game
+gui: GUI
 --
-main(args: String[]): void
-getGame(): Game
-setGame(game: Game): void</panel_attributes>
+main(args: String[]): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>1890</x>
-      <y>504</y>
-      <w>143</w>
-      <h>44</h>
+      <x>1680</x>
+      <y>568</y>
+      <w>128</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>27;27;126;27</additional_attributes>
+    <additional_attributes>24;24;112;24</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Class</type>
+    <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>1989</x>
-      <y>306</y>
-      <w>216</w>
-      <h>54</h>
+      <x>1784</x>
+      <y>392</y>
+      <w>192</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>GUI
 &lt;&lt;the god gui&gt;&gt;
@@ -446,31 +462,30 @@ fg=white</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>2079</x>
-      <y>333</y>
-      <w>44</w>
-      <h>170</h>
+      <x>1856</x>
+      <y>416</y>
+      <w>40</w>
+      <h>152</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>27;153;27;27</additional_attributes>
+    <additional_attributes>24;24;24;136</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Class</type>
+    <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>1233</x>
-      <y>144</y>
-      <w>270</w>
-      <h>153</h>
+      <x>1096</x>
+      <y>264</y>
+      <w>240</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>DiscardDeck
 &lt;&lt;singleton&gt;&gt;
 --
-cards: List&lt;Card&gt;
+deck: Deck
 --
 getCards(): List&lt;Card&gt;
-setCards(cards: List&lt;Card&gt;): void
 getCardCount(): int
 addCard(card: Card): void
 removeCard(card: Card): void
@@ -478,23 +493,23 @@ removeAllCards(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Class</type>
+    <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>981</x>
-      <y>594</y>
-      <w>270</w>
-      <h>198</h>
+      <x>872</x>
+      <y>648</y>
+      <w>240</w>
+      <h>168</h>
     </coordinates>
-    <panel_attributes>HandManager
+    <panel_attributes>bg=red
+HandManager
 --
 hand: List&lt;Card&gt;
 selectedCards: List&lt;Card&gt;
 mainDeck: MainDeck
-cardStac: CardStack
+cardStack: CardStack
 --
 draw(): void
 getHand(): List&lt;Card&gt;
-setHand(hand: List&lt;Card&gt;): void
 getSelectedCards(): List&lt;Card&gt;
 setSelectedCards(cards: List&lt;Card&gt;): void
 selectCard(card: Card): void
@@ -502,56 +517,56 @@ moveSelectedToStack(): boolean</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>945</x>
-      <y>252</y>
-      <w>170</w>
-      <h>359</h>
+      <x>840</x>
+      <y>344</y>
+      <w>152</w>
+      <h>320</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>27;27;27;135;153;135;153;342</additional_attributes>
+    <additional_attributes>24;24;24;120;136;120;136;304</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>855</x>
-      <y>414</y>
-      <w>656</w>
-      <h>44</h>
+      <x>760</x>
+      <y>488</y>
+      <w>584</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>27;27;639;27</additional_attributes>
+    <additional_attributes>24;24;568;24</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>1044</x>
-      <y>252</y>
-      <w>530</w>
+      <x>928</x>
+      <y>344</y>
+      <w>472</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>24;24;24;72;456;72;456;104</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>960</x>
+      <y>792</y>
+      <w>40</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>24;24;24;88</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>544</x>
+      <y>464</y>
+      <w>240</w>
       <h>152</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>27;27;27;81;513;81;513;135</additional_attributes>
-  </element>
-  <element>
-    <type>com.baselet.element.old.element.Relation</type>
-    <coordinates>
-      <x>1080</x>
-      <y>765</y>
-      <w>44</w>
-      <h>107</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>27;27;27;90</additional_attributes>
-  </element>
-  <element>
-    <type>com.baselet.element.old.element.Class</type>
-    <coordinates>
-      <x>612</x>
-      <y>387</y>
-      <w>270</w>
-      <h>171</h>
     </coordinates>
     <panel_attributes>CardStack
 &lt;&lt;singleton&gt;&gt;
@@ -568,45 +583,45 @@ moveCardToDiscardDeck(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>640</x>
+      <y>312</y>
+      <w>112</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>96;24;24;24;24;152</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>760</x>
+      <y>360</y>
+      <w>408</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>392;24;392;136;24;136</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>720</x>
-      <y>216</y>
-      <w>125</w>
-      <h>188</h>
+      <y>592</y>
+      <w>168</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>108;27;27;27;27;171</additional_attributes>
+    <additional_attributes>24;24;24;96;152;96</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
-    <coordinates>
-      <x>855</x>
-      <y>270</y>
-      <w>458</w>
-      <h>170</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>441;27;441;153;27;153</additional_attributes>
-  </element>
-  <element>
-    <type>com.baselet.element.old.element.Relation</type>
-    <coordinates>
-      <x>810</x>
-      <y>531</y>
-      <w>188</w>
-      <h>125</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>27;27;27;108;171;108</additional_attributes>
-  </element>
-  <element>
-    <type>com.baselet.element.old.element.Class</type>
+    <type>com.umlet.element.Class</type>
     <coordinates>
       <x>0</x>
-      <y>756</y>
-      <w>252</w>
-      <h>72</h>
+      <y>792</y>
+      <w>224</w>
+      <h>64</h>
     </coordinates>
     <panel_attributes>3CardBundle
 --
@@ -617,12 +632,12 @@ cardAction(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Class</type>
+    <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>81</x>
-      <y>846</y>
-      <w>261</w>
-      <h>72</h>
+      <x>72</x>
+      <y>872</y>
+      <w>232</w>
+      <h>64</h>
     </coordinates>
     <panel_attributes>5CardBundle
 --
@@ -633,12 +648,12 @@ cardAction(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Class</type>
+    <type>com.umlet.element.Class</type>
     <coordinates>
       <x>0</x>
-      <y>666</y>
-      <w>252</w>
-      <h>72</h>
+      <y>712</y>
+      <w>224</w>
+      <h>64</h>
     </coordinates>
     <panel_attributes>2CardBundle
 --
@@ -649,142 +664,182 @@ cardAction(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>225</x>
-      <y>657</y>
-      <w>242</w>
-      <h>89</h>
+      <x>200</x>
+      <y>704</y>
+      <w>216</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>225;72;225;27;27;27</additional_attributes>
+    <additional_attributes>200;64;200;24;24;24</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>297</x>
-      <y>765</y>
-      <w>134</w>
-      <h>98</h>
+      <x>264</x>
+      <y>800</y>
+      <w>120</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>117;27;27;27;27;81</additional_attributes>
+    <additional_attributes>104;24;24;24;24;72</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>225</x>
-      <y>738</y>
-      <w>206</w>
-      <h>44</h>
+      <x>200</x>
+      <y>776</y>
+      <w>184</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>189;27;54;27;27;27</additional_attributes>
+    <additional_attributes>168;24;48;24;24;24</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>225</x>
-      <y>675</y>
-      <w>215</w>
-      <h>71</h>
+      <x>200</x>
+      <y>720</y>
+      <w>192</w>
+      <h>64</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=2</panel_attributes>
-    <additional_attributes>198;54;198;27;27;27</additional_attributes>
+    <additional_attributes>176;48;176;24;24;24</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>225</x>
-      <y>747</y>
-      <w>206</w>
-      <h>44</h>
+      <x>200</x>
+      <y>784</y>
+      <w>184</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=3</panel_attributes>
-    <additional_attributes>189;27;27;27</additional_attributes>
+    <additional_attributes>168;24;24;24</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>306</x>
-      <y>765</y>
-      <w>143</w>
-      <h>98</h>
+      <x>272</x>
+      <y>800</y>
+      <w>128</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=5</panel_attributes>
-    <additional_attributes>126;27;126;45;27;45;27;81</additional_attributes>
+    <additional_attributes>112;24;112;40;24;40;24;72</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>540</x>
-      <y>162</y>
-      <w>305</w>
-      <h>494</h>
+      <x>480</x>
+      <y>264</y>
+      <w>272</w>
+      <h>440</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>27;477;27;27;288;27</additional_attributes>
+    <additional_attributes>24;424;24;24;256;24</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Class</type>
+    <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>1323</x>
-      <y>603</y>
-      <w>288</w>
-      <h>216</h>
+      <x>1176</x>
+      <y>680</y>
+      <w>256</w>
+      <h>176</h>
     </coordinates>
     <panel_attributes>TurnPriorityManager
 --
 playerManager: PlayerManager
-curPlayer: Player
+curentPlayer: Player
+activePlayer: Player
 turns: List&lt;Player&gt;
 stack: CardStack
 --
 getPlayerManager(): PlayerManager
 setPlayerManager(playerManager: PlayerManager): void
-getCurPlayer(): Player
-setCurPlayer(player: Player): void
-getTurns(): List&lt;Player&gt;
-setTurns(turns: List&lt;Player&gt;): void
-nextTurn(): void
-endTurn(): void
+getCurrentPlayer(): Player
+getActivePlayer(): Player
+endTurnAndDraw(): void
+endTurnWithoutDrawing(): void
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>1494</x>
-      <y>540</y>
-      <w>44</w>
-      <h>80</h>
+      <x>1328</x>
+      <y>600</y>
+      <w>40</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>27;63;27;27</additional_attributes>
+    <additional_attributes>24;80;24;24</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>1413</x>
-      <y>792</y>
-      <w>44</w>
-      <h>116</h>
+      <x>1256</x>
+      <y>832</y>
+      <w>40</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>27;99;27;27</additional_attributes>
+    <additional_attributes>24;80;24;24</additional_attributes>
   </element>
   <element>
-    <type>com.baselet.element.old.element.Relation</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>855</x>
-      <y>432</y>
-      <w>521</w>
-      <h>188</h>
+      <x>760</x>
+      <y>504</y>
+      <w>464</w>
+      <h>192</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>27;27;504;27;504;171</additional_attributes>
+    <additional_attributes>24;24;448;24;448;176</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>952</x>
+      <y>40</y>
+      <w>208</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>bg=red
+Deck
+--
+cards: List&lt;Card&gt;
+--
+getCards(): List&lt;Card&gt;
+setCards(cards: List&lt;Card&gt;): void
+addCard(card: Card, index: int): void
+removeCard(card: Card): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>856</x>
+      <y>64</y>
+      <w>112</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>96;24;24;24;24;152</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1064</x>
+      <y>120</y>
+      <w>160</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>24;24;24;72;144;72;144;144</additional_attributes>
   </element>
 </diagram>

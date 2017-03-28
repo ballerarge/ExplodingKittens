@@ -26,7 +26,7 @@ public class Deck {
 		this.cards.add(i, card);	
 	}
 
-	public void removeCard(Card card) {
-		this.cards.remove(card);
+	public boolean removeCard(Card card) {
+		return this.cards.remove(card);
 	}
 }

@@ -5,16 +5,18 @@ import java.util.List;
 
 public class MainDeck {
 	
+	Deck deck;
+	
 	public MainDeck() {
-		
+		this.deck = new Deck(new ArrayList<Card>());
 	}
 
 	public MainDeck(List<Card> cards) {
-		
+		this.deck = new Deck(cards);
 	}
 
 	public List<Card> getCards() {
-		return new ArrayList<Card>();
+		return this.deck.getCards();
 	}
 
 }

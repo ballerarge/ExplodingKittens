@@ -109,5 +109,20 @@ public class DeckTest {
 		
 		assertEquals(0, deck.getCards().size());
 	}
+	
+	@Test
+	public void testRemoveCardAtOddPosition() {
+		List<Card> cards = new ArrayList<Card>();
+		Card firstCard = new Card();
+		Card secondCard = new Card();
+		cards.add(firstCard);
+		cards.add(secondCard);
+		Deck deck = new Deck(cards);
+		
+		deck.removeCard(firstCard);
+		
+		assertEquals(1, deck.getCards().size());
+		assertEquals(secondCard, deck.getCards().get(0));
+	}
 
 }

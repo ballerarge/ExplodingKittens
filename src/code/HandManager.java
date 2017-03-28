@@ -1,5 +1,11 @@
 package code;
 
-public interface HandManager {
+public class HandManager {
 
+	public HandManager() {
+		
+	}
+
+	
+	
 }

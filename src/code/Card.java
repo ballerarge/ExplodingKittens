@@ -1,5 +1,5 @@
 package code;
 
-public interface Card {
+public class Card {
 
 }

@@ -31,6 +31,8 @@ public class DeckTest {
 		Card cardOne = new Card();
 		cards.add(cardOne);
 		Deck deck = new Deck(cards);
+		
+		assertEquals(cards, deck.getCards());
 	}
 
 }

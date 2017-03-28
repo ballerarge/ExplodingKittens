@@ -1,5 +1,5 @@
 package code;
 
-public interface MainDeck {
+public class MainDeck {
 
 }

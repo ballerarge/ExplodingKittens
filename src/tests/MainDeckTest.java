@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import code.MainDeck;
+
 public class MainDeckTest {
 
 	@Test

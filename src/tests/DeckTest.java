@@ -152,5 +152,17 @@ public class DeckTest {
 		
 		assertEquals(0, deck.getCards().size());
 	}
+	
+	@Test
+	public void testRemoveFromZeroElements() {
+		List<Card> cards = new ArrayList<Card>();
+		Deck deck = new Deck(cards);
+		Card firstCard = new Card();
+		
+		boolean check = deck.removeCard(firstCard);
+		
+		assertEquals(0, deck.getCards().size());
+		assertFalse(check);
+	}
 
 }

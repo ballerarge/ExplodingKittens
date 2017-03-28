@@ -62,7 +62,7 @@ public class DeckTest {
 		Deck deck = new Deck();
 		Card firstCard = new Card();
 		
-		deck.addCard(firstCard, 1);
+		deck.addCard(firstCard, 0);
 		
 		assertEquals(1, deck.getCards().size());
 		assertEquals(firstCard, deck.getCards().get(0));

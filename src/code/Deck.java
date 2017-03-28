@@ -23,6 +23,6 @@ public class Deck {
 	}
 
 	public void addCard(Card card, int i) {
-		cards.add(card);	
+		this.cards.add(i, card);	
 	}
 }

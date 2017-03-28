@@ -81,7 +81,21 @@ public class DeckTest {
 		
 		assertEquals(2, deck.getCards().size());
 		assertEquals(secondCard, deck.getCards().get(1));
+	}
+	
+	@Test
+	public void testAddCardToOneElementOddOrder() {
+		Deck deck = new Deck();
+		List<Card> cards = new ArrayList<Card>();
+		Card firstCard = new Card();
+		Card secondCard = new Card();
+		cards.add(firstCard);
 		
+		deck.setCards(cards);
+		deck.addCard(secondCard, 0);
+		
+		assertEquals(2, deck.getCards().size());
+		assertEquals(secondCard, deck.getCards().get(0));
 	}
 
 }

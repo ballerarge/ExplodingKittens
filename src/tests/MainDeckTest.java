@@ -22,8 +22,17 @@ public class MainDeckTest {
 		List<Card> cards = new ArrayList<Card>();
 		MainDeck mDeck = new MainDeck(cards);
 		
-		assertEquals(cards, mDeck.getCards());
+		assertEquals(cards, mDeck.getCards());	
+	}
+	
+	@Test
+	public void testGetCardsNonEmpty() {
+		List<Card> cards = new ArrayList<Card>();
+		Card firstCard = new Card();
+		cards.add(firstCard);
+		MainDeck mDeck = new MainDeck(cards);
 		
+		assertEquals(cards, mDeck.getCards());
 	}
 
 }

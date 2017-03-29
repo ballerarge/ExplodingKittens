@@ -55,6 +55,8 @@ public class CardFactoryTest {
 		CardFactory cardFactory = new CardFactory();
 
 		exception.expect(IncorrectNumberOfCards.class);
+
+		@SuppressWarnings("unused")
 		List<Card> cards = cardFactory.createCard(CardFactory.NORMAL_CARD, -1);
 	}
 
@@ -76,5 +78,13 @@ public class CardFactoryTest {
 			assertEquals(card.getID(), CardFactory.NOPE_CARD);
 		}
 		assertEquals(10, cards.size());
+	}
+
+	@Test
+	public void testCreateCardSingleDefuse() {
+		CardFactory cardFactory = new CardFactory();
+
+		Card card = cardFactory.createCard(CardFactory.DEFUSE_CARD);
+		assertEquals(card.getID(), CardFactory.DEFUSE_CARD);
 	}
 }

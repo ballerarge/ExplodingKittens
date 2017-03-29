@@ -74,4 +74,19 @@ public class MainDeckTest {
 		
 		assertEquals(firstCard, mDeck.getCards().get(0));
 	}
+	
+	@Test
+	public void testInsertCardOnBottom() {
+		List<Card> cards = new ArrayList<Card>();
+		Card firstCard = new Card();
+		Card secondCard = new Card();
+		Card thirdCard = new Card();
+		cards.add(firstCard);
+		cards.add(secondCard);
+		MainDeck mDeck = new MainDeck(cards);
+		
+		mDeck.insertCard(thirdCard, mDeck.getCardCount());
+		
+		assertEquals(thirdCard, mDeck.getCards().get(2));
+	}
 }

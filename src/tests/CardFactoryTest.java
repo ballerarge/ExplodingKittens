@@ -147,4 +147,16 @@ public class CardFactoryTest {
 		Card card = cardFactory.createCard(CardFactory.EXPLODING_KITTEN_CARD);
 		assertEquals(card.getID(), CardFactory.EXPLODING_KITTEN_CARD);
 	}
+
+	@Test
+	public void testCreateCardMultipleExplodingKitten() throws IncorrectNumberOfCards {
+		CardFactory cardFactory = new CardFactory();
+
+		List<Card> cards = cardFactory.createCard(CardFactory.EXPLODING_KITTEN_CARD, 10);
+
+		for (Card card : cards) {
+			assertEquals(card.getID(), CardFactory.EXPLODING_KITTEN_CARD);
+		}
+		assertEquals(10, cards.size());
+	}
 }

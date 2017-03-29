@@ -1,5 +1,9 @@
 package code;
 
-public interface Game {
-
+public class Game {
+	
+	public Game(){}
+	
+	
+	
 }

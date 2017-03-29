@@ -1,7 +1,7 @@
 
 package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
@@ -9,7 +9,10 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import code.*;
+import code.Card;
+import code.CardFactory;
+import code.IncorrectNumberOfCards;
+import code.Player;
 
 public class CardFactoryTest {
 	@Rule
@@ -35,7 +38,7 @@ public class CardFactoryTest {
 
 		Card card = cardFactory.createCard(CardFactory.NORMAL_CARD);
 
-		Player p1, p2;
+		Player p1 = null, p2 = null;
 
 		card.cardAction(p1, p2);
 	}

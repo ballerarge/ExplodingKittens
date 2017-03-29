@@ -1,5 +1,7 @@
 package code;
 
-public interface CardFactory {
-
+public class CardFactory {
+	public CardFactory() {
+		
+	}
 }

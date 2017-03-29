@@ -35,11 +35,4 @@ public class GameTest {
 		game.start(3);
 		assertFalse(game.isMainDeckEmpty());
 	}
-	
-	public void testIsDiscardDeckEmptyStartofGame(){
-		Game game=new Game();
-		game.start(3);
-		assertTrue(game.isDiscardDeckEmpty());
-		
-	}
 }

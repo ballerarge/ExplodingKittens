@@ -1,14 +1,23 @@
 package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
 
+import code.AttackCard;
 import code.Card;
+import code.FavorCard;
 import code.MainDeck;
+import code.NopeCard;
+import code.NormalCard;
+import code.ScryCard;
+import code.ShuffleCard;
+import code.SkipCard;
 
 public class MainDeckTest {
 
@@ -144,5 +153,50 @@ public class MainDeckTest {
 		mDeck.initStartingDeck();
 		
 		assertEquals(46, mDeck.getCardCount());
+	}
+	
+	@Test
+	public void testCorrectCardsInInit() {
+		MainDeck mDeck = new MainDeck();
+		int attack = 0;
+		int favor = 0;
+		int nope = 0;
+		int normal = 0;
+		int scry = 0;
+		int shuffle = 0;
+		int skip = 0;
+		
+		mDeck.initStartingDeck();
+		for (int i = 0; i < mDeck.getCardCount(); i++) {
+			if (mDeck.getCards().get(i) instanceof AttackCard) {
+				attack++;
+			}
+			else if (mDeck.getCards().get(i) instanceof FavorCard) {
+				favor++;
+			}
+			else if (mDeck.getCards().get(i) instanceof NopeCard) {
+				nope++;
+			}
+			else if (mDeck.getCards().get(i) instanceof NormalCard) {
+				normal++;
+			}
+			else if (mDeck.getCards().get(i) instanceof ScryCard) {
+				scry++;
+			}
+			else if (mDeck.getCards().get(i) instanceof ShuffleCard) {
+				shuffle++;
+			}
+			else if (mDeck.getCards().get(i) instanceof SkipCard) {
+				skip++;
+			}	
+		}
+		
+		assertEquals(4, attack);
+		assertEquals(4, favor);
+		assertEquals(5, nope);
+		assertEquals(20, normal);
+		assertEquals(5, scry);
+		assertEquals(4, shuffle);
+		assertEquals(4, skip);
 	}
 }

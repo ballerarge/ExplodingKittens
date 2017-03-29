@@ -39,8 +39,8 @@ public class MainDeck {
 		initSkipCards();
 		initAttackCards();
 		initNormalCards();
-		initSeeTheFutureCards();
 		initNopeCards();
+		initScryCards();
 	}
 	
 	private void initFavorCards() {
@@ -73,15 +73,15 @@ public class MainDeck {
 		}
 	}
 	
-	private void initSeeTheFutureCards() {
-		for (int i = 0; i < 5; i++) {
-			deck.addCard(new SeeTheFutureCard(), 0);
-		}
-	}
-	
 	private void initNopeCards() {
 		for (int i = 0; i < 5; i++) {
 			deck.addCard(new NopeCard(), 0);
+		}
+	}
+	
+	private void initScryCards() {
+		for (int i = 0; i < 5; i++) {
+			deck.addCard(new ScryCard(), 0);
 		}
 	}
 	

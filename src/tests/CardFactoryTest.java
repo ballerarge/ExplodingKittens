@@ -48,4 +48,12 @@ public class CardFactoryTest {
 		exception.expect(IncorrectNumberOfCards.class);
 		List<Card> cards = cardFactory.createCard(CardFactory.NORMAL_CARD, -1);
 	}
+	
+	@Test
+	public void testCreateCardSingleNope() {
+		CardFactory cardFactory = new CardFactory();
+
+		Card card = cardFactory.createCard(CardFactory.NOPE_CARD);
+		assertTrue(NopeCard.class.isInstance(card));
+	}
 }

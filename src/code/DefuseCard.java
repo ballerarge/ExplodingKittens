@@ -3,6 +3,6 @@ package code;
 
 public class DefuseCard extends Card {
 	public DefuseCard() {
-		this.cardID = 3;
+		this.cardID = 2;
 	}
 }

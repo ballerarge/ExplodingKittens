@@ -7,7 +7,8 @@ import java.util.List;
 public class CardFactory {
 	public final static int NORMAL_CARD = 0;
 	public static final int NOPE_CARD = 1;
-	public static final int DEFUSE_CARD = 3;
+	public static final int DEFUSE_CARD = 2;
+	public static final int ATTACK_CARD = 3;
 
 	public CardFactory() {
 
@@ -21,6 +22,8 @@ public class CardFactory {
 				return new NopeCard();
 			case DEFUSE_CARD:
 				return new DefuseCard();
+			case ATTACK_CARD:
+				return new AttackCard();
 		}
 		return new NormalCard();
 	}

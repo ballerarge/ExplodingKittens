@@ -16,8 +16,6 @@ public class GameTest {
 	public void testStartRuns() {
 		Game game=new Game();
 		game.start(3);
-		
-		
 	}
 	
 	

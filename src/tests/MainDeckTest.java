@@ -115,4 +115,16 @@ public class MainDeckTest {
 		
 		assertFalse(mDeck.insertCard(thirdCard, mDeck.getCardCount() + 1));
 	}
+	
+	@Test
+	public void testDrawCard() {
+		List<Card> cards = new ArrayList<Card>();
+		Card firstCard = new Card();
+		cards.add(firstCard);
+		MainDeck mDeck = new MainDeck(cards);
+		
+		Card drawnCard = mDeck.draw();
+		
+		assertEquals(firstCard, drawnCard);
+	}
 }

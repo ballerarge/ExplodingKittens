@@ -129,4 +129,11 @@ public class MainDeckTest {
 		assertEquals(firstCard, drawnCard);
 		assertEquals(sizeOfDeck - 1, mDeck.getCardCount());
 	}
+	
+	@Test
+	public void testDrawFromEmptyDeck() {
+		MainDeck mDeck = new MainDeck();
+		
+		Card drawnCard = mDeck.draw();
+	}
 }

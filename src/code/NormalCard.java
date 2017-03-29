@@ -2,7 +2,10 @@
 package code;
 
 public class NormalCard implements Card {
-	public NormalCard() {
 
+	@Override
+	public int getID() {
+		return 0;
 	}
+	
 }

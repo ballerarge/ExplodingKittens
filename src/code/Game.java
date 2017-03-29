@@ -16,10 +16,15 @@ public class Game {
 		playerManager.addPlayers(n);
 		mainDeck = new MainDeck();
 		mainDeck.populateDeck(n);
+
 	}
 
 	public Map getPlayerHands() {
 		return playerManager.getHands();
+	}
+
+	public Map getPlayerStatus() {
+		return playerManager.getPlayerStatus();
 	}
 
 	public boolean isMainDeckEmpty() {

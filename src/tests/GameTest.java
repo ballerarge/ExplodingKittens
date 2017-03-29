@@ -1,3 +1,4 @@
+
 package tests;
 
 import static org.junit.Assert.*;
@@ -15,23 +16,30 @@ public class GameTest {
 
 	@Test
 	public void testGameCreation() {
-		Game game=new Game();
+		Game game = new Game();
 	}
-	
+
 	public void testStartRuns() {
-		Game game=new Game();
+		Game game = new Game();
 		game.start(3);
 	}
-	
-	public void testStartNumberofPlayers(){
-		Game game=new Game();
+
+	public void testStartNumberofPlayers() {
+		Game game = new Game();
 		game.start(3);
-		Map<Player,List> hands=game.getPlayerHands();
-		assertEquals(hands.size(),3);
+		Map<Player, List> hands = game.getPlayerHands();
+		assertEquals(hands.size(), 3);
 	}
-	
-	public void testIsMainDeckEmptyStartofGame(){
-		Game game=new Game();
+
+	public void testGetPlayerStatus() {
+		Game game = new Game();
+		game.start(3);
+		Map<Player, Boolean> status = game.getPlayerStatus();
+		assertEquals(status.size(), 3);
+	}
+
+	public void testIsMainDeckEmptyStartofGame() {
+		Game game = new Game();
 		game.start(3);
 		assertFalse(game.isMainDeckEmpty());
 	}

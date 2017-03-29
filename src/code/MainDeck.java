@@ -23,4 +23,8 @@ public class MainDeck {
 		return deck.getCards().size();
 	}
 
+	public void insertCard(Card card, int position) {
+		deck.addCard(card, position);		
+	}
+
 }

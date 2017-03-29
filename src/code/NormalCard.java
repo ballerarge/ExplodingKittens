@@ -1,11 +1,9 @@
 
 package code;
 
-public class NormalCard implements Card {
+public class NormalCard extends Card {
 
-	@Override
-	public int getID() {
-		return 0;
+	public NormalCard() {
+		this.cardID = 0;
 	}
-	
 }

@@ -1,11 +1,10 @@
 
 package code;
 
-public class NopeCard implements Card {
+public class NopeCard extends Card {
 
-	@Override
-	public int getID() {
-		return 1;
+	public NopeCard() {
+		this.cardID = 1;
 	}
 
 }

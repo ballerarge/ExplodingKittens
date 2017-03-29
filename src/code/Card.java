@@ -1,7 +1,11 @@
 package code;
 
-public interface Card {
+public abstract class Card {
 
-	int getID();
+	protected int cardID;
+	
+	public int getID() {
+		return this.cardID;
+	}
 
 }

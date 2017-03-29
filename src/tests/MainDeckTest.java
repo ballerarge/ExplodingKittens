@@ -85,8 +85,24 @@ public class MainDeckTest {
 		cards.add(secondCard);
 		MainDeck mDeck = new MainDeck(cards);
 		
-		mDeck.insertCard(thirdCard, mDeck.getCardCount());
+		mDeck.insertCard(thirdCard, 2);
 		
 		assertEquals(thirdCard, mDeck.getCards().get(2));
+	}
+	
+	@Test
+	public void testInsertCardInMiddle() {
+		List<Card> cards = new ArrayList<Card>();
+		Card firstCard = new Card();
+		Card secondCard = new Card();
+		Card thirdCard = new Card();
+		cards.add(firstCard);
+		cards.add(secondCard);
+		MainDeck mDeck = new MainDeck(cards);
+		
+		mDeck.insertCard(thirdCard, 1);
+		
+		assertEquals(thirdCard, mDeck.getCards().get(1));
+		assertEquals(secondCard, mDeck.getCards().get(2));
 	}
 }

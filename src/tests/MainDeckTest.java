@@ -136,4 +136,13 @@ public class MainDeckTest {
 		
 		Card drawnCard = mDeck.draw();
 	}
+	
+	@Test
+	public void testInitStartingDeck() {
+		MainDeck mDeck = new MainDeck();
+		
+		mDeck.initStartingDeck();
+		
+		assertEquals(46, mDeck.getCardCount());
+	}
 }

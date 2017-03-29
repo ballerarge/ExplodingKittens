@@ -10,6 +10,7 @@ public class CardFactory {
 	public static final int DEFUSE_CARD = 2;
 	public static final int ATTACK_CARD = 3;
 	public static final int SKIP_CARD = 4;
+	public static final int EXPLODING_KITTEN_CARD = 5;
 
 	public CardFactory() {
 
@@ -27,6 +28,8 @@ public class CardFactory {
 				return new AttackCard();
 			case SKIP_CARD:
 				return new SkipCard();
+			case EXPLODING_KITTEN_CARD:
+				return new ExplodingKittenCard();
 		}
 		return new NormalCard();
 	}

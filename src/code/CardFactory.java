@@ -30,7 +30,7 @@ public class CardFactory {
 		List<Card> cards = new ArrayList<Card>();
 
 		for (int i = 0; i < numCards; i++) {
-			cards.add(new NormalCard());
+			cards.add(createCard(cardID));
 		}
 
 		return cards;

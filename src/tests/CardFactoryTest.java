@@ -3,13 +3,18 @@ package tests;
 
 import static org.junit.Assert.*;
 
-import java.awt.List;
+import java.util.List;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import code.*;
 
 public class CardFactoryTest {
+	@Rule
+	public final ExpectedException exception = ExpectedException.none();
+	  
 	@Test
 	public void testCardFactoryCreation() {
 		@SuppressWarnings("unused")
@@ -27,12 +32,20 @@ public class CardFactoryTest {
 	@Test
 	public void testCreateCardMultipleNormal() {
 		CardFactory cardFactory = new CardFactory();
-		
+
 		List<Card> cards = cardFactory.createCard(CardFactory.NORMAL_CARD, 10);
-		
-		for (Card card: cards) {
+
+		for (Card card : cards) {
 			assertTrue(NormalCard.class.isInstance(card));
 		}
 		assertEquals(10, cards.size());
+	}
+	
+	@Test
+	public void testCreateCardNegativeMultiple() {
+		CardFactory cardFactory = new CardFactory();
+		
+		exception.expect(IncorrectNumberOfCards.class);
+		List<Card> cards = cardFactory.createCard(CardFactory.NORMAL_CARD, -1);
 	}
 }

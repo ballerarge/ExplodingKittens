@@ -122,9 +122,11 @@ public class MainDeckTest {
 		Card firstCard = new Card();
 		cards.add(firstCard);
 		MainDeck mDeck = new MainDeck(cards);
+		int sizeOfDeck = mDeck.getCardCount();
 		
 		Card drawnCard = mDeck.draw();
 		
 		assertEquals(firstCard, drawnCard);
+		assertEquals(sizeOfDeck - 1, mDeck.getCardCount());
 	}
 }

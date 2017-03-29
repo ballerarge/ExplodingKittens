@@ -116,6 +116,6 @@ public class MainDeckTest {
 		cards.add(secondCard);
 		MainDeck mDeck = new MainDeck(cards);
 		
-		mDeck.insertCard(thirdCard, mDeck.getCardCount() + 1);
+		assertFalse(mDeck.insertCard(thirdCard, mDeck.getCardCount() + 1));
 	}
 }

@@ -23,8 +23,14 @@ public class Deck {
 		this.cards = cards;
 	}
 
-	public void addCard(Card card, int i) {
-		this.cards.add(i, card);
+	public boolean addCard(Card card, int i) {
+		try {
+			this.cards.add(i, card);
+			return true;
+		} catch (IndexOutOfBoundsException e) {
+			return false;
+		}
+		
 	}
 
 	public boolean removeCard(Card card) {

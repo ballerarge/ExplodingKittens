@@ -65,4 +65,13 @@ public class MainDeckTest {
 		assertEquals(2, mDeck.getCardCount());
 	}
 	
+	@Test
+	public void testInsertCardOnTop() {
+		MainDeck mDeck = new MainDeck();
+		Card firstCard = new Card();
+		
+		mDeck.insertCard(firstCard, 0);
+		
+		assertEquals(firstCard, mDeck.getCards().get(0));
+	}
 }

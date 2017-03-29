@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.util.List;
 import java.util.Map;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import code.Game;
@@ -26,6 +27,7 @@ public class GameTest {
 		Game game=new Game();
 		game.start(3);
 		Map<Player,List> hands=Game.getPlayerHands();
+		assertEquals(hands.size(),3);
 		
 		
 	}

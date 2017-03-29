@@ -130,7 +130,7 @@ public class MainDeckTest {
 		assertEquals(sizeOfDeck - 1, mDeck.getCardCount());
 	}
 	
-	@Test
+	@Test(expected=IndexOutOfBoundsException.class)
 	public void testDrawFromEmptyDeck() {
 		MainDeck mDeck = new MainDeck();
 		

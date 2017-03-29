@@ -30,10 +30,16 @@ public class GameTest {
 		assertEquals(hands.size(),3);
 	}
 	
-	public void testIsMainDeckEmpty(){
+	public void testIsMainDeckEmptyStartofGame(){
 		Game game=new Game();
 		game.start(3);
 		assertFalse(game.isMainDeckEmpty());
+	}
+	
+	public void testIsDiscardDeckEmptyStartofGame(){
+		Game game=new Game();
+		game.start(3);
+		assertTrue(game.isDiscardDeckEmpty());
 		
 	}
 }

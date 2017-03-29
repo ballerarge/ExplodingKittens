@@ -30,6 +30,17 @@ public class CardFactoryTest {
 	}
 
 	@Test
+	public void testCardActionInCreatedCard() {
+		CardFactory cardFactory = new CardFactory();
+
+		Card card = cardFactory.createCard(CardFactory.NORMAL_CARD);
+
+		Player p1, p2;
+
+		card.cardAction(p1, p2);
+	}
+
+	@Test
 	public void testCreateCardMultipleNormal() throws IncorrectNumberOfCards {
 		CardFactory cardFactory = new CardFactory();
 

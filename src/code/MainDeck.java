@@ -20,7 +20,7 @@ public class MainDeck {
 	}
 
 	public int getCardCount() {
-		return 0;
+		return deck.getCards().size();
 	}
 
 }

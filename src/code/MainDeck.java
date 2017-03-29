@@ -27,4 +27,10 @@ public class MainDeck {
 		return deck.addCard(card, position);		
 	}
 
+	public Card draw() {
+		Card drawCard = deck.getCards().get(0);
+		deck.removeCard(drawCard);
+		return drawCard;
+	}
+
 }

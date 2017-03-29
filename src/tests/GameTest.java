@@ -12,5 +12,14 @@ public class GameTest {
 	public void testGameCreation() {
 		Game game=new Game();
 	}
-
+	
+	public void testStartRuns() {
+		Game game=new Game();
+		game.start(3);
+		
+		
+	}
+	
+	
+	
 }

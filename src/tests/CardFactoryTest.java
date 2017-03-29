@@ -187,4 +187,16 @@ public class CardFactoryTest {
 		Card card = cardFactory.createCard(CardFactory.SCRY_CARD);
 		assertEquals(card.getID(), CardFactory.SCRY_CARD);
 	}
+
+	@Test
+	public void testCreateCardMultipleScry() throws IncorrectNumberOfCards {
+		CardFactory cardFactory = new CardFactory();
+
+		List<Card> cards = cardFactory.createCard(CardFactory.SCRY_CARD, 10);
+
+		for (Card card : cards) {
+			assertEquals(card.getID(), CardFactory.SCRY_CARD);
+		}
+		assertEquals(10, cards.size());
+	}
 }

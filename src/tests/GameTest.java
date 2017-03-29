@@ -2,9 +2,13 @@ package tests;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+import java.util.Map;
+
 import org.junit.Test;
 
 import code.Game;
+import code.Player;
 
 public class GameTest {
 
@@ -18,6 +22,12 @@ public class GameTest {
 		game.start(3);
 	}
 	
-	
+	public void testStartNumberofPlayers(){
+		Game game=new Game();
+		game.start(3);
+		Map<Player,List> hands=Game.getPlayerHands();
+		
+		
+	}
 	
 }

@@ -26,15 +26,15 @@ public class CardFactoryTest {
 		CardFactory cardFactory = new CardFactory();
 
 		Card card = cardFactory.createCard(CardFactory.NORMAL_CARD);
-		assertTrue(NormalCard.class.isInstance(card));
+		assertEquals(card.getID(), CardFactory.NORMAL_CARD);
 	}
-	
+
 	@Test
 	public void testNormalCardID() {
 		CardFactory cardFactory = new CardFactory();
-		
+
 		Card card = cardFactory.createCard(CardFactory.NORMAL_CARD);
-		
+
 		assertEquals(card.getID(), CardFactory.NORMAL_CARD);
 	}
 
@@ -45,7 +45,7 @@ public class CardFactoryTest {
 		List<Card> cards = cardFactory.createCard(CardFactory.NORMAL_CARD, 10);
 
 		for (Card card : cards) {
-			assertTrue(NormalCard.class.isInstance(card));
+			assertEquals(card.getID(), CardFactory.NORMAL_CARD);
 		}
 		assertEquals(10, cards.size());
 	}
@@ -63,7 +63,7 @@ public class CardFactoryTest {
 		CardFactory cardFactory = new CardFactory();
 
 		Card card = cardFactory.createCard(CardFactory.NOPE_CARD);
-		assertTrue(NopeCard.class.isInstance(card));
+		assertEquals(card.getID(), CardFactory.NOPE_CARD);
 	}
 
 	@Test
@@ -73,7 +73,7 @@ public class CardFactoryTest {
 		List<Card> cards = cardFactory.createCard(CardFactory.NOPE_CARD, 10);
 
 		for (Card card : cards) {
-			assertTrue(NopeCard.class.isInstance(card));
+			assertEquals(card.getID(), CardFactory.NOPE_CARD);
 		}
 		assertEquals(10, cards.size());
 	}

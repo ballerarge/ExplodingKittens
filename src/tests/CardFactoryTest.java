@@ -139,4 +139,12 @@ public class CardFactoryTest {
 		}
 		assertEquals(10, cards.size());
 	}
+
+	@Test
+	public void testCreateCardSingleExplodingKitten() {
+		CardFactory cardFactory = new CardFactory();
+
+		Card card = cardFactory.createCard(CardFactory.EXPLODING_KITTEN_CARD);
+		assertEquals(card.getID(), CardFactory.EXPLODING_KITTEN_CARD);
+	}
 }

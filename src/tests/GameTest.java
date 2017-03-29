@@ -28,8 +28,12 @@ public class GameTest {
 		game.start(3);
 		Map<Player,List> hands=game.getPlayerHands();
 		assertEquals(hands.size(),3);
-		
-		
 	}
 	
+	public void testIsMainDeckEmpty(){
+		Game game=new Game();
+		game.start(3);
+		AssertFalse(game.isMainDeckEmpty());
+		
+	}
 }

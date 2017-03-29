@@ -105,4 +105,17 @@ public class MainDeckTest {
 		assertEquals(thirdCard, mDeck.getCards().get(1));
 		assertEquals(secondCard, mDeck.getCards().get(2));
 	}
+	
+	@Test
+	public void testInsertOutsideOfDeck() {
+		List<Card> cards = new ArrayList<Card>();
+		Card firstCard = new Card();
+		Card secondCard = new Card();
+		Card thirdCard = new Card();
+		cards.add(firstCard);
+		cards.add(secondCard);
+		MainDeck mDeck = new MainDeck(cards);
+		
+		mDeck.insertCard(thirdCard, mDeck.getCardCount() + 1);
+	}
 }

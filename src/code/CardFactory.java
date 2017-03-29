@@ -6,12 +6,19 @@ import java.util.List;
 
 public class CardFactory {
 	public final static int NORMAL_CARD = 0;
+	public static final int NOPE_CARD = 1;
 
 	public CardFactory() {
 
 	}
 
 	public Card createCard(int cardID) {
+		switch (cardID) {
+			case NORMAL_CARD:
+				return new NormalCard();
+			case NOPE_CARD:
+				return new NopeCard();
+		}
 		return new NormalCard();
 	}
 

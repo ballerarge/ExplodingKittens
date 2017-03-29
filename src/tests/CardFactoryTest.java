@@ -3,6 +3,7 @@ package tests;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Rule;
@@ -33,14 +34,24 @@ public class CardFactoryTest {
 	}
 
 	@Test
-	public void testCardActionInCreatedCard() {
+	public void testCardActionInCreatedCards() {
 		CardFactory cardFactory = new CardFactory();
 
-		Card card = cardFactory.createCard(CardFactory.NORMAL_CARD);
+		List<Card> cards = new ArrayList<Card>();
+		cards.add(cardFactory.createCard(CardFactory.NORMAL_CARD));
+		cards.add(cardFactory.createCard(CardFactory.NOPE_CARD));
+		cards.add(cardFactory.createCard(CardFactory.DEFUSE_CARD));
+		cards.add(cardFactory.createCard(CardFactory.ATTACK_CARD));
+		cards.add(cardFactory.createCard(CardFactory.SKIP_CARD));
+		cards.add(cardFactory.createCard(CardFactory.EXPLODING_KITTEN_CARD));
+		cards.add(cardFactory.createCard(CardFactory.SHUFFLE_CARD));
+		cards.add(cardFactory.createCard(CardFactory.SCRY_CARD));
 
 		Player p1 = null, p2 = null;
 
-		card.cardAction(p1, p2);
+		for (Card card: cards) {
+			card.cardAction(p1, p2);
+		}
 	}
 
 	@Test

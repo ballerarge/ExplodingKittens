@@ -70,8 +70,7 @@ public class MainDeckTest {
 		MainDeck mDeck = new MainDeck();
 		Card firstCard = new Card();
 		
-		mDeck.insertCard(firstCard, 0);
-		
+		assertTrue(mDeck.insertCard(firstCard, 0));	
 		assertEquals(firstCard, mDeck.getCards().get(0));
 	}
 	
@@ -85,8 +84,7 @@ public class MainDeckTest {
 		cards.add(secondCard);
 		MainDeck mDeck = new MainDeck(cards);
 		
-		mDeck.insertCard(thirdCard, 2);
-		
+		assertTrue(mDeck.insertCard(thirdCard, 2));
 		assertEquals(thirdCard, mDeck.getCards().get(2));
 	}
 	
@@ -100,8 +98,7 @@ public class MainDeckTest {
 		cards.add(secondCard);
 		MainDeck mDeck = new MainDeck(cards);
 		
-		mDeck.insertCard(thirdCard, 1);
-		
+		assertTrue(mDeck.insertCard(thirdCard, 1));
 		assertEquals(thirdCard, mDeck.getCards().get(1));
 		assertEquals(secondCard, mDeck.getCards().get(2));
 	}

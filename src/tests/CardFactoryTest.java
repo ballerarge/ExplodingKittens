@@ -28,6 +28,15 @@ public class CardFactoryTest {
 		Card card = cardFactory.createCard(CardFactory.NORMAL_CARD);
 		assertTrue(NormalCard.class.isInstance(card));
 	}
+	
+	@Test
+	public void testNormalCardID() {
+		CardFactory cardFactory = new CardFactory();
+		
+		Card card = cardFactory.createCard(CardFactory.NORMAL_CARD);
+		
+		assertEquals(card.getID(), CardFactory.NORMAL_CARD);
+	}
 
 	@Test
 	public void testCreateCardMultipleNormal() throws IncorrectNumberOfCards {

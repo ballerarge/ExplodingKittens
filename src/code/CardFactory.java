@@ -9,6 +9,7 @@ public class CardFactory {
 	public static final int NOPE_CARD = 1;
 	public static final int DEFUSE_CARD = 2;
 	public static final int ATTACK_CARD = 3;
+	public static final int SKIP_CARD = 4;
 
 	public CardFactory() {
 
@@ -24,6 +25,8 @@ public class CardFactory {
 				return new DefuseCard();
 			case ATTACK_CARD:
 				return new AttackCard();
+			case SKIP_CARD:
+				return new SkipCard();
 		}
 		return new NormalCard();
 	}

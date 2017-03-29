@@ -53,5 +53,16 @@ public class MainDeckTest {
 		assertEquals(1, mDeck.getCardCount());
 	}
 	
-
+	@Test
+	public void testGetCardCountMoreThanOneElement() {
+		List<Card> cards = new ArrayList<Card>();
+		Card firstCard = new Card();
+		Card secondCard = new Card();
+		cards.add(firstCard);
+		cards.add(secondCard);
+		MainDeck mDeck = new MainDeck(cards);
+		
+		assertEquals(2, mDeck.getCardCount());
+	}
+	
 }

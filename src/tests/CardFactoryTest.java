@@ -14,7 +14,7 @@ import code.*;
 public class CardFactoryTest {
 	@Rule
 	public final ExpectedException exception = ExpectedException.none();
-	  
+
 	@Test
 	public void testCardFactoryCreation() {
 		@SuppressWarnings("unused")
@@ -30,7 +30,7 @@ public class CardFactoryTest {
 	}
 
 	@Test
-	public void testCreateCardMultipleNormal() {
+	public void testCreateCardMultipleNormal() throws IncorrectNumberOfCards {
 		CardFactory cardFactory = new CardFactory();
 
 		List<Card> cards = cardFactory.createCard(CardFactory.NORMAL_CARD, 10);
@@ -40,11 +40,11 @@ public class CardFactoryTest {
 		}
 		assertEquals(10, cards.size());
 	}
-	
+
 	@Test
-	public void testCreateCardNegativeMultiple() {
+	public void testCreateCardNegativeMultiple() throws IncorrectNumberOfCards {
 		CardFactory cardFactory = new CardFactory();
-		
+
 		exception.expect(IncorrectNumberOfCards.class);
 		List<Card> cards = cardFactory.createCard(CardFactory.NORMAL_CARD, -1);
 	}

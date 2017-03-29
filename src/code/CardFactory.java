@@ -12,6 +12,7 @@ public class CardFactory {
 	public static final int SKIP_CARD = 4;
 	public static final int EXPLODING_KITTEN_CARD = 5;
 	public static final int SHUFFLE_CARD = 6;
+	public static final int SCRY_CARD = 7;
 
 	public CardFactory() {
 
@@ -33,6 +34,8 @@ public class CardFactory {
 				return new ExplodingKittenCard();
 			case SHUFFLE_CARD:
 				return new ShuffleCard();
+			case SCRY_CARD:
+				return new ScryCard();
 		}
 		return new NormalCard();
 	}

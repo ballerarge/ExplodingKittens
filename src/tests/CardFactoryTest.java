@@ -159,12 +159,24 @@ public class CardFactoryTest {
 		}
 		assertEquals(10, cards.size());
 	}
-	
+
 	@Test
 	public void testCreateCardSingleShuffle() {
 		CardFactory cardFactory = new CardFactory();
 
 		Card card = cardFactory.createCard(CardFactory.SHUFFLE_CARD);
 		assertEquals(card.getID(), CardFactory.SHUFFLE_CARD);
+	}
+
+	@Test
+	public void testCreateCardMultipleShuffle() throws IncorrectNumberOfCards {
+		CardFactory cardFactory = new CardFactory();
+
+		List<Card> cards = cardFactory.createCard(CardFactory.SHUFFLE_CARD, 10);
+
+		for (Card card : cards) {
+			assertEquals(card.getID(), CardFactory.SHUFFLE_CARD);
+		}
+		assertEquals(10, cards.size());
 	}
 }

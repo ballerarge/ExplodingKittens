@@ -26,7 +26,7 @@ public class GameTest {
 	public void testStartNumberofPlayers(){
 		Game game=new Game();
 		game.start(3);
-		Map<Player,List> hands=Game.getPlayerHands();
+		Map<Player,List> hands=game.getPlayerHands();
 		assertEquals(hands.size(),3);
 		
 		

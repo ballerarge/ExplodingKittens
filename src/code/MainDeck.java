@@ -33,4 +33,24 @@ public class MainDeck {
 		return drawCard;
 	}
 
+	public void initStartingDeck() {
+		for (int i = 0; i < 4; i++) {
+			deck.addCard(new FavorCard(), 0);
+			deck.addCard(new ShuffleCard(), 0);
+			deck.addCard(new SkipCard(), 0);
+			deck.addCard(new AttackCard(), 0);
+		}
+		
+		// Fix this part in particular, doesn't account
+		// for types of normal cards.
+		for (int i = 0; i < 20; i++) {
+			deck.addCard(new NormalCard(), 0);
+		}
+		
+		for (int i = 0; i < 5; i++) {
+			deck.addCard(new SeeTheFutureCard(), 0);
+			deck.addCard(new NopeCard(), 0);
+		}
+	}
+
 }

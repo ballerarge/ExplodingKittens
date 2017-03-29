@@ -119,4 +119,12 @@ public class CardFactoryTest {
 		}
 		assertEquals(10, cards.size());
 	}
+
+	@Test
+	public void testCreateCardSingleSkip() {
+		CardFactory cardFactory = new CardFactory();
+
+		Card card = cardFactory.createCard(CardFactory.SKIP_CARD);
+		assertEquals(card.getID(), CardFactory.SKIP_CARD);
+	}
 }

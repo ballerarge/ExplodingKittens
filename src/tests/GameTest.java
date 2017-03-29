@@ -33,7 +33,7 @@ public class GameTest {
 	public void testIsMainDeckEmpty(){
 		Game game=new Game();
 		game.start(3);
-		AssertFalse(game.isMainDeckEmpty());
+		assertFalse(game.isMainDeckEmpty());
 		
 	}
 }

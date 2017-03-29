@@ -87,4 +87,16 @@ public class CardFactoryTest {
 		Card card = cardFactory.createCard(CardFactory.DEFUSE_CARD);
 		assertEquals(card.getID(), CardFactory.DEFUSE_CARD);
 	}
+	
+	@Test
+	public void testCreateCardMultipleDefuse() throws IncorrectNumberOfCards {
+		CardFactory cardFactory = new CardFactory();
+
+		List<Card> cards = cardFactory.createCard(CardFactory.DEFUSE_CARD, 10);
+
+		for (Card card : cards) {
+			assertEquals(card.getID(), CardFactory.DEFUSE_CARD);
+		}
+		assertEquals(10, cards.size());
+	}
 }

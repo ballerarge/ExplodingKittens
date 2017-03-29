@@ -15,13 +15,17 @@ public class CardFactory {
 		return new NormalCard();
 	}
 
-	public List<Card> createCard(int cardID, int numCards) {
+	public List<Card> createCard(int cardID, int numCards) throws IncorrectNumberOfCards {
+		if (numCards <= 0) {
+			throw new IncorrectNumberOfCards();
+		}
+
 		List<Card> cards = new ArrayList<Card>();
-		
+
 		for (int i = 0; i < numCards; i++) {
 			cards.add(new NormalCard());
 		}
-		
+
 		return cards;
 	}
 }

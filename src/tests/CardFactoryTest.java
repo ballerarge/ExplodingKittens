@@ -179,4 +179,12 @@ public class CardFactoryTest {
 		}
 		assertEquals(10, cards.size());
 	}
+
+	@Test
+	public void testCreateCardSingleScry() {
+		CardFactory cardFactory = new CardFactory();
+
+		Card card = cardFactory.createCard(CardFactory.SCRY_CARD);
+		assertEquals(card.getID(), CardFactory.SCRY_CARD);
+	}
 }

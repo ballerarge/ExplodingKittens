@@ -99,4 +99,12 @@ public class CardFactoryTest {
 		}
 		assertEquals(10, cards.size());
 	}
+	
+	@Test
+	public void testCreateCardSingleAttack() {
+		CardFactory cardFactory = new CardFactory();
+
+		Card card = cardFactory.createCard(CardFactory.ATTACK_CARD);
+		assertEquals(card.getID(), CardFactory(ATTACK_CARD);
+	}
 }

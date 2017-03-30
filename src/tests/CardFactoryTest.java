@@ -58,7 +58,7 @@ public class CardFactoryTest {
 	public void testCreateCardMultipleNormal() throws IncorrectNumberOfCards {
 		CardFactory cardFactory = new CardFactory();
 
-		List<Card> cards = cardFactory.createCard(CardFactory.NORMAL_CARD, 10);
+		List<Card> cards = cardFactory.createCards(CardFactory.NORMAL_CARD, 10);
 
 		for (Card card : cards) {
 			assertEquals(card.getID(), CardFactory.NORMAL_CARD);
@@ -73,7 +73,7 @@ public class CardFactoryTest {
 		exception.expect(IncorrectNumberOfCards.class);
 
 		@SuppressWarnings("unused")
-		List<Card> cards = cardFactory.createCard(CardFactory.NORMAL_CARD, -1);
+		List<Card> cards = cardFactory.createCards(CardFactory.NORMAL_CARD, -1);
 	}
 
 	@Test
@@ -88,7 +88,7 @@ public class CardFactoryTest {
 	public void testCreateCardMultipleNope() throws IncorrectNumberOfCards {
 		CardFactory cardFactory = new CardFactory();
 
-		List<Card> cards = cardFactory.createCard(CardFactory.NOPE_CARD, 10);
+		List<Card> cards = cardFactory.createCards(CardFactory.NOPE_CARD, 10);
 
 		for (Card card : cards) {
 			assertEquals(card.getID(), CardFactory.NOPE_CARD);
@@ -108,7 +108,7 @@ public class CardFactoryTest {
 	public void testCreateCardMultipleDefuse() throws IncorrectNumberOfCards {
 		CardFactory cardFactory = new CardFactory();
 
-		List<Card> cards = cardFactory.createCard(CardFactory.DEFUSE_CARD, 10);
+		List<Card> cards = cardFactory.createCards(CardFactory.DEFUSE_CARD, 10);
 
 		for (Card card : cards) {
 			assertEquals(card.getID(), CardFactory.DEFUSE_CARD);
@@ -128,7 +128,7 @@ public class CardFactoryTest {
 	public void testCreateCardMultipleAttack() throws IncorrectNumberOfCards {
 		CardFactory cardFactory = new CardFactory();
 
-		List<Card> cards = cardFactory.createCard(CardFactory.ATTACK_CARD, 10);
+		List<Card> cards = cardFactory.createCards(CardFactory.ATTACK_CARD, 10);
 
 		for (Card card : cards) {
 			assertEquals(card.getID(), CardFactory.ATTACK_CARD);
@@ -148,7 +148,7 @@ public class CardFactoryTest {
 	public void testCreateCardMultipleSkip() throws IncorrectNumberOfCards {
 		CardFactory cardFactory = new CardFactory();
 
-		List<Card> cards = cardFactory.createCard(CardFactory.SKIP_CARD, 10);
+		List<Card> cards = cardFactory.createCards(CardFactory.SKIP_CARD, 10);
 
 		for (Card card : cards) {
 			assertEquals(card.getID(), CardFactory.SKIP_CARD);
@@ -168,7 +168,7 @@ public class CardFactoryTest {
 	public void testCreateCardMultipleExplodingKitten() throws IncorrectNumberOfCards {
 		CardFactory cardFactory = new CardFactory();
 
-		List<Card> cards = cardFactory.createCard(CardFactory.EXPLODING_KITTEN_CARD, 10);
+		List<Card> cards = cardFactory.createCards(CardFactory.EXPLODING_KITTEN_CARD, 10);
 
 		for (Card card : cards) {
 			assertEquals(card.getID(), CardFactory.EXPLODING_KITTEN_CARD);
@@ -188,7 +188,7 @@ public class CardFactoryTest {
 	public void testCreateCardMultipleShuffle() throws IncorrectNumberOfCards {
 		CardFactory cardFactory = new CardFactory();
 
-		List<Card> cards = cardFactory.createCard(CardFactory.SHUFFLE_CARD, 10);
+		List<Card> cards = cardFactory.createCards(CardFactory.SHUFFLE_CARD, 10);
 
 		for (Card card : cards) {
 			assertEquals(card.getID(), CardFactory.SHUFFLE_CARD);
@@ -208,7 +208,7 @@ public class CardFactoryTest {
 	public void testCreateCardMultipleScry() throws IncorrectNumberOfCards {
 		CardFactory cardFactory = new CardFactory();
 
-		List<Card> cards = cardFactory.createCard(CardFactory.SCRY_CARD, 10);
+		List<Card> cards = cardFactory.createCards(CardFactory.SCRY_CARD, 10);
 
 		for (Card card : cards) {
 			assertEquals(card.getID(), CardFactory.SCRY_CARD);

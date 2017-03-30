@@ -40,7 +40,7 @@ public class CardFactory {
 		return new NormalCard();
 	}
 
-	public List<Card> createCard(int cardID, int numCards) throws IncorrectNumberOfCards {
+	public List<Card> createCards(int cardID, int numCards) throws IncorrectNumberOfCards {
 		if (numCards <= 0) {
 			throw new IncorrectNumberOfCards();
 		}

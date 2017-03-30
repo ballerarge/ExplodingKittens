@@ -7,6 +7,7 @@ import org.junit.Test;
 import code.CardDoesNotExistException;
 import code.HandManager;
 import code.MainDeck;
+import code.NoCardsToMoveException;
 
 public class HandManagerTest {
 
@@ -47,6 +48,25 @@ public class HandManagerTest {
 		HandManager handMng = new HandManager();
 		
 		handMng.selectCard(0);
+	}
+	
+	@Test
+	public void testMoveSelectedToStack() throws CardDoesNotExistException, NoCardsToMoveException {
+		HandManager handMng = new HandManager();
+		
+		handMng.draw();
+		handMng.selectCard(0);
+		
+		handMng.moveSelectedToStack();
+		
+		assertEquals(0, handMng.getSelectedCards().size());
+	}
+	
+	@Test (expected = NoCardsToMoveException.class)
+	public void testMoveSelectedToStackException() throws NoCardsToMoveException {
+		HandManager handMng = new HandManager();;
+		
+		handMng.moveSelectedToStack();
 	}
 
 }

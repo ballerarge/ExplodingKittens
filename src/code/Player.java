@@ -1,5 +1,7 @@
 package code;
 
+import java.util.List;
+
 public class Player {
 
 	private String name;
@@ -23,6 +25,14 @@ public class Player {
 
 	public HandManager getHandManger() {
 		return handManager;
+	}
+
+	public List<Card> getHand() {
+		return handManager.getHand();
+	}
+
+	public void drawCard() {
+		handManager.draw();
 	}
 	
 	

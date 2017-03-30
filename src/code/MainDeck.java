@@ -1,8 +1,14 @@
 package code;
 
-public interface MainDeck {
+public class MainDeck {
 
 	
-	public void getTopCard(); 
+	public MainDeck(){
+		
+	}
+	
+	public Card getTopCard() {
+		return new Card();
+	}
 	
 }

@@ -18,13 +18,28 @@ public class HandManagerTest {
 	
 	@Test
 	public void testDrawFromMainDeck() {
-		
 		HandManager handMng = new HandManager();
 		
 		handMng.draw();
 		
 		assertFalse(handMng.getHand().isEmpty());
+		assertEquals(1, handMng.getHand().size());
 	}
 	
+	@Test
+	public void testSelectCard() {
+		HandManager handMng = new HandManager();
+		
+		handMng.draw();
+		
+		assertEquals(1, handMng.getHand().size());
+		
+		handMng.selectCard(0);
+		
+		assertEquals(0, handMng.getHand().size());
+		assertEquals(1, hangMng.getSelectedCards().size());
+		
+		
+	}
 
 }

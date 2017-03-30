@@ -210,4 +210,15 @@ public class MainDeckTest {
 		
 		assertEquals(51, mDeck.getCardCount());
 	}
+	
+	@Test
+	public void testPopulateDeckWithMinPlayers() {
+		MainDeck mDeck = new MainDeck();
+		int numPlayers = 2;
+		
+		mDeck.initStartingDeck();
+		mDeck.populateDeck(numPlayers);
+		
+		assertEquals(51, mDeck.getCardCount());
+	}
 }

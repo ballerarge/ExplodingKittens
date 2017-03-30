@@ -30,7 +30,7 @@ public class Game {
 	}
 
 	public boolean isMainDeckEmpty() {
-		return (mainDeck.getCardCount() != 0);
+		return (mainDeck.getCardCount() == 0);
 	}
 
 }

@@ -21,14 +21,14 @@ public class PlayerManager {
 	public Map getHands() {
 		Map<Player, List> hands = new HashMap();
 		for (int a = 1; a <= c; a++)
-			hands.put((Player) new Object(), null);
+			hands.put(new Player(), null);
 		return hands;
 	}
 
 	public Map getPlayerStatus() {
 		Map<Player, Boolean> status = new HashMap();
 		for (int a = 1; a <= c; a++)
-			status.put((Player) new Object(), true);
+			status.put(new Player(), true);
 		return status;
 	}
 

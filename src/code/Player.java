@@ -1,5 +1,5 @@
 package code;
 
-public interface Player {
+public class Player {
 
 }

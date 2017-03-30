@@ -1,5 +1,9 @@
 package code;
 
-public interface Card {
+public class Card {
 
+	public void Card() {
+		
+	}
+	
 }

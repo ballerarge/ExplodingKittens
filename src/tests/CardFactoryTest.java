@@ -215,4 +215,12 @@ public class CardFactoryTest {
 		}
 		assertEquals(10, cards.size());
 	}
+	
+	@Test
+	public void testCreateCardSingleFavor() {
+		CardFactory cardFactory = new CardFactory();
+
+		Card card = cardFactory.createCard(CardFactory.FAVOR_CARD);
+		assertEquals(card.getID(), CardFactory.FAVOR_CARD);
+	}
 }

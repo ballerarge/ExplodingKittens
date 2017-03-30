@@ -24,6 +24,19 @@ public class GameTest {
 		game.start(3);
 	}
 
+	public void testInvalidNumberofPlayers() {
+		Game game1 = new Game();
+		Game game2 = new Game();
+		Game game3 = new Game();
+		Game game4 = new Game();
+		try {
+			game1.start(0);
+			fail("Starting with 0 players didn't return an error");
+		}
+		catch (InvalidNumberofPlayersException){}
+		
+	}
+
 	public void testStartNumberofPlayers() {
 		Game game = new Game();
 		game.start(3);

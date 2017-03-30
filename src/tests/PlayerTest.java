@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import code.HandManager;
 import code.Player;
 
 public class PlayerTest {
@@ -34,6 +35,13 @@ public class PlayerTest {
 		player.setName(expected);
 		
 		assertEquals(expected, player.getName());
+	}
+	
+	@Test
+	public void testGetHandManager() {
+		Player player = new Player("Not Khaleeeeed");
+		
+		assertTrue(player.getHandManger() instanceof HandManager);
 	}
 	
 }

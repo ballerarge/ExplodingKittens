@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CardFactory {
-	public final static int NORMAL_CARD = 0;
+	public static final int NORMAL_CARD = 0;
 	public static final int NOPE_CARD = 1;
 	public static final int DEFUSE_CARD = 2;
 	public static final int ATTACK_CARD = 3;
@@ -13,6 +13,7 @@ public class CardFactory {
 	public static final int EXPLODING_KITTEN_CARD = 5;
 	public static final int SHUFFLE_CARD = 6;
 	public static final int SCRY_CARD = 7;
+	public static final int FAVOR_CARD = 8;
 
 	public CardFactory() {
 
@@ -36,6 +37,8 @@ public class CardFactory {
 				return new ShuffleCard();
 			case SCRY_CARD:
 				return new ScryCard();
+			case FAVOR_CARD:
+				return new FavorCard();
 		}
 		return new NormalCard();
 	}

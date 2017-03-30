@@ -10,6 +10,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import code.Game;
+import code.InvalidNumberofPlayersException;
 import code.Player;
 
 public class GameTest {
@@ -19,9 +20,13 @@ public class GameTest {
 		Game game = new Game();
 	}
 
-	public void testStartRuns() {
+	public void testStartRuns() throws InvalidNumberofPlayersException {
 		Game game = new Game();
-		game.start(3);
+		try {
+			game.start(3);
+		} catch (InvalidNumberofPlayersException e) {
+			fail("threw an InvalidNumberofPlayersException");
+		}
 	}
 
 	public void testInvalidNumberofPlayers() {
@@ -32,26 +37,26 @@ public class GameTest {
 		try {
 			game1.start(0);
 			fail("Starting with 0 players didn't return an error");
+		} catch (InvalidNumberofPlayersException e) {
 		}
-		catch (InvalidNumberofPlayersException){}
-		
+
 	}
 
-	public void testStartNumberofPlayers() {
+	public void testStartNumberofPlayers() throws InvalidNumberofPlayersException {
 		Game game = new Game();
 		game.start(3);
 		Map<Player, List> hands = game.getPlayerHands();
 		assertEquals(hands.size(), 3);
 	}
 
-	public void testGetPlayerStatus() {
+	public void testGetPlayerStatus() throws InvalidNumberofPlayersException {
 		Game game = new Game();
 		game.start(3);
 		Map<Player, Boolean> status = game.getPlayerStatus();
 		assertEquals(status.size(), 3);
 	}
 
-	public void testIsMainDeckEmptyStartofGame() {
+	public void testIsMainDeckEmptyStartofGame() throws InvalidNumberofPlayersException {
 		Game game = new Game();
 		game.start(3);
 		assertFalse(game.isMainDeckEmpty());

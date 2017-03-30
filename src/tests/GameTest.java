@@ -61,11 +61,6 @@ public class GameTest {
 	@Test
 	public void testStartNumberofPlayers() throws InvalidNumberofPlayersException {
 		Game game = new Game();
-		try{
-			game.getPlayerHands();
-			fail("Doesn't throw exception if getPlayerHands() is called before start()");
-		}
-		catch (GameHasntStartedYetException e){}
 		game.start(3);
 		Map<Player, List> hands = game.getPlayerHands();
 		assertEquals(hands.size(), 3);

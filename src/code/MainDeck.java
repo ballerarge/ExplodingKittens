@@ -13,6 +13,8 @@ public class MainDeck {
 	public MainDeck() {
 		this.deck = new Deck(new ArrayList<Card>());
 		this.factory = new CardFactory();
+		
+		initStartingDeck();
 	}
 
 	public MainDeck(List<Card> cards) {
@@ -109,6 +111,10 @@ public class MainDeck {
 		for (int i = 0; i < 6 - numPlayers; i++) {
 			deck.addCard(factory.createCard(CardFactory.DEFUSE_CARD), 0);
 		}
+	}
+
+	public Card getTopCard() {
+		return deck.getCards().get(0);
 	}
 
 }

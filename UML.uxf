@@ -5,26 +5,26 @@
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>416</x>
-      <y>688</y>
+      <y>648</y>
       <w>272</w>
       <h>48</h>
     </coordinates>
-    <panel_attributes>bg=red
+    <panel_attributes>bg=green
 CardFactory
 --
 createCard(cardID: int): Card
-createCard(cardID: int, numCards: ind): List&lt;Card&gt;</panel_attributes>
+createCards(cardID: int, numCards: ind): List&lt;Card&gt;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>368</x>
-      <y>768</y>
+      <y>728</y>
       <w>304</w>
       <h>56</h>
     </coordinates>
-    <panel_attributes>bg=red
+    <panel_attributes>bg=green
 /Card/
 --
 cardID: int
@@ -36,11 +36,11 @@ cardAction(activePlayer: Player, targetPlayer: Player): void</panel_attributes>
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>344</x>
-      <y>872</y>
+      <y>832</y>
       <w>104</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>bg=red
+    <panel_attributes>bg=green
 Normal
 --
 cardAction(): void</panel_attributes>
@@ -50,11 +50,11 @@ cardAction(): void</panel_attributes>
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>344</x>
-      <y>936</y>
+      <y>896</y>
       <w>104</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>bg=red
+    <panel_attributes>bg=green
 Nope
 --
 cardAction(): void</panel_attributes>
@@ -64,11 +64,11 @@ cardAction(): void</panel_attributes>
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>344</x>
-      <y>1000</y>
+      <y>960</y>
       <w>104</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>bg=red
+    <panel_attributes>bg=green
 Defuse
 --
 cardAction(): void</panel_attributes>
@@ -78,11 +78,11 @@ cardAction(): void</panel_attributes>
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>344</x>
-      <y>1064</y>
+      <y>1024</y>
       <w>104</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>bg=red
+    <panel_attributes>bg=green
 Attack
 --
 cardAction(): void</panel_attributes>
@@ -92,12 +92,12 @@ cardAction(): void</panel_attributes>
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>472</x>
-      <y>1112</y>
+      <y>1072</y>
       <w>104</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>bg=red
-Skip
+    <panel_attributes>bg=green
+Favor
 --
 cardAction(): void</panel_attributes>
     <additional_attributes/>
@@ -106,11 +106,11 @@ cardAction(): void</panel_attributes>
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>592</x>
-      <y>1064</y>
+      <y>1024</y>
       <w>104</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>bg=red
+    <panel_attributes>bg=green
 ExplodingKitten
 --
 cardAction(): void</panel_attributes>
@@ -120,11 +120,11 @@ cardAction(): void</panel_attributes>
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>592</x>
-      <y>1000</y>
+      <y>960</y>
       <w>104</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>bg=red
+    <panel_attributes>bg=green
 Shuffle
 --
 cardAction(): void</panel_attributes>
@@ -134,11 +134,11 @@ cardAction(): void</panel_attributes>
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>592</x>
-      <y>936</y>
+      <y>896</y>
       <w>104</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>bg=red
+    <panel_attributes>bg=green
 Skip
 --
 cardAction(): void</panel_attributes>
@@ -148,11 +148,11 @@ cardAction(): void</panel_attributes>
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>592</x>
-      <y>872</y>
+      <y>832</y>
       <w>104</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>bg=red
+    <panel_attributes>bg=green
 Scry3
 --
 cardAction(): void</panel_attributes>
@@ -162,7 +162,7 @@ cardAction(): void</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>496</x>
-      <y>800</y>
+      <y>760</y>
       <w>40</w>
       <h>328</h>
     </coordinates>
@@ -173,7 +173,7 @@ cardAction(): void</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>512</x>
-      <y>800</y>
+      <y>760</y>
       <w>96</w>
       <h>304</h>
     </coordinates>
@@ -184,7 +184,7 @@ cardAction(): void</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>528</x>
-      <y>800</y>
+      <y>760</y>
       <w>80</w>
       <h>240</h>
     </coordinates>
@@ -195,7 +195,7 @@ cardAction(): void</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>544</x>
-      <y>800</y>
+      <y>760</y>
       <w>64</w>
       <h>176</h>
     </coordinates>
@@ -206,7 +206,7 @@ cardAction(): void</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>560</x>
-      <y>800</y>
+      <y>760</y>
       <w>48</w>
       <h>112</h>
     </coordinates>
@@ -217,7 +217,7 @@ cardAction(): void</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>424</x>
-      <y>800</y>
+      <y>760</y>
       <w>96</w>
       <h>304</h>
     </coordinates>
@@ -228,7 +228,7 @@ cardAction(): void</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>424</x>
-      <y>800</y>
+      <y>760</y>
       <w>80</w>
       <h>232</h>
     </coordinates>
@@ -239,7 +239,7 @@ cardAction(): void</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>424</x>
-      <y>800</y>
+      <y>760</y>
       <w>64</w>
       <h>176</h>
     </coordinates>
@@ -250,7 +250,7 @@ cardAction(): void</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>424</x>
-      <y>800</y>
+      <y>760</y>
       <w>48</w>
       <h>112</h>
     </coordinates>
@@ -261,7 +261,7 @@ cardAction(): void</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>496</x>
-      <y>712</y>
+      <y>672</y>
       <w>40</w>
       <h>72</h>
     </coordinates>
@@ -273,7 +273,7 @@ cardAction(): void</panel_attributes>
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>856</x>
-      <y>880</y>
+      <y>840</y>
       <w>288</w>
       <h>176</h>
     </coordinates>
@@ -298,7 +298,7 @@ drawCard(): void</panel_attributes>
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>1248</x>
-      <y>912</y>
+      <y>872</y>
       <w>256</w>
       <h>104</h>
     </coordinates>
@@ -318,7 +318,7 @@ addPlayers(numPlayers: int): void</panel_attributes>
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>1328</x>
-      <y>448</y>
+      <y>408</y>
       <w>376</w>
       <h>176</h>
     </coordinates>
@@ -343,11 +343,11 @@ getPlayerStatus(): Map&lt;Player, Boolean&gt;</panel_attributes>
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>736</x>
-      <y>216</y>
+      <y>168</y>
       <w>248</w>
-      <h>152</h>
+      <h>160</h>
     </coordinates>
-    <panel_attributes>bg=red
+    <panel_attributes>bg=green
 MainDeck
 &lt;&lt;singleton&gt;&gt;
 --
@@ -356,7 +356,8 @@ cardFactory: CardFactory
 --
 getCards(): List&lt;Card&gt;
 getCardCount(): int
-insertCard(card: Card, index: int): void
+insertCard(card: Card, index: int): boolean
+draw(): Card
 initStartingDeck(): void
 populateDeck(players: int): void
 shuffleDeck(): void</panel_attributes>
@@ -366,7 +367,7 @@ shuffleDeck(): void</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>648</x>
-      <y>760</y>
+      <y>720</y>
       <w>240</w>
       <h>40</h>
     </coordinates>
@@ -378,7 +379,7 @@ m1=0..n</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>1120</x>
-      <y>928</y>
+      <y>888</y>
       <w>144</w>
       <h>40</h>
     </coordinates>
@@ -390,7 +391,7 @@ m1=0..n</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>1440</x>
-      <y>600</y>
+      <y>560</y>
       <w>40</w>
       <h>328</h>
     </coordinates>
@@ -401,7 +402,7 @@ m1=0..n</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>1312</x>
-      <y>344</y>
+      <y>304</y>
       <w>120</w>
       <h>120</h>
     </coordinates>
@@ -412,7 +413,7 @@ m1=0..n</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>1120</x>
-      <y>904</y>
+      <y>864</y>
       <w>144</w>
       <h>40</h>
     </coordinates>
@@ -423,7 +424,7 @@ m1=0..n</panel_attributes>
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>1792</x>
-      <y>552</y>
+      <y>512</y>
       <w>176</w>
       <h>72</h>
     </coordinates>
@@ -440,7 +441,7 @@ main(args: String[]): void</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>1680</x>
-      <y>568</y>
+      <y>528</y>
       <w>128</w>
       <h>40</h>
     </coordinates>
@@ -451,7 +452,7 @@ main(args: String[]): void</panel_attributes>
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>1784</x>
-      <y>392</y>
+      <y>352</y>
       <w>192</w>
       <h>48</h>
     </coordinates>
@@ -465,7 +466,7 @@ fg=white</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>1856</x>
-      <y>416</y>
+      <y>376</y>
       <w>40</w>
       <h>152</h>
     </coordinates>
@@ -476,7 +477,7 @@ fg=white</panel_attributes>
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>1096</x>
-      <y>264</y>
+      <y>224</y>
       <w>240</w>
       <h>120</h>
     </coordinates>
@@ -496,7 +497,7 @@ removeAllCards(): void</panel_attributes>
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>872</x>
-      <y>648</y>
+      <y>608</y>
       <w>240</w>
       <h>168</h>
     </coordinates>
@@ -520,7 +521,7 @@ moveSelectedToStack(): boolean</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>840</x>
-      <y>344</y>
+      <y>304</y>
       <w>152</w>
       <h>320</h>
     </coordinates>
@@ -531,7 +532,7 @@ moveSelectedToStack(): boolean</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>760</x>
-      <y>488</y>
+      <y>448</y>
       <w>584</w>
       <h>40</h>
     </coordinates>
@@ -542,7 +543,7 @@ moveSelectedToStack(): boolean</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>928</x>
-      <y>344</y>
+      <y>304</y>
       <w>472</w>
       <h>120</h>
     </coordinates>
@@ -553,7 +554,7 @@ moveSelectedToStack(): boolean</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>960</x>
-      <y>792</y>
+      <y>752</y>
       <w>40</w>
       <h>104</h>
     </coordinates>
@@ -564,7 +565,7 @@ moveSelectedToStack(): boolean</panel_attributes>
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>544</x>
-      <y>464</y>
+      <y>424</y>
       <w>240</w>
       <h>152</h>
     </coordinates>
@@ -586,7 +587,7 @@ moveCardToDiscardDeck(): void</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>640</x>
-      <y>312</y>
+      <y>272</y>
       <w>112</w>
       <h>168</h>
     </coordinates>
@@ -597,7 +598,7 @@ moveCardToDiscardDeck(): void</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>760</x>
-      <y>360</y>
+      <y>320</y>
       <w>408</w>
       <h>152</h>
     </coordinates>
@@ -608,7 +609,7 @@ moveCardToDiscardDeck(): void</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>720</x>
-      <y>592</y>
+      <y>552</y>
       <w>168</w>
       <h>112</h>
     </coordinates>
@@ -619,7 +620,7 @@ moveCardToDiscardDeck(): void</panel_attributes>
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>0</x>
-      <y>792</y>
+      <y>752</y>
       <w>224</w>
       <h>64</h>
     </coordinates>
@@ -635,7 +636,7 @@ cardAction(): void</panel_attributes>
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>72</x>
-      <y>872</y>
+      <y>832</y>
       <w>232</w>
       <h>64</h>
     </coordinates>
@@ -651,7 +652,7 @@ cardAction(): void</panel_attributes>
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>0</x>
-      <y>712</y>
+      <y>672</y>
       <w>224</w>
       <h>64</h>
     </coordinates>
@@ -667,7 +668,7 @@ cardAction(): void</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>200</x>
-      <y>704</y>
+      <y>664</y>
       <w>216</w>
       <h>80</h>
     </coordinates>
@@ -678,7 +679,7 @@ cardAction(): void</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>264</x>
-      <y>800</y>
+      <y>760</y>
       <w>120</w>
       <h>88</h>
     </coordinates>
@@ -689,7 +690,7 @@ cardAction(): void</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>200</x>
-      <y>776</y>
+      <y>736</y>
       <w>184</w>
       <h>40</h>
     </coordinates>
@@ -700,7 +701,7 @@ cardAction(): void</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>200</x>
-      <y>720</y>
+      <y>680</y>
       <w>192</w>
       <h>64</h>
     </coordinates>
@@ -712,7 +713,7 @@ m1=2</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>200</x>
-      <y>784</y>
+      <y>744</y>
       <w>184</w>
       <h>40</h>
     </coordinates>
@@ -724,7 +725,7 @@ m1=3</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>272</x>
-      <y>800</y>
+      <y>760</y>
       <w>128</w>
       <h>88</h>
     </coordinates>
@@ -736,7 +737,7 @@ m1=5</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>480</x>
-      <y>264</y>
+      <y>224</y>
       <w>272</w>
       <h>440</h>
     </coordinates>
@@ -747,7 +748,7 @@ m1=5</panel_attributes>
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>1176</x>
-      <y>680</y>
+      <y>640</y>
       <w>256</w>
       <h>176</h>
     </coordinates>
@@ -772,7 +773,7 @@ endTurnWithoutDrawing(): void
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>1328</x>
-      <y>600</y>
+      <y>560</y>
       <w>40</w>
       <h>96</h>
     </coordinates>
@@ -783,7 +784,7 @@ endTurnWithoutDrawing(): void
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>1256</x>
-      <y>832</y>
+      <y>792</y>
       <w>40</w>
       <h>96</h>
     </coordinates>
@@ -794,7 +795,7 @@ endTurnWithoutDrawing(): void
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>760</x>
-      <y>504</y>
+      <y>464</y>
       <w>464</w>
       <h>192</h>
     </coordinates>
@@ -805,37 +806,37 @@ endTurnWithoutDrawing(): void
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>952</x>
-      <y>40</y>
+      <y>0</y>
       <w>208</w>
       <h>104</h>
     </coordinates>
-    <panel_attributes>bg=red
+    <panel_attributes>bg=green
 Deck
 --
 cards: List&lt;Card&gt;
 --
 getCards(): List&lt;Card&gt;
 setCards(cards: List&lt;Card&gt;): void
-addCard(card: Card, index: int): void
-removeCard(card: Card): void</panel_attributes>
+addCard(card: Card, index: int): boolean
+removeCard(card: Card): boolean</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>856</x>
-      <y>64</y>
+      <y>24</y>
       <w>112</w>
-      <h>168</h>
+      <h>160</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>96;24;24;24;24;152</additional_attributes>
+    <additional_attributes>96;24;24;24;24;144</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>1064</x>
-      <y>120</y>
+      <y>80</y>
       <w>160</w>
       <h>160</h>
     </coordinates>

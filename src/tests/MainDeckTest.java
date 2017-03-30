@@ -40,7 +40,7 @@ public class MainDeckTest {
 	@Test
 	public void testGetCardsNonEmpty() {
 		List<Card> cards = new ArrayList<Card>();
-		Card firstCard = new Card();
+		Card firstCard = new NormalCard();
 		cards.add(firstCard);
 		MainDeck mDeck = new MainDeck(cards);
 
@@ -58,7 +58,7 @@ public class MainDeckTest {
 	@Test
 	public void testGetCardCountOneElement() {
 		List<Card> cards = new ArrayList<Card>();
-		Card firstCard = new Card();
+		Card firstCard = new NormalCard();
 		cards.add(firstCard);
 		MainDeck mDeck = new MainDeck(cards);
 
@@ -68,8 +68,8 @@ public class MainDeckTest {
 	@Test
 	public void testGetCardCountMoreThanOneElement() {
 		List<Card> cards = new ArrayList<Card>();
-		Card firstCard = new Card();
-		Card secondCard = new Card();
+		Card firstCard = new NormalCard();
+		Card secondCard = new NormalCard();
 		cards.add(firstCard);
 		cards.add(secondCard);
 		MainDeck mDeck = new MainDeck(cards);
@@ -80,7 +80,7 @@ public class MainDeckTest {
 	@Test
 	public void testInsertCardOnTop() {
 		MainDeck mDeck = new MainDeck();
-		Card firstCard = new Card();
+		Card firstCard = new NormalCard();
 
 		assertTrue(mDeck.insertCard(firstCard, 0));
 		assertEquals(firstCard, mDeck.getCards().get(0));
@@ -89,9 +89,9 @@ public class MainDeckTest {
 	@Test
 	public void testInsertCardOnBottom() {
 		List<Card> cards = new ArrayList<Card>();
-		Card firstCard = new Card();
-		Card secondCard = new Card();
-		Card thirdCard = new Card();
+		Card firstCard = new NormalCard();
+		Card secondCard = new NormalCard();
+		Card thirdCard = new NormalCard();
 		cards.add(firstCard);
 		cards.add(secondCard);
 		MainDeck mDeck = new MainDeck(cards);
@@ -103,9 +103,9 @@ public class MainDeckTest {
 	@Test
 	public void testInsertCardInMiddle() {
 		List<Card> cards = new ArrayList<Card>();
-		Card firstCard = new Card();
-		Card secondCard = new Card();
-		Card thirdCard = new Card();
+		Card firstCard = new NormalCard();
+		Card secondCard = new NormalCard();
+		Card thirdCard = new NormalCard();
 		cards.add(firstCard);
 		cards.add(secondCard);
 		MainDeck mDeck = new MainDeck(cards);
@@ -118,9 +118,9 @@ public class MainDeckTest {
 	@Test
 	public void testInsertOutsideOfDeck() {
 		List<Card> cards = new ArrayList<Card>();
-		Card firstCard = new Card();
-		Card secondCard = new Card();
-		Card thirdCard = new Card();
+		Card firstCard = new NormalCard();
+		Card secondCard = new NormalCard();
+		Card thirdCard = new NormalCard();
 		cards.add(firstCard);
 		cards.add(secondCard);
 		MainDeck mDeck = new MainDeck(cards);
@@ -131,7 +131,7 @@ public class MainDeckTest {
 	@Test
 	public void testDrawCard() {
 		List<Card> cards = new ArrayList<Card>();
-		Card firstCard = new Card();
+		Card firstCard = new NormalCard();
 		cards.add(firstCard);
 		MainDeck mDeck = new MainDeck(cards);
 		int sizeOfDeck = mDeck.getCardCount();

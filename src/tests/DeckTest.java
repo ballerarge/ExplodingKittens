@@ -9,6 +9,7 @@ import java.util.List;
 import org.junit.Test;
 
 import code.Deck;
+import code.NormalCard;
 import code.Card;
 
 public class DeckTest {
@@ -29,7 +30,7 @@ public class DeckTest {
 	@Test
 	public void testGetCardsWithNonEmpty() {
 		List<Card> cards = new ArrayList<Card>();
-		Card cardOne = new Card();
+		Card cardOne = new NormalCard();
 		cards.add(cardOne);
 		Deck deck = new Deck(cards);
 
@@ -49,7 +50,7 @@ public class DeckTest {
 	@Test
 	public void testSetCardsWithNonEmpty() {
 		List<Card> cards = new ArrayList<Card>();
-		Card cardOne = new Card();
+		Card cardOne = new NormalCard();
 		cards.add(cardOne);
 		Deck deck = new Deck();
 
@@ -61,7 +62,7 @@ public class DeckTest {
 	@Test
 	public void testAddCardToZeroElements() {
 		Deck deck = new Deck();
-		Card firstCard = new Card();
+		Card firstCard = new NormalCard();
 
 		deck.addCard(firstCard, 0);
 
@@ -73,8 +74,8 @@ public class DeckTest {
 	public void testAddCardToOneElement() {
 		Deck deck = new Deck();
 		List<Card> cards = new ArrayList<Card>();
-		Card firstCard = new Card();
-		Card secondCard = new Card();
+		Card firstCard = new NormalCard();
+		Card secondCard = new NormalCard();
 		cards.add(firstCard);
 
 		deck.setCards(cards);
@@ -88,8 +89,8 @@ public class DeckTest {
 	public void testAddCardToOneElementOddOrder() {
 		Deck deck = new Deck();
 		List<Card> cards = new ArrayList<Card>();
-		Card firstCard = new Card();
-		Card secondCard = new Card();
+		Card firstCard = new NormalCard();
+		Card secondCard = new NormalCard();
 		cards.add(firstCard);
 
 		deck.setCards(cards);
@@ -102,7 +103,7 @@ public class DeckTest {
 	@Test
 	public void testRemoveCard() {
 		List<Card> cards = new ArrayList<Card>();
-		Card firstCard = new Card();
+		Card firstCard = new NormalCard();
 		cards.add(firstCard);
 		Deck deck = new Deck(cards);
 
@@ -114,8 +115,8 @@ public class DeckTest {
 	@Test
 	public void testRemoveCardAtOddPosition() {
 		List<Card> cards = new ArrayList<Card>();
-		Card firstCard = new Card();
-		Card secondCard = new Card();
+		Card firstCard = new NormalCard();
+		Card secondCard = new NormalCard();
 		cards.add(firstCard);
 		cards.add(secondCard);
 		Deck deck = new Deck(cards);
@@ -129,7 +130,7 @@ public class DeckTest {
 	@Test
 	public void testRemoveFromDuplicates() {
 		List<Card> cards = new ArrayList<Card>();
-		Card firstCard = new Card();
+		Card firstCard = new NormalCard();
 		cards.add(firstCard);
 		cards.add(firstCard);
 		Deck deck = new Deck(cards);
@@ -143,7 +144,7 @@ public class DeckTest {
 	@Test
 	public void testRemoveAllDuplicates() {
 		List<Card> cards = new ArrayList<Card>();
-		Card firstCard = new Card();
+		Card firstCard = new NormalCard();
 		cards.add(firstCard);
 		cards.add(firstCard);
 		Deck deck = new Deck(cards);
@@ -158,7 +159,7 @@ public class DeckTest {
 	public void testRemoveFromZeroElements() {
 		List<Card> cards = new ArrayList<Card>();
 		Deck deck = new Deck(cards);
-		Card firstCard = new Card();
+		Card firstCard = new NormalCard();
 
 		boolean check = deck.removeCard(firstCard);
 

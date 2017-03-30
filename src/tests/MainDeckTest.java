@@ -199,4 +199,15 @@ public class MainDeckTest {
 		assertEquals(4, shuffle);
 		assertEquals(4, skip);
 	}
+	
+	@Test
+	public void testPopulateDeckWithMaxPlayers() {
+		MainDeck mDeck = new MainDeck();
+		int numPlayers = 4;
+		
+		mDeck.initStartingDeck();
+		mDeck.populateDeck(numPlayers);
+		
+		assertEquals(51, mDeck.getCardCount());
+	}
 }

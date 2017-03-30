@@ -18,4 +18,12 @@ public class PlayerTest {
 		Player player = new Player("Khaleeeeed");
 	}
 
+	@Test
+	public void testGetName() {
+		String expected = "Khaleeeeed";
+		Player player = new Player(expected);
+		
+		assertEqual(expected, player.getName());
+	}
+	
 }

@@ -11,7 +11,9 @@ public class Game {
 	public Game() {
 	}
 
-	public void start(int n) {
+	public void start(int n) throws InvalidNumberofPlayersException {
+		if (n<2 || n>5)
+			throw new InvalidNumberofPlayersException();
 		playerManager = new PlayerManager();
 		playerManager.addPlayers(n);
 		mainDeck = new MainDeck();

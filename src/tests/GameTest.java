@@ -35,11 +35,28 @@ public class GameTest {
 		Game game3 = new Game();
 		Game game4 = new Game();
 		try {
-			game1.start(0);
-			fail("Starting with 0 players didn't return an error");
+			game1.start(1);
+			fail("Starting with 1 players didn't return an error");
 		} catch (InvalidNumberofPlayersException e) {
 		}
-
+		try {
+			game2.start(2);
+		}
+		catch (InvalidNumberofPlayersException e){
+			fail("Starting with 2 players returns an error");
+		}
+		try {
+			game3.start(5);
+		}
+		catch (InvalidNumberofPlayersException e){
+			fail("Starting with 5 players returns an error");
+		}
+		try {
+			game4.start(6);
+			fail("Starting with 6 players didn't return an error");
+		}
+		catch (InvalidNumberofPlayersException e){
+		}
 	}
 
 	public void testStartNumberofPlayers() throws InvalidNumberofPlayersException {

@@ -26,4 +26,14 @@ public class PlayerTest {
 		assertEquals(expected, player.getName());
 	}
 	
+	@Test
+	public void testSetName() {
+		String expected = "Khaleeeeed";
+		Player player = new Player("Not Khaleeeeed");
+		
+		player.setName(expected);
+		
+		assertEquals(expected, player.getName());
+	}
+	
 }

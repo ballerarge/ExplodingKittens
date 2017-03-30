@@ -15,6 +15,10 @@ public class Player {
 	public Object getName() {
 		return name;
 	}
+
+	public void setName(String newName) {
+		this.name = newName;
+	}
 	
 	
 	

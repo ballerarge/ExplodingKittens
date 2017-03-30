@@ -12,5 +12,10 @@ public class PlayerTest {
 	public void testPlayerCreation() {
 		Player player = new Player();
 	}
+	
+	@Test
+	public void testPlayerCreationWithName() {
+		Player player = new Player("Khaleeeeed");
+	}
 
 }

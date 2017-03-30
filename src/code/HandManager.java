@@ -11,7 +11,7 @@ public class HandManager {
 	private CardStack cardStack = new CardStack();
 	
 	public HandManager() {
-		
+		this.mainDeck.initStartingDeck();
 	}
 
 	public void draw() {

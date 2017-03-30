@@ -13,8 +13,6 @@ public class MainDeck {
 	public MainDeck() {
 		this.deck = new Deck(new ArrayList<Card>());
 		this.factory = new CardFactory();
-		
-		initStartingDeck();
 	}
 
 	public MainDeck(List<Card> cards) {

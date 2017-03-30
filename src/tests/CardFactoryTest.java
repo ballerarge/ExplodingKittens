@@ -49,7 +49,7 @@ public class CardFactoryTest {
 
 		Player p1 = null, p2 = null;
 
-		for (Card card: cards) {
+		for (Card card : cards) {
 			card.cardAction(p1, p2);
 		}
 	}
@@ -215,12 +215,24 @@ public class CardFactoryTest {
 		}
 		assertEquals(10, cards.size());
 	}
-	
+
 	@Test
 	public void testCreateCardSingleFavor() {
 		CardFactory cardFactory = new CardFactory();
 
 		Card card = cardFactory.createCard(CardFactory.FAVOR_CARD);
 		assertEquals(card.getID(), CardFactory.FAVOR_CARD);
+	}
+
+	@Test
+	public void testCreateCardMultipleFavor() throws IncorrectNumberOfCards {
+		CardFactory cardFactory = new CardFactory();
+
+		List<Card> cards = cardFactory.createCards(CardFactory.FAVOR_CARD, 10);
+
+		for (Card card : cards) {
+			assertEquals(card.getID(), CardFactory.FAVOR_CARD);
+		}
+		assertEquals(10, cards.size());
 	}
 }

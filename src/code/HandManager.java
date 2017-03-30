@@ -8,6 +8,7 @@ public class HandManager {
 	private List<Card> hand = new ArrayList<Card>();
 	private List<Card> selectedCards = new ArrayList<Card>();
 	private MainDeck mainDeck = new MainDeck();
+	private CardStack cardStack = new CardStack();
 	
 	public HandManager() {
 		
@@ -31,11 +32,19 @@ public class HandManager {
 		}
 		
 		this.selectedCards.add(toMove);
-		
 	}
 
 	public List<Card> getSelectedCards() {
 		return this.selectedCards;
+	}
+
+	public void moveSelectedToStack() throws NoCardsToMoveException {
+		if (this.selectedCards.size() == 0) {
+			throw new NoCardsToMoveException();
+		}
+		
+		this.cardStack.moveCardsToStack(this.selectedCards);
+		this.selectedCards.clear();
 	}
 
 	

@@ -11,6 +11,8 @@ import org.junit.Test;
 
 import code.AttackCard;
 import code.Card;
+import code.DefuseCard;
+import code.ExplodingKittenCard;
 import code.FavorCard;
 import code.MainDeck;
 import code.NopeCard;
@@ -220,5 +222,26 @@ public class MainDeckTest {
 		mDeck.populateDeck(numPlayers);
 		
 		assertEquals(51, mDeck.getCardCount());
+	}
+	
+	@Test
+	public void testCorrectCardsInPopulate() {
+		MainDeck mDeck = new MainDeck();
+		int numPlayers = 4;
+		int kittens = 0;
+		int defuse = 0;
+		
+		mDeck.initStartingDeck();
+		mDeck.populateDeck(numPlayers);
+		for (int i = 0; i < mDeck.getCardCount(); i++) {
+			if (mDeck.getCards().get(i) instanceof ExplodingKittenCard) {
+				kittens++;
+			} else if (mDeck.getCards().get(i) instanceof DefuseCard) {
+				defuse++;
+			}
+		}
+		
+		assertEquals(3, kittens);
+		assertEquals(2, defuse);
 	}
 }

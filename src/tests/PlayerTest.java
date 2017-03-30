@@ -23,7 +23,7 @@ public class PlayerTest {
 		String expected = "Khaleeeeed";
 		Player player = new Player(expected);
 		
-		assertEqual(expected, player.getName());
+		assertEquals(expected, player.getName());
 	}
 	
 }

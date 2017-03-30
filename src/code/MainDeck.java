@@ -84,6 +84,23 @@ public class MainDeck {
 			deck.addCard(new ScryCard(), 0);
 		}
 	}
+
+	public void populateDeck(int numPlayers) {
+		initExplodingKittenCards(numPlayers);
+		initDefuseCards(numPlayers);
+	}
+	
+	private void initExplodingKittenCards(int numPlayers) {
+		for (int i = 0; i < numPlayers - 1; i++) {
+			deck.addCard(new ExplodingKittenCard(), 0);
+		}
+	}
+	
+	private void initDefuseCards(int numPlayers) {
+		for (int i = 0; i < 6 - numPlayers; i++) {
+			deck.addCard(new DefuseCard(), 0);
+		}
+	}
 	
 	
 

@@ -1,6 +1,7 @@
 package code;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class MainDeck {
@@ -31,6 +32,10 @@ public class MainDeck {
 		Card drawCard = deck.getCards().get(0);
 		deck.removeCard(drawCard);
 		return drawCard;
+	}
+	
+	public void shuffleDeck() {
+		Collections.shuffle(deck.getCards());
 	}
 
 	public void initStartingDeck() {

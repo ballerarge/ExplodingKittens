@@ -10,4 +10,4 @@ public abstract class Card {
 
 	abstract public void cardAction(Player p1, Player p2);
 
-}
+}

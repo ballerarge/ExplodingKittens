@@ -18,10 +18,12 @@ public class Game {
 		MainDeck.tearDown();
 		mainDeck = MainDeck.getInstance();
 		mainDeck.initStartingDeck();
-		mainDeck.populateDeck(n);
-
+		
 		playerManager = new PlayerManager();
 		playerManager.addPlayers(n);
+		
+		mainDeck.populateDeck(n);
+
 
 	}
 

@@ -65,6 +65,7 @@ public class MainDeck {
 			initNormalCards();
 			initNopeCards();
 			initScryCards();
+			shuffleDeck();
 		}
 	}
 
@@ -113,6 +114,7 @@ public class MainDeck {
 	public void populateDeck(int numPlayers) {
 		initExplodingKittenCards(numPlayers);
 		initDefuseCards(numPlayers);
+		shuffleDeck();
 	}
 
 	private void initExplodingKittenCards(int numPlayers) {

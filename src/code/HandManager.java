@@ -48,4 +48,8 @@ public class HandManager {
 		this.selectedCards.clear();
 	}
 
+	public void addDefuseCard() {
+		this.hand.add(new CardFactory().createCard(CardFactory.DEFUSE_CARD));
+	}
+
 }

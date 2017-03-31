@@ -21,14 +21,23 @@ public class PlayerManager {
 
 		for (int i = 0; i < numPlayers; i++) {
 			players.add(new Player());
+
+			makePlayerDrawInitialHand(i);
 		}
+	}
+
+	private void makePlayerDrawInitialHand(int playerIndex) {
+		for (int j = 0; j < 4; j++) {
+			players.get(playerIndex).drawCard();
+		}
+		players.get(playerIndex).getHandManager().addDefuseCard();
 	}
 
 	// to be re-implemented after merge
 	public Map<Player, List<Card>> getHands() {
 		Map<Player, List<Card>> hands = new HashMap<Player, List<Card>>();
-		for (int a = 1; a <= players.size(); a++)
-			hands.put(new Player(), null);
+		for (int a = 0; a < players.size(); a++)
+			hands.put(players.get(a), players.get(a).getHand());
 		return hands;
 	}
 

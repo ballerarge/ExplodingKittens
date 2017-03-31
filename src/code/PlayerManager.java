@@ -1,6 +1,7 @@
 
 package code;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,9 +9,10 @@ import java.util.Map;
 public class PlayerManager {
 
 	int c;
+	public List<Player> players;
 
 	public PlayerManager() {
-		c = 0;
+		players = new ArrayList<Player>();
 	}
 
 	public void addPlayers(int numPlayers) {

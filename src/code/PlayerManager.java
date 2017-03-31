@@ -15,8 +15,14 @@ public class PlayerManager {
 		players = new ArrayList<Player>();
 	}
 
-	public void addPlayers(int numPlayers) {
-		c += numPlayers;
+	public void addPlayers(int numPlayers) throws InvalidNumberofPlayersException {
+		if (numPlayers < 2 || numPlayers > 5) {
+			throw new InvalidNumberofPlayersException();
+		}
+
+			for (int i = 0; i < numPlayers; i++) {
+				players.add(new Player());
+			}
 	}
 
 	// to be re-implemented after merge

@@ -51,4 +51,14 @@ public class PlayerManagerTest {
 		assertEquals(playerManager.getPlayers().size(), 2);
 
 	}
+
+	@Test
+	public void testAddPlayersFive() throws InvalidNumberofPlayersException {
+		PlayerManager playerManager = new PlayerManager();
+
+		playerManager.addPlayers(5);
+
+		assertEquals(playerManager.getPlayers().size(), 5);
+
+	}
 }

@@ -8,6 +8,7 @@ import java.util.Map;
 
 public class PlayerManager {
 
+	private static final int INITIAL_HAND_NUMBER_OF_CARDS_TO_DRAW = 4;
 	public List<Player> players;
 
 	public PlayerManager() {
@@ -21,16 +22,19 @@ public class PlayerManager {
 
 		for (int i = 0; i < numPlayers; i++) {
 			players.add(new Player());
-
-			makePlayerDrawInitialHand(i);
 		}
+
+		makePlayerDrawInitialHand();
 	}
 
-	private void makePlayerDrawInitialHand(int playerIndex) {
-		for (int j = 0; j < 4; j++) {
-			players.get(playerIndex).drawCard();
+	private void makePlayerDrawInitialHand() {
+
+		for (int i = 0; i < players.size(); i++) {
+			for (int j = 0; j < INITIAL_HAND_NUMBER_OF_CARDS_TO_DRAW; j++) {
+				players.get(i).drawCard();
+			}
+			players.get(i).getHandManager().addDefuseCard();
 		}
-		players.get(playerIndex).getHandManager().addDefuseCard();
 	}
 
 	// to be re-implemented after merge

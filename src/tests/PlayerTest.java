@@ -45,7 +45,7 @@ public class PlayerTest {
 	public void testGetHandManager() {
 		Player player = new Player();
 
-		assertTrue(player.getHandManger() instanceof HandManager);
+		assertTrue(player.getHandManager() instanceof HandManager);
 	}
 
 	@Test

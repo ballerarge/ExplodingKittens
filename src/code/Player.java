@@ -23,7 +23,7 @@ public class Player {
 		this.name = newName;
 	}
 
-	public HandManager getHandManger() {
+	public HandManager getHandManager() {
 		return handManager;
 	}
 

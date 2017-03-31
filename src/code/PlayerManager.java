@@ -1,35 +1,59 @@
 
 package code;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class PlayerManager {
 
-	int c;
+	private static final int INITIAL_HAND_NUMBER_OF_CARDS_TO_DRAW = 4;
+	public List<Player> players;
 
 	public PlayerManager() {
-		c = 0;
+		players = new ArrayList<Player>();
 	}
 
-	public void addPlayers(int numPlayers) {
-		c += numPlayers;
+	public void addPlayers(int numPlayers) throws InvalidNumberofPlayersException {
+		if (numPlayers < 2 || numPlayers > 5) {
+			throw new InvalidNumberofPlayersException();
+		}
+
+		for (int i = 0; i < numPlayers; i++) {
+			players.add(new Player());
+		}
+
+		makePlayerDrawInitialHand();
+	}
+
+	private void makePlayerDrawInitialHand() {
+
+		for (int i = 0; i < players.size(); i++) {
+			for (int j = 0; j < INITIAL_HAND_NUMBER_OF_CARDS_TO_DRAW; j++) {
+				players.get(i).drawCard();
+			}
+			players.get(i).getHandManager().addDefuseCard();
+		}
 	}
 
 	// to be re-implemented after merge
 	public Map<Player, List<Card>> getHands() {
 		Map<Player, List<Card>> hands = new HashMap<Player, List<Card>>();
-		for (int a = 1; a <= c; a++)
-			hands.put(new Player(), null);
+		for (int a = 0; a < players.size(); a++)
+			hands.put(players.get(a), players.get(a).getHand());
 		return hands;
 	}
 
 	public Map<Player, Boolean> getPlayerStatus() {
 		Map<Player, Boolean> status = new HashMap<Player, Boolean>();
-		for (int a = 1; a <= c; a++)
+		for (int a = 1; a <= players.size(); a++)
 			status.put(new Player(), true);
 		return status;
+	}
+
+	public List<Player> getPlayers() {
+		return this.players;
 	}
 
 }

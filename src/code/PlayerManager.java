@@ -18,15 +18,15 @@ public class PlayerManager {
 	}
 
 	// to be re-implemented after merge
-	public Map getHands() {
-		Map<Player, List> hands = new HashMap();
+	public Map<Player, List<Card>> getHands() {
+		Map<Player, List<Card>> hands = new HashMap<Player, List<Card>>();
 		for (int a = 1; a <= c; a++)
 			hands.put(new Player(), null);
 		return hands;
 	}
 
-	public Map getPlayerStatus() {
-		Map<Player, Boolean> status = new HashMap();
+	public Map<Player, Boolean> getPlayerStatus() {
+		Map<Player, Boolean> status = new HashMap<Player, Boolean>();
 		for (int a = 1; a <= c; a++)
 			status.put(new Player(), true);
 		return status;

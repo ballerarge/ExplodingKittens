@@ -34,4 +34,8 @@ public class PlayerManager {
 		return status;
 	}
 
+	public List<Player> getPlayers() {
+		return this.players;
+	}
+
 }

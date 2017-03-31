@@ -8,7 +8,6 @@ import java.util.Map;
 
 public class PlayerManager {
 
-	int c;
 	public List<Player> players;
 
 	public PlayerManager() {
@@ -20,22 +19,22 @@ public class PlayerManager {
 			throw new InvalidNumberofPlayersException();
 		}
 
-			for (int i = 0; i < numPlayers; i++) {
-				players.add(new Player());
-			}
+		for (int i = 0; i < numPlayers; i++) {
+			players.add(new Player());
+		}
 	}
 
 	// to be re-implemented after merge
 	public Map<Player, List<Card>> getHands() {
 		Map<Player, List<Card>> hands = new HashMap<Player, List<Card>>();
-		for (int a = 1; a <= c; a++)
+		for (int a = 1; a <= players.size(); a++)
 			hands.put(new Player(), null);
 		return hands;
 	}
 
 	public Map<Player, Boolean> getPlayerStatus() {
 		Map<Player, Boolean> status = new HashMap<Player, Boolean>();
-		for (int a = 1; a <= c; a++)
+		for (int a = 1; a <= players.size(); a++)
 			status.put(new Player(), true);
 		return status;
 	}

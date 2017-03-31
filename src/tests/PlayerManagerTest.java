@@ -17,6 +17,7 @@ public class PlayerManagerTest {
 
 	@Test
 	public void testPlayerManagerCreation() {
+		@SuppressWarnings("unused")
 		PlayerManager playerManager = new PlayerManager();
 	}
 

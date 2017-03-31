@@ -43,6 +43,8 @@ public class MainDeck {
 	}
 
 	public void initStartingDeck() {
+		this.deck = new Deck();
+
 		initFavorCards();
 		initShuffleCards();
 		initSkipCards();
@@ -115,4 +117,4 @@ public class MainDeck {
 		return deck.getCards().get(0);
 	}
 
-}
+}

@@ -43,15 +43,15 @@ public class MainDeck {
 	}
 
 	public void initStartingDeck() {
-		this.deck = new Deck();
-
-		initFavorCards();
-		initShuffleCards();
-		initSkipCards();
-		initAttackCards();
-		initNormalCards();
-		initNopeCards();
-		initScryCards();
+		if (this.deck.getCards().size() == 0) {
+			initFavorCards();
+			initShuffleCards();
+			initSkipCards();
+			initAttackCards();
+			initNormalCards();
+			initNopeCards();
+			initScryCards();
+		}
 	}
 
 	private void initFavorCards() {

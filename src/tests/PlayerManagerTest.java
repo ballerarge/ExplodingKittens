@@ -13,6 +13,7 @@ import org.junit.rules.ExpectedException;
 
 import code.Card;
 import code.InvalidNumberofPlayersException;
+import code.MainDeck;
 import code.Player;
 import code.PlayerManager;
 
@@ -78,6 +79,8 @@ public class PlayerManagerTest {
 
 	@Test
 	public void testPlayersHandsInitialized() throws InvalidNumberofPlayersException {
+		MainDeck.tearDown();
+		MainDeck.getInstance();
 		PlayerManager playerManager = new PlayerManager();
 
 		playerManager.addPlayers(4);
@@ -87,5 +90,7 @@ public class PlayerManagerTest {
 		for (Player player : hands.keySet()) {
 			assertEquals(hands.get(player).size(), 5);
 		}
+
+		MainDeck.tearDown();
 	}
 }

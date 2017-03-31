@@ -8,7 +8,7 @@ public class HandManager {
 
 	private List<Card> hand = new ArrayList<Card>();
 	private List<Card> selectedCards = new ArrayList<Card>();
-	private MainDeck mainDeck = new MainDeck();
+	private MainDeck mainDeck = MainDeck.getInstance();
 	private CardStack cardStack = new CardStack();
 
 	public HandManager() {

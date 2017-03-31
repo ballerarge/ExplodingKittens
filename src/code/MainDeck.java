@@ -115,4 +115,4 @@ public class MainDeck {
 		return deck.getCards().get(0);
 	}
 
-}
+}

@@ -1,7 +1,8 @@
 
 package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -49,7 +50,6 @@ public class PlayerManagerTest {
 		playerManager.addPlayers(2);
 
 		assertEquals(playerManager.getPlayers().size(), 2);
-
 	}
 
 	@Test
@@ -59,6 +59,14 @@ public class PlayerManagerTest {
 		playerManager.addPlayers(5);
 
 		assertEquals(playerManager.getPlayers().size(), 5);
+	}
 
+	@Test
+	public void testAddPlayersSix() throws InvalidNumberofPlayersException {
+		PlayerManager playerManager = new PlayerManager();
+
+		exception.expect(InvalidNumberofPlayersException.class);
+
+		playerManager.addPlayers(6);
 	}
 }

@@ -4,11 +4,16 @@ package tests;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.util.List;
+import java.util.Map;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import code.Card;
 import code.InvalidNumberofPlayersException;
+import code.Player;
 import code.PlayerManager;
 
 public class PlayerManagerTest {
@@ -69,5 +74,18 @@ public class PlayerManagerTest {
 		exception.expect(InvalidNumberofPlayersException.class);
 
 		playerManager.addPlayers(6);
+	}
+
+	@Test
+	public void testPlayersHandsInitialized() throws InvalidNumberofPlayersException {
+		PlayerManager playerManager = new PlayerManager();
+
+		playerManager.addPlayers(4);
+
+		Map<Player, List<Card>> hands = playerManager.getHands();
+
+		for (Player player : hands.keySet()) {
+			assertEquals(hands.get(player).size(), 5);
+		}
 	}
 }

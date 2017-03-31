@@ -9,6 +9,7 @@ import java.util.Map;
 import org.junit.Assert;
 import org.junit.Test;
 
+import code.Card;
 import code.Game;
 import code.InvalidNumberofPlayersException;
 import code.Player;
@@ -62,7 +63,7 @@ public class GameTest {
 	public void testStartNumberofPlayers() throws InvalidNumberofPlayersException {
 		Game game = new Game();
 		game.start(3);
-		Map<Player, List> hands = game.getPlayerHands();
+		Map<Player, List<Card>> hands = game.getPlayerHands();
 		assertEquals(hands.size(), 3);
 	}
 

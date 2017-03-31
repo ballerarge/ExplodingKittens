@@ -18,6 +18,7 @@ public class Game {
 		playerManager = new PlayerManager();
 		playerManager.addPlayers(n);
 		mainDeck = new MainDeck();
+		mainDeck.initStartingDeck();
 		mainDeck.populateDeck(n);
 
 	}

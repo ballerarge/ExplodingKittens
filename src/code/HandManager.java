@@ -1,3 +1,4 @@
+
 package code;
 
 import java.util.ArrayList;
@@ -9,13 +10,13 @@ public class HandManager {
 	private List<Card> selectedCards = new ArrayList<Card>();
 	private MainDeck mainDeck = new MainDeck();
 	private CardStack cardStack = new CardStack();
-	
+
 	public HandManager() {
 		this.mainDeck.initStartingDeck();
 	}
 
 	public void draw() {
-		hand.add(mainDeck.getTopCard());
+		hand.add(mainDeck.draw());
 	}
 
 	public List<Card> getHand() {
@@ -23,14 +24,14 @@ public class HandManager {
 	}
 
 	public void selectCard(int i) throws CardDoesNotExistException {
-		
+
 		Card toMove;
 		try {
 			toMove = this.hand.remove(i);
 		} catch (Exception e) {
 			throw new CardDoesNotExistException("The card index given is invalid!");
 		}
-		
+
 		this.selectedCards.add(toMove);
 	}
 
@@ -42,10 +43,13 @@ public class HandManager {
 		if (this.selectedCards.size() == 0) {
 			throw new NoCardsToMoveException();
 		}
-		
+
 		this.cardStack.moveCardsToStack(this.selectedCards);
 		this.selectedCards.clear();
 	}
 
-	
+	public void addDefuseCard() {
+		this.hand.add(new CardFactory().createCard(CardFactory.DEFUSE_CARD));
+	}
+
 }

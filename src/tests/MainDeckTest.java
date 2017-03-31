@@ -239,4 +239,17 @@ public class MainDeckTest {
 		assertEquals(3, kittens);
 		assertEquals(2, defuse);
 	}
+
+	@Test
+	public void testDuplicateInitMainDeck() {
+		MainDeck mDeck = new MainDeck();
+
+		mDeck.initStartingDeck();
+
+		int previousSize = mDeck.getCardCount();
+
+		mDeck.initStartingDeck();
+
+		assertEquals(previousSize, mDeck.getCardCount());
+	}
 }

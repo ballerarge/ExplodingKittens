@@ -30,7 +30,7 @@ public class Deck {
 		} catch (IndexOutOfBoundsException e) {
 			return false;
 		}
-		
+
 	}
 
 	public boolean removeCard(Card card) {

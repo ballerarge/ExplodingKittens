@@ -1,3 +1,4 @@
+
 package code;
 
 import java.util.List;
@@ -6,7 +7,7 @@ public class Player {
 
 	private String name;
 	private HandManager handManager = new HandManager();
-	
+
 	public Player() {
 		this.name = "default";
 	}
@@ -34,9 +35,5 @@ public class Player {
 	public void drawCard() {
 		handManager.draw();
 	}
-	
-	
-	
-	
-	
-}
+
+}

@@ -12,10 +12,10 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import code.Card;
-import code.InvalidNumberofPlayersException;
 import code.MainDeck;
 import code.Player;
 import code.PlayerManager;
+import exceptions.InvalidNumberofPlayersException;
 
 public class PlayerManagerTest {
 	@Rule

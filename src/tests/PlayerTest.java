@@ -8,7 +8,7 @@ import java.util.List;
 import org.junit.Test;
 
 import code.Card;
-import code.HandManager;
+import code.Hand;
 import code.Player;
 
 public class PlayerTest {
@@ -45,7 +45,7 @@ public class PlayerTest {
 	public void testGetHandManager() {
 		Player player = new Player();
 
-		assertTrue(player.getHandManager() instanceof HandManager);
+		assertTrue(player.getHandManager() instanceof Hand);
 	}
 
 	@Test

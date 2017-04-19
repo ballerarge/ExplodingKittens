@@ -33,7 +33,8 @@ public class DiscardDeckTest {
 	@Test
 	public void testGetCardsNonEmpty() {
 		List<Card> cards = new ArrayList<Card>();
-		Card firstCard = new NormalCard();	
+		Card firstCard = new NormalCard();
+		DiscardDeck.tearDown();
 		DiscardDeck discDeck = DiscardDeck.getInstance();
 		
 		cards.add(firstCard);
@@ -54,6 +55,7 @@ public class DiscardDeckTest {
 	
 	@Test
 	public void testGetCardCountOneElement() {
+		DiscardDeck.tearDown();
 		DiscardDeck discDeck = DiscardDeck.getInstance();
 		discDeck.getCards().add(new NormalCard());
 		

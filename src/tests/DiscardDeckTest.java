@@ -1,11 +1,14 @@
 package tests;
 
+import static org.junit.Assert.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
 
 import code.Card;
+import code.DiscardDeck;
 
 public class DiscardDeckTest {
 
@@ -13,7 +16,7 @@ public class DiscardDeckTest {
 	public void testGetInstance() {
 		DiscardDeck discDeck = DiscardDeck.getInstance();
 		
-		assertEquals(discDeck, DiscardDeck.discardDeck);
+		assertEquals(discDeck, DiscardDeck.getInstance());
 	}
 
 }

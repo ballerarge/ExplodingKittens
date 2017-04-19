@@ -108,5 +108,21 @@ public class DiscardDeckTest {
 		assertEquals(1, discDeck.getCardCount());
 		DiscardDeck.tearDown();
 	}
+	
+	@Test
+	public void testRemoveMultiOutOfOrder() {
+		DiscardDeck.tearDown();
+		DiscardDeck discDeck = DiscardDeck.getInstance();
+		Card firstCard = new NormalCard();
+		Card secondCard = new SkipCard();
+		discDeck.getCards().add(firstCard);
+		discDeck.getCards().add(secondCard);
+		
+		Card ret = discDeck.removeCard(SkipCard.class);
+		
+		assertEquals(secondCard, ret);
+		assertEquals(1, discDeck.getCardCount());
+		DiscardDeck.tearDown();
+	}
 
 }

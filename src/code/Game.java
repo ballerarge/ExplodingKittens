@@ -8,8 +8,8 @@ import exceptions.InvalidNumberofPlayersException;
 
 public class Game {
 
-	PlayerManager playerManager;
-	MainDeck mainDeck;
+	private PlayerManager playerManager;
+	private MainDeck mainDeck;
 
 	public Game() {
 		

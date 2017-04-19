@@ -32,8 +32,6 @@ public class GameController {
 	private static void printPlayerHands(Game game) {
 		Map<Player, List<Card>> playerHands = game.getPlayerHands();
 
-		System.out.println(game.mainDeck.getCards());
-
 		for (Player playa : playerHands.keySet()) {
 			System.out.printf("Player %s's hand:\n\t%s\n", playa.getName(), playerHands.get(playa).toString());
 		}

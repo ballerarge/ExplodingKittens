@@ -16,7 +16,7 @@ public class Deck {
 	}
 
 	public List<Card> getCards() {
-		return cards;
+		return new ArrayList<Card>(cards);
 	}
 
 	public void setCards(List<Card> cards) {

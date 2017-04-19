@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import code.Hand;
 import code.MainDeck;
-import exceptions.CardDoesNotExistException;
+import exceptions.IncorrectNumberOfCardsException;
 import exceptions.NoCardsToMoveException;
 
 public class HandManagerTest {
@@ -30,7 +30,7 @@ public class HandManagerTest {
 	}
 
 	@Test
-	public void testSelectCard() throws CardDoesNotExistException {
+	public void testSelectCard() throws IncorrectNumberOfCardsException {
 		Hand handMng = new Hand();
 
 		handMng.draw();
@@ -44,15 +44,15 @@ public class HandManagerTest {
 		assertEquals(1, handMng.getSelectedCards().size());
 	}
 
-	@Test(expected = CardDoesNotExistException.class)
-	public void testSelectCardException() throws CardDoesNotExistException {
+	@Test(expected = IncorrectNumberOfCardsException.class)
+	public void testSelectCardException() throws IncorrectNumberOfCardsException {
 		Hand handMng = new Hand();
 
 		handMng.selectCard(0);
 	}
 
 	@Test
-	public void testMoveSelectedToStack() throws CardDoesNotExistException, NoCardsToMoveException {
+	public void testMoveSelectedToStack() throws IncorrectNumberOfCardsException, NoCardsToMoveException {
 		Hand handMng = new Hand();
 
 		handMng.draw();

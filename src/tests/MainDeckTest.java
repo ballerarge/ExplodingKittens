@@ -49,7 +49,7 @@ public class MainDeckTest {
 		MainDeck mDeck = MainDeck.getInstance();
 
 		cards.add(firstCard);
-		mDeck.getCards().add(firstCard);
+		mDeck.insertCard(firstCard, 0);
 
 		assertEquals(cards, mDeck.getCards());
 		MainDeck.tearDown();
@@ -67,7 +67,7 @@ public class MainDeckTest {
 	@Test
 	public void testGetCardCountOneElement() {
 		MainDeck mDeck = MainDeck.getInstance();
-		mDeck.getCards().add(new NormalCard());
+		mDeck.insertCard(new NormalCard(), 0);
 
 		assertEquals(1, mDeck.getCardCount());
 		MainDeck.tearDown();
@@ -80,8 +80,8 @@ public class MainDeckTest {
 
 		MainDeck mDeck = MainDeck.getInstance();
 
-		mDeck.getCards().add(firstCard);
-		mDeck.getCards().add(secondCard);
+		mDeck.insertCard(firstCard, 0);
+		mDeck.insertCard(secondCard, 0);
 
 		assertEquals(2, mDeck.getCardCount());
 		MainDeck.tearDown();
@@ -104,8 +104,8 @@ public class MainDeckTest {
 		Card secondCard = new NormalCard();
 		Card thirdCard = new NormalCard();
 		MainDeck mDeck = MainDeck.getInstance();
-		mDeck.getCards().add(firstCard);
-		mDeck.getCards().add(secondCard);
+		mDeck.insertCard(firstCard, 0);
+		mDeck.insertCard(secondCard, 0);
 
 		assertTrue(mDeck.insertCard(thirdCard, 2));
 		assertEquals(thirdCard, mDeck.getCards().get(2));
@@ -121,12 +121,12 @@ public class MainDeckTest {
 
 		MainDeck mDeck = MainDeck.getInstance();
 
-		mDeck.getCards().add(firstCard);
-		mDeck.getCards().add(secondCard);
+		mDeck.insertCard(firstCard, 0);
+		mDeck.insertCard(secondCard, 0);
 
 		assertTrue(mDeck.insertCard(thirdCard, 1));
 		assertEquals(thirdCard, mDeck.getCards().get(1));
-		assertEquals(secondCard, mDeck.getCards().get(2));
+		assertEquals(secondCard, mDeck.getCards().get(0));
 		MainDeck.tearDown();
 	}
 
@@ -151,7 +151,7 @@ public class MainDeckTest {
 
 		MainDeck mDeck = MainDeck.getInstance();
 
-		mDeck.getCards().add(firstCard);
+		mDeck.insertCard(firstCard, 0);
 
 		int sizeOfDeck = mDeck.getCardCount();
 

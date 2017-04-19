@@ -39,8 +39,9 @@ public class CardFactory {
 				return new ScryCard();
 			case FAVOR_CARD:
 				return new FavorCard();
+			default:
+				return new NormalCard();
 		}
-		return new NormalCard();
 	}
 
 	public List<Card> createCards(int cardID, int numCards) throws IncorrectNumberOfCards {

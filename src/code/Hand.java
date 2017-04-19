@@ -4,7 +4,7 @@ package code;
 import java.util.ArrayList;
 import java.util.List;
 
-import exceptions.CardDoesNotExistException;
+import exceptions.IncorrectNumberOfCardsException;
 import exceptions.NoCardsToMoveException;
 
 public class Hand {
@@ -23,16 +23,16 @@ public class Hand {
 	}
 
 	public List<Card> getHand() {
-		return hand;
+		return new ArrayList<>(hand);
 	}
 
-	public void selectCard(int i) throws CardDoesNotExistException {
+	public void selectCard(int i) throws IncorrectNumberOfCardsException {
 
 		Card toMove;
 		try {
 			toMove = this.hand.remove(i);
 		} catch (Exception e) {
-			throw new CardDoesNotExistException("The card index given is invalid!");
+			throw new IncorrectNumberOfCardsException("The card index given is invalid!");
 		}
 
 		this.selectedCards.add(toMove);

@@ -46,6 +46,7 @@ public class DiscardDeckTest {
 	
 	@Test
 	public void testGetCardCountZeroElements() {
+		DiscardDeck.tearDown();
 		List<Card> cards = new ArrayList<Card>();
 		DiscardDeck discDeck = DiscardDeck.getInstance();
 		
@@ -60,6 +61,20 @@ public class DiscardDeckTest {
 		discDeck.getCards().add(new NormalCard());
 		
 		assertEquals(1, discDeck.getCardCount());
+		DiscardDeck.tearDown();
+	}
+	
+	@Test
+	public void testGetCardCountMoreThanOneElement() {
+		DiscardDeck.tearDown();
+		Card firstCard = new NormalCard();
+		Card secondCard = new NormalCard();
+		
+		DiscardDeck discDeck = DiscardDeck.getInstance();
+		discDeck.getCards().add(firstCard);
+		discDeck.getCards().add(secondCard);
+		
+		assertEquals(2, discDeck.getCardCount());
 		DiscardDeck.tearDown();
 	}
 

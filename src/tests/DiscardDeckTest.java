@@ -77,5 +77,18 @@ public class DiscardDeckTest {
 		assertEquals(2, discDeck.getCardCount());
 		DiscardDeck.tearDown();
 	}
+	
+	@Test
+	public void testRemoveNormalCard() {
+		DiscardDeck.tearDown();
+		DiscardDeck discDeck = DiscardDeck.getInstance();
+		Card firstCard = new NormalCard();
+		discDeck.getCards().add(firstCard);
+		
+		Card ret = discDeck.removeCard(NormalCard.class);
+		
+		assertEquals(firstCard, ret);
+		assertEquals(0, discDeck.getCardCount());
+	}
 
 }

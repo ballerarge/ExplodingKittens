@@ -33,4 +33,10 @@ public class DiscardDeck {
 		return discardDeck.deck.getCards().size();
 	}
 
+	public Card removeCard(Class<NormalCard> cardType) {
+		Card retCard = discardDeck.getCards().get(0);
+		discardDeck.deck.removeCard(retCard);
+		return retCard;
+	}
+
 }

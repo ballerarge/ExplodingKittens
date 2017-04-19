@@ -20,15 +20,6 @@ public class DiscardDeckTest {
 	}
 	
 	@Test
-	public void testTearDown() {
-		DiscardDeck discDeck = DiscardDeck.getInstance();
-		
-		DiscardDeck.tearDown();
-		
-		assertNull(discDeck);
-	}
-	
-	@Test
 	public void testGetCards() {
 		List<Card> cards = new ArrayList<Card>();
 		DiscardDeck.tearDown();

@@ -1,17 +1,26 @@
 package code;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DiscardDeck {
 
 	private static DiscardDeck discardDeck;
 
 	public static DiscardDeck getInstance() {
-		// TODO Auto-generated method stub
-		return null;
+		if (discardDeck == null) {
+			discardDeck = new DiscardDeck();
+		}
+		return discardDeck;
 	}
 
 	public static void tearDown() {
+		discardDeck = null;
+	}
+
+	public List<Card> getCards() {
 		// TODO Auto-generated method stub
-		
+		return new ArrayList<Card>();
 	}
 
 }

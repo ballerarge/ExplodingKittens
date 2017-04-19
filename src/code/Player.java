@@ -6,7 +6,7 @@ import java.util.List;
 public class Player {
 
 	private String name;
-	private HandManager handManager = new HandManager();
+	private Hand handManager = new Hand();
 
 	public Player() {
 		this.name = "default";
@@ -24,7 +24,7 @@ public class Player {
 		this.name = newName;
 	}
 
-	public HandManager getHandManager() {
+	public Hand getHandManager() {
 		return handManager;
 	}
 

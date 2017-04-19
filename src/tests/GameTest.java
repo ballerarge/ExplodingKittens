@@ -11,8 +11,8 @@ import org.junit.Test;
 
 import code.Card;
 import code.Game;
-import code.InvalidNumberofPlayersException;
 import code.Player;
+import exceptions.InvalidNumberofPlayersException;
 
 public class GameTest {
 

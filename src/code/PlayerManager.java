@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import exceptions.InvalidNumberofPlayersException;
+
 public class PlayerManager {
 
 	private static final int INITIAL_HAND_NUMBER_OF_CARDS_TO_DRAW = 4;

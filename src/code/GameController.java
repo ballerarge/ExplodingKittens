@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import exceptions.InvalidNumberofPlayersException;
+
 public class GameController {
 
 	public static void main(String[] args) {

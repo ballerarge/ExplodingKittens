@@ -18,5 +18,14 @@ public class DiscardDeckTest {
 		
 		assertEquals(discDeck, DiscardDeck.getInstance());
 	}
+	
+	@Test
+	public void testTearDown() {
+		DiscardDeck discDeck = DiscardDeck.getInstance();
+		
+		DiscardDeck.tearDown();
+		
+		assertNull(discDeck);
+	}
 
 }

@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import code.PlayerManager;
 import code.TurnPriorityManager;
 
 public class TurnPriorityManagerTest {
@@ -13,4 +14,15 @@ public class TurnPriorityManagerTest {
 		TurnPriorityManager manager=new TurnPriorityManager();
 	}
 
+	@Test
+	public void testHandlesPlayerManager(){
+		
+		PlayerManager pmgr=new PlayerManager();
+		TurnPriorityManager manager=new TurnPriorityManager();
+		manager.setPlayerManager(pmgr);
+		manager.getPlayerManager();
+		assertEquals(pmgr,manager);
+		
+	}
+	
 }

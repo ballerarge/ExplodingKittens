@@ -25,12 +25,12 @@ public class DiscardDeck {
 
 	public List<Card> getCards() {
 		// TODO Auto-generated method stub
-		return deck.getCards();
+		return discardDeck.deck.getCards();
 	}
 
 	public int getCardCount() {
 		// TODO Auto-generated method stub
-		return 0;
+		return discardDeck.deck.getCards().size();
 	}
 
 }

@@ -42,5 +42,14 @@ public class DiscardDeckTest {
 		assertEquals(cards, discDeck.getCards());
 		DiscardDeck.tearDown();
 	}
+	
+	@Test
+	public void testGetCardCountZeroElements() {
+		List<Card> cards = new ArrayList<Card>();
+		DiscardDeck discDeck = DiscardDeck.getInstance();
+		
+		assertEquals(0, discDeck.getCardCount());
+		DiscardDeck.tearDown();
+	}
 
 }

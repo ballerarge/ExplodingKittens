@@ -51,5 +51,14 @@ public class DiscardDeckTest {
 		assertEquals(0, discDeck.getCardCount());
 		DiscardDeck.tearDown();
 	}
+	
+	@Test
+	public void testGetCardCountOneElement() {
+		DiscardDeck discDeck = DiscardDeck.getInstance();
+		discDeck.getCards().add(new NormalCard());
+		
+		assertEquals(1, discDeck.getCardCount());
+		DiscardDeck.tearDown();
+	}
 
 }

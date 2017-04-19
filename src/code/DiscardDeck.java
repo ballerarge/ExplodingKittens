@@ -28,4 +28,9 @@ public class DiscardDeck {
 		return deck.getCards();
 	}
 
+	public int getCardCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

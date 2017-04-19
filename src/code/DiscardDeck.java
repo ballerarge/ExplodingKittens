@@ -9,4 +9,9 @@ public class DiscardDeck {
 		return null;
 	}
 
+	public static void tearDown() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

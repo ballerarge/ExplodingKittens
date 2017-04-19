@@ -140,4 +140,13 @@ public class DiscardDeckTest {
 		assertEquals(1, discDeck.getCardCount());
 		DiscardDeck.tearDown();
 	}
+	
+	@Test(expected = EmptyDrawDeckException.class)
+	public void testRemoveFromEmpty() {
+		DiscardDeck.tearDown();
+		DiscardDeck discDeck = DiscardDeck.getInstance();
+		
+		Card ret = discDeck.removeCard(NormalCard.class);
+	}
+	
 }

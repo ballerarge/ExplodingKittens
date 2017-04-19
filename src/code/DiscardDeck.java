@@ -33,9 +33,16 @@ public class DiscardDeck {
 		return discardDeck.deck.getCards().size();
 	}
 
-	public Card removeCard(Class<NormalCard> cardType) {
-		Card retCard = discardDeck.getCards().get(0);
-		discardDeck.deck.removeCard(retCard);
+	public Card removeCard(Class<?> cardType) {
+		Card retCard = null;
+		for (Card card : discardDeck.getCards()) {
+			if (card.getClass().equals(cardType)) {
+				retCard = card;
+				discardDeck.deck.removeCard(retCard);
+				return retCard;
+			}
+		}
+		
 		return retCard;
 	}
 

@@ -20,8 +20,7 @@ public class TurnPriorityManagerTest {
 		PlayerManager pmgr=new PlayerManager();
 		TurnPriorityManager manager=new TurnPriorityManager();
 		manager.setPlayerManager(pmgr);
-		manager.getPlayerManager();
-		assertEquals(pmgr,manager);
+		assertEquals(pmgr,manager.getPlayerManager());
 		
 	}
 	

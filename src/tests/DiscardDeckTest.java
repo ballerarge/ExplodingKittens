@@ -10,6 +10,7 @@ import org.junit.Test;
 import code.Card;
 import code.DiscardDeck;
 import code.NormalCard;
+import code.SkipCard;
 
 public class DiscardDeckTest {
 
@@ -89,6 +90,23 @@ public class DiscardDeckTest {
 		
 		assertEquals(firstCard, ret);
 		assertEquals(0, discDeck.getCardCount());
+		DiscardDeck.tearDown();
+	}
+	
+	@Test
+	public void testRemoveFromMultiCardTypes() {
+		DiscardDeck.tearDown();
+		DiscardDeck discDeck = DiscardDeck.getInstance();
+		Card firstCard = new NormalCard();
+		Card secondCard = new SkipCard();
+		discDeck.getCards().add(firstCard);
+		discDeck.getCards().add(secondCard);
+		
+		Card ret = discDeck.removeCard(NormalCard.class);
+		
+		assertEquals(firstCard, ret);
+		assertEquals(1, discDeck.getCardCount());
+		DiscardDeck.tearDown();
 	}
 
 }

@@ -88,7 +88,7 @@ public class DiscardDeckTest {
 		
 		Card ret = discDeck.removeCard(NormalCard.class);
 		
-		assertEquals(firstCard, ret);
+		assertEquals(firstCard.getClass(), ret.getClass());
 		assertEquals(0, discDeck.getCardCount());
 		DiscardDeck.tearDown();
 	}
@@ -104,7 +104,7 @@ public class DiscardDeckTest {
 		
 		Card ret = discDeck.removeCard(NormalCard.class);
 		
-		assertEquals(firstCard, ret);
+		assertEquals(firstCard.getClass(), ret.getClass());
 		assertEquals(1, discDeck.getCardCount());
 		DiscardDeck.tearDown();
 	}
@@ -120,9 +120,24 @@ public class DiscardDeckTest {
 		
 		Card ret = discDeck.removeCard(SkipCard.class);
 		
-		assertEquals(secondCard, ret);
+		assertEquals(secondCard.getClass(), ret.getClass());
 		assertEquals(1, discDeck.getCardCount());
 		DiscardDeck.tearDown();
 	}
-
+	
+	@Test
+	public void testRemoveFromDuplicates() {
+		DiscardDeck.tearDown();
+		DiscardDeck discDeck = DiscardDeck.getInstance();
+		Card firstCard = new NormalCard();
+		Card secondCard = new NormalCard();
+		discDeck.getCards().add(firstCard);
+		discDeck.getCards().add(secondCard);
+		
+		Card ret = discDeck.removeCard(NormalCard.class);
+		
+		assertEquals(secondCard.getClass(), ret.getClass());
+		assertEquals(1, discDeck.getCardCount());
+		DiscardDeck.tearDown();
+	}
 }

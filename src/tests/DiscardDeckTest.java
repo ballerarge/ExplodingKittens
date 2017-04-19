@@ -27,5 +27,15 @@ public class DiscardDeckTest {
 		
 		assertNull(discDeck);
 	}
+	
+	@Test
+	public void testGetCards() {
+		List<Card> cards = new ArrayList<Card>();
+		DiscardDeck.tearDown();
+		DiscardDeck discDeck = DiscardDeck.getInstance();
+		
+		assertEquals(cards, discDeck.getCards());
+		DiscardDeck.tearDown();
+	}
 
 }

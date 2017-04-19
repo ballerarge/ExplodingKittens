@@ -1,5 +1,5 @@
 
-package code;
+package exceptions;
 
 public class NoCardsToMoveException extends Exception {
 

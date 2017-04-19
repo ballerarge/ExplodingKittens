@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 import gui.MainWindow;
+import exceptions.InvalidNumberofPlayersException;
 
 public class GameController {
 

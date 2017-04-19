@@ -5,10 +5,10 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import code.CardDoesNotExistException;
-import code.HandManager;
+import code.Hand;
 import code.MainDeck;
-import code.NoCardsToMoveException;
+import exceptions.CardDoesNotExistException;
+import exceptions.NoCardsToMoveException;
 
 public class HandManagerTest {
 
@@ -16,12 +16,12 @@ public class HandManagerTest {
 
 	@Test
 	public void testHandManagerCreation() {
-		HandManager handMng = new HandManager();
+		Hand handMng = new Hand();
 	}
 
 	@Test
 	public void testDrawFromMainDeck() {
-		HandManager handMng = new HandManager();
+		Hand handMng = new Hand();
 
 		handMng.draw();
 
@@ -31,7 +31,7 @@ public class HandManagerTest {
 
 	@Test
 	public void testSelectCard() throws CardDoesNotExistException {
-		HandManager handMng = new HandManager();
+		Hand handMng = new Hand();
 
 		handMng.draw();
 
@@ -46,14 +46,14 @@ public class HandManagerTest {
 
 	@Test(expected = CardDoesNotExistException.class)
 	public void testSelectCardException() throws CardDoesNotExistException {
-		HandManager handMng = new HandManager();
+		Hand handMng = new Hand();
 
 		handMng.selectCard(0);
 	}
 
 	@Test
 	public void testMoveSelectedToStack() throws CardDoesNotExistException, NoCardsToMoveException {
-		HandManager handMng = new HandManager();
+		Hand handMng = new Hand();
 
 		handMng.draw();
 		handMng.selectCard(0);
@@ -65,7 +65,7 @@ public class HandManagerTest {
 
 	@Test(expected = NoCardsToMoveException.class)
 	public void testMoveSelectedToStackException() throws NoCardsToMoveException {
-		HandManager handMng = new HandManager();;
+		Hand handMng = new Hand();;
 
 		handMng.moveSelectedToStack();
 	}

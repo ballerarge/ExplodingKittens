@@ -202,4 +202,15 @@ public class DiscardDeckTest {
 		DiscardDeck.tearDown();
 	}
 	
+	@Test
+	public void testRemoveAllFromEmptyDeck() {
+		DiscardDeck.tearDown();
+		DiscardDeck discDeck = DiscardDeck.getInstance();
+		
+		discDeck.removeAllCards();
+		
+		assertEquals(0, discDeck.getCardCount());
+		DiscardDeck.tearDown();
+	}
+	
 }

@@ -41,7 +41,7 @@ public class DiscardDeckTest {
 		DiscardDeck discDeck = DiscardDeck.getInstance();
 		
 		cards.add(firstCard);
-		discDeck.getCards().add(firstCard);
+		discDeck.addCard(firstCard);
 		
 		assertEquals(cards, discDeck.getCards());
 		DiscardDeck.tearDown();
@@ -61,7 +61,7 @@ public class DiscardDeckTest {
 	public void testGetCardCountOneElement() {
 		DiscardDeck.tearDown();
 		DiscardDeck discDeck = DiscardDeck.getInstance();
-		discDeck.getCards().add(new NormalCard());
+		discDeck.addCard(new NormalCard());
 		
 		assertEquals(1, discDeck.getCardCount());
 		DiscardDeck.tearDown();
@@ -74,8 +74,8 @@ public class DiscardDeckTest {
 		Card secondCard = new NormalCard();
 		
 		DiscardDeck discDeck = DiscardDeck.getInstance();
-		discDeck.getCards().add(firstCard);
-		discDeck.getCards().add(secondCard);
+		discDeck.addCard(firstCard);
+		discDeck.addCard(secondCard);
 		
 		assertEquals(2, discDeck.getCardCount());
 		DiscardDeck.tearDown();
@@ -86,7 +86,7 @@ public class DiscardDeckTest {
 		DiscardDeck.tearDown();
 		DiscardDeck discDeck = DiscardDeck.getInstance();
 		Card firstCard = new NormalCard();
-		discDeck.getCards().add(firstCard);
+		discDeck.addCard(firstCard);
 		
 		Card ret = discDeck.removeCard(NormalCard.class);
 		
@@ -101,8 +101,8 @@ public class DiscardDeckTest {
 		DiscardDeck discDeck = DiscardDeck.getInstance();
 		Card firstCard = new NormalCard();
 		Card secondCard = new SkipCard();
-		discDeck.getCards().add(firstCard);
-		discDeck.getCards().add(secondCard);
+		discDeck.addCard(firstCard);
+		discDeck.addCard(secondCard);
 		
 		Card ret = discDeck.removeCard(NormalCard.class);
 		
@@ -117,8 +117,8 @@ public class DiscardDeckTest {
 		DiscardDeck discDeck = DiscardDeck.getInstance();
 		Card firstCard = new NormalCard();
 		Card secondCard = new SkipCard();
-		discDeck.getCards().add(firstCard);
-		discDeck.getCards().add(secondCard);
+		discDeck.addCard(firstCard);
+		discDeck.addCard(secondCard);
 		
 		Card ret = discDeck.removeCard(SkipCard.class);
 		
@@ -133,8 +133,8 @@ public class DiscardDeckTest {
 		DiscardDeck discDeck = DiscardDeck.getInstance();
 		Card firstCard = new NormalCard();
 		Card secondCard = new NormalCard();
-		discDeck.getCards().add(firstCard);
-		discDeck.getCards().add(secondCard);
+		discDeck.addCard(firstCard);
+		discDeck.addCard(secondCard);
 		
 		Card ret = discDeck.removeCard(NormalCard.class);
 		
@@ -157,7 +157,7 @@ public class DiscardDeckTest {
 		DiscardDeck.tearDown();
 		DiscardDeck discDeck = DiscardDeck.getInstance();
 		Card firstCard = new NormalCard();
-		discDeck.getCards().add(firstCard);
+		discDeck.addCard(firstCard);
 		
 		Card ret = discDeck.removeCard(SkipCard.class);
 		DiscardDeck.tearDown();

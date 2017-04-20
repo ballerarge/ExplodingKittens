@@ -148,6 +148,18 @@ public class DiscardDeckTest {
 		DiscardDeck discDeck = DiscardDeck.getInstance();
 		
 		Card ret = discDeck.removeCard(NormalCard.class);
+		DiscardDeck.tearDown();
+	}
+	
+	@Test(expected = CardNotInDiscardDeckException.class)
+	public void testRemoveCardNotFound() {
+		DiscardDeck.tearDown();
+		DiscardDeck discDeck = DiscardDeck.getInstance();
+		Card firstCard = new NormalCard();
+		discDeck.getCards().add(firstCard);
+		
+		Card ret = discDeck.removeCard(SkipCard.class);
+		DiscardDeck.tearDown();
 	}
 	
 }

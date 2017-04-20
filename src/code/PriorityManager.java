@@ -51,4 +51,8 @@ public class PriorityManager {
 	public int getPlayerCount() {
 		return this.playerList.size();
 	}
+
+	public void nextPlayer() {
+		this.activePlayer = this.playerList.get((this.playerList.indexOf(getActivePlayer()) + 1) % getPlayerCount());
+	}
 }

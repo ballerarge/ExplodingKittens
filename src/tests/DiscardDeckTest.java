@@ -11,6 +11,7 @@ import code.Card;
 import code.DiscardDeck;
 import code.NormalCard;
 import code.SkipCard;
+import exceptions.CardNotInDiscardDeckException;
 import exceptions.EmptyDiscardDeckException;
 
 public class DiscardDeckTest {
@@ -160,6 +161,17 @@ public class DiscardDeckTest {
 		
 		Card ret = discDeck.removeCard(SkipCard.class);
 		DiscardDeck.tearDown();
+	}
+	
+	@Test
+	public void testAddCard() {
+		DiscardDeck.tearDown();
+		DiscardDeck discDeck = DiscardDeck.getInstance();
+		
+		discDeck.addCard(new NormalCard());
+		
+		assertEquals(1, discDeck.getCardCount());
+		assertEquals(NormalCard.class, discDeck.getCards().get(0).getClass());
 	}
 	
 }

@@ -1,7 +1,10 @@
 
 package tests;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -32,12 +35,31 @@ public class PriorityManagerTest {
 	}
 
 	@Test
+	public void testRemovePlayerNotInPlayerList() throws NoSuchPlayerException {
+		PriorityManager pm = PriorityManager.getInstance();
+
+		exception.expect(NoSuchPlayerException.class);
+
+		List<Player> players = new ArrayList<Player>();
+		players.add(new Player("Player 1"));
+		players.add(new Player("Player 2"));
+
+		pm.removePlayer(new Player("Player 3"));
+
+		PriorityManager.tearDown();
+	}
+
+	@Test
 	public void getActivePlayer() {
 		PriorityManager pm = PriorityManager.getInstance();
 
-		pm.addPlayers(new ArrayList<Player>(new Player("Player 1"), new Player("Player 2")));
+		List<Player> players = new ArrayList<Player>();
+		players.add(new Player("Player 1"));
+		players.add(new Player("Player 2"));
 
-		pm.getActivePlayer();
+		pm.addPlayers(players);
+
+		assertEquals("Player 1", pm.getActivePlayer().getName());
 
 		PriorityManager.tearDown();
 	}

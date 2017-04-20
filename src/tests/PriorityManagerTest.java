@@ -17,5 +17,14 @@ public class PriorityManagerTest {
 	public void testPriorityManagerInstanceGet() {
 		PriorityManager pm = PriorityManager.getInstance();
 	}
+	
+	@Test
+	public void testRemovePlayerFromEmptyPlayerList() {
+		PriorityManager pm = PriorityManager.getInstance();
+		
+		pm.removePlayer(new Player("Player 1"));
+		
+		PriorityManager.tearDown();
+	}
 
 }

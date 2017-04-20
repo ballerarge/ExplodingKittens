@@ -11,6 +11,7 @@ import code.Card;
 import code.DiscardDeck;
 import code.NormalCard;
 import code.SkipCard;
+import exceptions.EmptyDiscardDeckException;
 
 public class DiscardDeckTest {
 
@@ -141,7 +142,7 @@ public class DiscardDeckTest {
 		DiscardDeck.tearDown();
 	}
 	
-	@Test(expected = EmptyDrawDeckException.class)
+	@Test(expected = EmptyDiscardDeckException.class)
 	public void testRemoveFromEmpty() {
 		DiscardDeck.tearDown();
 		DiscardDeck discDeck = DiscardDeck.getInstance();

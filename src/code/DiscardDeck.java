@@ -2,6 +2,8 @@ package code;
 
 import java.util.List;
 
+import exceptions.EmptyDiscardDeckException;
+
 public class DiscardDeck {
 
 	private static DiscardDeck discardDeck;
@@ -35,6 +37,9 @@ public class DiscardDeck {
 
 	public Card removeCard(Class<?> cardType) {
 		Card retCard = null;
+		if (discardDeck.getCardCount() == 0) {
+			throw new EmptyDiscardDeckException("Discard Deck is empty");
+		}
 		for (Card card : discardDeck.getCards()) {
 			if (card.getClass().equals(cardType)) {
 				retCard = card;

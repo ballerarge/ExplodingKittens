@@ -100,4 +100,26 @@ public class PriorityManagerTest {
 		PriorityManager.tearDown();
 	}
 
+	@Test
+	public void testNextPlayer() {
+		PriorityManager pm = PriorityManager.getInstance();
+
+		List<Player> players = new ArrayList<Player>();
+		players.add(new Player("Player 1"));
+		players.add(new Player("Player 2"));
+
+		pm.addPlayers(players);
+
+		assertEquals("Player 1", pm.getActivePlayer().getName());
+
+		pm.nextPlayer();
+
+		assertEquals("Player 2", pm.getActivePlayer().getName());
+
+		pm.nextPlayer();
+
+		assertEquals("Player 1", pm.getActivePlayer().getName());
+
+		PriorityManager.tearDown();
+	}
 }

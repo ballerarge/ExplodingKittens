@@ -174,4 +174,15 @@ public class DiscardDeckTest {
 		assertEquals(NormalCard.class, discDeck.getCards().get(0).getClass());
 	}
 	
+	@Test
+	public void testAddNonNormalCard() {
+		DiscardDeck.tearDown();
+		DiscardDeck discDeck = DiscardDeck.getInstance();
+		
+		discDeck.addCard(new SkipCard());
+		
+		assertEquals(1, discDeck.getCardCount());
+		assertEquals(SkipCard.class, discDeck.getCards().get(0).getClass());
+	}
+	
 }

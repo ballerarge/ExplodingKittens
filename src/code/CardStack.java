@@ -4,16 +4,32 @@ package code;
 import java.util.List;
 import java.util.Stack;
 
-public interface CardStack {
+public class CardStack {
 
-	public void moveCardsToStack(List<Card> cardsToMove);
+	private static CardStack cardStack;
 
-	public Stack<Card> getStack();
+	public static CardStack getInstance() {
+		if (cardStack == null) {
+			cardStack = new CardStack();
+		}
+		return cardStack;
+	}
 
-	public Card peek();
+	public void moveCardsToStack(List<Card> cardsToMove) {
+	}
 
-	public void resolveTopCard();
+	public Stack<Card> getStack() {
+		return null;
+	}
 
-	public void moveCardToDiscardDeck();
+	public Card peek() {
+		return null;
+	}
+
+	public void resolveTopCard() {
+	}
+
+	public void moveCardToDiscardDeck() {
+	}
 
 }

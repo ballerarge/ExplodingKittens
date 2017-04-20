@@ -14,7 +14,7 @@ import code.TurnManager;
 import code.TurnPriorityManager;
 
 public class TurnManagerTest {
-	
+
 	@Test
 	public void testConstruction() {
 		TurnManager manager = new TurnManager();
@@ -32,15 +32,15 @@ public class TurnManagerTest {
 	@Test
 	public void testHandlesPlayers() {
 
-		ArrayList<Player> players=new ArrayList<>();
+		ArrayList<Player> players = new ArrayList<>();
 		players.add(new Player("Adam"));
 		players.add(new Player("Bob"));
 		players.add(new Player("Charlie"));
-		
+
 		PlayerManager pmgr = new PlayerManager();
-		pmgr.players=players;
+		pmgr.players = players;
 		TurnManager manager = new TurnManager();
 		manager.setPlayerManager(pmgr);
-		assertEquals("Adam",manager.getCurrentPlayer());
+		assertEquals("Adam", manager.getCurrentPlayer().getName());
 	}
 }

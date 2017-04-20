@@ -52,7 +52,7 @@ public class DiscardDeck {
 		throw new CardNotInDiscardDeckException(cardType.getName() + " is not in discard pile");
 	}
 
-	public void addCard(NormalCard card) {
+	public void addCard(Card card) {
 		discardDeck.deck.addCard(card, 0);		
 	}
 

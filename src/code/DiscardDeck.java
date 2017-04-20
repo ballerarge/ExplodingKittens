@@ -56,4 +56,8 @@ public class DiscardDeck {
 		discardDeck.deck.addCard(card, 0);		
 	}
 
+	public void removeAllCards() {
+		discardDeck.deck = new Deck();
+	}
+
 }

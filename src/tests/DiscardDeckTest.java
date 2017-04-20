@@ -172,6 +172,7 @@ public class DiscardDeckTest {
 		
 		assertEquals(1, discDeck.getCardCount());
 		assertEquals(NormalCard.class, discDeck.getCards().get(0).getClass());
+		DiscardDeck.tearDown();
 	}
 	
 	@Test
@@ -183,6 +184,22 @@ public class DiscardDeckTest {
 		
 		assertEquals(1, discDeck.getCardCount());
 		assertEquals(SkipCard.class, discDeck.getCards().get(0).getClass());
+		DiscardDeck.tearDown();
+	}
+	
+	@Test
+	public void testRemoveAllCards() {
+		DiscardDeck.tearDown();
+		DiscardDeck discDeck = DiscardDeck.getInstance();
+		
+		discDeck.addCard(new SkipCard());
+		discDeck.addCard(new SkipCard());
+		discDeck.addCard(new SkipCard());
+		discDeck.addCard(new SkipCard());
+		discDeck.removeAllCards();
+		
+		assertEquals(0, discDeck.getCardCount());
+		DiscardDeck.tearDown();
 	}
 	
 }

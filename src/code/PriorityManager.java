@@ -24,6 +24,9 @@ public class PriorityManager {
 
 	public void removePlayer(Player player) throws NoSuchPlayerException {
 		if (this.playerList.contains(player)) {
+			if (this.activePlayer.equals(player)) {
+				this.activePlayer = this.playerList.get((this.playerList.indexOf(player) + 1) % getPlayerCount());
+			}
 			this.playerList.remove(player);
 		} else {
 			throw new NoSuchPlayerException();
@@ -31,12 +34,10 @@ public class PriorityManager {
 	}
 
 	public static void tearDown() {
-		// TODO Auto-generated method stub
-
+		PriorityManager.priorityManager = null;
 	}
 
 	public void addPlayers(List<Player> players) {
-		// TODO Auto-generated method stub
 		this.playerList.addAll(players);
 		if (this.activePlayer == null) {
 			this.activePlayer = this.playerList.get(0);
@@ -44,7 +45,10 @@ public class PriorityManager {
 	}
 
 	public Player getActivePlayer() {
-		// TODO Auto-generated method stub
 		return this.activePlayer;
+	}
+
+	public int getPlayerCount() {
+		return this.playerList.size();
 	}
 }

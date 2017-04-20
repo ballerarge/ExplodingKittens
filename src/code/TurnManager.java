@@ -25,4 +25,22 @@ public class TurnManager {
 		return turnOrder.get(0);
 	}
 
+	public void endTurnAndDraw() {
+		Player player = turnOrder.remove(0);
+		if (!turnOrder.get(turnOrder.size() - 1).equals(player))// Don't
+		                                                        // circulate
+		                                                        // turns from
+		                                                        // attacks
+			turnOrder.add(player);
+		player.drawCard();
+	}
+
+	public void endTurnWithoutDraw() {
+		Player player = turnOrder.remove(0);
+		if (!turnOrder.get(turnOrder.size() - 1).equals(player))// Don't
+		                                                        // circulate
+		                                                        // turns from
+		                                                        // attacks
+			turnOrder.add(player);
+	}
 }

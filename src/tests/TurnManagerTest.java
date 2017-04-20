@@ -36,11 +36,13 @@ public class TurnManagerTest {
 		players.add(new Player("Adam"));
 		players.add(new Player("Bob"));
 		players.add(new Player("Charlie"));
-
 		PlayerManager pmgr = new PlayerManager();
 		pmgr.players = players;
 		TurnManager manager = new TurnManager();
 		manager.setPlayerManager(pmgr);
+		
 		assertEquals("Adam", manager.getCurrentPlayer().getName());
 	}
+	
+	
 }

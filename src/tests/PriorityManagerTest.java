@@ -56,6 +56,8 @@ public class PriorityManagerTest {
 		List<Player> players = new ArrayList<Player>();
 		players.add(new Player("Player 1"));
 		players.add(new Player("Player 2"));
+		
+		pm.addPlayers(players);
 
 		pm.removePlayer(pm.getActivePlayer());
 

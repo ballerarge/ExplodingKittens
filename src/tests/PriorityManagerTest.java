@@ -50,6 +50,22 @@ public class PriorityManagerTest {
 	}
 
 	@Test
+	public void testRemoveActivePlayerFromPlayerList() throws NoSuchPlayerException {
+		PriorityManager pm = PriorityManager.getInstance();
+
+		List<Player> players = new ArrayList<Player>();
+		players.add(new Player("Player 1"));
+		players.add(new Player("Player 2"));
+
+		pm.removePlayer(pm.getActivePlayer());
+
+		assertEquals("Player 2", pm.getActivePlayer().getName());
+		assertEquals(1, pm.getPlayerCount());
+
+		PriorityManager.tearDown();
+	}
+
+	@Test
 	public void getActivePlayer() {
 		PriorityManager pm = PriorityManager.getInstance();
 

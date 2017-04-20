@@ -2,6 +2,7 @@ package code;
 
 import java.util.List;
 
+import exceptions.CardNotInDiscardDeckException;
 import exceptions.EmptyDiscardDeckException;
 
 public class DiscardDeck {
@@ -48,7 +49,7 @@ public class DiscardDeck {
 			}
 		}
 		
-		return retCard;
+		throw new CardNotInDiscardDeckException(cardType.getName() + " is not in discard pile");
 	}
 
 }

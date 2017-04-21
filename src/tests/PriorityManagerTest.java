@@ -10,9 +10,12 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import code.CardStack;
 import code.Player;
 import code.PriorityManager;
 import exceptions.NoSuchPlayerException;
+
+import org.easymock.EasyMock;
 
 public class PriorityManagerTest {
 	@Rule
@@ -119,6 +122,26 @@ public class PriorityManagerTest {
 		pm.nextPlayer();
 
 		assertEquals("Player 1", pm.getActivePlayer().getName());
+
+		PriorityManager.tearDown();
+	}
+	
+	@Test
+	public void testResolveCard() {
+		PriorityManager pm = PriorityManager.getInstance();
+		
+		List<Player> players = new ArrayList<Player>();
+		players.add(new Player("Player 1"));
+		players.add(new Player("Player 2"));
+		players.add(new Player("Player 3"));
+		players.add(new Player("Player 4"));
+		
+		CardStack cardStack = EasyMock.mock(CardStack.class);
+		
+		// Record
+		EasyMock.expect(CardStack.getInstance()).andReturn(cardStack);
+		
+		pm.resolveCard();
 
 		PriorityManager.tearDown();
 	}

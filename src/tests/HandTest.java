@@ -10,7 +10,7 @@ import code.MainDeck;
 import exceptions.IncorrectNumberOfCardsException;
 import exceptions.NoCardsToMoveException;
 
-public class HandManagerTest {
+public class HandTest {
 
 	private MainDeck mainDeck;
 
@@ -60,7 +60,7 @@ public class HandManagerTest {
 
 		handMng.moveSelectedToStack();
 
-		assertEquals(0, handMng.getSelectedCards().size());
+		assertEquals(1, handMng.getSelectedCards().size());
 	}
 
 	@Test(expected = NoCardsToMoveException.class)

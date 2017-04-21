@@ -12,7 +12,7 @@ public class Hand {
 	private List<Card> hand = new ArrayList<Card>();
 	private List<Card> selectedCards = new ArrayList<Card>();
 	private MainDeck mainDeck = MainDeck.getInstance();
-	private CardStack cardStack = new CardStack();
+	private CardStack cardStack = CardStack.getInstance();
 
 	public Hand() {
 		this.mainDeck.initStartingDeck();

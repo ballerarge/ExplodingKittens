@@ -131,20 +131,20 @@ public class PriorityManagerTest {
 	public void testResolveCard() {
 		CardFactory cf = new CardFactory();
 		PriorityManager pm = PriorityManager.getInstance();
-		
+
 		List<Player> players = new ArrayList<Player>();
 		players.add(new Player("Player 1"));
 		players.add(new Player("Player 2"));
 		players.add(new Player("Player 3"));
 		players.add(new Player("Player 4"));
-		
+
 		pm.addPlayers(players);
-		
+
 		CardStack.getInstance().addCard(cf.createCard(CardFactory.NORMAL_CARD));
 		assertEquals(1, CardStack.getInstance().getStack().size());
-		
+
 		pm.resolveCard();
-		
+
 		assertEquals(0, CardStack.getInstance().getStack().size());
 
 		PriorityManager.tearDown();

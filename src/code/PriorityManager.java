@@ -55,4 +55,16 @@ public class PriorityManager {
 	public void nextPlayer() {
 		this.activePlayer = this.playerList.get((this.playerList.indexOf(getActivePlayer()) + 1) % getPlayerCount());
 	}
+
+	public void resolveCard() {
+		Player startingPlayer = getActivePlayer();
+
+		nextPlayer();
+
+		while (!startingPlayer.equals(getActivePlayer())) {
+			nextPlayer();
+		}
+
+		CardStack.getInstance().resolveTopCard();
+	}
 }

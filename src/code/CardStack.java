@@ -7,6 +7,11 @@ import java.util.Stack;
 public class CardStack {
 
 	private static CardStack cardStack;
+	private Stack<Card> stack;
+	
+	private CardStack() {
+		this.stack = new Stack<Card>();
+	}
 
 	public static CardStack getInstance() {
 		if (cardStack == null) {
@@ -19,7 +24,11 @@ public class CardStack {
 	}
 
 	public Stack<Card> getStack() {
-		return null;
+		return this.stack;
+	}
+	
+	public void addCard(Card card) {
+		this.stack.add(card);
 	}
 
 	public Card peek() {
@@ -27,9 +36,15 @@ public class CardStack {
 	}
 
 	public void resolveTopCard() {
+		this.stack.pop().cardAction(null, null);
+		
 	}
 
 	public void moveCardToDiscardDeck() {
+	}
+
+	public static void tearDown() {
+		cardStack = null;
 	}
 
 }

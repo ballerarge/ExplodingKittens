@@ -10,6 +10,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import code.CardFactory;
 import code.CardStack;
 import code.Player;
 import code.PriorityManager;
@@ -125,9 +126,10 @@ public class PriorityManagerTest {
 
 		PriorityManager.tearDown();
 	}
-	
+
 	@Test
 	public void testResolveCard() {
+		CardFactory cf = new CardFactory();
 		PriorityManager pm = PriorityManager.getInstance();
 		
 		List<Player> players = new ArrayList<Player>();
@@ -136,13 +138,16 @@ public class PriorityManagerTest {
 		players.add(new Player("Player 3"));
 		players.add(new Player("Player 4"));
 		
-		CardStack cardStack = EasyMock.mock(CardStack.class);
+		pm.addPlayers(players);
 		
-		// Record
-		EasyMock.expect(CardStack.getInstance()).andReturn(cardStack);
+		CardStack.getInstance().addCard(cf.createCard(CardFactory.NORMAL_CARD));
+		assertEquals(1, CardStack.getInstance().getStack().size());
 		
 		pm.resolveCard();
+		
+		assertEquals(0, CardStack.getInstance().getStack().size());
 
 		PriorityManager.tearDown();
+		CardStack.tearDown();
 	}
 }

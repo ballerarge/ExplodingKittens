@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import gui.MainWindow;
 import exceptions.InvalidNumberofPlayersException;
 
 public class GameController {
@@ -13,6 +14,13 @@ public class GameController {
 		Scanner scanner = new Scanner(System.in);
 		Game game = new Game();
 
+		// Opens the gui
+		MainWindow window = new MainWindow();
+		window.open();
+		
+		// Gets the player names
+		List<Player> players = window.getPlayers();
+		
 		while (true) {
 			System.out.print("Insert number of players: ");
 			int numOfPlayers = scanner.nextInt();

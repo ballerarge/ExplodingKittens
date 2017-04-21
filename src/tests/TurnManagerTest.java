@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
+import org.easymock.EasyMock;
 
 import code.Player;
 import code.PlayerManager;
@@ -33,16 +34,24 @@ public class TurnManagerTest {
 	public void testHandlesPlayers() {
 
 		ArrayList<Player> players = new ArrayList<>();
-		players.add(new Player("Adam"));
-		players.add(new Player("Bob"));
-		players.add(new Player("Charlie"));
-		PlayerManager pmgr = new PlayerManager();
-		pmgr.players = players;
+		Player mockPlayer1 = EasyMock.mock(Player.class);
+		Player mockPlayer2 = EasyMock.mock(Player.class);
+		Player mockPlayer3 = EasyMock.mock(Player.class);
+		players.add(mockPlayer1);
+		players.add(mockPlayer2);
+		players.add(mockPlayer3);
+		PlayerManager mockPM = EasyMock.mock(PlayerManager.class);
 		TurnManager manager = new TurnManager();
-		manager.setPlayerManager(pmgr);
-		
-		assertEquals("Adam", manager.getCurrentPlayer().getName());
+
+		EasyMock.expect(mockPM.getPlayers()).andReturn(players);
+
+		EasyMock.replay(mockPM, mockPlayer1, mockPlayer2, mockPlayer3);
+
+		manager.setPlayerManager(mockPM);
+
+		EasyMock.verify(mockPM, mockPlayer1, mockPlayer2, mockPlayer3);
+
+		assertEquals(mockPlayer1, manager.getCurrentPlayer());
 	}
-	
-	
+
 }

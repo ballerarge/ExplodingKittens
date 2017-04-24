@@ -1,7 +1,7 @@
 
 package exceptions;
 
-public class NoCardsToMoveException extends Exception {
+public class NoCardsToMoveException extends RuntimeException {
 
 	public NoCardsToMoveException() {
 		super();

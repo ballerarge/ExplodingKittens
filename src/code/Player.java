@@ -35,5 +35,9 @@ public class Player {
 	public void drawCard() {
 		handManager.draw();
 	}
+	
+	public void addDefuseCardToHand() {
+		this.handManager.addDefuseCard();
+	}
 
 }

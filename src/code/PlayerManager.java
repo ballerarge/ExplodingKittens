@@ -35,7 +35,7 @@ public class PlayerManager {
 			for (int j = 0; j < INITIAL_HAND_NUMBER_OF_CARDS_TO_DRAW; j++) {
 				players.get(i).drawCard();
 			}
-			players.get(i).getHandManager().addDefuseCard();
+			players.get(i).addDefuseCardToHand();
 		}
 	}
 
@@ -43,6 +43,7 @@ public class PlayerManager {
 	public Map<Player, List<Card>> getHands() {
 		Map<Player, List<Card>> hands = new HashMap<Player, List<Card>>();
 		for (int a = 0; a < players.size(); a++)
+			
 			hands.put(players.get(a), players.get(a).getHand());
 		return hands;
 	}

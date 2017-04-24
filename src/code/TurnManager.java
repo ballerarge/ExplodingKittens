@@ -6,6 +6,7 @@ import java.util.List;
 
 public class TurnManager {
 
+	Player currentPlayer;
 	PlayerManager playerManager;
 	ArrayList<Player> turnOrder = new ArrayList<>();// current player is at
 	                                                // index 0
@@ -15,6 +16,7 @@ public class TurnManager {
 		List<Player> players = playerManager.getPlayers();
 		for (Player player : players)
 			turnOrder.add(player);
+		currentPlayer=turnOrder.get(0);
 	}
 
 	public PlayerManager getPlayerManager() {
@@ -22,7 +24,7 @@ public class TurnManager {
 	}
 
 	public Player getCurrentPlayer() {
-		return turnOrder.get(0);
+		return currentPlayer;
 	}
 
 	public void endTurnAndDraw() {
@@ -33,6 +35,7 @@ public class TurnManager {
 		                                                        // attacks
 			turnOrder.add(player);
 		player.drawCard();
+		currentPlayer = turnOrder.get(0);
 	}
 
 	public void endTurnWithoutDraw() {
@@ -42,5 +45,6 @@ public class TurnManager {
 		                                                        // turns from
 		                                                        // attacks
 			turnOrder.add(player);
+		currentPlayer = turnOrder.get(0);
 	}
 }

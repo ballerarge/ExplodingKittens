@@ -13,6 +13,7 @@ import code.Player;
 import code.PlayerManager;
 import code.TurnManager;
 import code.TurnPriorityManager;
+import exceptions.InvalidNumberofPlayersException;
 
 public class TurnManagerTest {
 
@@ -24,10 +25,15 @@ public class TurnManagerTest {
 	@Test
 	public void testHandlesPlayerManager() {
 
-		PlayerManager pmgr = new PlayerManager();
+		PlayerManager pmgr = EasyMock.mock(PlayerManager.class);
+		List<Player> players = new ArrayList<>();
+		players.add(new Player());
+		EasyMock.expect(pmgr.getPlayers()).andReturn(players);
+		EasyMock.replay(pmgr);
 		TurnManager manager = new TurnManager();
 		manager.setPlayerManager(pmgr);
 		assertEquals(pmgr, manager.getPlayerManager());
+		EasyMock.verify(pmgr);
 	}
 
 	@Test
@@ -80,7 +86,7 @@ public class TurnManagerTest {
 
 		EasyMock.verify(mockPM, mockPlayer1, mockPlayer2, mockPlayer3);
 	}
-	
+
 	@Test
 	public void testEndTurnAndDraw() {
 		ArrayList<Player> players = new ArrayList<>();
@@ -97,7 +103,7 @@ public class TurnManagerTest {
 		mockPlayer1.drawCard();
 		mockPlayer2.drawCard();
 		mockPlayer3.drawCard();
-		
+
 		EasyMock.replay(mockPM, mockPlayer1, mockPlayer2, mockPlayer3);
 
 		manager.setPlayerManager(mockPM);

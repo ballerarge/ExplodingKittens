@@ -17,6 +17,7 @@ public class DeckTest {
 	@Test
 	public void testDeckConstructor() {
 		Deck deck = new Deck();
+		assertTrue(deck instanceof Deck);
 	}
 
 	@Test

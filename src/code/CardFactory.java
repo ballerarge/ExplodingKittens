@@ -4,6 +4,8 @@ package code;
 import java.util.ArrayList;
 import java.util.List;
 
+import exceptions.IncorrectNumberOfCardsException;
+
 public class CardFactory {
 	public static final int NORMAL_CARD = 0;
 	public static final int NOPE_CARD = 1;
@@ -39,13 +41,14 @@ public class CardFactory {
 				return new ScryCard();
 			case FAVOR_CARD:
 				return new FavorCard();
+			default:
+				return new NormalCard();
 		}
-		return new NormalCard();
 	}
 
-	public List<Card> createCards(int cardID, int numCards) throws IncorrectNumberOfCards {
+	public List<Card> createCards(int cardID, int numCards) throws IncorrectNumberOfCardsException {
 		if (numCards <= 0) {
-			throw new IncorrectNumberOfCards();
+			throw new IncorrectNumberOfCardsException();
 		}
 
 		List<Card> cards = new ArrayList<Card>();

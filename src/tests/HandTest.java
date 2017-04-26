@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import code.CardStack;
 import code.Hand;
 import code.MainDeck;
 import exceptions.IncorrectNumberOfCardsException;
@@ -60,12 +61,12 @@ public class HandTest {
 
 		handMng.moveSelectedToStack();
 
-		assertEquals(1, handMng.getSelectedCards().size());
+		assertEquals(0, handMng.getSelectedCards().size());
 	}
 
 	@Test(expected = NoCardsToMoveException.class)
 	public void testMoveSelectedToStackException() throws NoCardsToMoveException {
-		Hand handMng = new Hand();;
+		Hand handMng = new Hand();
 
 		handMng.moveSelectedToStack();
 	}

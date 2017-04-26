@@ -12,8 +12,8 @@ import org.junit.rules.ExpectedException;
 
 import code.Card;
 import code.CardFactory;
-import code.IncorrectNumberOfCards;
 import code.Player;
+import exceptions.IncorrectNumberOfCardsException;
 
 public class CardFactoryTest {
 	@Rule
@@ -55,7 +55,7 @@ public class CardFactoryTest {
 	}
 
 	@Test
-	public void testCreateCardMultipleNormal() throws IncorrectNumberOfCards {
+	public void testCreateCardMultipleNormal() throws IncorrectNumberOfCardsException {
 		CardFactory cardFactory = new CardFactory();
 
 		List<Card> cards = cardFactory.createCards(CardFactory.NORMAL_CARD, 10);
@@ -67,10 +67,10 @@ public class CardFactoryTest {
 	}
 
 	@Test
-	public void testCreateCardNegativeMultiple() throws IncorrectNumberOfCards {
+	public void testCreateCardNegativeMultiple() throws IncorrectNumberOfCardsException {
 		CardFactory cardFactory = new CardFactory();
 
-		exception.expect(IncorrectNumberOfCards.class);
+		exception.expect(IncorrectNumberOfCardsException.class);
 
 		@SuppressWarnings("unused")
 		List<Card> cards = cardFactory.createCards(CardFactory.NORMAL_CARD, -1);
@@ -85,7 +85,7 @@ public class CardFactoryTest {
 	}
 
 	@Test
-	public void testCreateCardMultipleNope() throws IncorrectNumberOfCards {
+	public void testCreateCardMultipleNope() throws IncorrectNumberOfCardsException {
 		CardFactory cardFactory = new CardFactory();
 
 		List<Card> cards = cardFactory.createCards(CardFactory.NOPE_CARD, 10);
@@ -105,7 +105,7 @@ public class CardFactoryTest {
 	}
 
 	@Test
-	public void testCreateCardMultipleDefuse() throws IncorrectNumberOfCards {
+	public void testCreateCardMultipleDefuse() throws IncorrectNumberOfCardsException {
 		CardFactory cardFactory = new CardFactory();
 
 		List<Card> cards = cardFactory.createCards(CardFactory.DEFUSE_CARD, 10);
@@ -125,7 +125,7 @@ public class CardFactoryTest {
 	}
 
 	@Test
-	public void testCreateCardMultipleAttack() throws IncorrectNumberOfCards {
+	public void testCreateCardMultipleAttack() throws IncorrectNumberOfCardsException {
 		CardFactory cardFactory = new CardFactory();
 
 		List<Card> cards = cardFactory.createCards(CardFactory.ATTACK_CARD, 10);
@@ -145,7 +145,7 @@ public class CardFactoryTest {
 	}
 
 	@Test
-	public void testCreateCardMultipleSkip() throws IncorrectNumberOfCards {
+	public void testCreateCardMultipleSkip() throws IncorrectNumberOfCardsException {
 		CardFactory cardFactory = new CardFactory();
 
 		List<Card> cards = cardFactory.createCards(CardFactory.SKIP_CARD, 10);
@@ -165,7 +165,7 @@ public class CardFactoryTest {
 	}
 
 	@Test
-	public void testCreateCardMultipleExplodingKitten() throws IncorrectNumberOfCards {
+	public void testCreateCardMultipleExplodingKitten() throws IncorrectNumberOfCardsException {
 		CardFactory cardFactory = new CardFactory();
 
 		List<Card> cards = cardFactory.createCards(CardFactory.EXPLODING_KITTEN_CARD, 10);
@@ -185,7 +185,7 @@ public class CardFactoryTest {
 	}
 
 	@Test
-	public void testCreateCardMultipleShuffle() throws IncorrectNumberOfCards {
+	public void testCreateCardMultipleShuffle() throws IncorrectNumberOfCardsException {
 		CardFactory cardFactory = new CardFactory();
 
 		List<Card> cards = cardFactory.createCards(CardFactory.SHUFFLE_CARD, 10);
@@ -205,7 +205,7 @@ public class CardFactoryTest {
 	}
 
 	@Test
-	public void testCreateCardMultipleScry() throws IncorrectNumberOfCards {
+	public void testCreateCardMultipleScry() throws IncorrectNumberOfCardsException {
 		CardFactory cardFactory = new CardFactory();
 
 		List<Card> cards = cardFactory.createCards(CardFactory.SCRY_CARD, 10);
@@ -225,7 +225,7 @@ public class CardFactoryTest {
 	}
 
 	@Test
-	public void testCreateCardMultipleFavor() throws IncorrectNumberOfCards {
+	public void testCreateCardMultipleFavor() throws IncorrectNumberOfCardsException {
 		CardFactory cardFactory = new CardFactory();
 
 		List<Card> cards = cardFactory.createCards(CardFactory.FAVOR_CARD, 10);

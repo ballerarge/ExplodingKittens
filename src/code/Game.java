@@ -10,9 +10,10 @@ public class Game {
 
 	private PlayerManager playerManager;
 	private MainDeck mainDeck;
+	private TurnManager turnManager;
 
 	public Game() {
-		
+
 	}
 
 	public void start(int n) throws InvalidNumberofPlayersException {
@@ -27,6 +28,8 @@ public class Game {
 
 		mainDeck.populateDeck(n);
 
+		turnManager = new TurnManager();
+		turnManager.setPlayerManager(playerManager);
 	}
 
 	public Map<Player, List<Card>> getPlayerHands() {
@@ -39,6 +42,11 @@ public class Game {
 
 	public boolean isMainDeckEmpty() {
 		return (mainDeck.getCardCount() == 0);
+	}
+
+	public void nextTurn() {
+		turnManager.endTurnAndDraw();// Change later to allow for ending a turn
+		                             // without drawing.
 	}
 
 }

@@ -3,6 +3,7 @@ package tests;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
@@ -211,6 +212,22 @@ public class DiscardDeckTest {
 		
 		assertEquals(0, discDeck.getCardCount());
 		DiscardDeck.tearDown();
+	}
+	
+	@Test
+	public void testAddAll() {
+		DiscardDeck.tearDown();
+		DiscardDeck discDeck = DiscardDeck.getInstance();
+		Card firstCard = new NormalCard();
+		Card secondCard = new SkipCard();
+		ArrayList<Card> cardHolderForTesting = new ArrayList<>(Arrays.asList(firstCard, secondCard));
+		
+		discDeck.addAll(cardHolderForTesting);
+		List<Card> discPile = discDeck.getCards();
+		
+		for (int i = 0; i < cardHolderForTesting.size(); i++) {
+			assertEquals(discPile.get(i), cardHolderForTesting.get(i));
+		}
 	}
 	
 }

@@ -12,4 +12,9 @@ public class FavorCard extends Card {
 
 	}
 
+	@Override
+	public Card clone() {
+		return new FavorCard();
+	}
+
 }

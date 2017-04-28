@@ -10,4 +10,9 @@ public class DefuseCard extends Card {
 	public void cardAction(Player p1, Player p2) {
 
 	}
+
+	@Override
+	public DefuseCard clone() {
+		return new DefuseCard();
+	}
 }

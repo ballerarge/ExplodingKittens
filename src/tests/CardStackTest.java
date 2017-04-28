@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import code.Card;
 import code.CardStack;
+import code.DiscardDeck;
 import code.NormalCard;
 
 public class CardStackTest {
@@ -15,7 +16,7 @@ public class CardStackTest {
 	@Test
 	public void testCardstackConstructor() {
 		CardStack cardStack = CardStack.getInstance();
-		
+		assertEquals(cardStack, CardStack.getInstance());
 		CardStack.tearDown();
 	}
 	
@@ -24,6 +25,8 @@ public class CardStackTest {
 		CardStack cardStack = CardStack.getInstance();
 		
 		assertTrue(cardStack.getStack() instanceof Stack<?>);
+		
+		cardStack.tearDown();
 	}
 	
 	@Test
@@ -37,5 +40,22 @@ public class CardStackTest {
 		cardStack.setStack(testingStack);
 		
 		assertTrue(cardStack.peek() instanceof NormalCard);
+		
+		cardStack.tearDown();
+	}
+	
+	@Test
+	public void testMoveCardToDiscardDeck() {
+		CardStack cardStack = CardStack.getInstance();
+		DiscardDeck discardDeck = DiscardDeck.getInstance();
+		
+		cardStack.addCard(new NormalCard());
+		cardStack.moveCardsToDiscardDeck();
+		
+		assertTrue(cardStack.getStack().isEmpty());
+		assertEquals(discardDeck.getCardCount(), 1);
+		
+		cardStack.tearDown();
+		discardDeck.tearDown();
 	}
 }

@@ -7,6 +7,7 @@ import java.util.Stack;
 public class CardStack {
 
 	private static CardStack cardStack;
+	
 	private Stack<Card> stack;
 	
 	private CardStack() {
@@ -14,7 +15,7 @@ public class CardStack {
 	}
 	
 	MainDeck mainDeck = MainDeck.getInstance();	
-	// Instantiate DiscardDeck as part of integration testing.
+	DiscardDeck discardDeck = DiscardDeck.getInstance();
 	
 	public static CardStack getInstance() {
 		if (cardStack == null) {
@@ -29,17 +30,19 @@ public class CardStack {
 
 	public void resolveTopCard() {
 		this.stack.pop().cardAction(null, null);
-		
 	}
 
-	public void moveCardToDiscardDeck() {
+	public void moveCardsToDiscardDeck() {
 	    // Implement this as part of integration testing.
+		discardDeck.addAll(stack);
+		stack.clear();
 	}
 
 	public static void tearDown() {
 		cardStack = null;
 	}
 	
+	@SuppressWarnings("unchecked") // Cloning a stack will always return a stack.
 	public Stack<Card> getStack() {
 		return (Stack<Card>) stack.clone();
 	}
@@ -47,7 +50,7 @@ public class CardStack {
 	public Card peek() {
 		// Consider returning a clone or even just the card ID.
 		// Figure out in integration testing.
-		return stack.peek();
+		return stack.peek().clone();
 	}
 	
 	public void setStack(Stack<Card> stack) {

@@ -13,7 +13,7 @@ public class Game {
 	private PriorityManager priorityManager;
 
 	public Game() {
-		
+
 	}
 
 	public void start(int n) throws InvalidNumberofPlayersException {
@@ -31,6 +31,8 @@ public class Game {
 
 		mainDeck.populateDeck(n);
 
+		turnManager = new TurnManager();
+		turnManager.setPlayerManager(playerManager);
 	}
 
 	public Map<Player, List<Card>> getPlayerHands() {
@@ -48,4 +50,9 @@ public class Game {
 	// Add to the nextTurn method the passing of priority (change current
 	// player in priorityManager
 
-}
+	public void nextTurn() {
+		turnManager.endTurnAndDraw();// Change later to allow for ending a turn
+		                             // without drawing.
+	}
+
+}

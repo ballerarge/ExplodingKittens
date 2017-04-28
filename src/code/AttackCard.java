@@ -10,4 +10,9 @@ public class AttackCard extends Card {
 	public void cardAction(Player p1, Player p2) {
 
 	}
+
+	@Override
+	public Card clone() {
+		return new AttackCard();
+	}
 }

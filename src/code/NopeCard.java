@@ -12,4 +12,9 @@ public class NopeCard extends Card {
 
 	}
 
+	@Override
+	public NopeCard clone() {
+		return new NopeCard();
+	}
+
 }

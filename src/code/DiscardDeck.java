@@ -55,6 +55,10 @@ public class DiscardDeck {
 	public void addCard(Card card) {
 		discardDeck.deck.addCard(card, 0);		
 	}
+	
+	public void addAll(List<Card> cardsToAdd) {
+		deck.addAll(cardsToAdd);
+	}
 
 	public void removeAllCards() {
 		discardDeck.deck = new Deck();

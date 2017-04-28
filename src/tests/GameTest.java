@@ -12,6 +12,7 @@ import org.junit.Test;
 import code.Card;
 import code.Game;
 import code.Player;
+import code.PriorityManager;
 import exceptions.InvalidNumberofPlayersException;
 
 public class GameTest {
@@ -29,6 +30,21 @@ public class GameTest {
 		} catch (InvalidNumberofPlayersException e) {
 			fail("threw an InvalidNumberofPlayersException");
 		}
+	}
+	
+	@Test
+	public void testPriorityManagerPopulatedAfterStart() 
+			throws InvalidNumberofPlayersException {
+		PriorityManager.tearDown();
+		Game game = new Game();
+		try {
+			game.start(3);
+			
+			assertTrue(PriorityManager.getInstance().getActivePlayer() != null);
+		} catch (InvalidNumberofPlayersException e) {
+			fail("threw an InvalidNumberOfPlayersException");
+		}
+		PriorityManager.tearDown();
 	}
 
 	@Test

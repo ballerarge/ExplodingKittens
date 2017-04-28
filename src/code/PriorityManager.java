@@ -63,6 +63,12 @@ public class PriorityManager {
 
 		while (!startingPlayer.equals(getActivePlayer())) {
 			nextPlayer();
+			// Something else needs to happen here. Will probably be in the GUI
+			// where if a button is pressed, then this method will be called
+			// again. If not, there needs to be a method call here that waits
+			// for further input to be given from the GUI. It can't just loop
+			// through the players when called without giving them a chance
+			// to respond.
 		}
 
 		CardStack.getInstance().resolveTopCard();

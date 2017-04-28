@@ -81,5 +81,20 @@ public class GameTest {
 		game.start(3);
 		assertFalse(game.isMainDeckEmpty());
 	}
-
+	
+	@Test
+	public void testNextTurnDrawing()  throws InvalidNumberofPlayersException {
+		Game game = new Game();
+		game.start(3);
+		Map<Player, List<Card>> handsBefore=game.getPlayerHands();
+		int cardCountBefore=0;
+		for (Player player:handsBefore.keySet())
+			cardCountBefore+=handsBefore.get(player).size();
+		game.nextTurn();
+		int cardCountAfter=0;
+		Map<Player, List<Card>> handsAfter=game.getPlayerHands();
+		for (Player player:handsAfter.keySet())
+			cardCountAfter+=handsAfter.get(player).size();
+		assertEquals(cardCountBefore+1,cardCountAfter);
+	}
 }

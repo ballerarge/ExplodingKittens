@@ -140,6 +140,7 @@ public class PriorityManagerTest {
 
 		pm.addPlayers(players);
 
+		CardStack.tearDown();
 		CardStack.getInstance().addCard(cf.createCard(CardFactory.NORMAL_CARD));
 		assertEquals(1, CardStack.getInstance().getStack().size());
 

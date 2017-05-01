@@ -11,6 +11,7 @@ public class Game {
 	private PlayerManager playerManager;
 	private MainDeck mainDeck;
 	private PriorityManager priorityManager;
+	private TurnManager turnManager;
 
 	public Game() {
 

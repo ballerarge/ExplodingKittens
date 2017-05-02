@@ -18,8 +18,10 @@ public class Hand {
 		this.mainDeck.initStartingDeck();
 	}
 
-	public void draw() {
-		hand.add(mainDeck.draw());
+	public Card draw() {
+		Card ret = mainDeck.draw();
+		hand.add(ret);
+		return ret;
 	}
 
 	public List<Card> getHand() {

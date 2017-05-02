@@ -32,8 +32,8 @@ public class Player {
 		return handManager.getHand();
 	}
 
-	public void drawCard() {
-		handManager.draw();
+	public Card drawCard() {
+		return handManager.draw();
 	}
 	
 	public void addDefuseCardToHand() {

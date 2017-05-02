@@ -9,6 +9,7 @@ import java.util.List;
 import org.junit.Test;
 import org.easymock.EasyMock;
 
+import code.Card;
 import code.Player;
 import code.PlayerManager;
 import code.TurnManager;
@@ -101,6 +102,7 @@ public class TurnManagerTest {
 	public void testEndTurnAndDraw() {
 		TurnManager.tearDown();
 		ArrayList<Player> players = new ArrayList<>();
+		Card mockCard = EasyMock.mock(Card.class);
 		Player mockPlayer1 = EasyMock.mock(Player.class);
 		Player mockPlayer2 = EasyMock.mock(Player.class);
 		Player mockPlayer3 = EasyMock.mock(Player.class);
@@ -111,9 +113,9 @@ public class TurnManagerTest {
 		TurnManager manager = TurnManager.getInstance();
 
 		EasyMock.expect(mockPM.getPlayers()).andReturn(players);
-		mockPlayer1.drawCard();
-		mockPlayer2.drawCard();
-		mockPlayer3.drawCard();
+		EasyMock.expect(mockPlayer1.drawCard()).andReturn(mockCard);
+		EasyMock.expect(mockPlayer2.drawCard()).andReturn(mockCard);
+		EasyMock.expect(mockPlayer3.drawCard()).andReturn(mockCard);
 
 		EasyMock.replay(mockPM, mockPlayer1, mockPlayer2, mockPlayer3);
 

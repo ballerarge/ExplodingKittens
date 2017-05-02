@@ -8,7 +8,7 @@ public class AttackCard extends Card {
 
 	@Override
 	public void cardAction(Player p1, Player p2) {
-		TurnManager.getInstance().endTurnWithoutDraw();
+		TurnManager.getInstance().endTurnWithoutDrawForAttacks();
 		TurnManager.getInstance().addTurnForCurrentPlayer();
 	}
 

@@ -72,5 +72,25 @@ public class AttackCardTest {
 		game.nextTurn();
 		assertEquals(player2, game.getCurrentTurnPlayer());	
 	}
+	
+	@Test
+	public void testTurnsNotScrewyAfterAttack() {
+		Card attackCard = factory.createCard(CardFactory.ATTACK_CARD);
+		
+		stack.addCard(attackCard);
+		pManager.resolveCard();
+		
+		assertEquals(player2, game.getCurrentTurnPlayer());
+		game.nextTurn();
+		assertEquals(player2, game.getCurrentTurnPlayer());	
+		game.nextTurn();
+		assertEquals(player3, game.getCurrentTurnPlayer());
+		game.nextTurn();
+		assertEquals(player1, game.getCurrentTurnPlayer());
+		game.nextTurn();
+		assertEquals(player2, game.getCurrentTurnPlayer());
+		game.nextTurn();
+		assertEquals(player3, game.getCurrentTurnPlayer());
+	}
 
 }

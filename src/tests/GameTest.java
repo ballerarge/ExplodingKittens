@@ -113,4 +113,14 @@ public class GameTest {
 			cardCountAfter+=handsAfter.get(player).size();
 		assertEquals(cardCountBefore+1,cardCountAfter);
 	}
+	
+	@Test
+	public void testGetCurrentPlayer() throws InvalidNumberofPlayersException {
+		Game game = new Game();
+		game.start(3);
+		
+		Player player1 = game.getCurrentPlayer();
+		
+		assertTrue(player1 != null);
+	}
 }

@@ -3,18 +3,15 @@ package code;
 
 import java.util.List;
 import java.util.Map;
-
 import exceptions.InvalidNumberofPlayersException;
 
 public class Game {
-
 	private PlayerManager playerManager;
 	private MainDeck mainDeck;
 	private PriorityManager priorityManager;
 	private TurnManager turnManager;
 
 	public Game() {
-
 	}
 
 	public void start(int n) throws InvalidNumberofPlayersException {
@@ -23,16 +20,12 @@ public class Game {
 		MainDeck.tearDown();
 		mainDeck = MainDeck.getInstance();
 		mainDeck.initStartingDeck();
-
 		playerManager = new PlayerManager();
 		playerManager.addPlayers(n);
-		
 		priorityManager = PriorityManager.getInstance();
 		priorityManager.addPlayers(playerManager.getPlayers());
-
 		mainDeck.populateDeck(n);
-
-		turnManager = new TurnManager();
+		turnManager = TurnManager.getInstance();
 		turnManager.setPlayerManager(playerManager);
 	}
 
@@ -47,13 +40,18 @@ public class Game {
 	public boolean isMainDeckEmpty() {
 		return (mainDeck.getCardCount() == 0);
 	}
-	
-	// Add to the nextTurn method the passing of priority (change current
-	// player in priorityManager
 
 	public void nextTurn() {
 		turnManager.endTurnAndDraw();// Change later to allow for ending a turn
 		                             // without drawing.
+		priorityManager.nextPlayer();
 	}
 
-}
+	public Player getCurrentTurnPlayer() {
+		return turnManager.getCurrentPlayer();
+	}
+	
+	public List<Player> getPlayers() {
+		return playerManager.getPlayers();
+	}
+}

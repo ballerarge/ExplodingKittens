@@ -13,6 +13,7 @@ import code.Card;
 import code.Game;
 import code.Player;
 import code.PriorityManager;
+import code.TurnManager;
 import exceptions.InvalidNumberofPlayersException;
 
 public class GameTest {
@@ -100,6 +101,7 @@ public class GameTest {
 	
 	@Test
 	public void testNextTurnDrawing()  throws InvalidNumberofPlayersException {
+		TurnManager.tearDown();
 		Game game = new Game();
 		game.start(3);
 		Map<Player, List<Card>> handsBefore=game.getPlayerHands();

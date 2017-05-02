@@ -19,25 +19,30 @@ public class TurnManagerTest {
 
 	@Test
 	public void testConstruction() {
-		TurnManager manager = new TurnManager();
+		TurnManager.tearDown();
+		TurnManager manager = TurnManager.getInstance();
+		TurnManager.tearDown();
 	}
 
 	@Test
 	public void testHandlesPlayerManager() {
+		TurnManager.tearDown();
 
 		PlayerManager pmgr = EasyMock.mock(PlayerManager.class);
 		List<Player> players = new ArrayList<>();
 		players.add(new Player());
 		EasyMock.expect(pmgr.getPlayers()).andReturn(players);
 		EasyMock.replay(pmgr);
-		TurnManager manager = new TurnManager();
+		TurnManager manager = TurnManager.getInstance();
 		manager.setPlayerManager(pmgr);
 		assertEquals(pmgr, manager.getPlayerManager());
 		EasyMock.verify(pmgr);
+		TurnManager.tearDown();
 	}
 
 	@Test
 	public void testHandlesPlayers() {
+		TurnManager.tearDown();
 		ArrayList<Player> players = new ArrayList<>();
 		Player mockPlayer1 = EasyMock.mock(Player.class);
 		Player mockPlayer2 = EasyMock.mock(Player.class);
@@ -46,7 +51,7 @@ public class TurnManagerTest {
 		players.add(mockPlayer2);
 		players.add(mockPlayer3);
 		PlayerManager mockPM = EasyMock.mock(PlayerManager.class);
-		TurnManager manager = new TurnManager();
+		TurnManager manager = TurnManager.getInstance();
 
 		EasyMock.expect(mockPM.getPlayers()).andReturn(players);
 
@@ -57,10 +62,13 @@ public class TurnManagerTest {
 		EasyMock.verify(mockPM, mockPlayer1, mockPlayer2, mockPlayer3);
 
 		assertEquals(mockPlayer1, manager.getCurrentPlayer());
+		
+		TurnManager.tearDown();
 	}
 
 	@Test
 	public void testEndTurnWithoutDraw() {
+		TurnManager.tearDown();
 		ArrayList<Player> players = new ArrayList<>();
 		Player mockPlayer1 = EasyMock.mock(Player.class);
 		Player mockPlayer2 = EasyMock.mock(Player.class);
@@ -69,7 +77,7 @@ public class TurnManagerTest {
 		players.add(mockPlayer2);
 		players.add(mockPlayer3);
 		PlayerManager mockPM = EasyMock.mock(PlayerManager.class);
-		TurnManager manager = new TurnManager();
+		TurnManager manager = TurnManager.getInstance();
 
 		EasyMock.expect(mockPM.getPlayers()).andReturn(players);
 
@@ -85,10 +93,13 @@ public class TurnManagerTest {
 		assertEquals(mockPlayer1, manager.getCurrentPlayer());
 
 		EasyMock.verify(mockPM, mockPlayer1, mockPlayer2, mockPlayer3);
+		
+		TurnManager.tearDown();
 	}
 
 	@Test
 	public void testEndTurnAndDraw() {
+		TurnManager.tearDown();
 		ArrayList<Player> players = new ArrayList<>();
 		Player mockPlayer1 = EasyMock.mock(Player.class);
 		Player mockPlayer2 = EasyMock.mock(Player.class);
@@ -97,7 +108,7 @@ public class TurnManagerTest {
 		players.add(mockPlayer2);
 		players.add(mockPlayer3);
 		PlayerManager mockPM = EasyMock.mock(PlayerManager.class);
-		TurnManager manager = new TurnManager();
+		TurnManager manager = TurnManager.getInstance();
 
 		EasyMock.expect(mockPM.getPlayers()).andReturn(players);
 		mockPlayer1.drawCard();
@@ -116,5 +127,7 @@ public class TurnManagerTest {
 		assertEquals(mockPlayer1, manager.getCurrentPlayer());
 
 		EasyMock.verify(mockPM, mockPlayer1, mockPlayer2, mockPlayer3);
+		
+		TurnManager.tearDown();
 	}
 }

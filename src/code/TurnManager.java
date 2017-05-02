@@ -6,11 +6,27 @@ import java.util.List;
 
 public class TurnManager {
 
+	private static TurnManager turnManager;
 	Player currentPlayer;
 	PlayerManager playerManager;
 	ArrayList<Player> turnOrder = new ArrayList<>();// current player is at
 	                                                // index 0
 
+	public static TurnManager getInstance() {
+		if (turnManager == null) {
+			turnManager = new TurnManager();
+		}
+		return turnManager;
+	}
+	
+	public static void tearDown() {
+		turnManager = null;
+	}
+	
+	private TurnManager() {
+		
+	}
+	
 	public void setPlayerManager(PlayerManager pm) {
 		playerManager = pm;
 		List<Player> players = playerManager.getPlayers();

@@ -66,9 +66,11 @@ public class AttackCardTest {
 		Card attackCard = factory.createCard(CardFactory.ATTACK_CARD);
 		
 		stack.addCard(attackCard);
+		pManager.resolveCard();
 		
-		
-		
+		assertEquals(player2, game.getCurrentTurnPlayer());
+		game.nextTurn();
+		assertEquals(player2, game.getCurrentTurnPlayer());	
 	}
 
 }

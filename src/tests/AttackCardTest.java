@@ -1,3 +1,4 @@
+
 package tests;
 
 import static org.junit.Assert.*;
@@ -43,46 +44,46 @@ public class AttackCardTest {
 		player3 = game.getCurrentTurnPlayer();
 		game.nextTurn();
 	}
-	
+
 	@After
 	public void tearDown() {
 		TurnManager.tearDown();
 		PriorityManager.tearDown();
 		CardStack.tearDown();
 	}
-	
+
 	@Test
 	public void testAttackEndsTurn() {
 		Card attackCard = factory.createCard(CardFactory.ATTACK_CARD);
-		
+
 		stack.addCard(attackCard);
 		pManager.resolveCard();
-		
+
 		assertEquals(player2, game.getCurrentTurnPlayer());
 	}
-	
+
 	@Test
 	public void testNextPlayerHasTwoTurns() {
 		Card attackCard = factory.createCard(CardFactory.ATTACK_CARD);
-		
+
 		stack.addCard(attackCard);
 		pManager.resolveCard();
-		
+
 		assertEquals(player2, game.getCurrentTurnPlayer());
 		game.nextTurn();
-		assertEquals(player2, game.getCurrentTurnPlayer());	
+		assertEquals(player2, game.getCurrentTurnPlayer());
 	}
-	
+
 	@Test
 	public void testTurnsNotScrewyAfterAttack() {
 		Card attackCard = factory.createCard(CardFactory.ATTACK_CARD);
-		
+
 		stack.addCard(attackCard);
 		pManager.resolveCard();
-		
+
 		assertEquals(player2, game.getCurrentTurnPlayer());
 		game.nextTurn();
-		assertEquals(player2, game.getCurrentTurnPlayer());	
+		assertEquals(player2, game.getCurrentTurnPlayer());
 		game.nextTurn();
 		assertEquals(player3, game.getCurrentTurnPlayer());
 		game.nextTurn();
@@ -92,17 +93,17 @@ public class AttackCardTest {
 		game.nextTurn();
 		assertEquals(player3, game.getCurrentTurnPlayer());
 	}
-	
+
 	@Test
 	public void testAttackPlayedAfterAttack() {
 		Card attack1 = factory.createCard(CardFactory.ATTACK_CARD);
 		Card attack2 = factory.createCard(CardFactory.ATTACK_CARD);
-		
+
 		stack.addCard(attack1);
 		pManager.resolveCard();
 		stack.addCard(attack2);
 		pManager.resolveCard();
-		
+
 		assertEquals(player3, game.getCurrentTurnPlayer());
 		game.nextTurn();
 		assertEquals(player3, game.getCurrentTurnPlayer());

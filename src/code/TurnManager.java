@@ -18,21 +18,21 @@ public class TurnManager {
 		}
 		return turnManager;
 	}
-	
+
 	public static void tearDown() {
 		turnManager = null;
 	}
-	
+
 	private TurnManager() {
 		turnOrder = new ArrayList<>();
 	}
-	
+
 	public void setPlayerManager(PlayerManager pm) {
 		playerManager = pm;
 		List<Player> players = playerManager.getPlayers();
 		for (Player player : players)
 			turnOrder.add(player);
-		currentPlayer=turnOrder.get(0);
+		currentPlayer = turnOrder.get(0);
 	}
 
 	public PlayerManager getPlayerManager() {
@@ -63,7 +63,7 @@ public class TurnManager {
 			turnOrder.add(player);
 		currentPlayer = turnOrder.get(0);
 	}
-	
+
 	public void endTurnWithoutDrawForAttacks() {
 		Player player = turnOrder.remove(0);
 		if (turnOrder.get(0).equals(player)) {
@@ -76,6 +76,6 @@ public class TurnManager {
 	}
 
 	public void addTurnForCurrentPlayer() {
-		turnOrder.add(1, currentPlayer);		
+		turnOrder.add(1, currentPlayer);
 	}
 }

@@ -62,7 +62,7 @@ public class TurnManagerTest {
 		EasyMock.verify(mockPM, mockPlayer1, mockPlayer2, mockPlayer3);
 
 		assertEquals(mockPlayer1, manager.getCurrentPlayer());
-		
+
 		TurnManager.tearDown();
 	}
 
@@ -93,7 +93,7 @@ public class TurnManagerTest {
 		assertEquals(mockPlayer1, manager.getCurrentPlayer());
 
 		EasyMock.verify(mockPM, mockPlayer1, mockPlayer2, mockPlayer3);
-		
+
 		TurnManager.tearDown();
 	}
 
@@ -127,7 +127,7 @@ public class TurnManagerTest {
 		assertEquals(mockPlayer1, manager.getCurrentPlayer());
 
 		EasyMock.verify(mockPM, mockPlayer1, mockPlayer2, mockPlayer3);
-		
+
 		TurnManager.tearDown();
 	}
 }

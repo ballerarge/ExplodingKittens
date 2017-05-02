@@ -63,4 +63,8 @@ public class TurnManager {
 			turnOrder.add(player);
 		currentPlayer = turnOrder.get(0);
 	}
+
+	public void addTurnForCurrentPlayer() {
+		turnOrder.add(1, currentPlayer);		
+	}
 }

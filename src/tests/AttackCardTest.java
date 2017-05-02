@@ -52,7 +52,7 @@ public class AttackCardTest {
 		Card attackCard = factory.createCard(CardFactory.ATTACK_CARD);
 		
 		stack.addCard(attackCard);
-		stack.resolveTopCard(player1, player2);
+		stack.resolveTopCard(player1, null);
 		
 		assertEquals(player2, game.getCurrentTurnPlayer());
 	}

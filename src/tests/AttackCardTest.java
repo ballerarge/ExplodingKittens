@@ -22,6 +22,8 @@ public class AttackCardTest {
 	Player player2;
 	Player player3;
 	CardStack stack;
+	TurnManager turnManager;
+	PriorityManager pManager;
 
 	@Before
 	public void initialize() throws InvalidNumberofPlayersException {
@@ -31,6 +33,8 @@ public class AttackCardTest {
 		factory = new CardFactory();
 		game = new Game();
 		stack = CardStack.getInstance();
+		turnManager = TurnManager.getInstance();
+		pManager = PriorityManager.getInstance();
 		game.start(3);
 		player1 = game.getCurrentTurnPlayer();
 		game.nextTurn();
@@ -52,9 +56,19 @@ public class AttackCardTest {
 		Card attackCard = factory.createCard(CardFactory.ATTACK_CARD);
 		
 		stack.addCard(attackCard);
-		stack.resolveTopCard(player1, null);
+		pManager.resolveCard();
 		
 		assertEquals(player2, game.getCurrentTurnPlayer());
+	}
+	
+	@Test
+	public void testNextPlayerHasTwoTurns() {
+		Card attackCard = factory.createCard(CardFactory.ATTACK_CARD);
+		
+		stack.addCard(attackCard);
+		
+		
+		
 	}
 
 }

@@ -1,5 +1,7 @@
 package tests;
 
+import static org.junit.Assert.*;
+
 import org.junit.Test;
 
 import code.Card;
@@ -26,7 +28,7 @@ public class SkipCardTest {
 		stack.resolveTopCard(player1, player2);
 		
 		assertEquals(player1, game.getPlayers().get(0));
-		assertEquals(handSize, player1.getHand().size());
+		assertEquals(handSize - 1, player1.getHand().size());
 		assertEquals(player2, game.getCurrentPlayer());
 	}
 

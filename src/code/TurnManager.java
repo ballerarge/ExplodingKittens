@@ -9,8 +9,8 @@ public class TurnManager {
 	private static TurnManager turnManager;
 	Player currentPlayer;
 	PlayerManager playerManager;
-	ArrayList<Player> turnOrder = new ArrayList<>();// current player is at
-	                                                // index 0
+	ArrayList<Player> turnOrder;// current player is at
+	                            // index 0
 
 	public static TurnManager getInstance() {
 		if (turnManager == null) {
@@ -24,7 +24,7 @@ public class TurnManager {
 	}
 	
 	private TurnManager() {
-		
+		turnOrder = new ArrayList<>();
 	}
 	
 	public void setPlayerManager(PlayerManager pm) {

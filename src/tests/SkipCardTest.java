@@ -40,12 +40,13 @@ public class SkipCardTest {
 		game.start(3);
 		Card skipCard = factory.createCard(CardFactory.SKIP_CARD);
 		CardStack stack = CardStack.getInstance();
+		PriorityManager pManager = PriorityManager.getInstance();
 		Player player1 = game.getCurrentTurnPlayer();
 		Player player2 = game.getPlayers().get(1);
 		int handSize = player1.getHand().size();
 		
 		stack.addCard(skipCard);
-		stack.resolveTopCard(player1, null);
+		pManager.resolveCard();
 		
 		assertEquals(player1, game.getPlayers().get(0));
 		assertEquals(handSize, player1.getHand().size());

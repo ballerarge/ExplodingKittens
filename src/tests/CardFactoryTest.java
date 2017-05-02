@@ -6,16 +6,38 @@ import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import code.Card;
 import code.CardFactory;
+import code.CardStack;
+import code.Game;
 import code.Player;
+import code.PriorityManager;
+import code.TurnManager;
 import exceptions.IncorrectNumberOfCardsException;
+import exceptions.InvalidNumberofPlayersException;
 
 public class CardFactoryTest {
+	
+	@Before
+	public void initialize() {
+		PriorityManager.tearDown();
+		CardStack.tearDown();
+		TurnManager.tearDown();
+	}
+	
+	@After
+	public void tearDown() {
+		PriorityManager.tearDown();
+		CardStack.tearDown();
+		TurnManager.tearDown();
+	}
+	
 	@Rule
 	public final ExpectedException exception = ExpectedException.none();
 
@@ -34,7 +56,10 @@ public class CardFactoryTest {
 	}
 
 	@Test
-	public void testCardActionInCreatedCards() {
+	public void testCardActionInCreatedCards() throws InvalidNumberofPlayersException {
+		Game game = new Game();
+		game.start(3);
+		
 		CardFactory cardFactory = new CardFactory();
 
 		List<Card> cards = new ArrayList<Card>();

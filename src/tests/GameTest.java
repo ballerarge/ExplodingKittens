@@ -134,4 +134,17 @@ public class GameTest {
 		
 		assertFalse(player1.equals(game.getCurrentPlayer()));
 	}
+	
+	@Test
+	public void testTurnRotationSamePlayer() throws InvalidNumberofPlayersException {
+		Game game = new Game();
+		game.start(3);
+		Player player1 = game.getCurrentPlayer();
+		
+		game.nextTurn();
+		game.nextTurn();
+		game.nextTurn();
+		
+		assertEquals(player1, game.getCurrentPlayer());
+	}
 }

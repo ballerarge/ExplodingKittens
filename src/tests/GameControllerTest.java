@@ -8,6 +8,7 @@ import code.GameController;
 public class GameControllerTest {
 	@Test
 	public void testGameControllerCreation() {
+		@SuppressWarnings("unused")
 		GameController gameController = new GameController();
 	}
 }

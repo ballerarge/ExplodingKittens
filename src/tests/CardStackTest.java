@@ -27,7 +27,7 @@ public class CardStackTest {
 
 		assertTrue(cardStack.getStack() instanceof Stack<?>);
 
-		cardStack.tearDown();
+		CardStack.tearDown();
 	}
 
 	@Test
@@ -42,7 +42,7 @@ public class CardStackTest {
 
 		assertTrue(cardStack.peek() instanceof NormalCard);
 
-		cardStack.tearDown();
+		CardStack.tearDown();
 	}
 
 	@Test
@@ -56,7 +56,7 @@ public class CardStackTest {
 		assertTrue(cardStack.getStack().isEmpty());
 		assertEquals(discardDeck.getCardCount(), 1);
 
-		cardStack.tearDown();
-		discardDeck.tearDown();
+		CardStack.tearDown();
+		DiscardDeck.tearDown();
 	}
 }

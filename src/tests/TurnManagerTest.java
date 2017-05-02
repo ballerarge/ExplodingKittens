@@ -1,23 +1,23 @@
 
 package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
 import org.easymock.EasyMock;
+import org.junit.Test;
 
 import code.Player;
 import code.PlayerManager;
 import code.TurnManager;
-import exceptions.InvalidNumberofPlayersException;
 
 public class TurnManagerTest {
 
 	@Test
 	public void testConstruction() {
+		@SuppressWarnings("unused")
 		TurnManager manager = new TurnManager();
 	}
 

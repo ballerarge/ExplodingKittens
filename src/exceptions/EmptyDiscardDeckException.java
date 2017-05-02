@@ -1,3 +1,4 @@
+
 package exceptions;
 
 public class EmptyDiscardDeckException extends RuntimeException {

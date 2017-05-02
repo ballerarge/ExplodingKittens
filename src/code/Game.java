@@ -26,7 +26,7 @@ public class Game {
 
 		playerManager = new PlayerManager();
 		playerManager.addPlayers(n);
-		
+
 		priorityManager = PriorityManager.getInstance();
 		priorityManager.addPlayers(playerManager.getPlayers());
 
@@ -47,9 +47,6 @@ public class Game {
 	public boolean isMainDeckEmpty() {
 		return (mainDeck.getCardCount() == 0);
 	}
-	
-	// Add to the nextTurn method the passing of priority (change current
-	// player in priorityManager
 
 	public void nextTurn() {
 		turnManager.endTurnAndDraw();// Change later to allow for ending a turn
@@ -61,4 +58,4 @@ public class Game {
 		return priorityManager.getActivePlayer();
 	}
 
-}
+}

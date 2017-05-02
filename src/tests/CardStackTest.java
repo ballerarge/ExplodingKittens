@@ -1,3 +1,4 @@
+
 package tests;
 
 import static org.junit.Assert.*;
@@ -19,42 +20,42 @@ public class CardStackTest {
 		assertEquals(cardStack, CardStack.getInstance());
 		CardStack.tearDown();
 	}
-	
+
 	@Test
 	public void testGetStack() {
 		CardStack cardStack = CardStack.getInstance();
-		
+
 		assertTrue(cardStack.getStack() instanceof Stack<?>);
-		
+
 		cardStack.tearDown();
 	}
-	
+
 	@Test
 	public void testPeekStack() {
 		CardStack cardStack = CardStack.getInstance();
 		Stack<Card> testingStack = new Stack<Card>();
 		NormalCard testingCard = new NormalCard();
-		
+
 		testingStack.push(testingCard);
-		
+
 		cardStack.setStack(testingStack);
-		
+
 		assertTrue(cardStack.peek() instanceof NormalCard);
-		
+
 		cardStack.tearDown();
 	}
-	
+
 	@Test
 	public void testMoveCardToDiscardDeck() {
 		CardStack cardStack = CardStack.getInstance();
 		DiscardDeck discardDeck = DiscardDeck.getInstance();
-		
+
 		cardStack.addCard(new NormalCard());
 		cardStack.moveCardsToDiscardDeck();
-		
+
 		assertTrue(cardStack.getStack().isEmpty());
 		assertEquals(discardDeck.getCardCount(), 1);
-		
+
 		cardStack.tearDown();
 		discardDeck.tearDown();
 	}

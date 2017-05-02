@@ -12,7 +12,6 @@ import org.easymock.EasyMock;
 import code.Player;
 import code.PlayerManager;
 import code.TurnManager;
-import code.TurnPriorityManager;
 import exceptions.InvalidNumberofPlayersException;
 
 public class TurnManagerTest {

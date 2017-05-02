@@ -54,10 +54,11 @@ public class Game {
 	public void nextTurn() {
 		turnManager.endTurnAndDraw();// Change later to allow for ending a turn
 		                             // without drawing.
+		priorityManager.nextPlayer();
 	}
 
 	public Player getCurrentPlayer() {
-		return new Player();
+		return priorityManager.getActivePlayer();
 	}
 
 }

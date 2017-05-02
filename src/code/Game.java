@@ -56,4 +56,8 @@ public class Game {
 		                             // without drawing.
 	}
 
+	public Player getCurrentPlayer() {
+		return new Player();
+	}
+
 }

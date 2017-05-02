@@ -1,7 +1,10 @@
 
 package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
@@ -10,7 +13,9 @@ import org.junit.Test;
 import code.Card;
 import code.CardFactory;
 import code.CardStack;
+import code.ExplodingKittenCard;
 import code.Game;
+import code.MainDeck;
 import code.Player;
 import code.PriorityManager;
 import code.TurnManager;
@@ -25,18 +30,24 @@ public class AttackCardTest {
 	CardStack stack;
 	TurnManager turnManager;
 	PriorityManager pManager;
+	MainDeck deck;
 
 	@Before
 	public void initialize() throws InvalidNumberofPlayersException {
 		TurnManager.tearDown();
 		PriorityManager.tearDown();
 		CardStack.tearDown();
+		MainDeck.tearDown();
 		factory = new CardFactory();
 		game = new Game();
 		stack = CardStack.getInstance();
 		turnManager = TurnManager.getInstance();
 		pManager = PriorityManager.getInstance();
+		deck = MainDeck.getInstance();
 		game.start(3);
+
+		removeAllKittens();
+
 		player1 = game.getCurrentTurnPlayer();
 		game.nextTurn();
 		player2 = game.getCurrentTurnPlayer();
@@ -45,11 +56,23 @@ public class AttackCardTest {
 		game.nextTurn();
 	}
 
+	private void removeAllKittens() {
+		List<Card> tempCards = new ArrayList<Card>();
+		for (Card card : deck.getCards()) {
+			if (!(card instanceof ExplodingKittenCard)) {
+				tempCards.add(card);
+			}
+		}
+
+		deck.setCards(tempCards);
+	}
+
 	@After
 	public void tearDown() {
 		TurnManager.tearDown();
 		PriorityManager.tearDown();
 		CardStack.tearDown();
+		MainDeck.tearDown();
 	}
 
 	@Test

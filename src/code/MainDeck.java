@@ -37,6 +37,10 @@ public class MainDeck {
 	public List<Card> getCards() {
 		return mainDeck.deck.getCards();
 	}
+	
+	public void setCards(List<Card> cards) {
+		mainDeck.deck = new Deck(cards);
+	}
 
 	public int getCardCount() {
 		return mainDeck.deck.getCards().size();

@@ -28,11 +28,17 @@ public class TurnManager {
 	}
 
 	public void setPlayerManager(PlayerManager pm) {
+		Player temp = currentPlayer;
 		playerManager = pm;
 		List<Player> players = playerManager.getPlayers();
 		for (Player player : players)
 			turnOrder.add(player);
-		currentPlayer = turnOrder.get(0);
+		if (temp == null) {
+			currentPlayer = turnOrder.get(0);
+		} else {
+			currentPlayer = temp;
+		}
+		
 	}
 
 	public PlayerManager getPlayerManager() {
@@ -50,7 +56,11 @@ public class TurnManager {
 		                                                        // turns from
 		                                                        // attacks
 			turnOrder.add(player);
-		player.drawCard();
+		Card drawnCard = player.drawCard();
+		if (drawnCard instanceof ExplodingKittenCard) {
+			CardStack.getInstance().addCard(drawnCard);
+			PriorityManager.getInstance().resolveCard();
+		}
 		currentPlayer = turnOrder.get(0);
 	}
 

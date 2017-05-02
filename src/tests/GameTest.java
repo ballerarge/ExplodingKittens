@@ -121,6 +121,17 @@ public class GameTest {
 		
 		Player player1 = game.getCurrentPlayer();
 		
-		assertTrue(player1 != null);
+		assertTrue(player1 instanceof Player);
+	}
+	
+	@Test
+	public void testNextTurnDifferentPlayer() throws InvalidNumberofPlayersException {
+		Game game = new Game();
+		game.start(3);
+		Player player1 = game.getCurrentPlayer();
+		
+		game.nextTurn();
+		
+		assertFalse(player1.equals(game.getCurrentPlayer()));
 	}
 }

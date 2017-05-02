@@ -92,5 +92,22 @@ public class AttackCardTest {
 		game.nextTurn();
 		assertEquals(player3, game.getCurrentTurnPlayer());
 	}
+	
+	@Test
+	public void testAttackPlayedAfterAttack() {
+		Card attack1 = factory.createCard(CardFactory.ATTACK_CARD);
+		Card attack2 = factory.createCard(CardFactory.ATTACK_CARD);
+		
+		stack.addCard(attack1);
+		pManager.resolveCard();
+		stack.addCard(attack2);
+		pManager.resolveCard();
+		
+		assertEquals(player3, game.getCurrentTurnPlayer());
+		game.nextTurn();
+		assertEquals(player3, game.getCurrentTurnPlayer());
+		game.nextTurn();
+		assertEquals(player1, game.getCurrentTurnPlayer());
+	}
 
 }

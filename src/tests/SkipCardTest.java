@@ -24,7 +24,6 @@ public class SkipCardTest {
 		
 		stack.addCard(skipCard);
 		stack.resolveTopCard(player1, player2);
-		game.nextTurn();
 		
 		assertEquals(player1, game.getPlayers().get(0));
 		assertEquals(handSize, player1.getHand().size());

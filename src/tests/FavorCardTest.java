@@ -20,9 +20,11 @@ public class FavorCardTest {
 		player2.addDefuseCardToHand();
 		assertEquals(player1.getHand().size(), 1);
 		assertEquals(player2.getHand().size(), 2);
+		player2.getHandManager().selectCard(0);
 		card.cardAction(player1, player2);
 		assertEquals(player1.getHand().size(), 2);
 		assertEquals(player2.getHand().size(), 1);
+		player2.getHandManager().selectCard(0);
 		card.cardAction(player1, player2);
 		assertEquals(player1.getHand().size(), 3);
 		assertEquals(player2.getHand().size(), 0);

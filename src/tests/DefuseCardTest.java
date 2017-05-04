@@ -1,7 +1,7 @@
 
 package tests;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
@@ -10,6 +10,8 @@ import org.junit.Test;
 import code.Card;
 import code.CardFactory;
 import code.CardStack;
+import code.DefuseCard;
+import code.DiscardDeck;
 import code.ExplodingKittenCard;
 import code.Game;
 import code.MainDeck;
@@ -22,7 +24,8 @@ public class DefuseCardTest {
 	CardFactory factory;
 	CardStack stack;
 	Game game;
-	MainDeck deck;
+	MainDeck mDeck;
+	DiscardDeck dDeck;
 
 	@Before
 	public void initialize() throws InvalidNumberofPlayersException {
@@ -30,10 +33,12 @@ public class DefuseCardTest {
 		PriorityManager.tearDown();
 		CardStack.tearDown();
 		MainDeck.tearDown();
+		DiscardDeck.tearDown();
 		factory = new CardFactory();
 		stack = CardStack.getInstance();
 		game = new Game();
-		deck = MainDeck.getInstance();
+		mDeck = MainDeck.getInstance();
+		dDeck = DiscardDeck.getInstance();
 		game.start(3);
 	}
 
@@ -43,6 +48,7 @@ public class DefuseCardTest {
 		PriorityManager.tearDown();
 		CardStack.tearDown();
 		MainDeck.tearDown();
+		DiscardDeck.tearDown();
 	}
 
 	@Test
@@ -85,23 +91,37 @@ public class DefuseCardTest {
 		Card kittenCard = factory.createCard(CardFactory.EXPLODING_KITTEN_CARD);
 		stack.addCard(kittenCard);
 		stack.addCard(defuseCard);
-		int deckSize = deck.getCardCount();
+		int deckSize = mDeck.getCardCount();
 		int numberOfKittens = countKittensInDeck();
 
 		stack.resolveTopCard();
 
-		assertEquals(deckSize + 1, deck.getCardCount());
+		assertEquals(deckSize + 1, mDeck.getCardCount());
 		assertEquals(numberOfKittens + 1, countKittensInDeck());
 	}
 
 	private int countKittensInDeck() {
 		int count = 0;
-		for (Card card : deck.getCards()) {
+		for (Card card : mDeck.getCards()) {
 			if (card instanceof ExplodingKittenCard) {
 				count++;
 			}
 		}
 
 		return count;
+	}
+	
+	@Test
+	public void testDiscardPutInDiscardDeckWhenKittenPlayed() {
+		Card defuseCard = factory.createCard(CardFactory.DEFUSE_CARD);
+		Card kittenCard = factory.createCard(CardFactory.EXPLODING_KITTEN_CARD);
+		stack.addCard(kittenCard);
+		stack.addCard(defuseCard);
+		int discardDeckSize = dDeck.getCardCount();
+		
+		stack.resolveTopCard();
+		
+		assertEquals(discardDeckSize + 1, dDeck.getCardCount());
+		assertTrue(dDeck.getCards().get(0) instanceof DefuseCard);
 	}
 }

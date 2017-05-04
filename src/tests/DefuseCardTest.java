@@ -50,4 +50,16 @@ public class DefuseCardTest {
 		
 		assertEquals(0, stack.getStack().size());		
 	}
+	
+	@Test
+	public void testDefusePlayedNoKitten() {
+		Card defuseCard = factory.createCard(CardFactory.DEFUSE_CARD);
+		Card skipCard = factory.createCard(CardFactory.SKIP_CARD);
+		stack.addCard(skipCard);
+		stack.addCard(defuseCard);
+		
+		stack.resolveTopCard();
+		
+		assertEquals(1, stack.getStack().size());
+	}
 }

@@ -7,8 +7,9 @@ public class DefuseCard extends Card {
 
 	CardStack stack;
 	TurnManager tm;
-	MainDeck deck;
+	MainDeck mDeck;
 	CardFactory factory;
+	DiscardDeck dDeck;
 
 	public DefuseCard() {
 		this.cardID = 2;
@@ -18,8 +19,9 @@ public class DefuseCard extends Card {
 	public void cardAction(Player p1, Player p2) {
 		stack = CardStack.getInstance();
 		tm = TurnManager.getInstance();
-		deck = MainDeck.getInstance();
+		mDeck = MainDeck.getInstance();
 		factory = new CardFactory();
+		dDeck = DiscardDeck.getInstance();
 
 		if (stack.getStack().isEmpty()) {
 			tm.getCurrentPlayer().addDefuseCardToHand();
@@ -32,7 +34,8 @@ public class DefuseCard extends Card {
 			// Here is where the user will need to decide where to put the
 			// Exploding kitten card. For now, it will be placed onto the
 			// bottom of the deck.
-			deck.insertCard(factory.createCard(CardFactory.EXPLODING_KITTEN_CARD), deck.getCardCount() - 1);
+			mDeck.insertCard(factory.createCard(CardFactory.EXPLODING_KITTEN_CARD), mDeck.getCardCount() - 1);
+			dDeck.addCard(factory.createCard(CardFactory.DEFUSE_CARD));
 		} else {
 			tm.getCurrentPlayer().addDefuseCardToHand();
 		}

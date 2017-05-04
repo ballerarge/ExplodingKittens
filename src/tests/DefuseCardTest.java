@@ -112,7 +112,7 @@ public class DefuseCardTest {
 	}
 	
 	@Test
-	public void testDiscardPutInDiscardDeckWhenKittenPlayed() {
+	public void testDefusePutInDiscardDeckWhenKittenPlayed() {
 		Card defuseCard = factory.createCard(CardFactory.DEFUSE_CARD);
 		Card kittenCard = factory.createCard(CardFactory.EXPLODING_KITTEN_CARD);
 		stack.addCard(kittenCard);

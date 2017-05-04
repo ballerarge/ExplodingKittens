@@ -48,46 +48,48 @@ public class DefuseCardTest {
 	@Test
 	public void testDefusePlayedWithKittenOnStack() {
 		Card kittenCard = factory.createCard(CardFactory.EXPLODING_KITTEN_CARD);
-		Card defuseCard = factory.createCard(CardFactory.DEFUSE_CARD);	
+		Card defuseCard = factory.createCard(CardFactory.DEFUSE_CARD);
 		stack.addCard(kittenCard);
 		stack.addCard(defuseCard);
-		
+
 		stack.resolveTopCard();
-		
-		assertEquals(0, stack.getStack().size());		
+
+		assertEquals(0, stack.getStack().size());
 	}
-	
+
 	@Test
 	public void testDefusePlayedNoKitten() {
 		Card defuseCard = factory.createCard(CardFactory.DEFUSE_CARD);
 		Card skipCard = factory.createCard(CardFactory.SKIP_CARD);
 		stack.addCard(skipCard);
 		stack.addCard(defuseCard);
-		
+
 		stack.resolveTopCard();
-		
+
 		assertEquals(1, stack.getStack().size());
 	}
-	
+
 	@Test
 	public void testDefuseEmptyStack() {
 		Card defuseCard = factory.createCard(CardFactory.DEFUSE_CARD);
 		stack.addCard(defuseCard);
-		
+
 		stack.resolveTopCard();
-		
+
 		assertEquals(0, stack.getStack().size());
 	}
-	
+
 	@Test
 	public void testKittenPutBackInDeck() {
 		Card defuseCard = factory.createCard(CardFactory.DEFUSE_CARD);
+		Card kittenCard = factory.createCard(CardFactory.EXPLODING_KITTEN_CARD);
+		stack.addCard(kittenCard);
 		stack.addCard(defuseCard);
 		int deckSize = deck.getCardCount();
 		int numberOfKittens = countKittensInDeck();
-		
+
 		stack.resolveTopCard();
-		
+
 		assertEquals(deckSize + 1, deck.getCardCount());
 		assertEquals(numberOfKittens + 1, countKittensInDeck());
 	}
@@ -99,7 +101,7 @@ public class DefuseCardTest {
 				count++;
 			}
 		}
-		
+
 		return count;
 	}
 }

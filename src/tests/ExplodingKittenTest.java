@@ -23,13 +23,7 @@ import exceptions.InvalidNumberofPlayersException;
 public class ExplodingKittenTest {
 	CardFactory factory;
 	Game game;
-	Player player1;
-	Player player2;
-	Player player3;
 	CardStack stack;
-	TurnManager turnManager;
-	PriorityManager pManager;
-	MainDeck deck;
 
 	@Before
 	public void initialize() throws InvalidNumberofPlayersException {
@@ -40,28 +34,7 @@ public class ExplodingKittenTest {
 		factory = new CardFactory();
 		game = new Game();
 		stack = CardStack.getInstance();
-		turnManager = TurnManager.getInstance();
-		pManager = PriorityManager.getInstance();
-		deck = MainDeck.getInstance();
 		game.start(3);
-		removeAllKittens();
-		player1 = game.getCurrentTurnPlayer();
-		game.nextTurn();
-		player2 = game.getCurrentTurnPlayer();
-		game.nextTurn();
-		player3 = game.getCurrentTurnPlayer();
-		game.nextTurn();
-	}
-	
-	private void removeAllKittens() {
-		List<Card> tempCards = new ArrayList<Card>();
-		for (Card card : deck.getCards()) {
-			if (!(card instanceof ExplodingKittenCard)) {
-				tempCards.add(card);
-			}
-		}
-
-		deck.setCards(tempCards);
 	}
 	
 	@After
@@ -75,15 +48,9 @@ public class ExplodingKittenTest {
 	@Test
 	public void testKittenDrawnNoDefuse() {
 		Card expk = factory.createCard(CardFactory.EXPLODING_KITTEN_CARD);
-		deck.insertCard(expk, 0);
-		player1.getHandManager().selectCard(5);
-		player1.getHandManager().moveSelectedToStack();
-		pManager.resolveCard();
+		stack.addCard(expk);
 		
-		assertEquals(5, player1.getHand().size());
-		assertEquals(0, stack.getStack().size());
-		game.nextTurn();
-		assertEquals(player2, game.getCurrentTurnPlayer());
+		stack.resolveTopCard();
 		assertEquals(2, game.getPlayers().size());
 	}
 

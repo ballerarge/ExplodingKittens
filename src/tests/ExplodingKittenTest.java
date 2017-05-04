@@ -2,6 +2,9 @@ package tests;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,6 +12,7 @@ import org.junit.Test;
 import code.Card;
 import code.CardFactory;
 import code.CardStack;
+import code.ExplodingKittenCard;
 import code.Game;
 import code.MainDeck;
 import code.Player;
@@ -25,7 +29,7 @@ public class ExplodingKittenTest {
 	CardStack stack;
 	TurnManager turnManager;
 	PriorityManager pManager;
-	MainDeck mDeck;
+	MainDeck deck;
 
 	@Before
 	public void initialize() throws InvalidNumberofPlayersException {
@@ -38,14 +42,26 @@ public class ExplodingKittenTest {
 		stack = CardStack.getInstance();
 		turnManager = TurnManager.getInstance();
 		pManager = PriorityManager.getInstance();
-		mDeck = MainDeck.getInstance();
+		deck = MainDeck.getInstance();
 		game.start(3);
+		removeAllKittens();
 		player1 = game.getCurrentTurnPlayer();
 		game.nextTurn();
 		player2 = game.getCurrentTurnPlayer();
 		game.nextTurn();
 		player3 = game.getCurrentTurnPlayer();
 		game.nextTurn();
+	}
+	
+	private void removeAllKittens() {
+		List<Card> tempCards = new ArrayList<Card>();
+		for (Card card : deck.getCards()) {
+			if (!(card instanceof ExplodingKittenCard)) {
+				tempCards.add(card);
+			}
+		}
+
+		deck.setCards(tempCards);
 	}
 	
 	@After
@@ -59,7 +75,7 @@ public class ExplodingKittenTest {
 	@Test
 	public void testKittenDrawnNoDefuse() {
 		Card expk = factory.createCard(CardFactory.EXPLODING_KITTEN_CARD);
-		mDeck.insertCard(expk, 0);
+		deck.insertCard(expk, 0);
 		player1.getHandManager().selectCard(5);
 		player1.getHandManager().moveSelectedToStack();
 		pManager.resolveCard();

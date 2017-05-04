@@ -10,6 +10,7 @@ import org.junit.Test;
 import code.Card;
 import code.CardFactory;
 import code.CardStack;
+import code.Game;
 import code.MainDeck;
 import code.PriorityManager;
 import code.TurnManager;
@@ -19,6 +20,7 @@ public class DefuseCardTest {
 
 	CardFactory factory;
 	CardStack stack;
+	Game game;
 
 	@Before
 	public void initialize() throws InvalidNumberofPlayersException {
@@ -28,7 +30,8 @@ public class DefuseCardTest {
 		MainDeck.tearDown();
 		factory = new CardFactory();
 		stack = CardStack.getInstance();
-		
+		game = new Game();
+		game.start(3);
 	}
 
 	@After

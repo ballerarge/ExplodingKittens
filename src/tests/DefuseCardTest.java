@@ -65,4 +65,14 @@ public class DefuseCardTest {
 		
 		assertEquals(1, stack.getStack().size());
 	}
+	
+	@Test
+	public void testDefuseEmptyStack() {
+		Card defuseCard = factory.createCard(CardFactory.DEFUSE_CARD);
+		stack.addCard(defuseCard);
+		
+		stack.resolveTopCard();
+		
+		assertEquals(0, stack.getStack().size());
+	}
 }

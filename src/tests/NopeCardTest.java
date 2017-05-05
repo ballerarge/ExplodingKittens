@@ -32,6 +32,15 @@ public class NopeCardTest {
 	}
 
 	@Test
+	public void testResolveNopeWithNoCardsUnderneath() {
+		cardStack.addCard(factory.createCard(CardFactory.NOPE_CARD));
+
+		exception.expect(InvalidNopeTargetException.class);
+		
+		cardStack.resolveTopCard();
+	}
+	
+	@Test
 	public void testResolveNopeWithOneCardUnderneath() {
 		cardStack.addCard(factory.createCard(CardFactory.ATTACK_CARD));
 		cardStack.addCard(factory.createCard(CardFactory.NOPE_CARD));

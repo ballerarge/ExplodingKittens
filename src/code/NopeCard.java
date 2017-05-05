@@ -8,8 +8,7 @@ public class NopeCard extends Card {
 
 	@Override
 	public void cardAction(Player p1, Player p2) {
-		// TODO Auto-generated method stub
-
+		CardStack.getInstance().counterTopCard();
 	}
 
 	@Override

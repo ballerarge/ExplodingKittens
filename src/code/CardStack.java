@@ -66,4 +66,8 @@ public class CardStack {
 		stack.addAll(cardsToMove);
 	}
 
+	public void counterTopCard() { // Only called by Nope cards
+		stack.pop();
+	}
+
 }

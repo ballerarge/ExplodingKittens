@@ -22,7 +22,7 @@ public class NopeCardTest {
 	@Test
 	public void testResolveNopeWithOneCardUnderneath() {
 		cardStack.addCard(factory.createCard(CardFactory.ATTACK_CARD));
-		cardStack.addCard(factory.createCard(CardFactory.NORMAL_CARD));
+		cardStack.addCard(factory.createCard(CardFactory.NOPE_CARD));
 
 		cardStack.resolveTopCard();
 

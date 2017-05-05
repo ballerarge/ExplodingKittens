@@ -55,4 +55,11 @@ public class Hand {
 		this.hand.add(new CardFactory().createCard(CardFactory.DEFUSE_CARD));
 	}
 
+	public void addCards(List<Card> cards) {
+		this.hand.addAll(cards);
+	}
+	
+	public void clearSelectedCards(){
+		this.selectedCards.clear();
+	}
 }

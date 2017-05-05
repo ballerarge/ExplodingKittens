@@ -18,4 +18,13 @@ public class NormalCard extends Card {
 		// copy constructor.
 		return new NormalCard();
 	}
+
+	public int getIcon() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public void setIcon(int i) {
+		
+	}
 }

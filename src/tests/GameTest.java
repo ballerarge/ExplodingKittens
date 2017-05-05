@@ -6,19 +6,44 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import code.Card;
+import code.CardStack;
+import code.DiscardDeck;
+import code.ExplodingKittenCard;
 import code.Game;
+import code.MainDeck;
 import code.Player;
 import code.PriorityManager;
 import code.TurnManager;
 import exceptions.InvalidNumberofPlayersException;
 
 public class GameTest {
+
+	@Before
+	public void initialize() {
+		CardStack.tearDown();
+		PriorityManager.tearDown();
+		TurnManager.tearDown();
+		MainDeck.tearDown();
+		DiscardDeck.tearDown();
+	}
+
+	@After
+	public void tearDown() {
+		CardStack.tearDown();
+		PriorityManager.tearDown();
+		TurnManager.tearDown();
+		MainDeck.tearDown();
+		DiscardDeck.tearDown();
+	}
 
 	@Test
 	public void testGameCreation() {
@@ -38,7 +63,6 @@ public class GameTest {
 
 	@Test
 	public void testPriorityManagerPopulatedAfterStart() throws InvalidNumberofPlayersException {
-		PriorityManager.tearDown();
 		Game game = new Game();
 		try {
 			game.start(3);
@@ -47,7 +71,6 @@ public class GameTest {
 		} catch (InvalidNumberofPlayersException e) {
 			fail("threw an InvalidNumberOfPlayersException");
 		}
-		PriorityManager.tearDown();
 	}
 
 	@Test
@@ -139,10 +162,10 @@ public class GameTest {
 	}
 
 	@Test
-	public void testNextTurnDrawing()  throws InvalidNumberofPlayersException {
-		TurnManager.tearDown();
+	public void testPlayerRotation() throws InvalidNumberofPlayersException {
 		Game game = new Game();
 		game.start(3);
+		removeAllKittens();
 		Player player1 = game.getCurrentPlayer();
 
 		game.nextTurn();
@@ -151,4 +174,15 @@ public class GameTest {
 
 		assertEquals(player1, game.getCurrentPlayer());
 	}
-}
+
+	private void removeAllKittens() {
+		List<Card> tempCards = new ArrayList<Card>();
+		for (Card card : MainDeck.getInstance().getCards()) {
+			if (!(card instanceof ExplodingKittenCard)) {
+				tempCards.add(card);
+			}
+		}
+
+		MainDeck.getInstance().setCards(tempCards);
+	}
+}

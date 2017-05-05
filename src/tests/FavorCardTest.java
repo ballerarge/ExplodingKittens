@@ -11,7 +11,7 @@ import code.Player;
 public class FavorCardTest {
 
 	@Test
-	public void test() {
+	public void testFavorCard() {
 		Player player1 = new Player();
 		Player player2 = new Player();
 		FavorCard card = new FavorCard();

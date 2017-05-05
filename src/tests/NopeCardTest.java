@@ -5,12 +5,17 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import code.CardFactory;
 import code.CardStack;
 
 public class NopeCardTest {
+	@Rule
+	public final ExpectedException exception = ExpectedException.none();
+	
 	private CardStack cardStack;
 	private CardFactory factory;
 
@@ -46,5 +51,15 @@ public class NopeCardTest {
 		cardStack.resolveTopCard();
 
 		assertEquals(3, cardStack.getStack().size());
+	}
+	
+	@Test
+	public void testResolveNopeWithExplodingKittenUnderneath() {
+		cardStack.addCard(factory.createCard(CardFactory.EXPLODING_KITTEN_CARD));
+		cardStack.addCard(factory.createCard(CardFactory.NOPE_CARD));
+		
+		exception.expect(InvalidNopeTargetException.class);
+		
+		cardStack.resolveTopCard();
 	}
 }

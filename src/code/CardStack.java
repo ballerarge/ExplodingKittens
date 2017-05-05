@@ -4,6 +4,8 @@ package code;
 import java.util.List;
 import java.util.Stack;
 
+import exceptions.InvalidNopeTargetException;
+
 public class CardStack {
 
 	private static CardStack cardStack;
@@ -64,6 +66,13 @@ public class CardStack {
 
 	public void moveCardsToStack(List<Card> cardsToMove) {
 		stack.addAll(cardsToMove);
+	}
+
+	public void counterTopCard() { // Only called by Nope cards
+		if (stack.isEmpty() || stack.peek() instanceof ExplodingKittenCard || stack.peek() instanceof DefuseCard) {
+			throw new InvalidNopeTargetException();
+		}
+		stack.pop();
 	}
 
 }

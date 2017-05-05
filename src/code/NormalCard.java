@@ -2,6 +2,8 @@
 package code;
 
 public class NormalCard extends Card {
+	private int cardIcon;
+
 	public NormalCard() {
 		this.cardID = 0;
 	}
@@ -17,5 +19,14 @@ public class NormalCard extends Card {
 		// If other fields were added that can be edited, consider
 		// copy constructor.
 		return new NormalCard();
+	}
+
+	public int getIcon() {
+		// TODO Auto-generated method stub
+		return this.cardIcon;
+	}
+
+	public void setIcon(int i) {
+		this.cardIcon = i;
 	}
 }

@@ -63,4 +63,14 @@ public class NopeCardTest {
 		
 		cardStack.resolveTopCard();
 	}
+	
+	@Test
+	public void testResolveNopeWithDefuseUnderneath() {
+		cardStack.addCard(factory.createCard(CardFactory.DEFUSE_CARD));
+		cardStack.addCard(factory.createCard(CardFactory.NOPE_CARD));
+		
+		exception.expect(InvalidNopeTargetException.class);
+		
+		cardStack.resolveTopCard();
+	}
 }

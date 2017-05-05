@@ -22,6 +22,7 @@ public class NopeCardTest {
 
 	@Before
 	public void init() {
+		CardStack.tearDown();
 		cardStack = CardStack.getInstance();
 		factory = new CardFactory();
 	}

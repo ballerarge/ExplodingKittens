@@ -73,6 +73,8 @@ public class CardFactoryTest {
 		cards.add(cardFactory.createCard(CardFactory.SCRY_CARD));
 
 		Player p1 = null, p2 = null;
+		
+		CardStack.getInstance().addCard(cardFactory.createCard(CardFactory.SKIP_CARD));
 
 		for (Card card : cards) {
 			card.cardAction(p1, p2);

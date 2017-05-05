@@ -15,6 +15,7 @@ import code.Card;
 import code.Game;
 import code.Player;
 import code.PriorityManager;
+import code.TurnManager;
 import exceptions.InvalidNumberofPlayersException;
 
 public class GameTest {
@@ -138,7 +139,8 @@ public class GameTest {
 	}
 
 	@Test
-	public void testTurnRotationSamePlayer() throws InvalidNumberofPlayersException {
+	public void testNextTurnDrawing()  throws InvalidNumberofPlayersException {
+		TurnManager.tearDown();
 		Game game = new Game();
 		game.start(3);
 		Player player1 = game.getCurrentPlayer();
@@ -149,4 +151,4 @@ public class GameTest {
 
 		assertEquals(player1, game.getCurrentPlayer());
 	}
-}
+}

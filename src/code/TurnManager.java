@@ -6,17 +6,39 @@ import java.util.List;
 
 public class TurnManager {
 
+	private static TurnManager turnManager;
 	Player currentPlayer;
 	PlayerManager playerManager;
-	ArrayList<Player> turnOrder = new ArrayList<>();// current player is at
-	                                                // index 0
+	ArrayList<Player> turnOrder;// current player is at
+	                            // index 0
+
+	public static TurnManager getInstance() {
+		if (turnManager == null) {
+			turnManager = new TurnManager();
+		}
+		return turnManager;
+	}
+
+	public static void tearDown() {
+		turnManager = null;
+	}
+
+	private TurnManager() {
+		turnOrder = new ArrayList<>();
+	}
 
 	public void setPlayerManager(PlayerManager pm) {
+		Player temp = currentPlayer;
 		playerManager = pm;
 		List<Player> players = playerManager.getPlayers();
 		for (Player player : players)
 			turnOrder.add(player);
-		currentPlayer = turnOrder.get(0);
+		if (temp == null) {
+			currentPlayer = turnOrder.get(0);
+		} else {
+			currentPlayer = temp;
+		}
+		
 	}
 
 	public PlayerManager getPlayerManager() {
@@ -34,7 +56,11 @@ public class TurnManager {
 		                                                        // turns from
 		                                                        // attacks
 			turnOrder.add(player);
-		player.drawCard();
+		Card drawnCard = player.drawCard();
+		if (drawnCard instanceof ExplodingKittenCard) {
+			CardStack.getInstance().addCard(drawnCard);
+			PriorityManager.getInstance().resolveCard();
+		}
 		currentPlayer = turnOrder.get(0);
 	}
 
@@ -47,4 +73,19 @@ public class TurnManager {
 			turnOrder.add(player);
 		currentPlayer = turnOrder.get(0);
 	}
-}
+
+	public void endTurnWithoutDrawForAttacks() {
+		Player player = turnOrder.remove(0);
+		if (turnOrder.get(0).equals(player)) {
+			turnOrder.remove(0);
+		}
+		if (!turnOrder.get(turnOrder.size() - 1).equals(player)) {
+			turnOrder.add(player);
+		}
+		currentPlayer = turnOrder.get(0);
+	}
+
+	public void addTurnForCurrentPlayer() {
+		turnOrder.add(1, currentPlayer);
+	}
+}

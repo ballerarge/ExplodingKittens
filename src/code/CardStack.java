@@ -32,6 +32,10 @@ public class CardStack {
 		this.stack.pop().cardAction(null, null);
 	}
 
+	public void resolveTopCard(Player player1, Player player2) {
+		this.stack.pop().cardAction(player1, player2);
+	}
+
 	public void moveCardsToDiscardDeck() {
 		// Implement this as part of integration testing.
 		discardDeck.addAll(stack);

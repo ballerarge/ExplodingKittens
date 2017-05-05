@@ -50,13 +50,17 @@ public class PlayerManager {
 
 	public Map<Player, Boolean> getPlayerStatus() {
 		Map<Player, Boolean> status = new HashMap<Player, Boolean>();
-		for (int a = 1; a <= players.size(); a++)
-			status.put(new Player(), true);
+		for (int a = 0; a < players.size(); a++)
+			status.put(players.get(a), true);
 		return status;
 	}
 
 	public List<Player> getPlayers() {
 		return this.players;
+	}
+	
+	public void removePlayerFromGame(Player player) {
+		players.remove(player);
 	}
 
 }

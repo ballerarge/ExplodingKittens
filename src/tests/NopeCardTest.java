@@ -11,6 +11,7 @@ import org.junit.rules.ExpectedException;
 
 import code.CardFactory;
 import code.CardStack;
+import exceptions.InvalidNopeTargetException;
 
 public class NopeCardTest {
 	@Rule

@@ -46,6 +46,10 @@ public class Game {
 		                             // without drawing.
 		priorityManager.nextPlayer();
 	}
+	
+	public Player getCurrentPlayer() {
+		return priorityManager.getActivePlayer();
+	}
 
 	public Player getCurrentTurnPlayer() {
 		return turnManager.getCurrentPlayer();

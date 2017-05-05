@@ -16,7 +16,7 @@ public class TurnManager {
 		List<Player> players = playerManager.getPlayers();
 		for (Player player : players)
 			turnOrder.add(player);
-		currentPlayer=turnOrder.get(0);
+		currentPlayer = turnOrder.get(0);
 	}
 
 	public PlayerManager getPlayerManager() {

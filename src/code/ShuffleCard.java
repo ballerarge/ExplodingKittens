@@ -15,6 +15,5 @@ public class ShuffleCard extends Card {
 	public ShuffleCard clone() {
 		return new ShuffleCard();
 	}
-	
-	
+
 }

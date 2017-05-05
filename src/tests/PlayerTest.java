@@ -15,11 +15,13 @@ public class PlayerTest {
 
 	@Test
 	public void testPlayerCreation() {
+		@SuppressWarnings("unused")
 		Player player = new Player();
 	}
 
 	@Test
 	public void testPlayerCreationWithName() {
+		@SuppressWarnings("unused")
 		Player player = new Player("Khaleeeeed");
 	}
 

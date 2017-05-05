@@ -1,3 +1,4 @@
+
 package code;
 
 import java.util.List;
@@ -8,7 +9,7 @@ import exceptions.EmptyDiscardDeckException;
 public class DiscardDeck {
 
 	private static DiscardDeck discardDeck;
-	
+
 	Deck deck;
 
 	public static DiscardDeck getInstance() {
@@ -17,7 +18,7 @@ public class DiscardDeck {
 		}
 		return discardDeck;
 	}
-	
+
 	private DiscardDeck() {
 		deck = new Deck();
 	}
@@ -48,14 +49,14 @@ public class DiscardDeck {
 				return retCard;
 			}
 		}
-		
+
 		throw new CardNotInDiscardDeckException(cardType.getName() + " is not in discard pile");
 	}
 
 	public void addCard(Card card) {
-		discardDeck.deck.addCard(card, 0);		
+		discardDeck.deck.addCard(card, 0);
 	}
-	
+
 	public void addAll(List<Card> cardsToAdd) {
 		deck.addAll(cardsToAdd);
 	}

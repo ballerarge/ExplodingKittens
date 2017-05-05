@@ -1,12 +1,14 @@
 
 package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.List;
 import java.util.Map;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import code.Card;
@@ -19,6 +21,7 @@ public class GameTest {
 
 	@Test
 	public void testGameCreation() {
+		@SuppressWarnings("unused")
 		Game game = new Game();
 	}
 
@@ -31,15 +34,14 @@ public class GameTest {
 			fail("threw an InvalidNumberofPlayersException");
 		}
 	}
-	
+
 	@Test
-	public void testPriorityManagerPopulatedAfterStart() 
-			throws InvalidNumberofPlayersException {
+	public void testPriorityManagerPopulatedAfterStart() throws InvalidNumberofPlayersException {
 		PriorityManager.tearDown();
 		Game game = new Game();
 		try {
 			game.start(3);
-			
+
 			assertTrue(PriorityManager.getInstance().getActivePlayer() != null);
 		} catch (InvalidNumberofPlayersException e) {
 			fail("threw an InvalidNumberOfPlayersException");
@@ -97,20 +99,54 @@ public class GameTest {
 		game.start(3);
 		assertFalse(game.isMainDeckEmpty());
 	}
-	
+
 	@Test
-	public void testNextTurnDrawing()  throws InvalidNumberofPlayersException {
+	public void testNextTurnDrawing() throws InvalidNumberofPlayersException {
 		Game game = new Game();
 		game.start(3);
-		Map<Player, List<Card>> handsBefore=game.getPlayerHands();
-		int cardCountBefore=0;
-		for (Player player:handsBefore.keySet())
-			cardCountBefore+=handsBefore.get(player).size();
+		Map<Player, List<Card>> handsBefore = game.getPlayerHands();
+		int cardCountBefore = 0;
+		for (Player player : handsBefore.keySet())
+			cardCountBefore += handsBefore.get(player).size();
 		game.nextTurn();
-		int cardCountAfter=0;
-		Map<Player, List<Card>> handsAfter=game.getPlayerHands();
-		for (Player player:handsAfter.keySet())
-			cardCountAfter+=handsAfter.get(player).size();
-		assertEquals(cardCountBefore+1,cardCountAfter);
+		int cardCountAfter = 0;
+		Map<Player, List<Card>> handsAfter = game.getPlayerHands();
+		for (Player player : handsAfter.keySet())
+			cardCountAfter += handsAfter.get(player).size();
+		assertEquals(cardCountBefore + 1, cardCountAfter);
+	}
+
+	@Test
+	public void testGetCurrentPlayer() throws InvalidNumberofPlayersException {
+		Game game = new Game();
+		game.start(3);
+
+		Player player1 = game.getCurrentPlayer();
+
+		assertTrue(player1 instanceof Player);
+	}
+
+	@Test
+	public void testNextTurnDifferentPlayer() throws InvalidNumberofPlayersException {
+		Game game = new Game();
+		game.start(3);
+		Player player1 = game.getCurrentPlayer();
+
+		game.nextTurn();
+
+		assertFalse(player1.equals(game.getCurrentPlayer()));
+	}
+
+	@Test
+	public void testTurnRotationSamePlayer() throws InvalidNumberofPlayersException {
+		Game game = new Game();
+		game.start(3);
+		Player player1 = game.getCurrentPlayer();
+
+		game.nextTurn();
+		game.nextTurn();
+		game.nextTurn();
+
+		assertEquals(player1, game.getCurrentPlayer());
 	}
 }

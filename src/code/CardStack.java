@@ -7,23 +7,23 @@ import java.util.Stack;
 public class CardStack {
 
 	private static CardStack cardStack;
-	
+
 	private Stack<Card> stack;
-	
+
 	private CardStack() {
 		this.stack = new Stack<Card>();
 	}
-	
-	MainDeck mainDeck = MainDeck.getInstance();	
+
+	MainDeck mainDeck = MainDeck.getInstance();
 	DiscardDeck discardDeck = DiscardDeck.getInstance();
-	
+
 	public static CardStack getInstance() {
 		if (cardStack == null) {
 			cardStack = new CardStack();
 		}
 		return cardStack;
 	}
-	
+
 	public void addCard(Card card) {
 		this.stack.add(card);
 	}
@@ -33,7 +33,7 @@ public class CardStack {
 	}
 
 	public void moveCardsToDiscardDeck() {
-	    // Implement this as part of integration testing.
+		// Implement this as part of integration testing.
 		discardDeck.addAll(stack);
 		stack.clear();
 	}
@@ -41,8 +41,9 @@ public class CardStack {
 	public static void tearDown() {
 		cardStack = null;
 	}
-	
-	@SuppressWarnings("unchecked") // Cloning a stack will always return a stack.
+
+	@SuppressWarnings("unchecked") // Cloning a stack will always return a
+	                               // stack.
 	public Stack<Card> getStack() {
 		return (Stack<Card>) stack.clone();
 	}
@@ -52,13 +53,13 @@ public class CardStack {
 		// Figure out in integration testing.
 		return stack.peek().clone();
 	}
-	
+
 	public void setStack(Stack<Card> stack) {
 		this.stack = stack;
 	}
-	
+
 	public void moveCardsToStack(List<Card> cardsToMove) {
 		stack.addAll(cardsToMove);
 	}
-	
+
 }

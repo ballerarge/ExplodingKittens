@@ -16,14 +16,13 @@ import code.Player;
 import code.PriorityManager;
 import exceptions.NoSuchPlayerException;
 
-import org.easymock.EasyMock;
-
 public class PriorityManagerTest {
 	@Rule
 	public final ExpectedException exception = ExpectedException.none();
 
 	@Test
 	public void testPriorityManagerInstanceGet() {
+		@SuppressWarnings("unused")
 		PriorityManager pm = PriorityManager.getInstance();
 	}
 

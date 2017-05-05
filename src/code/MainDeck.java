@@ -101,7 +101,9 @@ public class MainDeck {
 
 	private void initNormalCards() {
 		for (int i = 0; i < 20; i++) {
-			mainDeck.deck.addCard(factory.createCard(CardFactory.NORMAL_CARD), 0);
+			NormalCard card = (NormalCard) factory.createCard(CardFactory.NORMAL_CARD);
+			card.setIcon(i % 4);
+			mainDeck.deck.addCard(card, 0);
 		}
 	}
 

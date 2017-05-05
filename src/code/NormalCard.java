@@ -2,6 +2,8 @@
 package code;
 
 public class NormalCard extends Card {
+	private int cardIcon;
+
 	public NormalCard() {
 		this.cardID = 0;
 	}
@@ -21,10 +23,10 @@ public class NormalCard extends Card {
 
 	public int getIcon() {
 		// TODO Auto-generated method stub
-		return 0;
+		return this.cardIcon;
 	}
 
 	public void setIcon(int i) {
-		
+		this.cardIcon = i;
 	}
 }

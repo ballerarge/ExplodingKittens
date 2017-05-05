@@ -1,20 +1,18 @@
 
 package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
 import org.easymock.EasyMock;
+import org.junit.Test;
 
 import code.Card;
 import code.Player;
 import code.PlayerManager;
 import code.TurnManager;
-import code.TurnPriorityManager;
-import exceptions.InvalidNumberofPlayersException;
 
 public class TurnManagerTest {
 
@@ -132,4 +130,4 @@ public class TurnManagerTest {
 
 		TurnManager.tearDown();
 	}
-}
+}

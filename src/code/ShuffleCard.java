@@ -8,13 +8,13 @@ public class ShuffleCard extends Card {
 
 	@Override
 	public void cardAction(Player p1, Player p2) {
-
+		MainDeck mainDeck=MainDeck.getInstance();
+		mainDeck.shuffleDeck();
 	}
 
 	@Override
 	public ShuffleCard clone() {
 		return new ShuffleCard();
 	}
-	
-	
+
 }

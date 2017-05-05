@@ -88,4 +88,4 @@ public class TurnManager {
 	public void addTurnForCurrentPlayer() {
 		turnOrder.add(1, currentPlayer);
 	}
-}
+}

@@ -17,10 +17,10 @@ public class GameController {
 		// Opens the gui
 		MainWindow window = new MainWindow();
 		window.open();
-		
+
 		// Gets the player names
 		List<Player> players = window.getPlayers();
-		
+
 		while (true) {
 			System.out.print("Insert number of players: ");
 			int numOfPlayers = scanner.nextInt();

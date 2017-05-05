@@ -26,6 +26,7 @@ public class MainDeckTest {
 
 	@Test
 	public void testMainDeckConstructor() {
+		@SuppressWarnings("unused")
 		MainDeck mDeck = MainDeck.getInstance();
 
 		MainDeck.tearDown();
@@ -57,7 +58,6 @@ public class MainDeckTest {
 
 	@Test
 	public void testGetCardCountZeroElements() {
-		List<Card> cards = new ArrayList<Card>();
 		MainDeck mDeck = MainDeck.getInstance();
 
 		assertEquals(0, mDeck.getCardCount());
@@ -99,7 +99,6 @@ public class MainDeckTest {
 
 	@Test
 	public void testInsertCardOnBottom() {
-		List<Card> cards = new ArrayList<Card>();
 		Card firstCard = new NormalCard();
 		Card secondCard = new NormalCard();
 		Card thirdCard = new NormalCard();
@@ -114,7 +113,6 @@ public class MainDeckTest {
 
 	@Test
 	public void testInsertCardInMiddle() {
-		List<Card> cards = new ArrayList<Card>();
 		Card firstCard = new NormalCard();
 		Card secondCard = new NormalCard();
 		Card thirdCard = new NormalCard();
@@ -146,7 +144,6 @@ public class MainDeckTest {
 
 	@Test
 	public void testDrawCard() {
-		List<Card> cards = new ArrayList<Card>();
 		Card firstCard = new NormalCard();
 
 		MainDeck mDeck = MainDeck.getInstance();
@@ -166,7 +163,7 @@ public class MainDeckTest {
 	public void testDrawFromEmptyDeck() {
 		MainDeck mDeck = MainDeck.getInstance();
 
-		Card drawnCard = mDeck.draw();
+		mDeck.draw();
 		MainDeck.tearDown();
 	}
 

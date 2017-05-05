@@ -1,6 +1,7 @@
 
 package exceptions;
 
+@SuppressWarnings("serial")
 public class IncorrectNumberOfCardsException extends RuntimeException {
 
 	public IncorrectNumberOfCardsException() {

@@ -32,16 +32,16 @@ public class Deck {
 		}
 
 	}
-	
+
 	public boolean addCardFirst(Card cardToAdd) {
 		return this.addCard(cardToAdd, 0);
 	}
-	
+
 	public boolean addCardLast(Card cardToAdd) {
 		int lastIndex = cards.size() - 1;
 		return this.addCard(cardToAdd, lastIndex);
 	}
-	
+
 	public boolean addAll(List<Card> cardsToAdd) {
 		return this.cards.addAll(cardsToAdd);
 	}

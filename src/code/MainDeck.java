@@ -57,7 +57,9 @@ public class MainDeck {
 	}
 
 	public void shuffleDeck() {
-		Collections.shuffle(mainDeck.deck.getCards());
+		List<Card> toShuffle=mainDeck.deck.getCards();
+		Collections.shuffle(toShuffle);
+		mainDeck.deck.setCards(toShuffle);
 	}
 
 	public void initStartingDeck() {

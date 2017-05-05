@@ -1,22 +1,20 @@
 
 package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 import org.junit.Test;
 
-import code.CardStack;
 import code.Hand;
-import code.MainDeck;
 import exceptions.IncorrectNumberOfCardsException;
 import exceptions.NoCardsToMoveException;
 
 public class HandTest {
 
-	private MainDeck mainDeck;
-
 	@Test
 	public void testHandManagerCreation() {
+		@SuppressWarnings("unused")
 		Hand handMng = new Hand();
 	}
 

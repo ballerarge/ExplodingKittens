@@ -159,7 +159,7 @@ public class TurnManagerTest {
 	}
 	
 	@Test
-	public void testEndTurnAndDrawNextPlayerDifferent() throws InvalidNumberofPlayersException {
+	public void testEndTurnWithoutDrawNextPlayerDifferent() throws InvalidNumberofPlayersException {
 		TurnManager turnManager = TurnManager.getInstance();
 		Game game = new Game();
 		game.start(3);
@@ -169,4 +169,5 @@ public class TurnManagerTest {
 		
 		assertTrue(!player1.equals(game.getCurrentTurnPlayer()));
 	}
+	
 }

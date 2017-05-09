@@ -158,16 +158,4 @@ public class TurnManagerTest {
 
 	}
 	
-	@Test
-	public void testEndTurnWithoutDrawNextPlayerDifferent() throws InvalidNumberofPlayersException {
-		TurnManager turnManager = TurnManager.getInstance();
-		Game game = new Game();
-		game.start(3);
-		Player player1 = game.getCurrentTurnPlayer();
-		
-		turnManager.endTurnWithoutDraw();
-		
-		assertTrue(!player1.equals(game.getCurrentTurnPlayer()));
-	}
-	
 }

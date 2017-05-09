@@ -67,6 +67,7 @@ public class TurnManager {
 	public void endTurnWithoutDraw() {
 		Player player = turnOrder.remove(0);
 		boolean nextTurnIsSamePlayer = turnOrder.get(turnOrder.size() - 1).equals(player);
+		System.out.println(nextTurnIsSamePlayer);
 		if (!nextTurnIsSamePlayer)// Don't
 		                                                        // circulate
 		                                                        // turns from

@@ -10,9 +10,13 @@ import org.easymock.EasyMock;
 import org.junit.Test;
 
 import code.Card;
+import code.CardFactory;
+import code.Game;
+import code.MainDeck;
 import code.Player;
 import code.PlayerManager;
 import code.TurnManager;
+import exceptions.InvalidNumberofPlayersException;
 
 public class TurnManagerTest {
 
@@ -129,5 +133,23 @@ public class TurnManagerTest {
 		EasyMock.verify(mockPM, mockPlayer1, mockPlayer2, mockPlayer3);
 
 		TurnManager.tearDown();
+	}
+	
+	@Test
+	public void testEndTurnAndDrawWithKittenOnTop() throws InvalidNumberofPlayersException {
+		TurnManager.tearDown();
+		MainDeck.tearDown();
+		TurnManager turnManager = TurnManager.getInstance();
+		CardFactory factory = new CardFactory();
+		MainDeck mainDeck = MainDeck.getInstance();
+		Game game = new Game();
+		game.start(3);
+		
+		mainDeck.insertCard(factory.createCard(CardFactory.EXPLODING_KITTEN_CARD), 0);
+		turnManager.endTurnAndDraw();
+		
+		assertEquals(2, game.getPlayers().size());
+		
+		
 	}
 }

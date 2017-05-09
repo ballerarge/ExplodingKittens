@@ -4,6 +4,7 @@ package code;
 import java.util.ArrayList;
 import java.util.List;
 
+import exceptions.CardNotFoundException;
 import exceptions.IncorrectNumberOfCardsException;
 
 public class CardFactory {
@@ -42,7 +43,7 @@ public class CardFactory {
 			case FAVOR_CARD:
 				return new FavorCard();
 			default:
-				return new NormalCard();
+				throw new CardNotFoundException("CardID incorrect for create card in Card Factory");
 		}
 	}
 

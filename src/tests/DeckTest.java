@@ -167,5 +167,21 @@ public class DeckTest {
 		assertEquals(0, deck.getCards().size());
 		assertFalse(check);
 	}
+	
+	@Test
+	public void testAddCardFirst() {
+		List<Card> cards = new ArrayList<Card>();
+		Card firstCard = new NormalCard();
+		Card secondCard = new NormalCard();
+		Card thirdCard = new NormalCard();
+		cards.add(firstCard);
+		cards.add(secondCard);
+		Deck deck = new Deck(cards);
+		
+		boolean check = deck.addCardFirst(thirdCard);
+		
+		assertTrue(check);
+		assertEquals(3, deck.getCards().size());
+	}
 
 }

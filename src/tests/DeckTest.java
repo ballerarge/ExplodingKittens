@@ -182,6 +182,7 @@ public class DeckTest {
 		
 		assertTrue(check);
 		assertEquals(3, deck.getCards().size());
+		assertEquals(thirdCard, deck.getCards().get(0));
 	}
 
 }

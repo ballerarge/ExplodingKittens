@@ -202,7 +202,7 @@ public class MainDeckTest {
 				scry++;
 			} else if (mDeck.getCards().get(i) instanceof ShuffleCard) {
 				shuffle++;
-			} else if (mDeck.getCards().get(i) instanceof SkipCard) {
+			} else {
 				skip++;
 			}
 		}

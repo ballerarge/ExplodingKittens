@@ -1,7 +1,7 @@
 
 package tests;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -132,6 +132,15 @@ public class AttackCardTest {
 		assertEquals(player3, game.getCurrentTurnPlayer());
 		game.nextTurn();
 		assertEquals(player1, game.getCurrentTurnPlayer());
+	}
+	
+	@Test
+	public void testAttackClone() {
+		Card attack = factory.createCard(CardFactory.ATTACK_CARD);
+		
+		Card clone = attack.clone();
+		
+		assertFalse(clone == null);
 	}
 
 }

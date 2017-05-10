@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="11.5.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>820</x>
+      <y>600</y>
+      <w>290</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>EKSetupWindow
+--
+displayMessage(message: String): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>300</x>
+      <y>410</y>
+      <w>330</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>EKGameWindow
+--
+EKGameWindow gameWindow
+--
+displayGameState(game: Game): void
+setPlayButtonActionListener(actionlistener): void
+setPassActionListener(actionlistener): void
+setCardAction(index: int, actionlistener): void
+endGame(): void
+startGame(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>750</x>
+      <y>520</y>
+      <w>410</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>EKCardSelectionWindow
+--
+displayMessage(message: String, players: List&lt;Player&gt;): void
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>760</x>
+      <y>440</y>
+      <w>410</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>EKPlayerSelectionWindow
+--
+displayMessage(message: String, players: List&lt;Player&gt;): void
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>820</x>
+      <y>360</y>
+      <w>290</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>EKDialogWindow
+--
+displayMessage(message: String): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

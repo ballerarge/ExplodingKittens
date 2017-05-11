@@ -7,10 +7,12 @@ import java.util.Scanner;
 
 import gui.MainWindow;
 import exceptions.InvalidNumberofPlayersException;
+import gui.StartingMenu;
 
 public class GameController {
 
 	public static void main(String[] args) {
+		
 		Scanner scanner = new Scanner(System.in);
 		Game game = new Game();
 
@@ -21,16 +23,15 @@ public class GameController {
 		// Gets the player names
 		List<Player> players = window.getPlayers();
 
-		while (true) {
-			System.out.print("Insert number of players: ");
-			int numOfPlayers = scanner.nextInt();
-
-			try {
-				game.start(numOfPlayers);
-				break;
-			} catch (InvalidNumberofPlayersException e) {
-				System.out.println("Invalid number of player!");
-			}
+		
+		StartingMenu menu = new StartingMenu();
+		menu.selectLanguage();
+		menu.selectNumberofPlayers();
+		try {
+			game.start(menu.numberOfPlayers);
+		} catch (InvalidNumberofPlayersException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		printPlayerHands(game);

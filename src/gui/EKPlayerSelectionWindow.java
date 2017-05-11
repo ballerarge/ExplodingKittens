@@ -21,15 +21,27 @@ public class EKPlayerSelectionWindow extends JOptionPane {
 		this.listOfPlayers.remove(this.currentPlayer);
 	}
 	
-	public String display() {
+	public Player display() {
 		Object[] options = playerNames();
 		ImageIcon icon = new ImageIcon("jetpack-kitten.png");
 		
-		return (String) showInputDialog(
+		String playerName = (String) showInputDialog(
 				null, message, "Select a player to target", QUESTION_MESSAGE, 
 				icon, options, currentPlayer);
+		
+		return getPlayerFromName(playerName);
 	}
 	
+	private Player getPlayerFromName(String playerName) {
+		for (Player player : this.listOfPlayers) {
+			if (player.getName().equals(playerName)) {
+				return player;
+			}
+		}
+		
+		return null;
+	}
+
 	private String[] playerNames() {
 		String[] names = new String[listOfPlayers.size()];
 		

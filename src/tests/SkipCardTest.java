@@ -2,6 +2,7 @@
 package tests;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -101,6 +102,15 @@ public class SkipCardTest {
 		assertEquals(player2, game.getCurrentTurnPlayer());
 		game.nextTurn();
 		assertEquals(player3, game.getCurrentTurnPlayer());
+	}
+	
+	@Test
+	public void testSkipClone() {
+		Card skip = factory.createCard(CardFactory.SKIP_CARD);
+		
+		Card clone = skip.clone();
+		
+		assertFalse(clone == null);
 	}
 
 }

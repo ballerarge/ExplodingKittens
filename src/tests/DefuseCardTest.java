@@ -124,4 +124,13 @@ public class DefuseCardTest {
 		assertEquals(discardDeckSize + 1, dDeck.getCardCount());
 		assertTrue(dDeck.getCards().get(0) instanceof DefuseCard);
 	}
+	
+	@Test
+	public void testDefuseClone() {
+		Card defuse = factory.createCard(CardFactory.DEFUSE_CARD);
+		
+		Card clone = defuse.clone();
+		
+		assertFalse(clone == null);
+	}
 }

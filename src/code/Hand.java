@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import exceptions.IncorrectNumberOfCardsException;
+import exceptions.InvalidBundleException;
 import exceptions.NoCardsToMoveException;
 
 public class Hand {
@@ -48,9 +49,43 @@ public class Hand {
 		if (this.selectedCards.size() == 0) {
 			throw new NoCardsToMoveException();
 		}
-
-		this.cardStack.moveCardsToStack(this.selectedCards);
+		
+		if (this.allNormalCards()) {
+			try {
+				this.cardStack.moveCardsToStack(this.makeBundle());
+			} catch (InvalidBundleException e) {
+				System.out.println("Wrong bundle size!");
+				// Somehow, do something better.
+			}
+		} else {
+			this.cardStack.moveCardsToStack(this.selectedCards);
+		}
 		this.selectedCards.clear();
+	}
+
+	private List<Card> makeBundle() throws InvalidBundleException {
+		ArrayList<Card> toSendToStack = new ArrayList<Card>();
+		
+		int sizeOfBundle = this.selectedCards.size();
+		if (sizeOfBundle == 2) {
+			toSendToStack.add(new TwoCardBundle(selectedCards));
+		} else if (sizeOfBundle == 3) {
+			toSendToStack.add(new ThreeCardBundle(selectedCards));
+		} else if (sizeOfBundle == 5) {
+			toSendToStack.add(new FiveCardBundle(selectedCards));
+		} else {
+			throw new InvalidBundleException();
+		}
+		return toSendToStack;
+	}
+
+	private boolean allNormalCards() {
+		for (Card card : selectedCards) {
+			if (!(card instanceof NormalCard)) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	public void addDefuseCard() {

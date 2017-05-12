@@ -1,20 +1,30 @@
 
 package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import code.Card;
+import code.CardFactory;
 import code.MainDeck;
 import code.NormalCard;
 import code.Player;
 import code.ScryCard;
 
 public class ScryCardTest {
+	
+	CardFactory factory;
+	
+	@Before
+	public void initialize() {
+		factory = new CardFactory();
+	}
 
 	@Test
 	public void testScry4CardDeck() {
@@ -87,6 +97,15 @@ public class ScryCardTest {
 		assertEquals(1, prediction.size());
 		for (int i = 0; i < prediction.size(); i++)
 			assertEquals(mainDeck.draw(), prediction.get(i));
+	}
+	
+	@Test
+	public void testScryClone() {
+		Card scry = factory.createCard(CardFactory.SCRY_CARD);
+		
+		Card clone = scry.clone();
+		
+		assertFalse(clone == null);
 	}
 
 }

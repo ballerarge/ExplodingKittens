@@ -3,13 +3,15 @@ package code;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Scanner;
 
 import gui.EKPlayerSelectionWindow;
 import gui.MainWindow;
+import gui.NumberofPlayersMenu;
 import exceptions.InvalidNumberofPlayersException;
-import gui.StartingMenu;
+import gui.LanguageMenu;
 
 public class GameController {
 
@@ -40,11 +42,12 @@ public class GameController {
 		List<Player> players = window.getPlayers();
 
 		
-		StartingMenu menu = new StartingMenu();
-		menu.selectLanguage();
-		menu.selectNumberofPlayers();
+		LanguageMenu languageMenu = new LanguageMenu();
+		NumberofPlayersMenu menu = new NumberofPlayersMenu();
+		Locale locale = languageMenu.selectLanguage();
+		int num = menu.selectNumberofPlayers(locale);
 		try {
-			game.start(menu.numberOfPlayers);
+			game.start(num);
 		} catch (InvalidNumberofPlayersException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

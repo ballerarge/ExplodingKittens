@@ -1,7 +1,9 @@
 package gui;
 
+import java.awt.Toolkit;
 import java.util.List;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -23,7 +25,8 @@ public class EKPlayerSelectionWindow extends JOptionPane {
 	
 	public Player display() {
 		Object[] options = playerNames();
-		ImageIcon icon = new ImageIcon("jetpack-kitten.png");
+		Icon icon = new ImageIcon(getClass().getResource("jetpack-kitten.png"));
+		System.out.println(icon == null);
 		
 		String playerName = (String) showInputDialog(
 				null, message, "Select a player to target", QUESTION_MESSAGE, 

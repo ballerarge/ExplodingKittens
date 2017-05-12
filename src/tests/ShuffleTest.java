@@ -1,19 +1,28 @@
 
 package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import code.Card;
+import code.CardFactory;
 import code.MainDeck;
 import code.Player;
 import code.ShuffleCard;
 
 public class ShuffleTest {
+	
+	CardFactory factory;
+	
+	@Before
+	public void initialize() {
+		factory = new CardFactory();
+	}
 
 	@Test
 	public void testShuffle() {
@@ -37,6 +46,15 @@ public class ShuffleTest {
 		assertFalse(orderBefore.equals(orderAfter));
 		assertEquals(orderBefore.length(),orderAfter.length());
 		MainDeck.tearDown();
+	}
+	
+	@Test
+	public void testShuffleClone() {
+		Card shuffle = factory.createCard(CardFactory.SHUFFLE_CARD);
+		
+		Card clone = shuffle.clone();
+		
+		assertFalse(clone == null);
 	}
 
 }

@@ -19,6 +19,7 @@ import code.Game;
 import code.Player;
 import code.PriorityManager;
 import code.TurnManager;
+import exceptions.CardNotFoundException;
 import exceptions.IncorrectNumberOfCardsException;
 import exceptions.InvalidNumberofPlayersException;
 
@@ -261,5 +262,12 @@ public class CardFactoryTest {
 			assertEquals(card.getID(), CardFactory.FAVOR_CARD);
 		}
 		assertEquals(10, cards.size());
+	}
+	
+	@Test(expected = CardNotFoundException.class)
+	public void testCreateNonExistingCard() {
+		CardFactory cardFactory = new CardFactory();
+		
+		cardFactory.createCard(26);
 	}
 }

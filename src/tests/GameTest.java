@@ -185,4 +185,12 @@ public class GameTest {
 
 		MainDeck.getInstance().setCards(tempCards);
 	}
+	
+	@Test
+	public void testDeckEmptyBeforeGameInitialized() {
+		Game game = new Game();
+		MainDeck.getInstance();
+		
+		assertTrue(game.isMainDeckEmpty());
+	}
 }

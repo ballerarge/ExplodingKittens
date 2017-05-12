@@ -66,20 +66,24 @@ public class TurnManager {
 
 	public void endTurnWithoutDraw() {
 		Player player = turnOrder.remove(0);
-		if (!turnOrder.get(turnOrder.size() - 1).equals(player))// Don't
+		boolean nextTurnIsSamePlayer = turnOrder.get(0).equals(player);
+		if (!nextTurnIsSamePlayer) {// Don't
 		                                                        // circulate
 		                                                        // turns from
 		                                                        // attacks
 			turnOrder.add(player);
+		}
+		
 		currentPlayer = turnOrder.get(0);
 	}
 
 	public void endTurnWithoutDrawForAttacks() {
 		Player player = turnOrder.remove(0);
+		boolean nextTurnIsSamePlayer = turnOrder.get(0).equals(player);
 		if (turnOrder.get(0).equals(player)) {
 			turnOrder.remove(0);
 		}
-		if (!turnOrder.get(turnOrder.size() - 1).equals(player)) {
+		if (!nextTurnIsSamePlayer) {
 			turnOrder.add(player);
 		}
 		currentPlayer = turnOrder.get(0);

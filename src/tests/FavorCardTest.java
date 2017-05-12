@@ -1,14 +1,25 @@
 
 package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
+import org.junit.Before;
 import org.junit.Test;
 
+import code.Card;
+import code.CardFactory;
 import code.FavorCard;
 import code.Player;
 
 public class FavorCardTest {
+	
+	CardFactory factory;
+	
+	@Before
+	public void initialize() {
+		factory = new CardFactory();
+	}
 
 	@Test
 	public void testFavorCard() {
@@ -31,6 +42,15 @@ public class FavorCardTest {
 		card.cardAction(player1, player2);
 		assertEquals(player1.getHand().size(), 3);
 		assertEquals(player2.getHand().size(), 0);
+	}
+	
+	@Test
+	public void testFavorClone() {
+		Card favor = factory.createCard(CardFactory.FAVOR_CARD);
+		
+		Card clone = favor.clone();
+		
+		assertFalse(clone == null);
 	}
 
 }

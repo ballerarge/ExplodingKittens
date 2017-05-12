@@ -1,33 +1,55 @@
 
 package tests;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.easymock.EasyMock;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import code.Card;
+import code.CardFactory;
+import code.CardStack;
+import code.DiscardDeck;
+import code.Game;
+import code.MainDeck;
 import code.Player;
 import code.PlayerManager;
+import code.PriorityManager;
 import code.TurnManager;
+import exceptions.InvalidNumberofPlayersException;
 
 public class TurnManagerTest {
-
-	@Test
-	public void testConstruction() {
+	
+	@Before
+	public void initialize() {
 		TurnManager.tearDown();
-		TurnManager manager = TurnManager.getInstance();
+		MainDeck.tearDown();
+		DiscardDeck.tearDown();
+		PriorityManager.tearDown();
+		CardStack.tearDown();
+	}
+	
+	@After
+	public void tearDown() {
 		TurnManager.tearDown();
+		MainDeck.tearDown();
+		DiscardDeck.tearDown();
+		PriorityManager.tearDown();
+		CardStack.tearDown();
 	}
 
 	@Test
-	public void testHandlesPlayerManager() {
-		TurnManager.tearDown();
+	public void testConstruction() {
+		TurnManager manager = TurnManager.getInstance();
+	}
 
-		PlayerManager pmgr = EasyMock.mock(PlayerManager.class);
+	@Test
+	public void testHandlesPlayerManager() {PlayerManager pmgr = EasyMock.mock(PlayerManager.class);
 		List<Player> players = new ArrayList<>();
 		players.add(new Player());
 		EasyMock.expect(pmgr.getPlayers()).andReturn(players);
@@ -36,12 +58,10 @@ public class TurnManagerTest {
 		manager.setPlayerManager(pmgr);
 		assertEquals(pmgr, manager.getPlayerManager());
 		EasyMock.verify(pmgr);
-		TurnManager.tearDown();
 	}
 
 	@Test
 	public void testHandlesPlayers() {
-		TurnManager.tearDown();
 		ArrayList<Player> players = new ArrayList<>();
 		Player mockPlayer1 = EasyMock.mock(Player.class);
 		Player mockPlayer2 = EasyMock.mock(Player.class);
@@ -61,13 +81,10 @@ public class TurnManagerTest {
 		EasyMock.verify(mockPM, mockPlayer1, mockPlayer2, mockPlayer3);
 
 		assertEquals(mockPlayer1, manager.getCurrentPlayer());
-
-		TurnManager.tearDown();
 	}
 
 	@Test
 	public void testEndTurnWithoutDraw() {
-		TurnManager.tearDown();
 		ArrayList<Player> players = new ArrayList<>();
 		Player mockPlayer1 = EasyMock.mock(Player.class);
 		Player mockPlayer2 = EasyMock.mock(Player.class);
@@ -92,13 +109,10 @@ public class TurnManagerTest {
 		assertEquals(mockPlayer1, manager.getCurrentPlayer());
 
 		EasyMock.verify(mockPM, mockPlayer1, mockPlayer2, mockPlayer3);
-
-		TurnManager.tearDown();
 	}
 
 	@Test
 	public void testEndTurnAndDraw() {
-		TurnManager.tearDown();
 		ArrayList<Player> players = new ArrayList<>();
 		Card mockCard = EasyMock.mock(Card.class);
 		Player mockPlayer1 = EasyMock.mock(Player.class);
@@ -127,7 +141,21 @@ public class TurnManagerTest {
 		assertEquals(mockPlayer1, manager.getCurrentPlayer());
 
 		EasyMock.verify(mockPM, mockPlayer1, mockPlayer2, mockPlayer3);
-
-		TurnManager.tearDown();
 	}
-}
+
+	@Test
+	public void testEndTurnAndDrawWithKittenOnTop() throws InvalidNumberofPlayersException {
+		TurnManager turnManager = TurnManager.getInstance();
+		CardFactory factory = new CardFactory();
+		MainDeck mainDeck = MainDeck.getInstance();
+		Game game = new Game();
+		game.start(3);
+
+		mainDeck.insertCard(factory.createCard(CardFactory.EXPLODING_KITTEN_CARD), 0);
+		turnManager.endTurnAndDraw();
+
+		assertEquals(2, game.getPlayers().size());
+
+	}
+	
+}

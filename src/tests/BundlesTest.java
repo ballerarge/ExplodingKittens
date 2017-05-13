@@ -84,5 +84,17 @@ public class BundlesTest {
 	public void testFiveCardNullBundleCards() throws InvalidBundleException {
 		FiveCardBundle fiveBundle = new FiveCardBundle(null);
 	}
+	
+	@Test
+	public void testTwoCardClone() throws InvalidBundleException {
+		ArrayList<Card> list = new ArrayList<>(Arrays.asList(new NormalCard(), new NormalCard()));
+		
+		TwoCardBundle twoBundle = new TwoCardBundle(list);
+		
+		Card clone = twoBundle.clone();
+		
+		assertTrue(clone instanceof TwoCardBundle);
+		
+	}
 
 }

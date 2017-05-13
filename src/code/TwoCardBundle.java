@@ -1,5 +1,6 @@
 package code;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import exceptions.InvalidBundleException;
@@ -28,7 +29,14 @@ public class TwoCardBundle extends Card {
 
 	@Override
 	public Card clone() {
-		return null;
+		TwoCardBundle clone = null;
+		try {
+			clone = new TwoCardBundle(new ArrayList<Card>(cards));
+		} catch (InvalidBundleException e) {
+			e.printStackTrace();
+		}
+		
+		return clone;
 	}
 
 	protected static boolean isValidBundle(List<Card> cards) {

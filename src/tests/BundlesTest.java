@@ -79,5 +79,10 @@ public class BundlesTest {
 	public void testThreeCardNullBundleCards() throws InvalidBundleException {
 		ThreeCardBundle threeBundle = new ThreeCardBundle(null);
 	}
+	
+	@Test(expected = InvalidBundleException.class)
+	public void testFiveCardNullBundleCards() throws InvalidBundleException {
+		FiveCardBundle fiveBundle = new FiveCardBundle(null);
+	}
 
 }

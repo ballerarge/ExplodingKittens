@@ -75,36 +75,49 @@ public class BundlesTest {
 	public void testThreeCardNullBundleCards() throws InvalidBundleException {
 		ThreeCardBundle threeBundle = new ThreeCardBundle(null);
 	}
-	
+
 	@Test(expected = InvalidBundleException.class)
 	public void testFiveCardNullBundleCards() throws InvalidBundleException {
 		FiveCardBundle fiveBundle = new FiveCardBundle(null);
 	}
-	
+
 	@Test
 	public void testTwoCardClone() throws InvalidBundleException {
 		ArrayList<Card> list = new ArrayList<>(Arrays.asList(new NormalCard(), new NormalCard()));
-		
+
 		TwoCardBundle twoBundle = new TwoCardBundle(list);
-		
+
 		TwoCardBundle clone = twoBundle.clone();
-		
+
 		assertTrue(TwoCardBundle.isValidBundle(twoBundle.getCardsInBundle()));
 		assertTrue(TwoCardBundle.isValidBundle(clone.getCardsInBundle()));
 		assertTrue(clone instanceof TwoCardBundle);
-		
+
 	}
-	
+
 	@Test
 	public void testThreeCardClone() {
 		ArrayList<Card> list = new ArrayList<>(Arrays.asList(new NormalCard(), new NormalCard(), new NormalCard()));
 		ThreeCardBundle threeBundle = new ThreeCardBundle(list);
-		
+
 		ThreeCardBundle clone = threeBundle.clone();
-		
+
 		assertTrue(ThreeCardBundle.isValidBundle(threeBundle.getCardsInBundle()));
 		assertTrue(ThreeCardBundle.isValidBundle(clone.getCardsInBundle()));
 		assertTrue(clone instanceof ThreeCardBundle);
+	}
+
+	@Test
+	public void testFiveCardClone() {
+		ArrayList<Card> list = new ArrayList<>(Arrays.asList(new NormalCard(), new NormalCard(), new NormalCard(),
+		        new NormalCard(), new NormalCard()));
+		FiveCardBundle fiveBundle = new FiveCardBundle(list);
+
+		FiveCardBundle clone = fiveBundle.clone();
+
+		assertTrue(FiveCardBundle.isValidBundle(fiveBundle.getCardsInBundle()));
+		assertTrue(FiveCardBundle.isValidBundle(clone.getCardsInBundle()));
+		assertTrue(clone instanceof FiveCardBundle);
 	}
 
 }

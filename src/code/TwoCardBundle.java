@@ -23,11 +23,11 @@ public class TwoCardBundle extends Card implements Cloneable {
 	}
 
 	@Override
-	public Card clone() {
+	public TwoCardBundle clone() {
 		return new TwoCardBundle(new ArrayList<Card>(cards));
 	}
 
-	protected static boolean isValidBundle(List<Card> cards) {
+	public static boolean isValidBundle(List<Card> cards) {
 		if (cards == null || cards.size() != BUNDLE_SIZE)
 			return false;
 
@@ -38,5 +38,9 @@ public class TwoCardBundle extends Card implements Cloneable {
 		}
 
 		return true;
+	}
+
+	public List<Card> getCardsInBundle() {
+		return cards;
 	}
 }

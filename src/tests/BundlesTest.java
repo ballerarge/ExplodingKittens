@@ -89,6 +89,8 @@ public class BundlesTest {
 		
 		TwoCardBundle clone = twoBundle.clone();
 		
+		assertTrue(TwoCardBundle.isValidBundle(twoBundle.getCardsInBundle()));
+		assertTrue(TwoCardBundle.isValidBundle(clone.getCardsInBundle()));
 		assertTrue(clone instanceof TwoCardBundle);
 		
 	}

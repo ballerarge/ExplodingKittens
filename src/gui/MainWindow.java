@@ -1,69 +1,90 @@
+
 package gui;
 
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.layout.FillLayout;
+import java.awt.event.ActionListener;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
-import java.util.List;
+import javax.swing.GroupLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.WindowConstants;
 
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.custom.CLabel;
-import org.eclipse.wb.swt.SWTResourceManager;
-
-import code.Player;
+import com.sun.glass.events.WindowEvent;
 
 public class MainWindow {
+	private JFrame mainFrame;
 
-	protected Shell shlExplodingKittens;
+	private JPanel mainPanel;
 
-	/**
-	 * Launch the application.
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		try {
-			MainWindow window = new MainWindow();
-			window.open();
-		} catch (Exception e) {
-			e.printStackTrace();
+	private JPanel buttonPanel;
+	private JButton setLanguageButton;
+	private JButton playGameButton;
+
+	public Locale locale;
+	ResourceBundle resourceBundle;
+
+	public MainWindow() {
+		locale = Locale.ENGLISH;
+		resourceBundle = ResourceBundle.getBundle("resources/resources", locale);
+
+		mainFrame = new JFrame(resourceBundle.getString("EXPLODING_KITTENS"));
+
+		mainPanel = new JPanel();
+		buttonPanel = new JPanel();
+
+		playGameButton = new JButton(resourceBundle.getString("PLAY_GAME_BUTTON_LABEL"));
+		setLanguageButton = new JButton(resourceBundle.getString("SELECT_LANGUAGE_BUTTON_LABEL"));
+	}
+
+	public void setLocale(Locale locale) {
+		this.locale = locale;
+
+		resourceBundle = ResourceBundle.getBundle("resources/resources", locale);
+
+		mainFrame.setTitle(resourceBundle.getString("EXPLODING_KITTENS"));
+
+		playGameButton.setText(resourceBundle.getString("PLAY_GAME_BUTTON_LABEL"));
+		setLanguageButton.setText(resourceBundle.getString("SELECT_LANGUAGE_BUTTON_LABEL"));
+	}
+
+	private void open() {
+		mainFrame = new JFrame("Exploding Kittens");
+		mainFrame.setSize(1200, 1000);
+		mainFrame.setResizable(false);
+		mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+		mainFrame.add(mainPanel);
+
+		mainPanel.add(playGameButton);
+		mainPanel.add(setLanguageButton);
+
+		mainFrame.setVisible(true);
+	}
+
+	public void openStartWindow() {
+		open();
+	}
+
+	public void setPlayGameListener(ActionListener listener) {
+		for (ActionListener lstnr : playGameButton.getListeners(ActionListener.class)) {
+			playGameButton.removeActionListener(lstnr);
 		}
+
+		playGameButton.addActionListener(listener);
 	}
 
-	/**
-	 * Open the window.
-	 */
-	public void open() {
-		Display display = Display.getDefault();
-		createContents();
-		shlExplodingKittens.open();
-		shlExplodingKittens.layout();
-		while (!shlExplodingKittens.isDisposed()) {
-			if (!display.readAndDispatch()) {
-				display.sleep();
-			}
+	public void setSelectLanguageListener(ActionListener listener) {
+		for (ActionListener lstnr : setLanguageButton.getListeners(ActionListener.class)) {
+			setLanguageButton.removeActionListener(lstnr);
 		}
+
+		setLanguageButton.addActionListener(listener);
 	}
 
-	/**
-	 * Create contents of the window.
-	 */
-	protected void createContents() {
-		shlExplodingKittens = new Shell();
-		shlExplodingKittens.setSize(900, 800);
-		shlExplodingKittens.setText("Exploding Kittens");
-		shlExplodingKittens.setLayout(new FillLayout(SWT.HORIZONTAL));
-		
-		CLabel lblNewLabel = new CLabel(shlExplodingKittens, SWT.NONE);
-		lblNewLabel.setAlignment(SWT.CENTER);
-		lblNewLabel.setImage(SWTResourceManager.getImage(MainWindow.class, "/gui/logo.png"));
-		lblNewLabel.setText("");
-
+	public void exitGame() {
+		mainFrame.setVisible(false);
+		mainFrame.dispose();
 	}
-
-	public List<Player> getPlayers() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

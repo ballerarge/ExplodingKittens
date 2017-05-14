@@ -2,6 +2,7 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -22,6 +23,7 @@ import javax.swing.WindowConstants;
 
 import code.Card;
 import code.Game;
+import code.MainDeck;
 import code.Player;
 
 public class MainWindow {
@@ -40,9 +42,15 @@ public class MainWindow {
 
 	private JLabel imageLabel;
 
-	// Main Page components
+	// Game Page components
 	private JButton nextTurnButton;
 	private JButton playSelectedCardButton;
+
+	private JPanel cardDisplayPanel;
+	private JPanel playerDisplayPanel;
+	private JPanel deckDisplayPanel;
+
+	private List<JComponent> cardComponentList;
 
 	public Locale locale;
 	ResourceBundle resourceBundle;
@@ -72,6 +80,12 @@ public class MainWindow {
 
 		ImageIcon image = new ImageIcon(getClass().getResource("logo.png"));
 		imageLabel = new JLabel(image);
+
+		playerDisplayPanel = new JPanel();
+		playerDisplayPanel.setLayout(new GridBagLayout());
+
+		deckDisplayPanel = new JPanel();
+		deckDisplayPanel.setLayout(new GridBagLayout());
 	}
 
 	public void setLocale(Locale locale) {
@@ -129,9 +143,19 @@ public class MainWindow {
 		mainFrame.setResizable(false);
 		mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-		// Buttons
+		// Other Players
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+		mainPanel.add(playerDisplayPanel, gbc);
+
+		// Decks
 		gbc.gridx = 0;
 		gbc.gridy = 1;
+		mainPanel.add(deckDisplayPanel, gbc);
+
+		// Buttons
+		gbc.gridx = 0;
+		gbc.gridy = 2;
 		buttonPanel.add(playSelectedCardButton);
 		buttonPanel.add(nextTurnButton);
 
@@ -184,6 +208,60 @@ public class MainWindow {
 	public void displayGameState(Game game) {
 		System.out.printf("%s's turn.\n\t", game.getCurrentPlayer().getName());
 
+		displayOtherPlayers(game.getPlayers().size() - 1);
+		displayMainDeck(MainDeck.getInstance());
+
 		System.out.println(game.getCurrentPlayer().getHand().toString());
+	}
+
+	private void displayMainDeck(MainDeck mainDeck) {
+		for (Component component : deckDisplayPanel.getComponents()) {
+			if (!component.equals(deckDisplayPanel)) {
+				deckDisplayPanel.remove(component);
+			}
+		}
+
+		GridBagConstraints gbc = new GridBagConstraints();
+
+		ImageIcon image;
+
+		switch (mainDeck.getCardCount()) {
+			case 1:
+				image = new ImageIcon(getClass().getResource("main_deck_1.png"));
+				break;
+			case 2:
+				image = new ImageIcon(getClass().getResource("main_deck_2.png"));
+				break;
+			default:
+				image = new ImageIcon(getClass().getResource("main_deck_3.png"));
+				break;
+		}
+		JLabel imageLabel = new JLabel(image);
+		deckDisplayPanel.add(imageLabel, gbc);
+		imageLabel.setVisible(true);
+
+		deckDisplayPanel.setVisible(true);
+	}
+
+	private void displayOtherPlayers(int numOtherPlayers) {
+		for (Component component : playerDisplayPanel.getComponents()) {
+			if (!component.equals(playerDisplayPanel)) {
+				playerDisplayPanel.remove(component);
+			}
+		}
+
+		GridBagConstraints gbc = new GridBagConstraints();
+
+		for (int i = 0; i < numOtherPlayers; i++) {
+			gbc.gridx = i;
+			gbc.gridy = 0;
+
+			ImageIcon image = new ImageIcon(getClass().getResource("player.png"));
+			JLabel imageLabel = new JLabel(image);
+			playerDisplayPanel.add(imageLabel, gbc);
+			imageLabel.setVisible(true);
+		}
+
+		playerDisplayPanel.setVisible(true);
 	}
 }

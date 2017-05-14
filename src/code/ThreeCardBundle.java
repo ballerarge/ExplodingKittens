@@ -33,7 +33,7 @@ public class ThreeCardBundle extends Card implements Cloneable {
 		return new ThreeCardBundle(new ArrayList<Card>(cards));
 	}
 
-	protected static boolean isValidBundle(List<Card> cards) {
+	public static boolean isValidBundle(List<Card> cards) {
 		if (cards == null || cards.size() != BUNDLE_SIZE)
 			return false;
 

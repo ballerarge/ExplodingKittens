@@ -87,10 +87,22 @@ public class BundlesTest {
 		
 		TwoCardBundle twoBundle = new TwoCardBundle(list);
 		
-		Card clone = twoBundle.clone();
+		TwoCardBundle clone = twoBundle.clone();
 		
 		assertTrue(clone instanceof TwoCardBundle);
 		
+	}
+	
+	@Test
+	public void testThreeCardClone() {
+		ArrayList<Card> list = new ArrayList<>(Arrays.asList(new NormalCard(), new NormalCard(), new NormalCard()));
+		ThreeCardBundle threeBundle = new ThreeCardBundle(list);
+		
+		ThreeCardBundle clone = threeBundle.clone();
+		
+		assertTrue(ThreeCardBundle.isValidBundle(threeBundle.getCardsInBundle()));
+		assertTrue(ThreeCardBundle.isValidBundle(clone.getCardsInBundle()));
+		assertTrue(clone instanceof ThreeCardBundle);
 	}
 
 }

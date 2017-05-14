@@ -1,6 +1,8 @@
 
 package code;
 
+import exceptions.NoSuchPlayerException;
+
 public class ExplodingKittenCard extends Card {
 
 	PlayerManager playerManager;
@@ -14,7 +16,11 @@ public class ExplodingKittenCard extends Card {
 
 	@Override
 	public void cardAction(Player p1, Player p2) {
-		TurnManager.getInstance().makeCurrentPlayerLose();
+		try {
+			turnManager.makeCurrentPlayerLose();
+		} catch (NoSuchPlayerException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override

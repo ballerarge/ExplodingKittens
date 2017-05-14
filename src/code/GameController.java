@@ -14,6 +14,7 @@ import gui.EKPlayerSelectionWindow;
 import gui.LanguageMenu;
 import gui.MainWindow;
 import gui.NumberofPlayersMenu;
+import gui.PlayerNameEntryMenu;
 
 public class GameController {
 
@@ -56,11 +57,23 @@ public class GameController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-					game.start(menu.selectNumberofPlayers(window.locale));
+					int numPlayers = menu.selectNumberofPlayers(window.locale);
 
-					window.openGameWindow();
+					game.start(numPlayers);
 
-					window.displayGameState(game);
+					List<String> playerNames = PlayerNameEntryMenu.getPlayerNames(window.locale, numPlayers);
+
+					if (playerNames == null) {
+						window.exitGame();
+					} else {
+						for (int i = 0; i < numPlayers; i++) {
+							game.getPlayers().get(i).setName(playerNames.get(i));
+						}
+
+						window.openGameWindow();
+
+						window.displayGameState(game);
+					}
 				} catch (InvalidNumberofPlayersException e1) {
 					try {
 						game.start(4);

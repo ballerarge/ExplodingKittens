@@ -24,9 +24,6 @@ public class PriorityManager {
 
 	public void removePlayer(Player player) throws NoSuchPlayerException {
 		if (this.playerList.contains(player)) {
-			if (this.activePlayer.equals(player)) {
-				this.activePlayer = this.playerList.get((this.playerList.indexOf(player) + 1) % getPlayerCount());
-			}
 			this.playerList.remove(player);
 		} else {
 			throw new NoSuchPlayerException();

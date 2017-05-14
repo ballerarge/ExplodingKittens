@@ -4,6 +4,8 @@ package code;
 import java.util.ArrayList;
 import java.util.List;
 
+import exceptions.NoSuchPlayerException;
+
 public class TurnManager {
 
 	private static TurnManager turnManager;
@@ -97,8 +99,18 @@ public class TurnManager {
 		turnOrder.add(1, currentPlayer);
 	}
 
-	public void makeCurrentPlayerLose() {
+	public void makeCurrentPlayerLose() throws NoSuchPlayerException {
 		playerManager.removePlayerFromGame(currentPlayer);
-		turnOrder.remove(currentPlayer);
+		PriorityManager.getInstance().removePlayer(currentPlayer);
+		removeAllInstancesFromTurnOrder();
+	}
+
+	private void removeAllInstancesFromTurnOrder() {
+		for(int i = turnOrder.size() - 1; i >= 0; i--) {
+			Player checkPlayer = turnOrder.get(i);
+			if (checkPlayer.equals(currentPlayer)) {
+				turnOrder.remove(checkPlayer);
+			}
+		}	
 	}
 }

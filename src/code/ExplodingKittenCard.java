@@ -1,7 +1,7 @@
 
 package code;
 
-public class ExplodingKittenCard extends Card {
+public class ExplodingKittenCard extends Card implements Cloneable {
 	
 	PlayerManager playerManager;
 	TurnManager turnManager;

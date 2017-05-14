@@ -1,7 +1,7 @@
 
 package code;
 
-public class NormalCard extends Card {
+public class NormalCard extends Card implements Cloneable {
 	private int cardIcon;
 
 	public NormalCard() {

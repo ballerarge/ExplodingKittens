@@ -27,13 +27,9 @@ public class BundlesTest {
 		ArrayList<Card> bundleFive = new ArrayList<>(Arrays.asList(new NormalCard(), new NormalCard(), new NormalCard(),
 		        new NormalCard(), new NormalCard()));
 
-		try {
-			TwoCardBundle twoBundle = new TwoCardBundle(bundleTwo);
-			ThreeCardBundle threeBundle = new ThreeCardBundle(bundleThree);
-			FiveCardBundle fiveBundle = new FiveCardBundle(bundleFive);
-		} catch (InvalidBundleException e) {
-			e.printStackTrace();
-		}
+		TwoCardBundle twoBundle = new TwoCardBundle(bundleTwo);
+		ThreeCardBundle threeBundle = new ThreeCardBundle(bundleThree);
+		FiveCardBundle fiveBundle = new FiveCardBundle(bundleFive);
 	}
 
 	@Test(expected = InvalidBundleException.class)

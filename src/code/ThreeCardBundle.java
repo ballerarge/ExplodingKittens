@@ -2,21 +2,14 @@
 package code;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import exceptions.InvalidBundleException;
-
-public class ThreeCardBundle extends Card {
+public class ThreeCardBundle extends Card implements Cloneable {
 
 	public static final int BUNDLE_SIZE = 3;
 	private List<Card> cards;
 
-	public ThreeCardBundle(List<Card> cards) throws InvalidBundleException {
-		if (!ThreeCardBundle.isValidBundle(cards)) {
-			throw new InvalidBundleException();
-		}
-		
+	public ThreeCardBundle(List<Card> cards) {
 		this.cards = cards;
 	}
 
@@ -31,20 +24,13 @@ public class ThreeCardBundle extends Card {
 			Card picked = targetHand.remove(indexOfCardPicked);
 			active.getHand().add(picked);
 		}
-		
+
 		// Otherwise, active won't get a card.
 	}
 
 	@Override
 	public Card clone() {
-		ThreeCardBundle clone = null;
-		try {
-			clone = new ThreeCardBundle(new ArrayList<Card>(cards));
-		} catch (InvalidBundleException e) {
-			e.printStackTrace();
-		}
-		
-		return clone;
+		return new ThreeCardBundle(new ArrayList<Card>(cards));
 	}
 
 	protected static boolean isValidBundle(List<Card> cards) {

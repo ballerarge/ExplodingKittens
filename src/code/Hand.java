@@ -68,13 +68,23 @@ public class Hand {
 		
 		int sizeOfBundle = this.selectedCards.size();
 		if (sizeOfBundle == 2) {
-			toSendToStack.add(new TwoCardBundle(selectedCards));
+			if (!TwoCardBundle.isValidBundle(selectedCards)) {
+				throw new InvalidBundleException();
+			} else {
+				toSendToStack.add(new TwoCardBundle(selectedCards));
+			}
 		} else if (sizeOfBundle == 3) {
-			toSendToStack.add(new ThreeCardBundle(selectedCards));
+			if (!ThreeCardBundle.isValidBundle(selectedCards)) {
+				throw new InvalidBundleException();
+			} else {
+				toSendToStack.add(new ThreeCardBundle(selectedCards));
+			}
 		} else if (sizeOfBundle == 5) {
-			toSendToStack.add(new FiveCardBundle(selectedCards));
-		} else {
-			throw new InvalidBundleException();
+			if (!FiveCardBundle.isValidBundle(selectedCards)) {
+				throw new InvalidBundleException();
+			} else {
+				toSendToStack.add(new FiveCardBundle(selectedCards));
+			}
 		}
 		return toSendToStack;
 	}

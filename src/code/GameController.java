@@ -57,9 +57,10 @@ public class GameController {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					game.start(menu.selectNumberofPlayers(window.locale));
-					window.exitGame();
 
-					printPlayerHands(game);
+					window.openGameWindow();
+
+					window.displayGameState(game);
 				} catch (InvalidNumberofPlayersException e1) {
 					try {
 						game.start(4);
@@ -68,6 +69,16 @@ public class GameController {
 					}
 				}
 			}
+		});
+
+		window.setNextTurnListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				game.nextTurn();
+				window.displayGameState(game);
+			}
+
 		});
 
 		window.openStartWindow();
@@ -79,6 +90,5 @@ public class GameController {
 		for (Player playa : playerHands.keySet()) {
 			System.out.printf("Player %s's hand:\n\t%s\n", playa.getName(), playerHands.get(playa).toString());
 		}
-
 	}
 }

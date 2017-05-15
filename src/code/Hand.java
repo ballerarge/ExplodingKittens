@@ -54,8 +54,7 @@ public class Hand {
 			try {
 				this.cardStack.moveCardsToStack(this.makeBundle());
 			} catch (InvalidBundleException e) {
-				System.out.println("Wrong bundle size!");
-				// Somehow, do something better.
+				e.printStackTrace();
 			}
 		} else {
 			this.cardStack.moveCardsToStack(this.selectedCards);

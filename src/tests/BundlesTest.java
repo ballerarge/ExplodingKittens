@@ -30,33 +30,42 @@ public class BundlesTest {
 		TwoCardBundle twoBundle = new TwoCardBundle(bundleTwo);
 		ThreeCardBundle threeBundle = new ThreeCardBundle(bundleThree);
 		FiveCardBundle fiveBundle = new FiveCardBundle(bundleFive);
+		
+		assertTrue(twoBundle instanceof TwoCardBundle);
+		assertTrue(threeBundle instanceof ThreeCardBundle);
+		assertTrue(fiveBundle instanceof FiveCardBundle);
 	}
 
-	@Test(expected = InvalidBundleException.class)
+	@Test
 	public void testTwoBundleIncorrectBundleSize() throws InvalidBundleException {
 
 		ArrayList<Card> bundleWrong = new ArrayList<>(Arrays.asList(new NormalCard()));
 
 		TwoCardBundle twoBundle = new TwoCardBundle(bundleWrong);
+		
+		assertTrue(!TwoCardBundle.isValidBundle(twoBundle.getCardsInBundle()));
 	}
 
-	@Test(expected = InvalidBundleException.class)
 	public void testThreeBundleIncorrectBundleSize() throws InvalidBundleException {
 
 		ArrayList<Card> bundleWrong = new ArrayList<>(Arrays.asList(new NormalCard()));
 
 		ThreeCardBundle threeBundle = new ThreeCardBundle(bundleWrong);
+		
+		assertTrue(!ThreeCardBundle.isValidBundle(threeBundle.getCardsInBundle()));
 	}
 
-	@Test(expected = InvalidBundleException.class)
+	@Test
 	public void testFiveBundleIncorrectBundleSize() throws InvalidBundleException {
 
 		ArrayList<Card> bundleWrong = new ArrayList<>(Arrays.asList(new NormalCard()));
 
 		FiveCardBundle fiveBundle = new FiveCardBundle(bundleWrong);
+		
+		assertTrue(!FiveCardBundle.isValidBundle(fiveBundle.getCardsInBundle()));
 	}
 
-	@Test(expected = InvalidBundleException.class)
+	@Test
 	public void testIncorrectBundleCards() throws InvalidBundleException {
 
 		ArrayList<Card> bundleWrong = new ArrayList<>(Arrays.asList(new AttackCard(), new NormalCard()));
@@ -64,21 +73,31 @@ public class BundlesTest {
 		TwoCardBundle twoBundle = new TwoCardBundle(bundleWrong);
 		ThreeCardBundle threeBundle = new ThreeCardBundle(bundleWrong);
 		FiveCardBundle fiveBundle = new FiveCardBundle(bundleWrong);
+		
+		assertTrue(!TwoCardBundle.isValidBundle(twoBundle.getCardsInBundle()));
+		assertTrue(!ThreeCardBundle.isValidBundle(threeBundle.getCardsInBundle()));
+		assertTrue(!FiveCardBundle.isValidBundle(fiveBundle.getCardsInBundle()));
 	}
 
-	@Test(expected = InvalidBundleException.class)
+	@Test
 	public void testTwoCardNullBundleCards() throws InvalidBundleException {
 		TwoCardBundle twoBundle = new TwoCardBundle(null);
+		
+		assertTrue(!TwoCardBundle.isValidBundle(twoBundle.getCardsInBundle()));
 	}
 
-	@Test(expected = InvalidBundleException.class)
+	@Test
 	public void testThreeCardNullBundleCards() throws InvalidBundleException {
 		ThreeCardBundle threeBundle = new ThreeCardBundle(null);
+		
+		assertTrue(!ThreeCardBundle.isValidBundle(threeBundle.getCardsInBundle()));
 	}
 
-	@Test(expected = InvalidBundleException.class)
+	@Test
 	public void testFiveCardNullBundleCards() throws InvalidBundleException {
 		FiveCardBundle fiveBundle = new FiveCardBundle(null);
+		
+		assertTrue(!FiveCardBundle.isValidBundle(fiveBundle.getCardsInBundle()));
 	}
 
 	@Test

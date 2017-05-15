@@ -46,6 +46,7 @@ public class BundlesTest {
 		assertTrue(!TwoCardBundle.isValidBundle(twoBundle.getCardsInBundle()));
 	}
 
+	@Test
 	public void testThreeBundleIncorrectBundleSize() throws InvalidBundleException {
 
 		ArrayList<Card> bundleWrong = new ArrayList<>(Arrays.asList(new NormalCard()));

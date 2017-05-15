@@ -1,8 +1,7 @@
 
 package tests;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
@@ -14,8 +13,9 @@ public class HandTest {
 
 	@Test
 	public void testHandManagerCreation() {
-		@SuppressWarnings("unused")
 		Hand handMng = new Hand();
+		
+		assertTrue(handMng != null);
 	}
 
 	@Test

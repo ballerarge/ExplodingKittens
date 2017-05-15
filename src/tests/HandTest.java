@@ -99,6 +99,24 @@ public class HandTest {
 
 		assertEquals(0, handMng.getSelectedCards().size());
 	}
+	
+	@Test
+	public void testMoveSelectedToStackThreeNormal() throws IncorrectNumberOfCardsException, NoCardsToMoveException, InvalidBundleException {
+		Hand handMng = new Hand();
+		CardFactory factory = new CardFactory();
+		List<Card> cards = new ArrayList<Card>();
+		cards.add(factory.createCard(CardFactory.NORMAL_CARD));
+		cards.add(factory.createCard(CardFactory.NORMAL_CARD));
+		cards.add(factory.createCard(CardFactory.NORMAL_CARD));
+		handMng.addCards(cards);
+		handMng.selectCard(2);
+		handMng.selectCard(1);
+		handMng.selectCard(0);
+
+		handMng.moveSelectedToStack();
+
+		assertEquals(0, handMng.getSelectedCards().size());
+	}
 
 	@Test(expected = NoCardsToMoveException.class)
 	public void testMoveSelectedToStackException() throws NoCardsToMoveException, InvalidBundleException {

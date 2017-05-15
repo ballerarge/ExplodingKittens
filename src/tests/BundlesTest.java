@@ -147,19 +147,39 @@ public class BundlesTest {
 		        Arrays.asList(new NormalCard(), new NormalCard(), new AttackCard()));
 		ArrayList<Card> fiveList = new ArrayList<>(Arrays.asList(new NormalCard(), new NormalCard(), new NormalCard(),
 		        new NormalCard(), new AttackCard()));
-		
+
 		TwoCardBundle twoBundle = new TwoCardBundle(twoList);
 		ThreeCardBundle threeBundle = new ThreeCardBundle(threeList);
 		FiveCardBundle fiveBundle = new FiveCardBundle(fiveList);
-		
+
 		assertFalse(TwoCardBundle.isValidBundle(twoBundle.getCardsInBundle()));
 		assertFalse(ThreeCardBundle.isValidBundle(threeBundle.getCardsInBundle()));
 		assertFalse(FiveCardBundle.isValidBundle(fiveBundle.getCardsInBundle()));
 	}
-	
+
 	@Test
-	public void testIsValidBundleBadIds() {
-		Card firstCard = new NormalCard();
+	public void testIsValidBundleBadIcons() {
+		NormalCard firstCard = new NormalCard();
+		NormalCard secondCard = new NormalCard();
+		NormalCard thirdCard = new NormalCard();
+		NormalCard fourthCard = new NormalCard();
+		NormalCard fifthCard = new NormalCard();
+
+		firstCard.setIcon(1);
+		secondCard.setIcon(2);
+		thirdCard.setIcon(3);
+		fourthCard.setIcon(4);
+		fifthCard.setIcon(5);
+
+		TwoCardBundle twoBundle = new TwoCardBundle(Arrays.asList(firstCard, secondCard));
+		ThreeCardBundle threeBundle = new ThreeCardBundle(Arrays.asList(firstCard, secondCard, thirdCard));
+		FiveCardBundle fiveBundle = new FiveCardBundle(
+		        Arrays.asList(firstCard, secondCard, thirdCard, fourthCard, fifthCard));
+
+		assertFalse(TwoCardBundle.isValidBundle(twoBundle.getCardsInBundle()));
+		assertFalse(ThreeCardBundle.isValidBundle(threeBundle.getCardsInBundle()));
+		assertFalse(FiveCardBundle.isValidBundle(fiveBundle.getCardsInBundle()));
+
 	}
 
 }

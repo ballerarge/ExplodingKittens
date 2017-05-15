@@ -181,5 +181,10 @@ public class BundlesTest {
 		assertFalse(FiveCardBundle.isValidBundle(fiveBundle.getCardsInBundle()));
 
 	}
+	
+	@Test
+	public void testTwoBundleCardAction() {
+		
+	}
 
 }

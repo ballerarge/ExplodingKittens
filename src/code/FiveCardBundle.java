@@ -8,18 +8,24 @@ public class FiveCardBundle extends Card implements Cloneable {
 
 	public static final int BUNDLE_SIZE = 5;
 	private List<Card> cards;
+	private int discardDeckIndex;
 
 	public FiveCardBundle(List<Card> cards) {
 		this.cards = cards;
+		discardDeckIndex = 0;
 	}
 
 	@Override
 	public void cardAction(Player active, Player target) {
-		// Somehow, let player look at the discrad deck and pick a dars from it.
+		// Somehow, let player look at the discard deck and pick a card from it.
 
 		DiscardDeck discardDeck = DiscardDeck.getInstance();
 
-		active.getHand().add(discardDeck.getCards().remove(0)); // Placeholder
+		active.getHand().add(discardDeck.getCards().remove(discardDeckIndex));
+	}
+	
+	public void setDiscardDeckIndex(int index) {
+		discardDeckIndex = index;
 	}
 
 	@Override

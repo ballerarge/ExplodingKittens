@@ -8,18 +8,24 @@ public class TwoCardBundle extends Card implements Cloneable {
 
 	public static final int BUNDLE_SIZE = 2;
 	private List<Card> cards;
+	private int targetCardIndex;
 
 	public TwoCardBundle(List<Card> cards) {
 		this.cards = cards;
+		targetCardIndex = 0;
 	}
 
 	@Override
 	public void cardAction(Player active, Player target) {
 		// Somehow, prompt active player to pick a card from target's hand.
 
-		Card targetCard = target.getHand().get(0);
+		Card targetCard = target.getHand().get(targetCardIndex);
 		// 0 is a placeholder here.
 		active.getHand().add(targetCard);
+	}
+	
+	public void setTargetCardIndex(int index) {
+		targetCardIndex = index;
 	}
 
 	@Override

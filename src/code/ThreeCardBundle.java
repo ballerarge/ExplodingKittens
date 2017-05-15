@@ -10,9 +10,11 @@ public class ThreeCardBundle extends Card implements Cloneable {
 
 	public static final int BUNDLE_SIZE = 3;
 	private List<Card> cards;
+	private Class<?> targetCardClass;
 
 	public ThreeCardBundle(List<Card> cards) {
 		this.cards = cards;
+		targetCardClass = AttackCard.class;
 	}
 
 	@Override
@@ -20,7 +22,13 @@ public class ThreeCardBundle extends Card implements Cloneable {
 		// Somehow, prompt active player to name a card from target's hand.
 		// If it exists, give it to them. Otherwise, they get nothing.
 		List<Card> targetHand = target.getHand();
-		int indexOfCardPicked = targetHand.indexOf(new AttackCard());
+		int indexOfCardPicked = -1;
+		for (int i = 0; i < targetHand.size(); i++) {
+			if (targetHand.get(i).getClass().equals(targetCardClass)) {
+				indexOfCardPicked = i;
+				break;
+			}
+		}
 
 		if (indexOfCardPicked > -1) {
 			Card picked = targetHand.remove(indexOfCardPicked);
@@ -28,6 +36,10 @@ public class ThreeCardBundle extends Card implements Cloneable {
 		}
 
 		// Otherwise, active won't get a card.
+	}
+	
+	public void setTargetCardClass(Class<?> cardClass) {
+		targetCardClass = cardClass;
 	}
 
 	@Override

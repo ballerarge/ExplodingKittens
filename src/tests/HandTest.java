@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import code.Hand;
 import exceptions.IncorrectNumberOfCardsException;
+import exceptions.InvalidBundleException;
 import exceptions.NoCardsToMoveException;
 
 public class HandTest {
@@ -51,7 +52,7 @@ public class HandTest {
 	}
 
 	@Test
-	public void testMoveSelectedToStack() throws IncorrectNumberOfCardsException, NoCardsToMoveException {
+	public void testMoveSelectedToStack() throws IncorrectNumberOfCardsException, NoCardsToMoveException, InvalidBundleException {
 		Hand handMng = new Hand();
 
 		handMng.draw();
@@ -63,7 +64,7 @@ public class HandTest {
 	}
 
 	@Test(expected = NoCardsToMoveException.class)
-	public void testMoveSelectedToStackException() throws NoCardsToMoveException {
+	public void testMoveSelectedToStackException() throws NoCardsToMoveException, InvalidBundleException {
 		Hand handMng = new Hand();
 
 		handMng.moveSelectedToStack();

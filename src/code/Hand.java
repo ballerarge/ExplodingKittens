@@ -45,17 +45,13 @@ public class Hand {
 		return this.selectedCards;
 	}
 
-	public void moveSelectedToStack() throws NoCardsToMoveException {
+	public void moveSelectedToStack() throws NoCardsToMoveException, InvalidBundleException {
 		if (this.selectedCards.size() == 0) {
 			throw new NoCardsToMoveException();
 		}
 		
 		if (this.allNormalCards()) {
-			try {
-				this.cardStack.moveCardsToStack(this.makeBundle());
-			} catch (InvalidBundleException e) {
-				e.printStackTrace();
-			}
+			this.cardStack.moveCardsToStack(this.makeBundle());
 		} else {
 			this.cardStack.moveCardsToStack(this.selectedCards);
 		}

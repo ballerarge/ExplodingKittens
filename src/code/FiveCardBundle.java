@@ -36,6 +36,12 @@ public class FiveCardBundle extends Card implements Cloneable {
 				return false;
 			}
 		}
+		
+		for (int i = 1; i < cards.size(); i++) {
+			if (cards.get(i - 1).cardID != cards.get(i).cardID) {
+				return false;
+			}
+		}
 
 		return true;
 	}

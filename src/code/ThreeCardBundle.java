@@ -45,6 +45,12 @@ public class ThreeCardBundle extends Card implements Cloneable {
 			}
 		}
 
+		for (int i = 1; i < cards.size(); i++) {
+			if (cards.get(i - 1).cardID != cards.get(i).cardID) {
+				return false;
+			}
+		}
+
 		return true;
 	}
 

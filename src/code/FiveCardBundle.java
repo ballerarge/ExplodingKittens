@@ -21,9 +21,13 @@ public class FiveCardBundle extends Card implements Cloneable {
 
 		DiscardDeck discardDeck = DiscardDeck.getInstance();
 
-		active.getHand().add(discardDeck.getCards().remove(discardDeckIndex));
+		if (!(discardDeck.getCardCount() == 0) && discardDeckIndex > -1
+		        && discardDeckIndex < discardDeck.getCardCount()) {
+			active.getHand().add(discardDeck.getCards().remove(discardDeckIndex));
+		}
+
 	}
-	
+
 	public void setDiscardDeckIndex(int index) {
 		discardDeckIndex = index;
 	}
@@ -42,7 +46,7 @@ public class FiveCardBundle extends Card implements Cloneable {
 				return false;
 			}
 		}
-		
+
 		for (int i = 1; i < cards.size(); i++) {
 			NormalCard firstCard = (NormalCard) cards.get(i - 1);
 			NormalCard secondCard = (NormalCard) cards.get(i);

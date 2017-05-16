@@ -3,6 +3,8 @@ package code;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -10,6 +12,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 import exceptions.InvalidNumberofPlayersException;
+import gui.CardComponent;
 import gui.EKPlayerSelectionWindow;
 import gui.LanguageMenu;
 import gui.MainWindow;
@@ -41,7 +44,6 @@ public class GameController {
 		LanguageMenu languageMenu = new LanguageMenu();
 
 		// Opens the gui
-		Locale locale = Locale.ENGLISH;
 		MainWindow window = new MainWindow();
 
 		window.setSelectLanguageListener(new ActionListener() {
@@ -90,11 +92,46 @@ public class GameController {
 			public void actionPerformed(ActionEvent arg0) {
 				game.nextTurn();
 				window.displayGameState(game);
+				addCardListeners(window, window.getDisplayedCards());
 			}
 
 		});
 
 		window.openStartWindow();
+	}
+
+	protected static void addCardListeners(MainWindow window, List<CardComponent> displayedCards) {
+		for (CardComponent component : displayedCards) {
+			component.addMouseListener(new MouseListener() {
+
+				@Override
+				public void mouseClicked(MouseEvent arg0) {
+					window.toggleSelected(component);
+				}
+
+				@Override
+				public void mouseEntered(MouseEvent arg0) {
+					// Do nothing
+				}
+
+				@Override
+				public void mouseExited(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+
+				}
+
+				@Override
+				public void mousePressed(MouseEvent arg0) {
+					// Do nothing
+				}
+
+				@Override
+				public void mouseReleased(MouseEvent arg0) {
+					// Do nothing
+				}
+
+			});
+		}
 	}
 
 	private static void printPlayerHands(Game game) {

@@ -8,9 +8,9 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.ResourceBundle;
 
 import javax.swing.ImageIcon;
@@ -19,12 +19,12 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.WindowConstants;
 
 import code.Card;
 import code.Game;
 import code.MainDeck;
-import code.Player;
 
 public class MainWindow {
 	// Main Window Frame
@@ -46,14 +46,17 @@ public class MainWindow {
 	private JButton nextTurnButton;
 	private JButton playSelectedCardButton;
 
-	private JPanel cardDisplayPanel;
+	private JScrollPane handScrollerPane;
+	private JPanel handDisplayPanel;
 	private JPanel playerDisplayPanel;
 	private JPanel deckDisplayPanel;
 
-	private List<JComponent> cardComponentList;
+	private List<CardComponent> cardComponentList;
 
 	public Locale locale;
 	ResourceBundle resourceBundle;
+
+	private List<CardComponent> selectedCards;
 
 	public MainWindow() {
 		init();
@@ -86,6 +89,14 @@ public class MainWindow {
 
 		deckDisplayPanel = new JPanel();
 		deckDisplayPanel.setLayout(new GridBagLayout());
+
+		cardComponentList = new ArrayList<CardComponent>();
+
+		handDisplayPanel = new JPanel();
+		handDisplayPanel.setLayout(new GridBagLayout());
+
+		handScrollerPane = new JScrollPane(handDisplayPanel);
+		handDisplayPanel.setAutoscrolls(true);
 	}
 
 	public void setLocale(Locale locale) {
@@ -153,8 +164,13 @@ public class MainWindow {
 		gbc.gridy = 1;
 		mainPanel.add(deckDisplayPanel, gbc);
 
-		// Buttons
+		// Hand
 		gbc.gridx = 0;
+		gbc.gridy = 2;
+		mainPanel.add(handScrollerPane, gbc);
+
+		// Buttons
+		gbc.gridx = 1;
 		gbc.gridy = 2;
 		buttonPanel.add(playSelectedCardButton);
 		buttonPanel.add(nextTurnButton);
@@ -206,12 +222,15 @@ public class MainWindow {
 	}
 
 	public void displayGameState(Game game) {
-		System.out.printf("%s's turn.\n\t", game.getCurrentPlayer().getName());
+		System.out.printf("%s's turn.\n\t", game.getActivePlayer().getName());
+
+		selectedCards = new ArrayList<CardComponent>();
 
 		displayOtherPlayers(game.getPlayers().size() - 1);
 		displayMainDeck(MainDeck.getInstance());
+		displayHand(game.getCurrentPlayer().getHand());
 
-		System.out.println(game.getCurrentPlayer().getHand().toString());
+		System.out.println(game.getActivePlayer().getHand().toString());
 	}
 
 	private void displayMainDeck(MainDeck mainDeck) {
@@ -263,5 +282,47 @@ public class MainWindow {
 		}
 
 		playerDisplayPanel.setVisible(true);
+	}
+
+	private void displayHand(List<Card> list) {
+		for (Component component : handDisplayPanel.getComponents()) {
+			if (!component.equals(handDisplayPanel)) {
+				component.setVisible(false);
+				handDisplayPanel.remove(component);
+			}
+		}
+
+		for (Component component : cardComponentList) {
+			handDisplayPanel.remove(component);
+		}
+
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+
+		for (Card card : list) {
+			CardComponent comp = new CardComponent(card);
+
+			gbc.gridx++;
+
+			comp.setMaximumSize(new Dimension(40, 80));
+			handDisplayPanel.add(comp, gbc);
+			cardComponentList.add(comp);
+			comp.setVisible(true);
+		}
+		handDisplayPanel.setVisible(true);
+	}
+
+	public List<CardComponent> getDisplayedCards() {
+		return cardComponentList;
+	}
+
+	public void toggleSelected(CardComponent component) {
+		if (selectedCards.contains(component)) {
+			selectedCards.remove(component);
+			component.toggleSelected();
+		} else {
+			selectedCards.add(component);
+		}
 	}
 }

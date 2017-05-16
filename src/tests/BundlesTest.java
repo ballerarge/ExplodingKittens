@@ -278,7 +278,7 @@ public class BundlesTest {
 		Player player1 = new Player();
 		FiveCardBundle fiveBundle = new FiveCardBundle(Arrays.asList(new NormalCard(), new NormalCard(),
 		        new NormalCard(), new NormalCard(), new NormalCard()));
-		fiveBundle.setDiscardDeckIndex(0);
+		fiveBundle.setDiscardDeckType(AttackCard.class);
 		DiscardDeck deck = DiscardDeck.getInstance();
 		deck.addCard(new AttackCard());
 		

@@ -2,22 +2,19 @@
 package code;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import exceptions.InvalidBundleException;
+import com.sun.xml.internal.ws.encoding.policy.SelectOptimalEncodingFeatureConfigurator;
 
-public class ThreeCardBundle extends Card {
+public class ThreeCardBundle extends Card implements Cloneable {
 
 	public static final int BUNDLE_SIZE = 3;
 	private List<Card> cards;
+	private Class<?> targetCardClass;
 
-	public ThreeCardBundle(List<Card> cards) throws InvalidBundleException {
-		if (!ThreeCardBundle.isValidBundle(cards)) {
-			throw new InvalidBundleException();
-		}
-		
+	public ThreeCardBundle(List<Card> cards) {
 		this.cards = cards;
+		targetCardClass = AttackCard.class;
 	}
 
 	@Override
@@ -25,29 +22,32 @@ public class ThreeCardBundle extends Card {
 		// Somehow, prompt active player to name a card from target's hand.
 		// If it exists, give it to them. Otherwise, they get nothing.
 		List<Card> targetHand = target.getHand();
-		int indexOfCardPicked = targetHand.indexOf(new AttackCard());
+		int indexOfCardPicked = -1;
+		for (int i = 0; i < targetHand.size(); i++) {
+			if (targetHand.get(i).getClass().equals(targetCardClass)) {
+				indexOfCardPicked = i;
+				break;
+			}
+		}
 
 		if (indexOfCardPicked > -1) {
 			Card picked = targetHand.remove(indexOfCardPicked);
 			active.getHand().add(picked);
 		}
-		
+
 		// Otherwise, active won't get a card.
+	}
+	
+	public void setTargetCardClass(Class<?> cardClass) {
+		targetCardClass = cardClass;
 	}
 
 	@Override
-	public Card clone() {
-		ThreeCardBundle clone = null;
-		try {
-			clone = new ThreeCardBundle(new ArrayList<Card>(cards));
-		} catch (InvalidBundleException e) {
-			e.printStackTrace();
-		}
-		
-		return clone;
+	public ThreeCardBundle clone() {
+		return new ThreeCardBundle(new ArrayList<Card>(cards));
 	}
 
-	protected static boolean isValidBundle(List<Card> cards) {
+	public static boolean isValidBundle(List<Card> cards) {
 		if (cards == null || cards.size() != BUNDLE_SIZE)
 			return false;
 
@@ -57,7 +57,19 @@ public class ThreeCardBundle extends Card {
 			}
 		}
 
+		for (int i = 1; i < cards.size(); i++) {
+			NormalCard firstCard = (NormalCard) cards.get(i - 1);
+			NormalCard secondCard = (NormalCard) cards.get(i);
+			if (firstCard.getIcon() != secondCard.getIcon()) {
+				return false;
+			}
+		}
+
 		return true;
+	}
+
+	public List<Card> getCardsInBundle() {
+		return cards;
 	}
 
 }

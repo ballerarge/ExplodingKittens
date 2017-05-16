@@ -1,7 +1,7 @@
 
 package code;
 
-public abstract class Card {
+public abstract class Card implements Cloneable{
 	protected int cardID;
 
 	public int getID() {

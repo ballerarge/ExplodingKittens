@@ -2,6 +2,7 @@
 package tests;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 import org.junit.After;
 import org.junit.Before;
@@ -48,6 +49,15 @@ public class ExplodingKittenTest {
 
 		stack.resolveTopCard();
 		assertEquals(2, game.getPlayers().size());
+	}
+	
+	@Test
+	public void testKittenClone() {
+		Card kitten = factory.createCard(CardFactory.EXPLODING_KITTEN_CARD);
+		
+		Card clone = kitten.clone();
+		
+		assertFalse(clone == null);
 	}
 
 }

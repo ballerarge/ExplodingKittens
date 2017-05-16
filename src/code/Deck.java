@@ -38,7 +38,7 @@ public class Deck {
 	}
 
 	public boolean addCardLast(Card cardToAdd) {
-		int lastIndex = cards.size() - 1;
+		int lastIndex = cards.size();
 		return this.addCard(cardToAdd, lastIndex);
 	}
 

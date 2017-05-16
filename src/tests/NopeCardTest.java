@@ -2,6 +2,7 @@
 package tests;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 import org.junit.After;
 import org.junit.Before;
@@ -9,6 +10,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import code.Card;
 import code.CardFactory;
 import code.CardStack;
 import exceptions.InvalidNopeTargetException;
@@ -82,5 +84,14 @@ public class NopeCardTest {
 		exception.expect(InvalidNopeTargetException.class);
 		
 		cardStack.resolveTopCard();
+	}
+	
+	@Test
+	public void testNopeClone() {
+		Card nope = factory.createCard(CardFactory.NOPE_CARD);
+		
+		Card clone = nope.clone();
+		
+		assertFalse(clone == null);
 	}
 }

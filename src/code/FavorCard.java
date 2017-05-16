@@ -3,7 +3,7 @@ package code;
 
 import java.util.List;
 
-public class FavorCard extends Card {
+public class FavorCard extends Card implements Cloneable {
 
 	public FavorCard() {
 		this.cardID = 8;

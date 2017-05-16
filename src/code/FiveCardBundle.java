@@ -1,52 +1,64 @@
+
 package code;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import exceptions.InvalidBundleException;
-
-public class FiveCardBundle extends Card {
+public class FiveCardBundle extends Card implements Cloneable {
 
 	public static final int BUNDLE_SIZE = 5;
 	private List<Card> cards;
-	
-	public FiveCardBundle(List<Card> cards) throws InvalidBundleException {
-		if (!FiveCardBundle.isValidBundle(cards)) {
-			throw new InvalidBundleException();
-		}
+	private Class<?> targetCardClass;
+
+	public FiveCardBundle(List<Card> cards) {
 		this.cards = cards;
+		targetCardClass = NormalCard.class;
 	}
 
 	@Override
 	public void cardAction(Player active, Player target) {
-		// Somehow, let player look at the discrad deck and pick a dars from it.
-		
+		// Somehow, let player look at the discard deck and pick a card from it.
+
 		DiscardDeck discardDeck = DiscardDeck.getInstance();
-		
-		active.getHand().add(discardDeck.getCards().remove(0)); // Placeholder
+
+		if (!(discardDeck.getCardCount() == 0)) {
+			active.getHand().add(discardDeck.removeCard(targetCardClass));
+		}
+
+	}
+
+	public void setDiscardDeckType(Class<?> classType) {
+		targetCardClass = classType;
 	}
 
 	@Override
-	public Card clone() {
-		FiveCardBundle clone = null;
-		try {
-			clone = new FiveCardBundle(new ArrayList<>(cards));
-		} catch (InvalidBundleException e) {
-			e.printStackTrace();
-		}
-		return clone;
+	public FiveCardBundle clone() {
+		return new FiveCardBundle(new ArrayList<>(cards));
 	}
-	
-	protected static boolean isValidBundle(List<Card> cards) {
-		if (cards == null || cards.size() != BUNDLE_SIZE) return false;
-		
+
+	public static boolean isValidBundle(List<Card> cards) {
+		if (cards == null || cards.size() != BUNDLE_SIZE)
+			return false;
+
 		for (Card card : cards) {
-			if(!(card instanceof NormalCard)) {
+			if (!(card instanceof NormalCard)) {
 				return false;
 			}
 		}
-		
+
+		for (int i = 1; i < cards.size(); i++) {
+			NormalCard firstCard = (NormalCard) cards.get(i - 1);
+			NormalCard secondCard = (NormalCard) cards.get(i);
+			if (firstCard.getIcon() != secondCard.getIcon()) {
+				return false;
+			}
+		}
+
 		return true;
+	}
+
+	public List<Card> getCardsInBundle() {
+		return cards;
 	}
 
 }

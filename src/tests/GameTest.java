@@ -47,8 +47,9 @@ public class GameTest {
 
 	@Test
 	public void testGameCreation() {
-		@SuppressWarnings("unused")
 		Game game = new Game();
+		
+		assertTrue(game != null);
 	}
 
 	@Test
@@ -184,5 +185,13 @@ public class GameTest {
 		}
 
 		MainDeck.getInstance().setCards(tempCards);
+	}
+	
+	@Test
+	public void testDeckEmptyBeforeGameInitialized() {
+		Game game = new Game();
+		MainDeck.getInstance();
+		
+		assertTrue(game.isMainDeckEmpty());
 	}
 }

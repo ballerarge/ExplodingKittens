@@ -1,69 +1,267 @@
+
 package gui;
 
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.layout.FillLayout;
-
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.ResourceBundle;
 
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.custom.CLabel;
-import org.eclipse.wb.swt.SWTResourceManager;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.WindowConstants;
 
+import code.Card;
+import code.Game;
+import code.MainDeck;
 import code.Player;
 
 public class MainWindow {
+	// Main Window Frame
+	private JFrame mainFrame;
 
-	protected Shell shlExplodingKittens;
+	// Main Panel
+	private JPanel mainPanel;
 
-	/**
-	 * Launch the application.
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		try {
-			MainWindow window = new MainWindow();
-			window.open();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	// Button Panel
+	private JPanel buttonPanel;
+
+	// Start Page components
+	private JButton setLanguageButton;
+	private JButton playGameButton;
+
+	private JLabel imageLabel;
+
+	// Game Page components
+	private JButton nextTurnButton;
+	private JButton playSelectedCardButton;
+
+	private JPanel cardDisplayPanel;
+	private JPanel playerDisplayPanel;
+	private JPanel deckDisplayPanel;
+
+	private List<JComponent> cardComponentList;
+
+	public Locale locale;
+	ResourceBundle resourceBundle;
+
+	public MainWindow() {
+		init();
+
+		playGameButton = new JButton(resourceBundle.getString("PLAY_GAME_BUTTON_LABEL"));
+		setLanguageButton = new JButton(resourceBundle.getString("SELECT_LANGUAGE_BUTTON_LABEL"));
+
+		nextTurnButton = new JButton(resourceBundle.getString("NEXT_TURN_BUTTON_LABEL"));
+		playSelectedCardButton = new JButton(resourceBundle.getString("PLAY_SELECTED_CARD_BUTTON_LABEL"));
 	}
 
-	/**
-	 * Open the window.
-	 */
-	public void open() {
-		Display display = Display.getDefault();
-		createContents();
-		shlExplodingKittens.open();
-		shlExplodingKittens.layout();
-		while (!shlExplodingKittens.isDisposed()) {
-			if (!display.readAndDispatch()) {
-				display.sleep();
+	private void init() {
+		locale = Locale.ENGLISH;
+		resourceBundle = ResourceBundle.getBundle("resources/resources", locale);
+
+		mainFrame = new JFrame(resourceBundle.getString("EXPLODING_KITTENS"));
+
+		mainPanel = new JPanel();
+
+		mainPanel.setLayout(new GridBagLayout());
+
+		buttonPanel = new JPanel();
+		buttonPanel.setLayout(new GridLayout(0, 1, 10, 10));
+
+		ImageIcon image = new ImageIcon(getClass().getResource("logo.png"));
+		imageLabel = new JLabel(image);
+
+		playerDisplayPanel = new JPanel();
+		playerDisplayPanel.setLayout(new GridBagLayout());
+
+		deckDisplayPanel = new JPanel();
+		deckDisplayPanel.setLayout(new GridBagLayout());
+	}
+
+	public void setLocale(Locale locale) {
+		this.locale = locale;
+
+		resourceBundle = ResourceBundle.getBundle("resources/resources", locale);
+
+		mainFrame.setTitle(resourceBundle.getString("EXPLODING_KITTENS"));
+
+		playGameButton.setText(resourceBundle.getString("PLAY_GAME_BUTTON_LABEL"));
+		setLanguageButton.setText(resourceBundle.getString("SELECT_LANGUAGE_BUTTON_LABEL"));
+	}
+
+	private void open() {
+		GridBagConstraints gbc = new GridBagConstraints();
+
+		mainFrame = new JFrame("Exploding Kittens");
+		mainFrame.setSize(1200, 1000);
+		mainFrame.setResizable(false);
+		mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+		// Image
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+		mainPanel.add(imageLabel, gbc);
+
+		// Buttons
+		gbc.gridx = 0;
+		gbc.gridy = 1;
+		buttonPanel.add(playGameButton);
+		buttonPanel.add(setLanguageButton);
+
+		mainPanel.add(buttonPanel, gbc);
+
+		mainFrame.add(mainPanel, BorderLayout.CENTER);
+		mainPanel.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+		mainPanel.setMaximumSize(new Dimension(100, 100));
+
+		mainFrame.setVisible(true);
+	}
+
+	public void openStartWindow() {
+		open();
+	}
+
+	public void openGameWindow() {
+		mainFrame.setVisible(false);
+
+		init();
+
+		GridBagConstraints gbc = new GridBagConstraints();
+
+		mainFrame = new JFrame("Exploding Kittens");
+		mainFrame.setSize(1200, 1000);
+		mainFrame.setResizable(false);
+		mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+		// Other Players
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+		mainPanel.add(playerDisplayPanel, gbc);
+
+		// Decks
+		gbc.gridx = 0;
+		gbc.gridy = 1;
+		mainPanel.add(deckDisplayPanel, gbc);
+
+		// Buttons
+		gbc.gridx = 0;
+		gbc.gridy = 2;
+		buttonPanel.add(playSelectedCardButton);
+		buttonPanel.add(nextTurnButton);
+
+		mainPanel.add(buttonPanel, gbc);
+
+		mainFrame.add(mainPanel, BorderLayout.CENTER);
+		mainPanel.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+		mainPanel.setMaximumSize(new Dimension(100, 100));
+
+		mainFrame.setVisible(true);
+	}
+
+	public void setPlayGameListener(ActionListener listener) {
+		for (ActionListener lstnr : playGameButton.getListeners(ActionListener.class)) {
+			playGameButton.removeActionListener(lstnr);
+		}
+
+		playGameButton.addActionListener(listener);
+	}
+
+	public void setSelectLanguageListener(ActionListener listener) {
+		for (ActionListener lstnr : setLanguageButton.getListeners(ActionListener.class)) {
+			setLanguageButton.removeActionListener(lstnr);
+		}
+
+		setLanguageButton.addActionListener(listener);
+	}
+
+	public void setNextTurnListener(ActionListener listener) {
+		for (ActionListener lstnr : nextTurnButton.getListeners(ActionListener.class)) {
+			nextTurnButton.removeActionListener(lstnr);
+		}
+
+		nextTurnButton.addActionListener(listener);
+	}
+
+	public void setPlaySelectedCardListener(ActionListener listener) {
+		for (ActionListener lstnr : playSelectedCardButton.getListeners(ActionListener.class)) {
+			playSelectedCardButton.removeActionListener(lstnr);
+		}
+
+		playSelectedCardButton.addActionListener(listener);
+	}
+
+	public void exitGame() {
+		mainFrame.setVisible(false);
+		mainFrame.dispose();
+	}
+
+	public void displayGameState(Game game) {
+		System.out.printf("%s's turn.\n\t", game.getCurrentPlayer().getName());
+
+		displayOtherPlayers(game.getPlayers().size() - 1);
+		displayMainDeck(MainDeck.getInstance());
+
+		System.out.println(game.getCurrentPlayer().getHand().toString());
+	}
+
+	private void displayMainDeck(MainDeck mainDeck) {
+		for (Component component : deckDisplayPanel.getComponents()) {
+			if (!component.equals(deckDisplayPanel)) {
+				deckDisplayPanel.remove(component);
 			}
 		}
+
+		GridBagConstraints gbc = new GridBagConstraints();
+
+		ImageIcon image;
+
+		switch (mainDeck.getCardCount()) {
+			case 1:
+				image = new ImageIcon(getClass().getResource("main_deck_1.png"));
+				break;
+			case 2:
+				image = new ImageIcon(getClass().getResource("main_deck_2.png"));
+				break;
+			default:
+				image = new ImageIcon(getClass().getResource("main_deck_3.png"));
+				break;
+		}
+		JLabel imageLabel = new JLabel(image);
+		deckDisplayPanel.add(imageLabel, gbc);
+		imageLabel.setVisible(true);
+
+		deckDisplayPanel.setVisible(true);
 	}
 
-	/**
-	 * Create contents of the window.
-	 */
-	protected void createContents() {
-		shlExplodingKittens = new Shell();
-		shlExplodingKittens.setSize(900, 800);
-		shlExplodingKittens.setText("Exploding Kittens");
-		shlExplodingKittens.setLayout(new FillLayout(SWT.HORIZONTAL));
-		
-		CLabel lblNewLabel = new CLabel(shlExplodingKittens, SWT.NONE);
-		lblNewLabel.setAlignment(SWT.CENTER);
-		lblNewLabel.setImage(SWTResourceManager.getImage(MainWindow.class, "/gui/logo.png"));
-		lblNewLabel.setText("");
+	private void displayOtherPlayers(int numOtherPlayers) {
+		for (Component component : playerDisplayPanel.getComponents()) {
+			if (!component.equals(playerDisplayPanel)) {
+				playerDisplayPanel.remove(component);
+			}
+		}
 
+		GridBagConstraints gbc = new GridBagConstraints();
+
+		for (int i = 0; i < numOtherPlayers; i++) {
+			gbc.gridx = i;
+			gbc.gridy = 0;
+
+			ImageIcon image = new ImageIcon(getClass().getResource("player.png"));
+			JLabel imageLabel = new JLabel(image);
+			playerDisplayPanel.add(imageLabel, gbc);
+			imageLabel.setVisible(true);
+		}
+
+		playerDisplayPanel.setVisible(true);
 	}
-
-	public List<Player> getPlayers() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

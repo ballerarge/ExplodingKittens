@@ -29,11 +29,6 @@ public class MainDeck {
 		factory = new CardFactory();
 	}
 
-	private MainDeck(List<Card> cards) {
-		mainDeck.deck = new Deck(cards);
-		mainDeck.factory = new CardFactory();
-	}
-
 	public List<Card> getCards() {
 		return mainDeck.deck.getCards();
 	}
@@ -51,9 +46,13 @@ public class MainDeck {
 	}
 
 	public Card draw() {
-		Card drawCard = mainDeck.deck.getCards().get(0);
+		Card drawCard = getTopCard();
 		mainDeck.deck.removeCard(drawCard);
 		return drawCard;
+	}
+	
+	private Card getTopCard() {
+		return mainDeck.deck.getCards().get(0);
 	}
 
 	public void shuffleDeck() {
@@ -135,10 +134,6 @@ public class MainDeck {
 		for (int i = 0; i < 6 - numPlayers; i++) {
 			mainDeck.deck.addCard(factory.createCard(CardFactory.DEFUSE_CARD), 0);
 		}
-	}
-
-	public Card getTopCard() {
-		return mainDeck.deck.getCards().get(0);
 	}
 
 }

@@ -12,20 +12,20 @@ public class Game {
 	private TurnManager turnManager;
 
 	public Game() {
+		MainDeck.tearDown();
+		mainDeck = MainDeck.getInstance();
+		priorityManager = PriorityManager.getInstance();
+		turnManager = TurnManager.getInstance();
 	}
 
 	public void start(int n) throws InvalidNumberofPlayersException {
 		if (n < 2 || n > 5)
-			throw new InvalidNumberofPlayersException();
-		MainDeck.tearDown();
-		mainDeck = MainDeck.getInstance();
+			throw new InvalidNumberofPlayersException();	
 		mainDeck.initStartingDeck();
 		playerManager = new PlayerManager();
 		playerManager.addPlayers(n);
-		priorityManager = PriorityManager.getInstance();
 		priorityManager.addPlayers(playerManager.getPlayers());
 		mainDeck.populateDeck(n);
-		turnManager = TurnManager.getInstance();
 		turnManager.setPlayerManager(playerManager);
 	}
 

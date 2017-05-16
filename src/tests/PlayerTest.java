@@ -15,14 +15,16 @@ public class PlayerTest {
 
 	@Test
 	public void testPlayerCreation() {
-		@SuppressWarnings("unused")
 		Player player = new Player();
+		
+		assertTrue(player != null);
 	}
 
 	@Test
 	public void testPlayerCreationWithName() {
-		@SuppressWarnings("unused")
 		Player player = new Player("Khaleeeeed");
+		
+		assertTrue(player != null);
 	}
 
 	@Test

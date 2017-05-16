@@ -1,7 +1,7 @@
 
 package tests;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +19,7 @@ import code.Game;
 import code.Player;
 import code.PriorityManager;
 import code.TurnManager;
+import exceptions.CardNotFoundException;
 import exceptions.IncorrectNumberOfCardsException;
 import exceptions.InvalidNumberofPlayersException;
 
@@ -43,8 +44,9 @@ public class CardFactoryTest {
 
 	@Test
 	public void testCardFactoryCreation() {
-		@SuppressWarnings("unused")
 		CardFactory cardFactory = new CardFactory();
+		
+		assertTrue(cardFactory != null);
 	}
 
 	@Test
@@ -261,5 +263,12 @@ public class CardFactoryTest {
 			assertEquals(card.getID(), CardFactory.FAVOR_CARD);
 		}
 		assertEquals(10, cards.size());
+	}
+	
+	@Test(expected = CardNotFoundException.class)
+	public void testCreateNonExistingCard() {
+		CardFactory cardFactory = new CardFactory();
+		
+		cardFactory.createCard(26);
 	}
 }

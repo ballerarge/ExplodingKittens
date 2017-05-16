@@ -3,7 +3,7 @@ package code;
 
 import java.util.Stack;
 
-public class DefuseCard extends Card {
+public class DefuseCard extends Card implements Cloneable {
 
 	CardStack stack;
 	TurnManager tm;

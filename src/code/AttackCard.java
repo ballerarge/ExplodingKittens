@@ -1,7 +1,7 @@
 
 package code;
 
-public class AttackCard extends Card {
+public class AttackCard extends Card implements Cloneable {
 	public AttackCard() {
 		this.cardID = 3;
 	}

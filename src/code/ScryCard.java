@@ -4,7 +4,7 @@ package code;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ScryCard extends Card {
+public class ScryCard extends Card implements Cloneable {
 
 	public List<Card> cardsToReveal = new ArrayList<>();// for testing purposes,
 	                                                    // might remove after

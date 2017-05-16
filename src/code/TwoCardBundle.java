@@ -19,8 +19,8 @@ public class TwoCardBundle extends Card implements Cloneable {
 	public void cardAction(Player active, Player target) {
 		// Somehow, prompt active player to pick a card from target's hand.
 
-		Card targetCard = target.getHand().get(targetCardIndex);
-		// 0 is a placeholder here.
+		Card targetCard = target.getHand().remove(targetCardIndex);
+		
 		active.getHand().add(targetCard);
 	}
 	

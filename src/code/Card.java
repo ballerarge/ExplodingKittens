@@ -3,7 +3,7 @@ package code;
 
 public abstract class Card implements Cloneable {
 	protected int cardID;
-	protected String imagePath = "AttackCard1.png";
+	protected String imagePath;
 
 	public int getID() {
 		return this.cardID;
@@ -17,7 +17,7 @@ public abstract class Card implements Cloneable {
 
 	abstract public Card clone();
 
-	public CharSequence getImagePath() {
+	public String getImagePath() {
 		return this.imagePath;
 	}
 

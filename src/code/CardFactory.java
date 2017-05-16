@@ -58,31 +58,31 @@ public class CardFactory {
 		switch (cardID) {
 			case NORMAL_CARD:
 				normalCardCount = (normalCardCount) % normalCardMax + 1;
-				return new NormalCard("NormalCard" + normalCardCount + ".png");
+				return new NormalCard("card_images\\NormalCard" + normalCardCount + ".png");
 			case NOPE_CARD:
 				nopeCardCount = (nopeCardCount) % nopeCardMax + 1;
-				return new NopeCard("NopeCard" + nopeCardCount + ".png");
+				return new NopeCard("card_images\\NopeCard" + nopeCardCount + ".png");
 			case DEFUSE_CARD:
 				defuseCardCount = (defuseCardCount) % defuseCardMax + 1;
-				return new DefuseCard("DefuseCard" + defuseCardCount + ".png");
+				return new DefuseCard("card_images\\DefuseCard" + defuseCardCount + ".png");
 			case ATTACK_CARD:
 				attackCardCount = (attackCardCount) % attackCardMax + 1;
-				return new AttackCard("AttackCard" + attackCardCount + ".png");
+				return new AttackCard("card_images\\AttackCard" + attackCardCount + ".png");
 			case SKIP_CARD:
 				skipCardCount = (skipCardCount) % skipCardMax + 1;
-				return new SkipCard("SkipCard" + skipCardCount + ".png");
+				return new SkipCard("card_images\\SkipCard" + skipCardCount + ".png");
 			case EXPLODING_KITTEN_CARD:
 				explodingKittenCardCount = (explodingKittenCardCount) % explodingKittenCardMax + 1;
-				return new ExplodingKittenCard("ExplodingKittenCard" + explodingKittenCardCount + ".png");
+				return new ExplodingKittenCard("card_images\\ExplodingKittenCard" + explodingKittenCardCount + ".png");
 			case SHUFFLE_CARD:
 				shuffleCardCount = (shuffleCardCount) % shuffleCardMax + 1;
-				return new ShuffleCard("ShuffleCard" + shuffleCardCount + ".png");
+				return new ShuffleCard("card_images\\ShuffleCard" + shuffleCardCount + ".png");
 			case SCRY_CARD:
 				scryCardCount = (scryCardCount) % scryCardMax + 1;
-				return new ScryCard("ScryCard" + scryCardCount + ".png");
+				return new ScryCard("card_images\\ScryCard" + scryCardCount + ".png");
 			case FAVOR_CARD:
 				favorCardCount = (favorCardCount) % favorCardMax + 1;
-				return new FavorCard("FavorCard" + favorCardCount + ".png");
+				return new FavorCard("card_images\\FavorCard" + favorCardCount + ".png");
 			default:
 				throw new CardNotFoundException("CardID incorrect for create card in Card Factory");
 		}

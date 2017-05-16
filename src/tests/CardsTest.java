@@ -36,9 +36,9 @@ public class CardsTest {
 		Card card = cf.createCard(CardFactory.DEFUSE_CARD);
 
 		boolean res = false;
-		getClass().getResource("main_deck_3.png").toString();
 
-		File path = new File("/exploding-kittens/src/gui/card_images/");
+		File path = new File(
+		        "C:/Users/wilejd/Documents/Junior Year/CSSE-376/exploding-kittens/exploding-kittens/src/gui/card_images/");
 
 		File[] files = path.listFiles();
 		for (int i = 0; i < files.length; i++) {

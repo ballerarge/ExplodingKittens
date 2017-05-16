@@ -8,20 +8,45 @@ import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import code.AttackCard;
 import code.Card;
+import code.CardStack;
 import code.DefuseCard;
+import code.DiscardDeck;
 import code.FiveCardBundle;
+import code.MainDeck;
 import code.NormalCard;
 import code.Player;
+import code.PriorityManager;
 import code.SkipCard;
 import code.ThreeCardBundle;
+import code.TurnManager;
 import code.TwoCardBundle;
 import exceptions.InvalidBundleException;
 
 public class BundlesTest {
+	
+	@Before
+	public void initialize() {
+		TurnManager.tearDown();
+		MainDeck.tearDown();
+		DiscardDeck.tearDown();
+		PriorityManager.tearDown();
+		CardStack.tearDown();
+	}
+	
+	@After
+	public void tearDown() {
+		TurnManager.tearDown();
+		MainDeck.tearDown();
+		DiscardDeck.tearDown();
+		PriorityManager.tearDown();
+		CardStack.tearDown();
+	}
 
 	@Test
 	public void testCreateBundles() {
@@ -209,15 +234,15 @@ public class BundlesTest {
 		ThreeCardBundle threeBundle = new ThreeCardBundle(
 		        Arrays.asList(new NormalCard(), new NormalCard(), new NormalCard()));
 		threeBundle.setTargetCardClass(DefuseCard.class);
-		
+
 		player2.addDefuseCardToHand();
 		threeBundle.cardAction(player1, player2);
-		
+
 		assertEquals(1, player1.getHand().size());
 		assertEquals(0, player2.getHand().size());
 		assertTrue(player1.getHand().get(0) instanceof DefuseCard);
 	}
-	
+
 	@Test
 	public void testThreeBundleCardActionEmptyHand() {
 		Player player1 = new Player();
@@ -225,13 +250,13 @@ public class BundlesTest {
 		ThreeCardBundle threeBundle = new ThreeCardBundle(
 		        Arrays.asList(new NormalCard(), new NormalCard(), new NormalCard()));
 		threeBundle.setTargetCardClass(DefuseCard.class);
-		
+
 		threeBundle.cardAction(player1, player2);
-		
+
 		assertEquals(0, player1.getHand().size());
 		assertEquals(0, player2.getHand().size());
 	}
-	
+
 	@Test
 	public void testThreeBundleCardActionWrongType() {
 		Player player1 = new Player();
@@ -239,13 +264,29 @@ public class BundlesTest {
 		ThreeCardBundle threeBundle = new ThreeCardBundle(
 		        Arrays.asList(new NormalCard(), new NormalCard(), new NormalCard()));
 		threeBundle.setTargetCardClass(SkipCard.class);
-		
+
 		player2.addDefuseCardToHand();
 		threeBundle.cardAction(player1, player2);
-		
+
 		assertEquals(0, player1.getHand().size());
 		assertEquals(1, player2.getHand().size());
 		assertTrue(player2.getHand().get(0) instanceof DefuseCard);
+	}
+
+	@Test
+	public void testFiveBundleCardAction() {
+		Player player1 = new Player();
+		FiveCardBundle fiveBundle = new FiveCardBundle(Arrays.asList(new NormalCard(), new NormalCard(),
+		        new NormalCard(), new NormalCard(), new NormalCard()));
+		fiveBundle.setDiscardDeckIndex(0);
+		DiscardDeck deck = DiscardDeck.getInstance();
+		deck.addCard(new AttackCard());
+		
+		fiveBundle.cardAction(player1, null);
+		
+		assertEquals(1, player1.getHand().size());
+		assertEquals(0, deck.getCardCount());
+		assertTrue(player1.getHand().get(0) instanceof AttackCard);
 	}
 
 }

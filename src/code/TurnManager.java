@@ -4,6 +4,8 @@ package code;
 import java.util.ArrayList;
 import java.util.List;
 
+import exceptions.NoSuchPlayerException;
+
 public class TurnManager {
 
 	private static TurnManager turnManager;
@@ -38,7 +40,7 @@ public class TurnManager {
 		} else {
 			currentPlayer = temp;
 		}
-		
+
 	}
 
 	public PlayerManager getPlayerManager() {
@@ -51,29 +53,33 @@ public class TurnManager {
 
 	public void endTurnAndDraw() {
 		Player player = turnOrder.remove(0);
-		if (!turnOrder.get(turnOrder.size() - 1).equals(player))// Don't
-		                                                        // circulate
-		                                                        // turns from
-		                                                        // attacks
-			turnOrder.add(player);
 		Card drawnCard = player.drawCard();
 		if (drawnCard instanceof ExplodingKittenCard) {
 			CardStack.getInstance().addCard(drawnCard);
 			PriorityManager.getInstance().resolveCard();
+		} else if (turnOrder.size() > 0 && !turnOrder.get(turnOrder.size() - 1).equals(player)) {// Don't
+			// circulate
+			// turns from
+			// attacks
+			turnOrder.add(player);
 		}
-		currentPlayer = turnOrder.get(0);
+		if (turnOrder.size() == 0) {
+			System.out.println("Game over!");
+		} else {
+			currentPlayer = turnOrder.get(0);
+		}
 	}
 
 	public void endTurnWithoutDraw() {
 		Player player = turnOrder.remove(0);
 		boolean nextTurnIsSamePlayer = turnOrder.get(0).equals(player);
 		if (!nextTurnIsSamePlayer) {// Don't
-		                                                        // circulate
-		                                                        // turns from
-		                                                        // attacks
+		                            // circulate
+		                            // turns from
+		                            // attacks
 			turnOrder.add(player);
 		}
-		
+
 		currentPlayer = turnOrder.get(0);
 	}
 
@@ -92,4 +98,19 @@ public class TurnManager {
 	public void addTurnForCurrentPlayer() {
 		turnOrder.add(1, currentPlayer);
 	}
-}
+
+	public void makeCurrentPlayerLose() throws NoSuchPlayerException {
+		playerManager.removePlayerFromGame(currentPlayer);
+		PriorityManager.getInstance().removePlayer(currentPlayer);
+		removeAllInstancesFromTurnOrder();
+	}
+
+	private void removeAllInstancesFromTurnOrder() {
+		for(int i = turnOrder.size() - 1; i >= 0; i--) {
+			Player checkPlayer = turnOrder.get(i);
+			if (checkPlayer.equals(currentPlayer)) {
+				turnOrder.remove(checkPlayer);
+			}
+		}	
+	}
+}

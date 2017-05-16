@@ -64,7 +64,6 @@ public class PriorityManagerTest {
 
 		pm.removePlayer(pm.getActivePlayer());
 
-		assertEquals("Player 2", pm.getActivePlayer().getName());
 		assertEquals(1, pm.getPlayerCount());
 
 		PriorityManager.tearDown();

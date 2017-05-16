@@ -288,5 +288,19 @@ public class BundlesTest {
 		assertEquals(0, deck.getCardCount());
 		assertTrue(player1.getHand().get(0) instanceof AttackCard);
 	}
+	
+	@Test
+	public void testFiveBundleCardActionEmptyDiscard() {
+		Player player1 = new Player();
+		FiveCardBundle fiveBundle = new FiveCardBundle(Arrays.asList(new NormalCard(), new NormalCard(),
+		        new NormalCard(), new NormalCard(), new NormalCard()));
+		fiveBundle.setDiscardDeckType(AttackCard.class);
+		DiscardDeck deck = DiscardDeck.getInstance();
+		
+		fiveBundle.cardAction(player1, null);
+		
+		assertEquals(0, player1.getHand().size());
+		assertEquals(0, deck.getCardCount());
+	}
 
 }

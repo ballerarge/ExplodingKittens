@@ -1,7 +1,9 @@
 
 package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -183,16 +185,32 @@ public class BundlesTest {
 		assertFalse(FiveCardBundle.isValidBundle(fiveBundle.getCardsInBundle()));
 
 	}
-	
+
 	@Test
 	public void testTwoBundleCardAction() {
 		Player player1 = new Player();
 		Player player2 = new Player();
 		TwoCardBundle twoBundle = new TwoCardBundle(Arrays.asList(new NormalCard(), new NormalCard()));
 		twoBundle.setTargetCardIndex(0);
-		
+
 		player2.addDefuseCardToHand();
 		twoBundle.cardAction(player1, player2);
+
+		assertEquals(1, player1.getHand().size());
+		assertEquals(0, player2.getHand().size());
+		assertTrue(player1.getHand().get(0) instanceof DefuseCard);
+	}
+
+	@Test
+	public void testThreeBundleCardAction() {
+		Player player1 = new Player();
+		Player player2 = new Player();
+		ThreeCardBundle threeBundle = new ThreeCardBundle(
+		        Arrays.asList(new NormalCard(), new NormalCard(), new NormalCard()));
+		threeBundle.setTargetCardClass(DefuseCard.class);
+		
+		player2.addDefuseCardToHand();
+		threeBundle.cardAction(player1, player2);
 		
 		assertEquals(1, player1.getHand().size());
 		assertEquals(0, player2.getHand().size());

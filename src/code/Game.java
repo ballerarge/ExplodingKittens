@@ -20,7 +20,7 @@ public class Game {
 
 	public void start(int n) throws InvalidNumberofPlayersException {
 		if (n < 2 || n > 5)
-			throw new InvalidNumberofPlayersException();	
+			throw new InvalidNumberofPlayersException();
 		mainDeck.initStartingDeck();
 		playerManager = new PlayerManager();
 		playerManager.addPlayers(n);
@@ -46,15 +46,15 @@ public class Game {
 		                             // without drawing.
 		priorityManager.nextPlayer();
 	}
-	
-	public Player getCurrentPlayer() {
+
+	public Player getActivePlayer() {
 		return priorityManager.getActivePlayer();
 	}
 
-	public Player getCurrentTurnPlayer() {
+	public Player getCurrentPlayer() {
 		return turnManager.getCurrentPlayer();
 	}
-	
+
 	public List<Player> getPlayers() {
 		return playerManager.getPlayers();
 	}

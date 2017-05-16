@@ -216,5 +216,19 @@ public class BundlesTest {
 		assertEquals(0, player2.getHand().size());
 		assertTrue(player1.getHand().get(0) instanceof DefuseCard);
 	}
+	
+	@Test
+	public void testThreeBundleCardActionEmptyHand() {
+		Player player1 = new Player();
+		Player player2 = new Player();
+		ThreeCardBundle threeBundle = new ThreeCardBundle(
+		        Arrays.asList(new NormalCard(), new NormalCard(), new NormalCard()));
+		threeBundle.setTargetCardClass(DefuseCard.class);
+		
+		threeBundle.cardAction(player1, player2);
+		
+		assertEquals(0, player1.getHand().size());
+		assertEquals(0, player2.getHand().size());
+	}
 
 }

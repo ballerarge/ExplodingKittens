@@ -75,6 +75,7 @@ public class GameController {
 						window.openGameWindow();
 
 						window.displayGameState(game);
+						addCardListeners(window, window.getDisplayedCards());
 					}
 				} catch (InvalidNumberofPlayersException e1) {
 					try {

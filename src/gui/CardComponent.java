@@ -2,6 +2,7 @@
 package gui;
 
 import java.awt.Image;
+import java.util.StringTokenizer;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -10,16 +11,36 @@ import code.Card;
 
 public class CardComponent extends JLabel {
 	private Card card;
-	private ImageIcon image;
+	boolean selected;
 	private ImageIcon selectedImage;
+	private ImageIcon unselectedImage;
 
 	public CardComponent(Card card) {
+		selected = false;
+
 		this.card = card;
-		this.image = new ImageIcon(getClass().getResource(card.getImagePath()));
-		Image image = this.image.getImage();
-		Image newimg = image.getScaledInstance(160, 200, java.awt.Image.SCALE_SMOOTH);
-		this.image = new ImageIcon(newimg);
-		this.setIcon(this.image);
+
+		ImageIcon tempImage = new ImageIcon(getClass().getResource(card.getImagePath()));
+		Image firstImage = tempImage.getImage();
+		Image newimg = firstImage.getScaledInstance(160, 200, java.awt.Image.SCALE_SMOOTH);
+		unselectedImage = new ImageIcon(newimg);
+
+		tempImage = new ImageIcon(getClass().getResource(addSelectedPath(card.getImagePath())));
+		firstImage = tempImage.getImage();
+		newimg = firstImage.getScaledInstance(160, 200, java.awt.Image.SCALE_SMOOTH);
+		selectedImage = new ImageIcon(newimg);
+
+		setIcon(unselectedImage);
+	}
+
+	private String addSelectedPath(String imagePath) {
+		String output = "";
+
+		StringTokenizer st = new StringTokenizer(imagePath, "\\");
+
+		output += st.nextToken() + "\\selected_images\\" + st.nextToken();
+
+		return output;
 	}
 
 	public Card getCard() {
@@ -31,7 +52,14 @@ public class CardComponent extends JLabel {
 	}
 
 	public void toggleSelected() {
-		// TODO Auto-generated method stub
+		selected = !selected;
 
+		if (selected) {
+			setIcon(selectedImage);
+			System.out.println(card.toString() + " selected.");
+		} else {
+			setIcon(unselectedImage);
+			System.out.println(card.toString() + " unselected.");
+		}
 	}
 }

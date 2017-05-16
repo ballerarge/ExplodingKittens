@@ -26,7 +26,7 @@ public class Hand {
 	}
 
 	public List<Card> getHand() {
-		return new ArrayList<>(hand);
+		return hand;
 	}
 
 	public void selectCard(int i) throws IncorrectNumberOfCardsException {

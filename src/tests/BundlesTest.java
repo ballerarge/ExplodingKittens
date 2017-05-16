@@ -10,8 +10,10 @@ import org.junit.Test;
 
 import code.AttackCard;
 import code.Card;
+import code.DefuseCard;
 import code.FiveCardBundle;
 import code.NormalCard;
+import code.Player;
 import code.ThreeCardBundle;
 import code.TwoCardBundle;
 import exceptions.InvalidBundleException;
@@ -184,7 +186,17 @@ public class BundlesTest {
 	
 	@Test
 	public void testTwoBundleCardAction() {
+		Player player1 = new Player();
+		Player player2 = new Player();
+		TwoCardBundle twoBundle = new TwoCardBundle(Arrays.asList(new NormalCard(), new NormalCard()));
+		twoBundle.setTargetCardIndex(0);
 		
+		player2.addDefuseCardToHand();
+		twoBundle.cardAction(player1, player2);
+		
+		assertEquals(1, player1.getHand().size());
+		assertEquals(0, player2.getHand().size());
+		assertTrue(player1.getHand().get(0) instanceof DefuseCard);
 	}
 
 }

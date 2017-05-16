@@ -296,7 +296,7 @@ public class CardFactoryTest {
 
 		for (Card card : cardList) {
 			for (String filePath : fileList) {
-				if (filePath.contains(card.getImagePath())) {
+				if (!filePath.endsWith(".png") || filePath.contains(card.getImagePath())) {
 					fileList.remove(filePath);
 					break;
 				} else {

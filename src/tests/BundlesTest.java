@@ -16,6 +16,7 @@ import code.DefuseCard;
 import code.FiveCardBundle;
 import code.NormalCard;
 import code.Player;
+import code.SkipCard;
 import code.ThreeCardBundle;
 import code.TwoCardBundle;
 import exceptions.InvalidBundleException;
@@ -229,6 +230,22 @@ public class BundlesTest {
 		
 		assertEquals(0, player1.getHand().size());
 		assertEquals(0, player2.getHand().size());
+	}
+	
+	@Test
+	public void testThreeBundleCardActionWrongType() {
+		Player player1 = new Player();
+		Player player2 = new Player();
+		ThreeCardBundle threeBundle = new ThreeCardBundle(
+		        Arrays.asList(new NormalCard(), new NormalCard(), new NormalCard()));
+		threeBundle.setTargetCardClass(SkipCard.class);
+		
+		player2.addDefuseCardToHand();
+		threeBundle.cardAction(player1, player2);
+		
+		assertEquals(0, player1.getHand().size());
+		assertEquals(1, player2.getHand().size());
+		assertTrue(player2.getHand().get(0) instanceof DefuseCard);
 	}
 
 }

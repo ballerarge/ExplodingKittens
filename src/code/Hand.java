@@ -26,7 +26,7 @@ public class Hand {
 	}
 
 	public List<Card> getHand() {
-		return new ArrayList<>(hand);
+		return hand;
 	}
 
 	public void selectCard(int i) throws IncorrectNumberOfCardsException {
@@ -45,36 +45,35 @@ public class Hand {
 		return this.selectedCards;
 	}
 
-	public void moveSelectedToStack() throws NoCardsToMoveException {
+	public void moveSelectedToStack() throws NoCardsToMoveException, InvalidBundleException {
 		if (this.selectedCards.size() == 0) {
 			throw new NoCardsToMoveException();
 		}
-		
+
 		if (this.allNormalCards()) {
-			try {
-				this.cardStack.moveCardsToStack(this.makeBundle());
-			} catch (InvalidBundleException e) {
-				System.out.println("Wrong bundle size!");
-				// Somehow, do something better.
+			if (TwoCardBundle.isValidBundle(selectedCards)) {
+				this.cardStack.moveCardsToStack(this.makeBundle(2));
+			} else if (ThreeCardBundle.isValidBundle(selectedCards)) {
+				this.cardStack.moveCardsToStack(this.makeBundle(3));
+			} else if (FiveCardBundle.isValidBundle(selectedCards)) {
+				this.cardStack.moveCardsToStack(this.makeBundle(5));
 			}
+
 		} else {
 			this.cardStack.moveCardsToStack(this.selectedCards);
 		}
 		this.selectedCards.clear();
 	}
 
-	private List<Card> makeBundle() throws InvalidBundleException {
+	private List<Card> makeBundle(int sizeOfBundle) throws InvalidBundleException {
 		ArrayList<Card> toSendToStack = new ArrayList<Card>();
-		
-		int sizeOfBundle = this.selectedCards.size();
+
 		if (sizeOfBundle == 2) {
 			toSendToStack.add(new TwoCardBundle(selectedCards));
 		} else if (sizeOfBundle == 3) {
 			toSendToStack.add(new ThreeCardBundle(selectedCards));
-		} else if (sizeOfBundle == 5) {
-			toSendToStack.add(new FiveCardBundle(selectedCards));
 		} else {
-			throw new InvalidBundleException();
+			toSendToStack.add(new FiveCardBundle(selectedCards));
 		}
 		return toSendToStack;
 	}
@@ -95,8 +94,8 @@ public class Hand {
 	public void addCards(List<Card> cards) {
 		this.hand.addAll(cards);
 	}
-	
-	public void clearSelectedCards(){
+
+	public void clearSelectedCards() {
 		this.selectedCards.clear();
 	}
 }

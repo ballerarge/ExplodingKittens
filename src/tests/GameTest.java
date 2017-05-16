@@ -47,8 +47,9 @@ public class GameTest {
 
 	@Test
 	public void testGameCreation() {
-		@SuppressWarnings("unused")
 		Game game = new Game();
+		
+		assertTrue(game != null);
 	}
 
 	@Test

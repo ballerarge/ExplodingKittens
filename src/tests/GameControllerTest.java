@@ -1,6 +1,8 @@
 
 package tests;
 
+import static org.junit.Assert.*;
+
 import org.junit.Test;
 
 import code.GameController;
@@ -8,7 +10,8 @@ import code.GameController;
 public class GameControllerTest {
 	@Test
 	public void testGameControllerCreation() {
-		@SuppressWarnings("unused")
 		GameController gameController = new GameController();
+		
+		assertTrue(gameController != null);
 	}
 }

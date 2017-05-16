@@ -1,7 +1,7 @@
 
 package code;
 
-public class SkipCard extends Card {
+public class SkipCard extends Card implements Cloneable {
 	public SkipCard() {
 		this.cardID = 4;
 	}

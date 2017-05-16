@@ -1,7 +1,7 @@
 
 package tests;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,8 +44,9 @@ public class CardFactoryTest {
 
 	@Test
 	public void testCardFactoryCreation() {
-		@SuppressWarnings("unused")
 		CardFactory cardFactory = new CardFactory();
+		
+		assertTrue(cardFactory != null);
 	}
 
 	@Test

@@ -1,10 +1,8 @@
 
 package code;
 
-import exceptions.NoSuchPlayerException;
-
-public class ExplodingKittenCard extends Card {
-
+public class ExplodingKittenCard extends Card implements Cloneable {
+	
 	PlayerManager playerManager;
 	TurnManager turnManager;
 
@@ -27,4 +25,4 @@ public class ExplodingKittenCard extends Card {
 	public Card clone() {
 		return new ExplodingKittenCard();
 	}
-}
+}

@@ -1,7 +1,7 @@
 
 package code;
 
-public class NopeCard extends Card {
+public class NopeCard extends Card implements Cloneable {
 	public NopeCard() {
 		this.cardID = 1;
 	}

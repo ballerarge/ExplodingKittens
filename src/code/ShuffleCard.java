@@ -1,7 +1,7 @@
 
 package code;
 
-public class ShuffleCard extends Card {
+public class ShuffleCard extends Card implements Cloneable {
 	public ShuffleCard() {
 		this.cardID = 6;
 	}

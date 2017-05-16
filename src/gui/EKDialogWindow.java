@@ -2,32 +2,37 @@ package gui;
 
 import javax.swing.JOptionPane;
 
-public class EKDialogWindow extends JOptionPane {
+public class EKDialogWindow {
 
+	/**
+	 * Hey, that's my SSN!!!
+	 */
+	private static final long serialVersionUID = 2765632499215077387L;
+	
 	private static void displayMessage(int messageType, String title, String toDisplay, Object... args) {
 		
 		String formattedText = String.format(toDisplay, args);
-		showMessageDialog(null, formattedText, title, messageType );
+		JOptionPane.showMessageDialog(null, formattedText, title, messageType );
 	}
 	
 	public static void displayMessage(String title, String toDisplay, Object... args) {
-		displayMessage(PLAIN_MESSAGE, title, toDisplay, args);
+		displayMessage(JOptionPane.PLAIN_MESSAGE, title, toDisplay, args);
 	}
 
 	public static void displayInfoMessage(String title, String toDisplay, Object... args) {
-		displayMessage(INFORMATION_MESSAGE, title, toDisplay, args);
+		displayMessage(JOptionPane.INFORMATION_MESSAGE, title, toDisplay, args);
 	}
 	
 	public static void displayQuestionMessage(String title, String toDisplay, Object... args) {
-		displayMessage(QUESTION_MESSAGE, title, toDisplay, args);
+		displayMessage(JOptionPane.QUESTION_MESSAGE, title, toDisplay, args);
 	}
 	
 	public static void displayErrorMessage(String title, String toDisplay, Object... args) {
-		displayMessage(ERROR_MESSAGE, title, toDisplay, args);
+		displayMessage(JOptionPane.ERROR_MESSAGE, title, toDisplay, args);
 	}
 	
 	public static void displayWarningMessage(String title, String toDisplay, Object... args) {
-		displayMessage(WARNING_MESSAGE, title, toDisplay, args);
+		displayMessage(JOptionPane.WARNING_MESSAGE, title, toDisplay, args);
 	}
 	
 	/**
@@ -47,8 +52,8 @@ public class EKDialogWindow extends JOptionPane {
 	private static boolean displayYesNoDialog(int messageType, String title, String toDisplay, Object... args) {
 		
 		String formattedText = String.format(toDisplay, args);
-		int result = showConfirmDialog(null, formattedText, title, YES_NO_OPTION, messageType);
-		return result == YES_OPTION;
+		int result = JOptionPane.showConfirmDialog(null, formattedText, title, JOptionPane.YES_NO_OPTION, messageType);
+		return result == JOptionPane.YES_OPTION;
 	}
 	
 	/**
@@ -64,22 +69,27 @@ public class EKDialogWindow extends JOptionPane {
 	 * 			the user hit yes as an answer
 	 */
 	public static boolean displayYesNo(String title, String toDisplay, Object... args) {
-		return displayYesNoDialog(PLAIN_MESSAGE, title, toDisplay, args);
+		return displayYesNoDialog(JOptionPane.PLAIN_MESSAGE, title, toDisplay, args);
 	}
 	
 	public static boolean displayYesNoQuestion(String title, String toDisplay, Object... args) {
-		return displayYesNoDialog(QUESTION_MESSAGE, title, toDisplay, args);
+		return displayYesNoDialog(JOptionPane.QUESTION_MESSAGE, title, toDisplay, args);
 	}
 	
 	public static boolean displayYesNoError(String title, String toDisplay, Object... args) {
-		return displayYesNoDialog(ERROR_MESSAGE, title, toDisplay, args);
+		return displayYesNoDialog(JOptionPane.ERROR_MESSAGE, title, toDisplay, args);
 	}
 	
 	public static boolean displayYesNoInfo(String title, String toDisplay, Object... args) {
-		return displayYesNoDialog(INFORMATION_MESSAGE, title, toDisplay, args);
+		return displayYesNoDialog(JOptionPane.INFORMATION_MESSAGE, title, toDisplay, args);
 	}
 
 	public static boolean displayYesNoWarning(String title, String toDisplay, Object... args) {
-		return displayYesNoDialog(WARNING_MESSAGE, title, toDisplay, args);
+		return displayYesNoDialog(JOptionPane.WARNING_MESSAGE, title, toDisplay, args);
+	}
+	
+	public static Object displayInputDialog(int messageType, String title, String text, Object[] options, int intialChoice) {
+
+		return JOptionPane.showInputDialog(null, title, text, messageType, null, options, intialChoice);
 	}
 }

@@ -2,6 +2,8 @@ package tests;
 
 import static org.junit.Assert.*;
 
+import javax.swing.JOptionPane;
+
 import org.junit.Test;
 
 import gui.EKDialogWindow;
@@ -32,5 +34,15 @@ public class EKDialogWindowTest {
 		EKDialogWindow.displayYesNoWarning("warning!", "you have been warned!");
 	}
 	
+	@Test
+	public void testInputDialogCreation() {
+		
+		String[] listOfOptions = new String[]{"This is option 1", "This is option 2", "This is 3", "This is... 4"};
+		int intialChoice = 2;
+		int JOptionPanePlainOption = JOptionPane.PLAIN_MESSAGE;
+		
+		EKDialogWindow.displayInputDialog(JOptionPanePlainOption , "Hello! This is a title!", "This is an input thingy", listOfOptions, intialChoice);
+	}
 	
+
 }

@@ -3,6 +3,7 @@ package tests;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +17,7 @@ import code.Card;
 import code.CardFactory;
 import code.CardStack;
 import code.Game;
+import code.MainDeck;
 import code.Player;
 import code.PriorityManager;
 import code.TurnManager;
@@ -24,28 +26,28 @@ import exceptions.IncorrectNumberOfCardsException;
 import exceptions.InvalidNumberofPlayersException;
 
 public class CardFactoryTest {
-	
+
 	@Before
 	public void initialize() {
 		PriorityManager.tearDown();
 		CardStack.tearDown();
 		TurnManager.tearDown();
 	}
-	
+
 	@After
 	public void tearDown() {
 		PriorityManager.tearDown();
 		CardStack.tearDown();
 		TurnManager.tearDown();
 	}
-	
+
 	@Rule
 	public final ExpectedException exception = ExpectedException.none();
 
 	@Test
 	public void testCardFactoryCreation() {
 		CardFactory cardFactory = new CardFactory();
-		
+
 		assertTrue(cardFactory != null);
 	}
 
@@ -61,7 +63,7 @@ public class CardFactoryTest {
 	public void testCardActionInCreatedCards() throws InvalidNumberofPlayersException {
 		Game game = new Game();
 		game.start(3);
-		
+
 		CardFactory cardFactory = new CardFactory();
 
 		List<Card> cards = new ArrayList<Card>();
@@ -75,7 +77,7 @@ public class CardFactoryTest {
 		cards.add(cardFactory.createCard(CardFactory.SCRY_CARD));
 
 		Player p1 = null, p2 = null;
-		
+
 		CardStack.getInstance().addCard(cardFactory.createCard(CardFactory.SKIP_CARD));
 
 		for (Card card : cards) {
@@ -264,11 +266,42 @@ public class CardFactoryTest {
 		}
 		assertEquals(10, cards.size());
 	}
-	
+
 	@Test(expected = CardNotFoundException.class)
 	public void testCreateNonExistingCard() {
 		CardFactory cardFactory = new CardFactory();
-		
+
 		cardFactory.createCard(26);
+	}
+
+	@Test
+	public void testCreatedCardsHaveCorrectImagePath() {
+		CardFactory cardFactory = new CardFactory();
+
+		File path = new File(
+		        "C:/Users/wilejd/Documents/Junior Year/CSSE-376/exploding-kittens/exploding-kittens/src/gui/card_images/");
+
+		File[] files = path.listFiles();
+		List<String> fileList = new ArrayList<String>();
+		for (int i = 0; i < files.length; i++) {
+			fileList.add(files[i].getPath().toString());
+		}
+
+		MainDeck.getInstance().initStartingDeck();
+
+		List<Card> cardList = MainDeck.getInstance().getCards();
+
+		for (Card card : cardList) {
+			for (String filePath : fileList) {
+				if (filePath.contains(card.getImagePath())) {
+					fileList.remove(filePath);
+					break;
+				}
+			}
+		}
+
+		assertEquals(0, fileList.size());
+
+		MainDeck.tearDown();
 	}
 }

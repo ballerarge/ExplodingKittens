@@ -15,6 +15,11 @@ public class DefuseCard extends Card implements Cloneable {
 		this.cardID = 2;
 	}
 
+	public DefuseCard(String path) {
+		this();
+		this.imagePath = path;
+	}
+
 	@Override
 	public void cardAction(Player p1, Player p2) {
 		stack = CardStack.getInstance();

@@ -6,6 +6,11 @@ public class ShuffleCard extends Card implements Cloneable {
 		this.cardID = 6;
 	}
 
+	public ShuffleCard(String path) {
+		this();
+		this.imagePath = path;
+	}
+
 	@Override
 	public void cardAction(Player p1, Player p2) {
 		MainDeck mainDeck=MainDeck.getInstance();

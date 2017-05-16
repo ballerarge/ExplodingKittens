@@ -14,6 +14,11 @@ public class ExplodingKittenCard extends Card implements Cloneable {
 		playerManager = turnManager.getPlayerManager();
 	}
 
+	public ExplodingKittenCard(String path) {
+		this();
+		this.imagePath = path;
+	}
+
 	@Override
 	public void cardAction(Player p1, Player p2) {
 		try {

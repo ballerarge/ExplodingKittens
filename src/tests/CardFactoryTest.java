@@ -287,7 +287,10 @@ public class CardFactoryTest {
 			fileList.add(files[i].getPath().toString());
 		}
 
+		MainDeck.tearDown();
+
 		MainDeck.getInstance().initStartingDeck();
+		MainDeck.getInstance().populateDeck(5);
 
 		List<Card> cardList = MainDeck.getInstance().getCards();
 
@@ -296,11 +299,13 @@ public class CardFactoryTest {
 				if (filePath.contains(card.getImagePath())) {
 					fileList.remove(filePath);
 					break;
+				} else {
+					System.out.println(card.getImagePath());
 				}
 			}
 		}
 
-		assertEquals(0, fileList.size());
+		assertEquals(4, fileList.size()); // Number of Defuse cards not in deck
 
 		MainDeck.tearDown();
 	}

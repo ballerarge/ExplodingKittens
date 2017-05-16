@@ -49,37 +49,31 @@ public class Hand {
 		if (this.selectedCards.size() == 0) {
 			throw new NoCardsToMoveException();
 		}
-		
+
 		if (this.allNormalCards()) {
-			this.cardStack.moveCardsToStack(this.makeBundle());
+			if (TwoCardBundle.isValidBundle(selectedCards)) {
+				this.cardStack.moveCardsToStack(this.makeBundle(2));
+			} else if (ThreeCardBundle.isValidBundle(selectedCards)) {
+				this.cardStack.moveCardsToStack(this.makeBundle(3));
+			} else if (FiveCardBundle.isValidBundle(selectedCards)) {
+				this.cardStack.moveCardsToStack(this.makeBundle(5));
+			}
+
 		} else {
 			this.cardStack.moveCardsToStack(this.selectedCards);
 		}
 		this.selectedCards.clear();
 	}
 
-	private List<Card> makeBundle() throws InvalidBundleException {
+	private List<Card> makeBundle(int sizeOfBundle) throws InvalidBundleException {
 		ArrayList<Card> toSendToStack = new ArrayList<Card>();
-		
-		int sizeOfBundle = this.selectedCards.size();
+
 		if (sizeOfBundle == 2) {
-			if (!TwoCardBundle.isValidBundle(selectedCards)) {
-				throw new InvalidBundleException();
-			} else {
-				toSendToStack.add(new TwoCardBundle(selectedCards));
-			}
+			toSendToStack.add(new TwoCardBundle(selectedCards));
 		} else if (sizeOfBundle == 3) {
-			if (!ThreeCardBundle.isValidBundle(selectedCards)) {
-				throw new InvalidBundleException();
-			} else {
-				toSendToStack.add(new ThreeCardBundle(selectedCards));
-			}
-		} else if (sizeOfBundle == 5) {
-			if (!FiveCardBundle.isValidBundle(selectedCards)) {
-				throw new InvalidBundleException();
-			} else {
-				toSendToStack.add(new FiveCardBundle(selectedCards));
-			}
+			toSendToStack.add(new ThreeCardBundle(selectedCards));
+		} else {
+			toSendToStack.add(new FiveCardBundle(selectedCards));
 		}
 		return toSendToStack;
 	}
@@ -100,8 +94,8 @@ public class Hand {
 	public void addCards(List<Card> cards) {
 		this.hand.addAll(cards);
 	}
-	
-	public void clearSelectedCards(){
+
+	public void clearSelectedCards() {
 		this.selectedCards.clear();
 	}
 }

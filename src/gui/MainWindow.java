@@ -7,6 +7,7 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +24,12 @@ import javax.swing.JScrollPane;
 import javax.swing.WindowConstants;
 
 import code.Card;
+import code.DefuseCard;
+import code.DiscardDeck;
 import code.Game;
 import code.MainDeck;
+import code.NopeCard;
+import code.NormalCard;
 
 public class MainWindow {
 	// Main Window Frame
@@ -222,15 +227,42 @@ public class MainWindow {
 	}
 
 	public void displayGameState(Game game) {
-		System.out.printf("%s's turn.\n\t", game.getActivePlayer().getName());
+		System.out.printf("%s's turn.\n\t", game.getCurrentPlayer().getName());
 
 		selectedCards = new ArrayList<CardComponent>();
 
 		displayOtherPlayers(game.getPlayers().size() - 1);
 		displayMainDeck(MainDeck.getInstance());
+		displayDiscardDeck(DiscardDeck.getInstance());
 		displayHand(game.getCurrentPlayer().getHand());
 
-		System.out.println(game.getActivePlayer().getHand().toString());
+		System.out.println(game.getCurrentPlayer().getHand().toString());
+	}
+
+	private void displayDiscardDeck(DiscardDeck discardDeck) {
+		GridBagConstraints gbc = new GridBagConstraints();
+
+		deckDisplayPanel.add(new JLabel("  "));
+		gbc.gridx = 1;
+		gbc.gridy = 0;
+
+		ImageIcon image;
+
+		if (discardDeck.getCardCount() > 0) {
+			image = new ImageIcon(getClass().getResource(discardDeck.getCards().get(0).getImagePath()));
+		} else {
+			image = new ImageIcon(getClass().getResource("EmptyDiscardDeck.png"));
+		}
+		Image firstImage = image.getImage();
+		Image newimg = firstImage.getScaledInstance(110, 150, java.awt.Image.SCALE_SMOOTH);
+		JLabel imageLabel = new JLabel(new ImageIcon(newimg));
+
+		gbc.gridx = 2;
+		gbc.gridy = 0;
+		deckDisplayPanel.add(imageLabel, gbc);
+		imageLabel.setVisible(true);
+
+		deckDisplayPanel.setVisible(true);
 	}
 
 	private void displayMainDeck(MainDeck mainDeck) {
@@ -256,10 +288,11 @@ public class MainWindow {
 				break;
 		}
 		JLabel imageLabel = new JLabel(image);
+
+		gbc.gridx = 0;
+		gbc.gridy = 0;
 		deckDisplayPanel.add(imageLabel, gbc);
 		imageLabel.setVisible(true);
-
-		deckDisplayPanel.setVisible(true);
 	}
 
 	private void displayOtherPlayers(int numOtherPlayers) {
@@ -321,8 +354,38 @@ public class MainWindow {
 		if (selectedCards.contains(component)) {
 			selectedCards.remove(component);
 			component.toggleSelected();
-		} else {
+		} else if (component.getCard() instanceof NormalCard && onlyNormalCardsSelected()) {
 			selectedCards.add(component);
+			component.toggleSelected();
+		} else if (selectedCards.size() == 0
+		        && !(component.getCard() instanceof DefuseCard || component.getCard() instanceof NopeCard)) {
+			selectedCards.add(component);
+			component.toggleSelected();
 		}
+	}
+
+	private boolean onlyNormalCardsSelected() {
+		if (selectedCards.size() == 0) {
+			return true;
+		}
+
+		for (CardComponent component : selectedCards) {
+			if (!(component.getCard() instanceof NormalCard)) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	public List<CardComponent> getSelectedCards() {
+		return selectedCards;
+	}
+
+	public void clearSelected() {
+		for (CardComponent component : selectedCards) {
+			component.toggleSelected();
+		}
+		selectedCards = new ArrayList<CardComponent>();
 	}
 }

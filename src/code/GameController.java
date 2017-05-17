@@ -23,7 +23,6 @@ public class GameController {
 
 	public static void main(String[] args) {
 
-		Scanner scanner = new Scanner(System.in);
 		Game game = new Game();
 
 		Player player1 = new Player("One");
@@ -37,7 +36,8 @@ public class GameController {
 		test.add(player3);
 		test.add(player4);
 
-		EKPlayerSelectionWindow playerSelect = new EKPlayerSelectionWindow(player1, test, "Player to act upon");
+		// EKPlayerSelectionWindow playerSelect = new
+		// EKPlayerSelectionWindow(player1, test, "Player to act upon");
 		// playerSelect.display();
 		NumberofPlayersMenu menu = new NumberofPlayersMenu();
 
@@ -75,7 +75,7 @@ public class GameController {
 						window.openGameWindow();
 
 						window.displayGameState(game);
-						addCardListeners(window, window.getDisplayedCards());
+						addCardListeners(game, window, window.getDisplayedCards());
 					}
 				} catch (InvalidNumberofPlayersException e1) {
 					try {
@@ -93,7 +93,32 @@ public class GameController {
 			public void actionPerformed(ActionEvent arg0) {
 				game.nextTurn();
 				window.displayGameState(game);
-				addCardListeners(window, window.getDisplayedCards());
+				addCardListeners(game, window, window.getDisplayedCards());
+			}
+
+		});
+
+		window.setPlaySelectedCardListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				List<CardComponent> components = window.getSelectedCards();
+				List<Card> selectedCards = new ArrayList<Card>();
+				for (CardComponent component : components) {
+					selectedCards.add(component.getCard());
+				}
+
+				if (selectedCards.size() == 1) { // Resolve one card
+
+					CardStack.getInstance().addCard(selectedCards.get(0));
+					CardStack.getInstance().resolveTopCard();
+					window.clearSelected();
+					DiscardDeck.getInstance().addAll(selectedCards);
+					window.displayGameState(game);
+					addCardListeners(game, window, window.getDisplayedCards());
+				} else { // Resolve bundle
+					System.out.println("Bundle logic goes here.");
+				}
 			}
 
 		});
@@ -101,13 +126,21 @@ public class GameController {
 		window.openStartWindow();
 	}
 
-	protected static void addCardListeners(MainWindow window, List<CardComponent> displayedCards) {
+	protected static void addCardListeners(Game game, MainWindow window, List<CardComponent> displayedCards) {
 		for (CardComponent component : displayedCards) {
 			component.addMouseListener(new MouseListener() {
 
 				@Override
 				public void mouseClicked(MouseEvent arg0) {
 					window.toggleSelected(component);
+					if (game.getCurrentPlayer().getHand().contains(component.getCard())) {
+						game.getCurrentPlayer().getHandManager()
+						        .selectCard(game.getCurrentPlayer().getHand().indexOf(component.getCard()));
+					} else {
+						game.getCurrentPlayer().getHandManager()
+						        .addCards(game.getCurrentPlayer().getHandManager().getSelectedCards());
+						game.getCurrentPlayer().getHandManager().clearSelectedCards();
+					}
 				}
 
 				@Override
@@ -117,7 +150,7 @@ public class GameController {
 
 				@Override
 				public void mouseExited(MouseEvent arg0) {
-					// TODO Auto-generated method stub
+					// Do nothing
 
 				}
 

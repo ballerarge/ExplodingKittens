@@ -9,7 +9,7 @@ import exceptions.NoSuchPlayerException;
 public class TurnManager {
 
 	private static TurnManager turnManager;
-	Player currentPlayer;
+	public Player currentPlayer;
 	PlayerManager playerManager;
 	ArrayList<Player> turnOrder;// current player is at
 	                            // index 0
@@ -25,8 +25,12 @@ public class TurnManager {
 		turnManager = null;
 	}
 
-	private TurnManager() {
+	protected TurnManager() {
 		turnOrder = new ArrayList<>();
+	}
+	
+	public static void InstantiateLogger() {
+		turnManager = new TurnManagerLogger(new TurnManager());
 	}
 
 	public void setPlayerManager(PlayerManager pm) {

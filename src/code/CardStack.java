@@ -71,7 +71,7 @@ public class CardStack {
 	}
 
 	public void counterTopCard() { // Only called by Nope cards
-		if (stack.isEmpty() || stack.peek() instanceof ExplodingKittenCard || stack.peek() instanceof DefuseCard) {
+		if (stack.isEmpty() || stack.peek().getID() == 5 || stack.peek().getID() == 2) {
 			throw new InvalidNopeTargetException();
 		}
 		stack.pop();

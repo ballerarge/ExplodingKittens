@@ -9,10 +9,10 @@ import exceptions.NoSuchPlayerException;
 public class TurnManager {
 
 	private static TurnManager turnManager;
-	Player currentPlayer;
-	PlayerManager playerManager;
-	ArrayList<Player> turnOrder;// current player is at
-	                            // index 0
+	private Player currentPlayer;
+	private PlayerManager playerManager;
+	private ArrayList<Player> turnOrder;// current player is at
+	// index 0
 
 	public static TurnManager getInstance() {
 		if (turnManager == null) {
@@ -25,8 +25,16 @@ public class TurnManager {
 		turnManager = null;
 	}
 
-	private TurnManager() {
+	protected TurnManager() {
 		turnOrder = new ArrayList<>();
+	}
+
+	protected TurnManager(int n) {// this should only be called when
+	                              // Initializing TurnManagerLogger
+	}
+
+	public static void InstantiateLogger() {
+		turnManager = new TurnManagerLogger(new TurnManager());
 	}
 
 	public void setPlayerManager(PlayerManager pm) {
@@ -54,7 +62,7 @@ public class TurnManager {
 	public void endTurnAndDraw() {
 		Player player = turnOrder.remove(0);
 		Card drawnCard = player.drawCard();
-		if (drawnCard instanceof ExplodingKittenCard) {
+		if (drawnCard.getID() == 5) {
 			CardStack.getInstance().addCard(drawnCard);
 			PriorityManager.getInstance().resolveCard();
 		} else if (turnOrder.size() > 0 && !turnOrder.get(turnOrder.size() - 1).equals(player)) {// Don't
@@ -106,11 +114,11 @@ public class TurnManager {
 	}
 
 	private void removeAllInstancesFromTurnOrder() {
-		for(int i = turnOrder.size() - 1; i >= 0; i--) {
+		for (int i = turnOrder.size() - 1; i >= 0; i--) {
 			Player checkPlayer = turnOrder.get(i);
 			if (checkPlayer.equals(currentPlayer)) {
 				turnOrder.remove(checkPlayer);
 			}
-		}	
+		}
 	}
 }

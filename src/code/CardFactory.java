@@ -23,28 +23,30 @@ public class CardFactory {
 	}
 
 	public Card createCard(int cardID) {
+		Card card;
 		switch (cardID) {
 			case NORMAL_CARD:
 				return new NormalCard();
 			case NOPE_CARD:
-				return new NopeCard();
+				card = new NopeCard(); break;
 			case DEFUSE_CARD:
-				return new DefuseCard();
+				card = new DefuseCard(); break;
 			case ATTACK_CARD:
-				return new AttackCard();
+				card = new AttackCard(); break;
 			case SKIP_CARD:
-				return new SkipCard();
+				card = new SkipCard(); break;
 			case EXPLODING_KITTEN_CARD:
-				return new ExplodingKittenCard();
+				card = new ExplodingKittenCard(); break;
 			case SHUFFLE_CARD:
-				return new ShuffleCard();
+				card = new ShuffleCard(); break;
 			case SCRY_CARD:
-				return new ScryCard();
+				card = new ScryCard(); break;
 			case FAVOR_CARD:
-				return new FavorCard();
+				card = new FavorCard(); break;
 			default:
 				throw new CardNotFoundException("CardID incorrect for create card in Card Factory");
 		}
+		return new CardLogger(card);
 	}
 
 	public List<Card> createCards(int cardID, int numCards) throws IncorrectNumberOfCardsException {

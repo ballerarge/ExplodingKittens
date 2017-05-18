@@ -190,17 +190,17 @@ public class MainDeckTest {
 
 		mDeck.initStartingDeck();
 		for (int i = 0; i < mDeck.getCardCount(); i++) {
-			if (mDeck.getCards().get(i) instanceof AttackCard) {
+			if (mDeck.getCards().get(i).getID() == 3) {
 				attack++;
-			} else if (mDeck.getCards().get(i) instanceof FavorCard) {
+			} else if (mDeck.getCards().get(i).getID() == 8) {
 				favor++;
-			} else if (mDeck.getCards().get(i) instanceof NopeCard) {
+			} else if (mDeck.getCards().get(i).getID() == 1) {
 				nope++;
-			} else if (mDeck.getCards().get(i) instanceof NormalCard) {
+			} else if (mDeck.getCards().get(i).getID() == 0) {
 				normal++;
-			} else if (mDeck.getCards().get(i) instanceof ScryCard) {
+			} else if (mDeck.getCards().get(i).getID() == 7) {
 				scry++;
-			} else if (mDeck.getCards().get(i) instanceof ShuffleCard) {
+			} else if (mDeck.getCards().get(i).getID() == 6) {
 				shuffle++;
 			} else {
 				skip++;
@@ -251,9 +251,9 @@ public class MainDeckTest {
 		mDeck.initStartingDeck();
 		mDeck.populateDeck(numPlayers);
 		for (int i = 0; i < mDeck.getCardCount(); i++) {
-			if (mDeck.getCards().get(i) instanceof ExplodingKittenCard) {
+			if (mDeck.getCards().get(i).getID() == 5) {
 				kittens++;
-			} else if (mDeck.getCards().get(i) instanceof DefuseCard) {
+			} else if (mDeck.getCards().get(i).getID() == 2) {
 				defuse++;
 			}
 		}

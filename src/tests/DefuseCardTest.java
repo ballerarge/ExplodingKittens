@@ -103,7 +103,7 @@ public class DefuseCardTest {
 	private int countKittensInDeck() {
 		int count = 0;
 		for (Card card : mDeck.getCards()) {
-			if (card instanceof ExplodingKittenCard) {
+			if (card.getID() == 5) {
 				count++;
 			}
 		}
@@ -122,7 +122,7 @@ public class DefuseCardTest {
 		stack.resolveTopCard();
 		
 		assertEquals(discardDeckSize + 1, dDeck.getCardCount());
-		assertTrue(dDeck.getCards().get(0) instanceof DefuseCard);
+		assertTrue(dDeck.getCards().get(0).getID() == 2);
 	}
 	
 	@Test

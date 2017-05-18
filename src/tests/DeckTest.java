@@ -201,5 +201,23 @@ public class DeckTest {
 		assertEquals(3, deck.getCards().size());
 		assertEquals(thirdCard, deck.getCards().get(2));
 	}
+	
+	@Test
+	public void testAddAll() {
+		List<Card> cards = new ArrayList<Card>();
+		Card firstCard = new NormalCard();
+		Card secondCard = new NormalCard();
+		Card thirdCard = new NormalCard();
+		cards.add(firstCard);
+		cards.add(secondCard);
+		cards.add(thirdCard);
+		Deck deck = new Deck();
+		
+		boolean check = deck.addAll(cards);
+		
+		assertTrue(check);
+		assertEquals(3, deck.getCards().size());
+		
+	}
 
 }

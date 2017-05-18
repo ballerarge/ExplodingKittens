@@ -1,25 +1,48 @@
 
 package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.easymock.EasyMock;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import code.CardFactory;
 import code.CardStack;
+import code.DiscardDeck;
+import code.MainDeck;
 import code.Player;
 import code.PriorityManager;
+import code.TurnManager;
 import exceptions.NoSuchPlayerException;
 
 public class PriorityManagerTest {
 	@Rule
 	public final ExpectedException exception = ExpectedException.none();
+
+	@Before
+	public void initialize() {
+		PriorityManager.tearDown();
+		CardStack.tearDown();
+		TurnManager.tearDown();
+		MainDeck.tearDown();
+		DiscardDeck.tearDown();
+	}
+
+	@After
+	public void tearDown() {
+		PriorityManager.tearDown();
+		CardStack.tearDown();
+		TurnManager.tearDown();
+		MainDeck.tearDown();
+		DiscardDeck.tearDown();
+	}
 
 	@Test
 	public void testPriorityManagerInstanceGet() {
@@ -35,8 +58,6 @@ public class PriorityManagerTest {
 		pm.removePlayer(new Player("Player 1"));
 
 		assertEquals(numPlayers, pm.getPlayerCount());
-
-		PriorityManager.tearDown();
 	}
 
 	@Test
@@ -69,8 +90,6 @@ public class PriorityManagerTest {
 		pm.removePlayer(pm.getActivePlayer());
 
 		assertEquals(1, pm.getPlayerCount());
-
-		PriorityManager.tearDown();
 	}
 
 	@Test
@@ -87,8 +106,6 @@ public class PriorityManagerTest {
 
 		assertEquals("Player 1", pm.getActivePlayer().getName());
 		assertEquals(1, pm.getPlayerCount());
-
-		PriorityManager.tearDown();
 	}
 
 	@Test
@@ -102,8 +119,6 @@ public class PriorityManagerTest {
 		pm.addPlayers(players);
 
 		assertEquals("Player 1", pm.getActivePlayer().getName());
-
-		PriorityManager.tearDown();
 	}
 
 	@Test
@@ -125,8 +140,6 @@ public class PriorityManagerTest {
 		pm.nextPlayer();
 
 		assertEquals("Player 1", pm.getActivePlayer().getName());
-
-		PriorityManager.tearDown();
 	}
 
 	@Test
@@ -150,9 +163,6 @@ public class PriorityManagerTest {
 
 		assertEquals(0, CardStack.getInstance().getStack().size());
 		assertTrue(pm.getActivePlayer().getName().equals("Player 1"));
-
-		PriorityManager.tearDown();
-		CardStack.tearDown();
 	}
 
 }

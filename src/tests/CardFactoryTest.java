@@ -104,6 +104,16 @@ public class CardFactoryTest {
 		@SuppressWarnings("unused")
 		List<Card> cards = cardFactory.createCards(CardFactory.NORMAL_CARD, -1);
 	}
+	
+	@Test
+	public void testCreateCardZeroMultiple() throws IncorrectNumberOfCardsException {
+		CardFactory cardFactory = new CardFactory();
+		
+		exception.expect(IncorrectNumberOfCardsException.class);
+		
+		@SuppressWarnings("unused")
+		List<Card> cards = cardFactory.createCards(CardFactory.NORMAL_CARD, 0);
+	}
 
 	@Test
 	public void testCreateCardSingleNope() {

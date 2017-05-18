@@ -27,27 +27,30 @@ public class PriorityManagerTest {
 	}
 
 	@Test
-	public void testRemovePlayerFromEmptyPlayerList() throws NoSuchPlayerException {
+	public void testRemovePlayerFromEmptyPlayerList() {
 		PriorityManager pm = PriorityManager.getInstance();
 
-		exception.expect(NoSuchPlayerException.class);
-
+		int numPlayers = pm.getPlayerCount();
 		pm.removePlayer(new Player("Player 1"));
+		
+		assertEquals(numPlayers, pm.getPlayerCount());
 
 		PriorityManager.tearDown();
 	}
 
 	@Test
-	public void testRemovePlayerNotInPlayerList() throws NoSuchPlayerException {
+	public void testRemovePlayerNotInPlayerList() {
 		PriorityManager pm = PriorityManager.getInstance();
-
-		exception.expect(NoSuchPlayerException.class);
 
 		List<Player> players = new ArrayList<Player>();
 		players.add(new Player("Player 1"));
 		players.add(new Player("Player 2"));
+		
+		int numPlayers = pm.getPlayerCount();
 
 		pm.removePlayer(new Player("Player 3"));
+		
+		assertEquals(numPlayers, pm.getPlayerCount());
 
 		PriorityManager.tearDown();
 	}

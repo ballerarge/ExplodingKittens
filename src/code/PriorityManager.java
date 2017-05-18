@@ -22,11 +22,9 @@ public class PriorityManager {
 		return priorityManager;
 	}
 
-	public void removePlayer(Player player) throws NoSuchPlayerException {
+	public void removePlayer(Player player) {
 		if (this.playerList.contains(player)) {
 			this.playerList.remove(player);
-		} else {
-			throw new NoSuchPlayerException();
 		}
 	}
 

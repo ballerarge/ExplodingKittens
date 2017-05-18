@@ -16,12 +16,16 @@ public class TurnManagerLogger extends TurnManager {
 
 	@Override
 	public void makeCurrentPlayerLose() throws NoSuchPlayerException {
+		logLoss();
+		turnManager.makeCurrentPlayerLose();
+	}
+	
+	private void logLoss() {
 		Log log = Log.getInstance();
 		ResourceBundle bundle = ResourceBundle.getBundle("resources/resources",log.locale);
 		String message = currentPlayer.getName()+" ";
 		message += bundle.getString("HAS_LOST_THE_GAME");
 		log.addEntry(new Entry(message));
-		turnManager.makeCurrentPlayerLose();
 	}
 
 }

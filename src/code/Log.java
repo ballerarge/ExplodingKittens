@@ -31,7 +31,6 @@ public class Log {
 	
 	public void addEntry(Entry entry){
 		entries.add(entry);
-		System.out.println(entry);
 	}
 	
 	public ArrayList<Entry> getEntries(){

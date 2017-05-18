@@ -13,18 +13,7 @@ public class CardLogger extends Card{
 
 	@Override
 	public void cardAction(Player p1, Player p2) {
-		Log log = Log.getInstance();
-		Locale locale = log.locale;
-		ResourceBundle resource = ResourceBundle.getBundle("resources/resources",locale);
-		Player player = TurnManager.getInstance().currentPlayer;
-		String message = player.getName();
-		message += " "+resource.getString("PLAYED");
-		message += " "+resource.getString("THE");
-		String cardName = card.toString();
-		cardName = cardName.substring(5);
-		message += " "+resource.getString(cardName.toUpperCase());
-		Entry entry = new Entry(message);
-		log.addEntry(entry);
+		logAction();
 		card.cardAction(p1, p2);
 	}
 
@@ -37,5 +26,19 @@ public class CardLogger extends Card{
 	public String toString() {
 		return card.toString();
 	}
-
+	
+	private void logAction() {
+		Log log = Log.getInstance();
+		Locale locale = log.locale;
+		ResourceBundle resource = ResourceBundle.getBundle("resources/resources",locale);
+		Player player = TurnManager.getInstance().currentPlayer;
+		String message = player.getName();
+		message += " "+resource.getString("PLAYED");
+		message += " "+resource.getString("THE");
+		String cardName = card.toString();
+		cardName = cardName.substring(5);
+		message += " "+resource.getString(cardName.toUpperCase());
+		Entry entry = new Entry(message);
+		log.addEntry(entry);
+	}
 }

@@ -1,8 +1,10 @@
 
 package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -200,17 +202,22 @@ public class TurnManagerTest {
 		mainDeck.insertCard(factory.createCard(CardFactory.NORMAL_CARD), 0);
 		mainDeck.insertCard(factory.createCard(CardFactory.NORMAL_CARD), 0);
 		mainDeck.insertCard(factory.createCard(CardFactory.NORMAL_CARD), 0);
+		ByteArrayOutputStream os = new ByteArrayOutputStream(100);
+		PrintStream capture = new PrintStream(os);
+		System.setOut(capture);
 		
 		turnManager.makeCurrentPlayerLose();
 		turnManager.endTurnAndDraw();
 		turnManager.makeCurrentPlayerLose();
 		turnManager.endTurnAndDraw();
-		
+		capture.flush();
+		String result = os.toString();
+		result = result.trim();
 		
 		assertEquals(1, priorityManager.getPlayerCount());
 		assertEquals(player3, turnManager.getCurrentPlayer());
 		assertEquals(0, turnManager.getTurnOrder().size());
-		
+		assertEquals("Game over!", result);
 	}
 	
 }

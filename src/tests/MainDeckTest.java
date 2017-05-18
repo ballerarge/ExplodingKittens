@@ -8,6 +8,8 @@ import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import code.AttackCard;
@@ -20,26 +22,31 @@ import code.NopeCard;
 import code.NormalCard;
 import code.ScryCard;
 import code.ShuffleCard;
-import code.SkipCard;
 
 public class MainDeckTest {
+	
+	@Before
+	public void initialize() {
+		MainDeck.tearDown();
+	}
+	
+	@After
+	public void tearDown() {
+		MainDeck.tearDown();
+	}
 
 	@Test
 	public void testMainDeckConstructor() {
 		@SuppressWarnings("unused")
 		MainDeck mDeck = MainDeck.getInstance();
-
-		MainDeck.tearDown();
 	}
 
 	@Test
 	public void testGetCards() {
 		List<Card> cards = new ArrayList<Card>();
-		MainDeck.tearDown();
 		MainDeck mDeck = MainDeck.getInstance();
 
 		assertEquals(cards, mDeck.getCards());
-		MainDeck.tearDown();
 	}
 
 	@Test
@@ -53,7 +60,6 @@ public class MainDeckTest {
 		mDeck.insertCard(firstCard, 0);
 
 		assertEquals(cards, mDeck.getCards());
-		MainDeck.tearDown();
 	}
 
 	@Test
@@ -61,7 +67,6 @@ public class MainDeckTest {
 		MainDeck mDeck = MainDeck.getInstance();
 
 		assertEquals(0, mDeck.getCardCount());
-		MainDeck.tearDown();
 	}
 
 	@Test
@@ -70,7 +75,6 @@ public class MainDeckTest {
 		mDeck.insertCard(new NormalCard(), 0);
 
 		assertEquals(1, mDeck.getCardCount());
-		MainDeck.tearDown();
 	}
 
 	@Test
@@ -84,7 +88,6 @@ public class MainDeckTest {
 		mDeck.insertCard(secondCard, 0);
 
 		assertEquals(2, mDeck.getCardCount());
-		MainDeck.tearDown();
 	}
 
 	@Test
@@ -94,7 +97,6 @@ public class MainDeckTest {
 
 		assertTrue(mDeck.insertCard(firstCard, 0));
 		assertEquals(firstCard, mDeck.getCards().get(0));
-		MainDeck.tearDown();
 	}
 
 	@Test
@@ -108,7 +110,6 @@ public class MainDeckTest {
 
 		assertTrue(mDeck.insertCard(thirdCard, 2));
 		assertEquals(thirdCard, mDeck.getCards().get(2));
-		MainDeck.tearDown();
 	}
 
 	@Test
@@ -125,7 +126,6 @@ public class MainDeckTest {
 		assertTrue(mDeck.insertCard(thirdCard, 1));
 		assertEquals(thirdCard, mDeck.getCards().get(1));
 		assertEquals(secondCard, mDeck.getCards().get(0));
-		MainDeck.tearDown();
 	}
 
 	@Test
@@ -139,7 +139,6 @@ public class MainDeckTest {
 		MainDeck mDeck = MainDeck.getInstance();
 
 		assertFalse(mDeck.insertCard(thirdCard, mDeck.getCardCount() + 1));
-		MainDeck.tearDown();
 	}
 
 	@Test
@@ -156,7 +155,6 @@ public class MainDeckTest {
 
 		assertEquals(firstCard, drawnCard);
 		assertEquals(sizeOfDeck - 1, mDeck.getCardCount());
-		MainDeck.tearDown();
 	}
 
 	@Test(expected = IndexOutOfBoundsException.class)
@@ -164,7 +162,6 @@ public class MainDeckTest {
 		MainDeck mDeck = MainDeck.getInstance();
 
 		mDeck.draw();
-		MainDeck.tearDown();
 	}
 
 	@Test
@@ -174,7 +171,6 @@ public class MainDeckTest {
 		mDeck.initStartingDeck();
 
 		assertEquals(46, mDeck.getCardCount());
-		MainDeck.tearDown();
 	}
 
 	@Test
@@ -214,7 +210,6 @@ public class MainDeckTest {
 		assertEquals(5, scry);
 		assertEquals(4, shuffle);
 		assertEquals(4, skip);
-		MainDeck.tearDown();
 	}
 
 	@Test
@@ -226,7 +221,6 @@ public class MainDeckTest {
 		mDeck.populateDeck(numPlayers);
 
 		assertEquals(51, mDeck.getCardCount());
-		MainDeck.tearDown();
 	}
 
 	@Test
@@ -238,7 +232,6 @@ public class MainDeckTest {
 		mDeck.populateDeck(numPlayers);
 
 		assertEquals(51, mDeck.getCardCount());
-		MainDeck.tearDown();
 	}
 
 	@Test
@@ -260,7 +253,6 @@ public class MainDeckTest {
 
 		assertEquals(3, kittens);
 		assertEquals(2, defuse);
-		MainDeck.tearDown();
 	}
 
 	@Test
@@ -274,7 +266,6 @@ public class MainDeckTest {
 		mDeck.initStartingDeck();
 
 		assertEquals(previousSize, mDeck.getCardCount());
-		MainDeck.tearDown();
 	}
 	
 	@Test

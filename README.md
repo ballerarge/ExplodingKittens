@@ -1,6 +1,6 @@
 Definition of Done:
 
-    Boundary Value Analysis Guidelines: http://www.exampler.com/testing-com/writings/catalog.pdf
+    Boundary Value Analysis Guidelines: www.exampler.com/testing-com/writings/catalog.pdf
 
     1. All boolean functions that check if a user can perform an action are tested with the rules for Booleans in Boundary Value Analysis.
     
@@ -52,7 +52,7 @@ PUTTING CARDS ONTO DISCARD PILE
 PLAYING CARDS
 	DEFUSE CARD PLAYED
 		1. If "Exploding Kitten" was last card drawn, and it was drawn by player with defuse card
-		that was played, then defuse card can negate the exploding kitten and put it back into the
+		that was played, then defuse card will negate the exploding kitten and put it back into the
 		deck.
 
 		2. If "Exploding Kitten" was not the last card drawn, Defuse card is not allowed to be

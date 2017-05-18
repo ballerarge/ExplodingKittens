@@ -21,43 +21,39 @@ Definition of Done:
     9. All pairs of collections (players' hands) are tested with the rules for Pairs of Collections in Boundary Value Analysis. 
     
 Edge Cases for Rules:
-
 DRAW CARD:  
 	EXPLODING KITTEN CARD DRAWN:  
-	    1. If no "Defuse" card in hand, game lost. Kitten card does not go back in deck.
-			-If one player remains after person loses, game is over and remaining player wins.
+	    :+1:1. If no "Defuse" card in hand, game lost. Kitten card does not go back in deck. (https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/03198c9c5419a614348ef1287403100634d552da)  
+			-If one player remains after person loses, game is over and remaining player wins.  
 			-Test case: Player draws Exploding Kitten card and has no defuse cards.
-			Player is then removed from the game, Exploding Kitten Card removed from game, 
-			game continues with next person's turn.
-		    (https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/03198c9c5419a614348ef1287403100634d552da)
-
-		2. If "Defuse" card is played to counteract, "Defuse" card goes on discard pile and 
-		Kitten card is put by player back into deck at any location.
+		    Player is then removed from the game, Exploding Kitten Card removed from game, game continues with next person's turn. 
+		:+1:2. If "Defuse" card is played to counteract, "Defuse" card goes on discard pile and 
+		Kitten card is put by player back into deck at any location. (https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/f9ef7d32467c2ef22f1bd878e9778ca5fcc369c1)  
 			-Test case: Player draws Exploding Kitten card and has defuse card
-			in hand. Defuse card is put onto discard pile. Exploding kitten card put into deck.
-				-Test case: Exploding kitten card put on top of deck. Verify it is on top of deck.
-				-Test case: Exploding kitten card put on bottom of deck. Verify it is on bottom of deck.
+			in hand. Defuse card is put onto discard pile. Exploding kitten card put into deck.  
+				-Test case: Exploding kitten card put on top of deck. Verify it is on top of deck.  
+				-Test case: Exploding kitten card put on bottom of deck. Verify it is on bottom of deck.   
 				-Test case: Exploding kitten card tried to put somewhere outside of deck. Verify that 
 				exception is thrown and proper message is given to user.
+				
     
-PUTTING CARDS ONTO DISCARD PILE
+PUTTING CARDS ONTO DISCARD PILE  
 	-Test case: One card is put onto discard pile. Discard pile grows by one. Player's
-	hand decreases by one.
+	hand decreases by one. (https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/417b9f0aa3a50302b606af74a49abf161b67153a)  
 	-Test case: Player plays a pair. Discard pile grows by two. Player's hand decreases
-	by two
+	by two. (https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/9c7fb9af5c8a68ee42407df3ac938dcfa414ee0c)  
 	-Test case: Player plays a three of a kind. Discard pile grows by three. Player's
-	hand decreases by three.
+	hand decreases by three. (https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/9fc6f1659c03f74e423333550c8861abd30451bd)  
 	-Test case: Player plays five cards at once. Discard pile grows by five. Player's
-	hand decreases by five.
+	hand decreases by five. (https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/70d14f869a6c1140abe5ba12f07667613b15816e)  
 
-PLAYING CARDS
-	DEFUSE CARD PLAYED
-		1. If "Exploding Kitten" was last card drawn, and it was drawn by player with defuse card
+PLAYING CARDS  
+	DEFUSE CARD PLAYED  
+		:+1:1. If "Exploding Kitten" was last card drawn, and it was drawn by player with defuse card
 		that was played, then defuse card will negate the exploding kitten and put it back into the
-		deck.
-
+		deck.(https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/e73b9243a9b42a490d83032a5192c600b742e370)  
 		2. If "Exploding Kitten" was not the last card drawn, Defuse card is not allowed to be
-		played onto the discard pile.
+		played onto the discard pile.(https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/61a05cc44c67f7fb53d2b3f83e110a2686659a48)  
 
 	CARDS WITHOUT INSTRUCTIONS (CWI) PLAYED
 		1. CWI is not allowed to be played by itself onto discard pile.

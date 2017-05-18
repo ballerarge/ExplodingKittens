@@ -315,7 +315,21 @@ public class MainDeckTest {
 		while (mainDeck.getCards().get(0).equals(card1)) {
 			mainDeck.initStartingDeck();
 		}
-		
+
 		assertTrue(!mainDeck.getCards().get(0).equals(card1));
+	}
+
+	@Test
+	public void testShuffleOccursPopulateDeck() {
+		MainDeck mainDeck = MainDeck.getInstance();
+		CardFactory factory = new CardFactory();
+		Card card = factory.createCard(CardFactory.NORMAL_CARD);
+		mainDeck.insertCard(card, 0);
+
+		while (mainDeck.getCards().get(mainDeck.getCardCount() - 1).equals(card)) {
+			mainDeck.populateDeck(3);
+		}
+
+		assertTrue(!mainDeck.getCards().get(0).equals(card));
 	}
 }

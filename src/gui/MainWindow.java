@@ -101,6 +101,7 @@ public class MainWindow {
 		handDisplayPanel.setLayout(new GridBagLayout());
 
 		handScrollerPane = new JScrollPane(handDisplayPanel);
+		handScrollerPane.setPreferredSize(new Dimension(170 * 5, 220));
 		handDisplayPanel.setAutoscrolls(true);
 	}
 
@@ -249,7 +250,8 @@ public class MainWindow {
 		ImageIcon image;
 
 		if (discardDeck.getCardCount() > 0) {
-			image = new ImageIcon(getClass().getResource(discardDeck.getCards().get(0).getImagePath()));
+			image = new ImageIcon(
+			        getClass().getResource(discardDeck.getCards().get(discardDeck.getCardCount() - 1).getImagePath()));
 		} else {
 			image = new ImageIcon(getClass().getResource("EmptyDiscardDeck.png"));
 		}
@@ -262,6 +264,8 @@ public class MainWindow {
 		deckDisplayPanel.add(imageLabel, gbc);
 		imageLabel.setVisible(true);
 
+		deckDisplayPanel.revalidate();
+		deckDisplayPanel.repaint();
 		deckDisplayPanel.setVisible(true);
 	}
 
@@ -291,8 +295,10 @@ public class MainWindow {
 
 		gbc.gridx = 0;
 		gbc.gridy = 0;
-		deckDisplayPanel.add(imageLabel, gbc);
 		imageLabel.setVisible(true);
+		deckDisplayPanel.add(imageLabel, gbc);
+		deckDisplayPanel.revalidate();
+		deckDisplayPanel.repaint();
 	}
 
 	private void displayOtherPlayers(int numOtherPlayers) {
@@ -314,7 +320,18 @@ public class MainWindow {
 			imageLabel.setVisible(true);
 		}
 
+		playerDisplayPanel.revalidate();
+		playerDisplayPanel.repaint();
 		playerDisplayPanel.setVisible(true);
+
+		if (numOtherPlayers == 0) {
+			endGame();
+		}
+	}
+
+	private void endGame() {
+		System.out.println("You win!");
+		exitGame();
 	}
 
 	private void displayHand(List<Card> list) {

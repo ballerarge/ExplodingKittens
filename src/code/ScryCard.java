@@ -21,7 +21,7 @@ public class ScryCard extends Card implements Cloneable {
 		                                  // index 0.
 		MainDeck mainDeck = MainDeck.getInstance();
 		List<Card> deckOrder = mainDeck.getCards();
-		if (deckOrder.size() < numberOfCardsToScry) {
+		if (deckOrder.size() <= numberOfCardsToScry) {
 			numberOfCardsToScry = deckOrder.size();
 		}
 		for (int i = 0; i < numberOfCardsToScry; i++) {

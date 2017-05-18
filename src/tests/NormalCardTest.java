@@ -2,18 +2,38 @@ package tests;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import code.CardFactory;
+import code.CardStack;
+import code.DiscardDeck;
+import code.MainDeck;
 import code.NormalCard;
+import code.PriorityManager;
+import code.TurnManager;
 
 public class NormalCardTest {
 	CardFactory cardFactory;
 	
 	@Before
-	public void init() {
+	public void initialize() {
 		cardFactory = new CardFactory();
+		MainDeck.tearDown();
+		PriorityManager.tearDown();
+		TurnManager.tearDown();
+		DiscardDeck.tearDown();
+		CardStack.tearDown();
+	}
+
+	@After
+	public void tearDown() {
+		MainDeck.tearDown();
+		PriorityManager.tearDown();
+		TurnManager.tearDown();
+		DiscardDeck.tearDown();
+		CardStack.tearDown();
 	}
 	
 	@Test

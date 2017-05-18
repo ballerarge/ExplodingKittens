@@ -11,9 +11,13 @@ import org.junit.Test;
 
 import code.Card;
 import code.CardFactory;
+import code.CardStack;
+import code.DiscardDeck;
 import code.MainDeck;
 import code.Player;
+import code.PriorityManager;
 import code.ShuffleCard;
+import code.TurnManager;
 
 public class ShuffleTest {
 	
@@ -21,13 +25,21 @@ public class ShuffleTest {
 	
 	@Before
 	public void initialize() {
-		factory = new CardFactory();
 		MainDeck.tearDown();
+		PriorityManager.tearDown();
+		TurnManager.tearDown();
+		DiscardDeck.tearDown();
+		CardStack.tearDown();
+		factory = new CardFactory();
 	}
-	
+
 	@After
 	public void tearDown() {
 		MainDeck.tearDown();
+		PriorityManager.tearDown();
+		TurnManager.tearDown();
+		DiscardDeck.tearDown();
+		CardStack.tearDown();
 	}
 
 	@Test

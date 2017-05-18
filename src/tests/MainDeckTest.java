@@ -15,25 +15,37 @@ import org.junit.Test;
 import code.AttackCard;
 import code.Card;
 import code.CardFactory;
+import code.CardStack;
 import code.DefuseCard;
+import code.DiscardDeck;
 import code.ExplodingKittenCard;
 import code.FavorCard;
 import code.MainDeck;
 import code.NopeCard;
 import code.NormalCard;
+import code.PriorityManager;
 import code.ScryCard;
 import code.ShuffleCard;
+import code.TurnManager;
 
 public class MainDeckTest {
 
 	@Before
 	public void initialize() {
 		MainDeck.tearDown();
+		PriorityManager.tearDown();
+		TurnManager.tearDown();
+		DiscardDeck.tearDown();
+		CardStack.tearDown();
 	}
 
 	@After
 	public void tearDown() {
 		MainDeck.tearDown();
+		PriorityManager.tearDown();
+		TurnManager.tearDown();
+		DiscardDeck.tearDown();
+		CardStack.tearDown();
 	}
 
 	@Test

@@ -13,6 +13,10 @@ import org.junit.rules.ExpectedException;
 import code.Card;
 import code.CardFactory;
 import code.CardStack;
+import code.DiscardDeck;
+import code.MainDeck;
+import code.PriorityManager;
+import code.TurnManager;
 import exceptions.InvalidNopeTargetException;
 
 public class NopeCardTest {
@@ -23,14 +27,22 @@ public class NopeCardTest {
 	private CardFactory factory;
 
 	@Before
-	public void init() {
+	public void initialize() {
+		MainDeck.tearDown();
+		PriorityManager.tearDown();
+		TurnManager.tearDown();
+		DiscardDeck.tearDown();
 		CardStack.tearDown();
-		cardStack = CardStack.getInstance();
 		factory = new CardFactory();
+		cardStack = CardStack.getInstance();
 	}
 
 	@After
-	public void teardown() {
+	public void tearDown() {
+		MainDeck.tearDown();
+		PriorityManager.tearDown();
+		TurnManager.tearDown();
+		DiscardDeck.tearDown();
 		CardStack.tearDown();
 	}
 

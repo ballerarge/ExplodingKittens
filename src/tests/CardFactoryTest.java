@@ -15,7 +15,9 @@ import org.junit.rules.ExpectedException;
 import code.Card;
 import code.CardFactory;
 import code.CardStack;
+import code.DiscardDeck;
 import code.Game;
+import code.MainDeck;
 import code.Player;
 import code.PriorityManager;
 import code.TurnManager;
@@ -30,6 +32,8 @@ public class CardFactoryTest {
 		PriorityManager.tearDown();
 		CardStack.tearDown();
 		TurnManager.tearDown();
+		MainDeck.tearDown();
+		DiscardDeck.tearDown();
 	}
 	
 	@After
@@ -37,6 +41,8 @@ public class CardFactoryTest {
 		PriorityManager.tearDown();
 		CardStack.tearDown();
 		TurnManager.tearDown();
+		MainDeck.tearDown();
+		DiscardDeck.tearDown();
 	}
 	
 	@Rule

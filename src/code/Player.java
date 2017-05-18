@@ -6,10 +6,11 @@ import java.util.List;
 public class Player {
 
 	private String name;
-	private Hand handManager = new Hand();
+	private Hand handManager;
 
 	public Player() {
 		this.name = "default";
+		handManager = new Hand();
 	}
 
 	public Player(String name) {

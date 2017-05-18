@@ -4,6 +4,8 @@ package code;
 import java.util.ArrayList;
 import java.util.List;
 
+import exceptions.InvalidBundleException;
+import exceptions.NoCardsToMoveException;
 import exceptions.NoSuchPlayerException;
 
 public class TurnManager {
@@ -56,6 +58,17 @@ public class TurnManager {
 		Card drawnCard = player.drawCard();
 		if (drawnCard instanceof ExplodingKittenCard) {
 			CardStack.getInstance().addCard(drawnCard);
+			for (Card card : player.getHand()) {
+				if (card instanceof DefuseCard) {
+					player.getHandManager().selectCard(player.getHand().indexOf(card));
+					try {
+						player.getHandManager().moveSelectedToStack();
+					} catch (NoCardsToMoveException | InvalidBundleException e) {
+						e.printStackTrace();
+					}
+					break;
+				}
+			}
 			PriorityManager.getInstance().resolveCard();
 		} else if (turnOrder.size() > 0 && !turnOrder.get(turnOrder.size() - 1).equals(player)) {// Don't
 			// circulate
@@ -106,11 +119,11 @@ public class TurnManager {
 	}
 
 	private void removeAllInstancesFromTurnOrder() {
-		for(int i = turnOrder.size() - 1; i >= 0; i--) {
+		for (int i = turnOrder.size() - 1; i >= 0; i--) {
 			Player checkPlayer = turnOrder.get(i);
 			if (checkPlayer.equals(currentPlayer)) {
 				turnOrder.remove(checkPlayer);
 			}
-		}	
+		}
 	}
 }

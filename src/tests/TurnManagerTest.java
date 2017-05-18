@@ -14,6 +14,7 @@ import org.junit.Test;
 import code.Card;
 import code.CardFactory;
 import code.CardStack;
+import code.DefuseCard;
 import code.DiscardDeck;
 import code.Game;
 import code.MainDeck;
@@ -21,10 +22,12 @@ import code.Player;
 import code.PlayerManager;
 import code.PriorityManager;
 import code.TurnManager;
+import exceptions.InvalidBundleException;
 import exceptions.InvalidNumberofPlayersException;
+import exceptions.NoCardsToMoveException;
 
 public class TurnManagerTest {
-	
+
 	@Before
 	public void initialize() {
 		TurnManager.tearDown();
@@ -33,7 +36,7 @@ public class TurnManagerTest {
 		PriorityManager.tearDown();
 		CardStack.tearDown();
 	}
-	
+
 	@After
 	public void tearDown() {
 		TurnManager.tearDown();
@@ -49,7 +52,8 @@ public class TurnManagerTest {
 	}
 
 	@Test
-	public void testHandlesPlayerManager() {PlayerManager pmgr = EasyMock.mock(PlayerManager.class);
+	public void testHandlesPlayerManager() {
+		PlayerManager pmgr = EasyMock.mock(PlayerManager.class);
 		List<Player> players = new ArrayList<>();
 		players.add(new Player());
 		EasyMock.expect(pmgr.getPlayers()).andReturn(players);
@@ -152,10 +156,18 @@ public class TurnManagerTest {
 		game.start(3);
 
 		mainDeck.insertCard(factory.createCard(CardFactory.EXPLODING_KITTEN_CARD), 0);
+		for (Card card : turnManager.getCurrentPlayer().getHand()) {
+			if (card instanceof DefuseCard) {
+				turnManager.getCurrentPlayer().getHandManager()
+				        .selectCard((turnManager.getCurrentPlayer().getHand().indexOf(card)));
+				turnManager.getCurrentPlayer().getHandManager().clearSelectedCards();
+				break;
+			}
+		}
 		turnManager.endTurnAndDraw();
 
 		assertEquals(2, game.getPlayers().size());
 
 	}
-	
+
 }

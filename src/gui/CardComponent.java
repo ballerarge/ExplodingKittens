@@ -56,10 +56,8 @@ public class CardComponent extends JLabel {
 
 		if (selected) {
 			setIcon(selectedImage);
-			System.out.println(card.toString() + " selected.");
 		} else {
 			setIcon(unselectedImage);
-			System.out.println(card.toString() + " unselected.");
 		}
 	}
 }

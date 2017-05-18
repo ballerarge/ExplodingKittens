@@ -158,4 +158,58 @@ public class TurnManagerTest {
 
 	}
 	
+	@Test
+	public void testPlayerDoesNotRotateOnAttack() throws InvalidNumberofPlayersException {
+		TurnManager turnManager = TurnManager.getInstance();
+		CardFactory factory = new CardFactory();
+		MainDeck mainDeck = MainDeck.getInstance();
+		Game game = new Game();
+		game.start(3);
+		Player player1 = game.getPlayers().get(0);
+		Player player2 = game.getPlayers().get(1);
+		Player player3 = game.getPlayers().get(2);
+		
+		
+		mainDeck.insertCard(factory.createCard(CardFactory.NORMAL_CARD), 0);
+		turnManager.addTurnForCurrentPlayer();
+		turnManager.endTurnAndDraw();
+		
+		//Player 1's turn again.
+		turnManager.endTurnWithoutDraw();
+		//Player 2's turn.
+		turnManager.endTurnWithoutDraw();
+		//Player 3's turn.
+		turnManager.endTurnWithoutDraw();
+		//Player 1's turn.
+		turnManager.endTurnWithoutDraw();
+		
+		assertEquals(player1, turnManager.getCurrentPlayer());
+	}
+	
+	@Test
+	public void testGameOver() throws InvalidNumberofPlayersException {
+		TurnManager turnManager = TurnManager.getInstance();
+		CardFactory factory = new CardFactory();
+		PriorityManager priorityManager = PriorityManager.getInstance();
+		MainDeck mainDeck = MainDeck.getInstance();
+		Game game = new Game();
+		game.start(3);
+		Player player1 = game.getPlayers().get(0);
+		Player player2 = game.getPlayers().get(1);
+		Player player3 = game.getPlayers().get(2);
+		mainDeck.insertCard(factory.createCard(CardFactory.NORMAL_CARD), 0);
+		mainDeck.insertCard(factory.createCard(CardFactory.NORMAL_CARD), 0);
+		
+		turnManager.makeCurrentPlayerLose();
+		turnManager.makeCurrentPlayerLose();
+		
+		assertTrue(priorityManager.getActivePlayer().equals(player3));
+		assertEquals(1, priorityManager.getPlayerCount());
+		turnManager.endTurnAndDraw();
+		assertEquals(player3, turnManager.getCurrentPlayer());
+		turnManager.endTurnAndDraw();
+		assertEquals(0, turnManager.getTurnOrder().size());
+		
+	}
+	
 }

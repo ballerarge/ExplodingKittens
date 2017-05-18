@@ -299,9 +299,7 @@ public class CardFactoryTest {
 				if (!filePath.endsWith(".png") || filePath.contains(card.getImagePath())) {
 					fileList.remove(filePath);
 					break;
-				} else {
-					System.out.println(card.getImagePath());
-				}
+				} 
 			}
 		}
 

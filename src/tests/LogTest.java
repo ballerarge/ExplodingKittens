@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Locale;
 
 import org.easymock.EasyMock;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,6 +18,7 @@ import code.Entry;
 import code.Game;
 import code.GameLogger;
 import code.Log;
+import code.MainDeck;
 import code.Player;
 import code.PriorityManager;
 import code.ScryCard;
@@ -32,6 +34,7 @@ public class LogTest {
 		Log.tearDown();
 		TurnManager.tearDown();
 		PriorityManager.tearDown();
+		MainDeck.tearDown();
 	}
 
 	@Test
@@ -70,34 +73,37 @@ public class LogTest {
 	}
 
 	@Test
-	public void testPlayerLosesGame() throws NoSuchPlayerException {
-		Player player = new Player();
-		player.setName("example player");
-		TurnManager.InstantiateLogger();
-		TurnManagerLogger manager = (TurnManagerLogger) TurnManager.getInstance();
-		manager.currentPlayer = player;
-		TurnManager mockManager = EasyMock.mock(TurnManager.class);
-		manager.turnManager = mockManager;
-		Log mockLog = EasyMock.mock(Log.class);
-		mockLog.locale = Locale.ENGLISH;
-		Log.setLog(mockLog);
-		mockLog.addEntry(EasyMock.anyObject());
-		mockManager.makeCurrentPlayerLose();
-		EasyMock.replay(mockLog, mockManager);
-		manager.makeCurrentPlayerLose();
-		EasyMock.verify(mockLog, mockManager);
-	}
-
-	@Test
-	public void testStartofTurn() throws InvalidNumberofPlayersException {
+	public void testPlayerLosesGame() throws NoSuchPlayerException, InvalidNumberofPlayersException {
 		Game game = new GameLogger(new Game());
 		game.start(3);
+		TurnManager manager = TurnManager.getInstance();
 		Log log = EasyMock.mock(Log.class);
 		log.locale = Locale.ENGLISH;
 		Log.setLog(log);
 		log.addEntry(EasyMock.anyObject());
 		EasyMock.replay(log);
+		manager.makeCurrentPlayerLose();
+		EasyMock.verify(log);
+	}
+
+	@Test
+	public void testStartofTurn() throws InvalidNumberofPlayersException {
+		Log log = EasyMock.mock(Log.class);
+		log.locale = Locale.ENGLISH;
+		Log.setLog(log);
+		Game game = new GameLogger(new Game());
+		game.start(3);
+		log.addEntry(EasyMock.anyObject());
+		EasyMock.replay(log);
 		game.nextTurn();
 		EasyMock.verify(log);
+	}
+	
+	@After
+	public void tearDown() {
+		Log.tearDown();
+		TurnManager.tearDown();
+		PriorityManager.tearDown();
+		MainDeck.tearDown();
 	}
 }

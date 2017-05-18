@@ -224,7 +224,7 @@ public class BundlesTest {
 
 		assertEquals(1, player1.getHand().size());
 		assertEquals(0, player2.getHand().size());
-		assertTrue(player1.getHand().get(0) instanceof DefuseCard);
+		assertTrue(player1.getHand().get(0).getID() == 2);
 	}
 
 	@Test
@@ -240,7 +240,7 @@ public class BundlesTest {
 
 		assertEquals(1, player1.getHand().size());
 		assertEquals(0, player2.getHand().size());
-		assertTrue(player1.getHand().get(0) instanceof DefuseCard);
+		assertTrue(player1.getHand().get(0).getID() == 2);
 	}
 
 	@Test
@@ -270,7 +270,7 @@ public class BundlesTest {
 
 		assertEquals(0, player1.getHand().size());
 		assertEquals(1, player2.getHand().size());
-		assertTrue(player2.getHand().get(0) instanceof DefuseCard);
+		assertTrue(player2.getHand().get(0).getID() == 2);
 	}
 
 	@Test
@@ -286,7 +286,7 @@ public class BundlesTest {
 		
 		assertEquals(1, player1.getHand().size());
 		assertEquals(0, deck.getCardCount());
-		assertTrue(player1.getHand().get(0) instanceof AttackCard);
+		assertTrue(player1.getHand().get(0).getID() == 3);
 	}
 	
 	@Test

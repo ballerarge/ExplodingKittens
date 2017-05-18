@@ -8,7 +8,7 @@ public class Log {
 
 	private static Log log;
 	private ArrayList<Entry> entries;//0 is the earliest event
-	public Locale locale;
+	public Locale locale = Locale.ENGLISH;
 	
 	
 	public static Log getInstance() {

@@ -27,12 +27,19 @@ public class CardLogger extends Card{
 		return card.toString();
 	}
 	
+	@Override
+	public int getID() {
+		return card.getID();
+	}
+	
 	private void logAction() {
 		Log log = Log.getInstance();
 		Locale locale = log.locale;
 		ResourceBundle resource = ResourceBundle.getBundle("resources/resources",locale);
-		Player player = TurnManager.getInstance().currentPlayer;
-		String message = player.getName();
+		Player player = TurnManager.getInstance().getCurrentPlayer();
+		String message ="";
+		if (player!=null)
+			message = player.getName();
 		message += " "+resource.getString("PLAYED");
 		message += " "+resource.getString("THE");
 		String cardName = card.toString();
@@ -40,5 +47,9 @@ public class CardLogger extends Card{
 		message += " "+resource.getString(cardName.toUpperCase());
 		Entry entry = new Entry(message);
 		log.addEntry(entry);
+	}
+	
+	public Card getCard(){
+		return card;
 	}
 }

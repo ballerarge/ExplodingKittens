@@ -14,13 +14,20 @@ public class Game {
 	public Game() {
 		MainDeck.tearDown();
 		mainDeck = MainDeck.getInstance();
+		PriorityManager.tearDown();
 		priorityManager = PriorityManager.getInstance();
+		TurnManager.tearDown();
+		TurnManager.InstantiateLogger();
 		turnManager = TurnManager.getInstance();
+	}
+
+	protected Game(int n) { // This should only be called when initiallizing
+	                     // GameLogger
 	}
 
 	public void start(int n) throws InvalidNumberofPlayersException {
 		if (n < 2 || n > 5)
-			throw new InvalidNumberofPlayersException();	
+			throw new InvalidNumberofPlayersException();
 		mainDeck.initStartingDeck();
 		playerManager = new PlayerManager();
 		playerManager.addPlayers(n);
@@ -46,7 +53,7 @@ public class Game {
 		                             // without drawing.
 		priorityManager.nextPlayer();
 	}
-	
+
 	public Player getCurrentPlayer() {
 		return priorityManager.getActivePlayer();
 	}
@@ -54,8 +61,16 @@ public class Game {
 	public Player getCurrentTurnPlayer() {
 		return turnManager.getCurrentPlayer();
 	}
-	
+
 	public List<Player> getPlayers() {
 		return playerManager.getPlayers();
+	}
+
+	public PlayerManager getPlayerManager() {
+		return playerManager;
+	}
+
+	public TurnManager getTurnManager() {
+		return turnManager;
 	}
 }

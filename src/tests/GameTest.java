@@ -14,14 +14,22 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import code.AttackCard;
 import code.Card;
 import code.CardStack;
+import code.DefuseCard;
 import code.DiscardDeck;
 import code.ExplodingKittenCard;
+import code.FavorCard;
 import code.Game;
 import code.MainDeck;
+import code.NopeCard;
+import code.NormalCard;
 import code.Player;
 import code.PriorityManager;
+import code.ScryCard;
+import code.ShuffleCard;
+import code.SkipCard;
 import code.TurnManager;
 import exceptions.InvalidNumberofPlayersException;
 
@@ -48,7 +56,7 @@ public class GameTest {
 	@Test
 	public void testGameCreation() {
 		Game game = new Game();
-		
+
 		assertTrue(game != null);
 	}
 
@@ -187,22 +195,61 @@ public class GameTest {
 
 		MainDeck.getInstance().setCards(tempCards);
 	}
-	
+
 	@Test
 	public void testDeckEmptyBeforeGameInitialized() {
 		Game game = new Game();
 		MainDeck.getInstance();
-		
+
 		assertTrue(game.isMainDeckEmpty());
 	}
-	
+
 	@Test
 	public void testDeckNotEmptyBeforeGameInitialized() {
 		MainDeck deck = MainDeck.getInstance();
 		deck.populateDeck(3);
-		
+
 		Game game = new Game();
-		
+
 		assertTrue(game.isMainDeckEmpty());
+	}
+
+	@Test
+	public void testDeckInitializedOnStart() throws InvalidNumberofPlayersException {
+		MainDeck deck = MainDeck.getInstance();
+
+		Game game = new Game();
+		game.start(3);
+
+		assertTrue(verifyAllTypesInitialized(deck));
+	}
+
+	private boolean verifyAllTypesInitialized(MainDeck deck) {
+		boolean attack = false, defuse = false, kitten = false, favor = false, normal = false, nope = false,
+		        scry = false, shuffle = false, skip = false;
+
+		for (Card card : deck.getCards()) {
+			if (card instanceof AttackCard) {
+				attack = true;
+			} else if (card instanceof DefuseCard) {
+				defuse = true;
+			} else if (card instanceof ExplodingKittenCard) {
+				kitten = true;
+			} else if (card instanceof FavorCard) {
+				favor = true;
+			} else if (card instanceof NormalCard) {
+				normal = true;
+			} else if (card instanceof NopeCard) {
+				nope = true;
+			} else if (card instanceof ScryCard) {
+				scry = true;
+			} else if (card instanceof ShuffleCard) {
+				shuffle = true;
+			} else if (card instanceof SkipCard) {
+				skip = true;
+			}
+		}
+
+		return attack && defuse && kitten && favor && normal && nope && scry && shuffle && skip;
 	}
 }

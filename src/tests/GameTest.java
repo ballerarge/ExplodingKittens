@@ -218,6 +218,7 @@ public class GameTest {
 	@Test
 	public void testDeckInitializedOnStart() throws InvalidNumberofPlayersException {
 		MainDeck deck = MainDeck.getInstance();
+		assertTrue(deck.getCardCount() == 0);
 
 		Game game = new Game();
 		game.start(3);

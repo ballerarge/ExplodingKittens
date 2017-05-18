@@ -342,6 +342,6 @@ public class MainDeckTest {
 			mainDeck.populateDeck(3);
 		}
 
-		assertTrue(!mainDeck.getCards().get(0).equals(card));
+		assertTrue(!(mainDeck.getCards().get(mainDeck.getCardCount() - 1) == card));
 	}
 }

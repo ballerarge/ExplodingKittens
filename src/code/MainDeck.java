@@ -38,7 +38,7 @@ public class MainDeck {
 	}
 
 	public int getCardCount() {
-		return mainDeck.deck.getCards().size();
+		return mainDeck.getCards().size();
 	}
 
 	public boolean insertCard(Card card, int position) {
@@ -52,7 +52,7 @@ public class MainDeck {
 	}
 
 	private Card getTopCard() {
-		return mainDeck.deck.getCards().get(0);
+		return mainDeck.getCards().get(0);
 	}
 
 	public void shuffleDeck() {
@@ -76,25 +76,25 @@ public class MainDeck {
 
 	private void initFavorCards() {
 		for (int i = 0; i < 4; i++) {
-			mainDeck.deck.addCard(factory.createCard(CardFactory.FAVOR_CARD), 0);
+			mainDeck.insertCard(factory.createCard(CardFactory.FAVOR_CARD), 0);
 		}
 	}
 
 	private void initShuffleCards() {
 		for (int i = 0; i < 4; i++) {
-			mainDeck.deck.addCard(factory.createCard(CardFactory.SHUFFLE_CARD), 0);
+			mainDeck.insertCard(factory.createCard(CardFactory.SHUFFLE_CARD), 0);
 		}
 	}
 
 	private void initSkipCards() {
 		for (int i = 0; i < 4; i++) {
-			mainDeck.deck.addCard(factory.createCard(CardFactory.SKIP_CARD), 0);
+			mainDeck.insertCard(factory.createCard(CardFactory.SKIP_CARD), 0);
 		}
 	}
 
 	private void initAttackCards() {
 		for (int i = 0; i < 4; i++) {
-			mainDeck.deck.addCard(factory.createCard(CardFactory.ATTACK_CARD), 0);
+			mainDeck.insertCard(factory.createCard(CardFactory.ATTACK_CARD), 0);
 		}
 	}
 
@@ -102,19 +102,19 @@ public class MainDeck {
 		for (int i = 0; i < 20; i++) {
 			NormalCard card = (NormalCard) factory.createCard(CardFactory.NORMAL_CARD);
 			card.setIcon(i % 4);
-			mainDeck.deck.addCard(card, 0);
+			mainDeck.insertCard(card, 0);
 		}
 	}
 
 	private void initNopeCards() {
 		for (int i = 0; i < 5; i++) {
-			mainDeck.deck.addCard(factory.createCard(CardFactory.NOPE_CARD), 0);
+			mainDeck.insertCard(factory.createCard(CardFactory.NOPE_CARD), 0);
 		}
 	}
 
 	private void initScryCards() {
 		for (int i = 0; i < 5; i++) {
-			mainDeck.deck.addCard(factory.createCard(CardFactory.SCRY_CARD), 0);
+			mainDeck.insertCard(factory.createCard(CardFactory.SCRY_CARD), 0);
 		}
 	}
 
@@ -126,13 +126,13 @@ public class MainDeck {
 
 	private void initExplodingKittenCards(int numPlayers) {
 		for (int i = 0; i < numPlayers - 1; i++) {
-			mainDeck.deck.addCard(factory.createCard(CardFactory.EXPLODING_KITTEN_CARD), 0);
+			mainDeck.insertCard(factory.createCard(CardFactory.EXPLODING_KITTEN_CARD), 0);
 		}
 	}
 
 	private void initDefuseCards(int numPlayers) {
 		for (int i = 0; i < 6 - numPlayers; i++) {
-			mainDeck.deck.addCard(factory.createCard(CardFactory.DEFUSE_CARD), 0);
+			mainDeck.insertCard(factory.createCard(CardFactory.DEFUSE_CARD), 0);
 		}
 	}
 

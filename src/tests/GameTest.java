@@ -129,6 +129,7 @@ public class GameTest {
 	public void testNextTurnDrawing() throws InvalidNumberofPlayersException {
 		Game game = new Game();
 		game.start(3);
+		removeAllKittens();
 		Map<Player, List<Card>> handsBefore = game.getPlayerHands();
 		int cardCountBefore = 0;
 		for (Player player : handsBefore.keySet())

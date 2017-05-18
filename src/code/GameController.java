@@ -111,10 +111,20 @@ public class GameController {
 				if (selectedCards.size() == 1) { // Resolve one card
 
 					CardStack.getInstance().addCard(selectedCards.get(0));
+
 					if (cardNeedsNoTargets(selectedCards.get(0))) {
 						CardStack.getInstance().resolveTopCard();
-					} else {
-						CardStack.getInstance().resolveTopCard();
+					} else if (cardNeedsPlayerTarget(selectedCards.get(0))) {
+						List<Player> otherPlayers = new ArrayList<Player>();
+						for (Player player : game.getPlayers()) {
+							if (player != game.getActivePlayer()) {
+								otherPlayers.add(player);
+							}
+						}
+						EKPlayerSelectionWindow playerSelectWindow = new EKPlayerSelectionWindow(game.getActivePlayer(),
+						        otherPlayers, window.locale, "");
+						Player targetedPlayer = playerSelectWindow.display();
+						CardStack.getInstance().resolveTopCard(game.getActivePlayer(), targetedPlayer);
 					}
 					window.clearSelected();
 					DiscardDeck.getInstance().addAll(selectedCards);
@@ -128,6 +138,10 @@ public class GameController {
 		});
 
 		window.openStartWindow();
+	}
+
+	protected static boolean cardNeedsPlayerTarget(Card card) {
+		return (card.getID() == CardFactory.ATTACK_CARD || card.getID() == CardFactory.FAVOR_CARD);
 	}
 
 	protected static boolean cardNeedsNoTargets(Card card) {

@@ -32,7 +32,7 @@ public class MainDeck {
 	public List<Card> getCards() {
 		return mainDeck.deck.getCards();
 	}
-	
+
 	public void setCards(List<Card> cards) {
 		mainDeck.deck = new Deck(cards);
 	}
@@ -50,13 +50,13 @@ public class MainDeck {
 		mainDeck.deck.removeCard(drawCard);
 		return drawCard;
 	}
-	
+
 	private Card getTopCard() {
 		return mainDeck.deck.getCards().get(0);
 	}
 
 	public void shuffleDeck() {
-		List<Card> toShuffle=mainDeck.deck.getCards();
+		List<Card> toShuffle = mainDeck.deck.getCards();
 		Collections.shuffle(toShuffle);
 		mainDeck.deck.setCards(toShuffle);
 	}
@@ -70,8 +70,8 @@ public class MainDeck {
 			initNormalCards();
 			initNopeCards();
 			initScryCards();
-			shuffleDeck();
 		}
+		shuffleDeck();
 	}
 
 	private void initFavorCards() {

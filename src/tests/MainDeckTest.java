@@ -14,6 +14,7 @@ import org.junit.Test;
 
 import code.AttackCard;
 import code.Card;
+import code.CardFactory;
 import code.DefuseCard;
 import code.ExplodingKittenCard;
 import code.FavorCard;
@@ -24,12 +25,12 @@ import code.ScryCard;
 import code.ShuffleCard;
 
 public class MainDeckTest {
-	
+
 	@Before
 	public void initialize() {
 		MainDeck.tearDown();
 	}
-	
+
 	@After
 	public void tearDown() {
 		MainDeck.tearDown();
@@ -267,14 +268,14 @@ public class MainDeckTest {
 
 		assertEquals(previousSize, mDeck.getCardCount());
 	}
-	
+
 	@Test
 	public void testCorrectIcons() {
 		MainDeck mDeck = MainDeck.getInstance();
 		boolean zero = false, one = false, two = false, three = false;
-		
+
 		mDeck.initStartingDeck();
-		
+
 		for (Card card : mDeck.getCards()) {
 			if (card instanceof NormalCard) {
 				if (((NormalCard) card).getIcon() == 0) {
@@ -287,12 +288,34 @@ public class MainDeckTest {
 					three = true;
 				}
 			}
-			
+
 		}
-		
+
 		assertTrue(zero);
 		assertTrue(one);
 		assertTrue(two);
 		assertTrue(three);
+	}
+
+	@Test
+	public void testShuffleOccursInit() {
+		MainDeck mainDeck = MainDeck.getInstance();
+		CardFactory factory = new CardFactory();
+		ArrayList<Card> cards = new ArrayList<>();
+		Card card1 = factory.createCard(CardFactory.NORMAL_CARD);
+		Card card2 = factory.createCard(CardFactory.NORMAL_CARD);
+		Card card3 = factory.createCard(CardFactory.NORMAL_CARD);
+		Card card4 = factory.createCard(CardFactory.NORMAL_CARD);
+		cards.add(card1);
+		cards.add(card2);
+		cards.add(card3);
+		cards.add(card4);
+		mainDeck.setCards(cards);
+
+		while (mainDeck.getCards().get(0).equals(card1)) {
+			mainDeck.initStartingDeck();
+		}
+		
+		assertTrue(!mainDeck.getCards().get(0).equals(card1));
 	}
 }

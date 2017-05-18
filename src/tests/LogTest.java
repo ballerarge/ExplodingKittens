@@ -15,6 +15,7 @@ import code.Card;
 import code.CardLogger;
 import code.Entry;
 import code.Game;
+import code.GameLogger;
 import code.Log;
 import code.Player;
 import code.PriorityManager;
@@ -87,4 +88,16 @@ public class LogTest {
 		EasyMock.verify(mockLog, mockManager);
 	}
 
+	@Test
+	public void testStartofTurn() throws InvalidNumberofPlayersException {
+		Game game = new GameLogger(new Game());
+		game.start(3);
+		Log log = EasyMock.mock(Log.class);
+		log.locale = Locale.ENGLISH;
+		Log.setLog(log);
+		log.addEntry(EasyMock.anyObject());
+		EasyMock.replay(log);
+		game.nextTurn();
+		EasyMock.verify(log);
+	}
 }

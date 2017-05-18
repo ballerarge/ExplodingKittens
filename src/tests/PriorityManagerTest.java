@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.easymock.EasyMock;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -154,8 +155,6 @@ public class PriorityManagerTest {
 		players.add(new Player("Player 4"));
 
 		pm.addPlayers(players);
-
-		CardStack.tearDown();
 		CardStack.getInstance().addCard(cf.createCard(CardFactory.NORMAL_CARD));
 		assertEquals(1, CardStack.getInstance().getStack().size());
 
@@ -164,5 +163,21 @@ public class PriorityManagerTest {
 		assertEquals(0, CardStack.getInstance().getStack().size());
 		assertTrue(pm.getActivePlayer().getName().equals("Player 1"));
 	}
+	
+//	@Test
+//	public void testRotationOnResolveCard() {
+//		CardFactory cf = new CardFactory();
+//		PriorityManager pm = EasyMock.createNiceMock(PriorityManager.class);
+//		
+//		CardStack.getInstance().addCard(cf.createCard(CardFactory.NORMAL_CARD));
+//		
+//		pm.nextPlayer();
+//		pm.nextPlayer();
+//		EasyMock.expectLastCall().anyTimes();
+//		EasyMock.replay(pm);
+//
+//		pm.resolveCard();
+//		EasyMock.verify(pm);
+//	}
 
 }

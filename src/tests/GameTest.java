@@ -16,6 +16,7 @@ import org.junit.Test;
 
 import code.AttackCard;
 import code.Card;
+import code.CardFactory;
 import code.CardStack;
 import code.DefuseCard;
 import code.DiscardDeck;
@@ -251,5 +252,19 @@ public class GameTest {
 		}
 
 		return attack && defuse && kitten && favor && normal && nope && scry && shuffle && skip;
+	}
+	
+	@Test
+	public void testDeckStaysSameIfExistsAlready() throws InvalidNumberofPlayersException {
+		MainDeck deck = MainDeck.getInstance();
+		CardFactory factory = new CardFactory();
+
+		Game game = new Game();
+		for (int i = 0; i < 30; i++) {
+			deck.insertCard(factory.createCard(CardFactory.ATTACK_CARD), 0);
+		}
+		game.start(3);
+		
+		assertEquals(23, deck.getCardCount());
 	}
 }

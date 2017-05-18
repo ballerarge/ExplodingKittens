@@ -22,13 +22,14 @@ Definition of Done:
     
 Edge Cases for Rules:
 
-DRAWING CARDS
-	EXPLODING KITTEN CARD DRAWN
-		1. If no "Defuse" card in hand, game lost. Kitten card does not go back in deck.
+DRAW CARD:  
+	EXPLODING KITTEN CARD DRAWN:  
+	    1. If no "Defuse" card in hand, game lost. Kitten card does not go back in deck.
 			-If one player remains after person loses, game is over and remaining player wins.
 			-Test case: Player draws Exploding Kitten card and has no defuse cards.
 			Player is then removed from the game, Exploding Kitten Card removed from game, 
 			game continues with next person's turn.
+		    (https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/03198c9c5419a614348ef1287403100634d552da)
 
 		2. If "Defuse" card is played to counteract, "Defuse" card goes on discard pile and 
 		Kitten card is put by player back into deck at any location.

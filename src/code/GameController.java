@@ -23,7 +23,7 @@ public class GameController {
 
 	public static void main(String[] args) {
 
-		Game game = new Game();
+		Game game = new GameLogger(new Game());
 
 		Player player1 = new Player("One");
 		Player player2 = new Player("Two");

@@ -1,11 +1,12 @@
 
 package tests;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import org.easymock.EasyMock;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -32,7 +33,7 @@ public class PriorityManagerTest {
 
 		int numPlayers = pm.getPlayerCount();
 		pm.removePlayer(new Player("Player 1"));
-		
+
 		assertEquals(numPlayers, pm.getPlayerCount());
 
 		PriorityManager.tearDown();
@@ -45,11 +46,11 @@ public class PriorityManagerTest {
 		List<Player> players = new ArrayList<Player>();
 		players.add(new Player("Player 1"));
 		players.add(new Player("Player 2"));
-		
+
 		int numPlayers = pm.getPlayerCount();
 
 		pm.removePlayer(new Player("Player 3"));
-		
+
 		assertEquals(numPlayers, pm.getPlayerCount());
 
 		PriorityManager.tearDown();
@@ -148,8 +149,10 @@ public class PriorityManagerTest {
 		pm.resolveCard();
 
 		assertEquals(0, CardStack.getInstance().getStack().size());
+		assertTrue(pm.getActivePlayer().getName().equals("Player 1"));
 
 		PriorityManager.tearDown();
 		CardStack.tearDown();
 	}
+
 }

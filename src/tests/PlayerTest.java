@@ -90,6 +90,7 @@ public class PlayerTest {
 	@Test
 	public void testDrawCard() {
 		Player player = new Player();
+		MainDeck.getInstance().initStartingDeck();
 
 		player.drawCard();
 

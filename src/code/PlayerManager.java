@@ -25,11 +25,9 @@ public class PlayerManager {
 		for (int i = 0; i < numPlayers; i++) {
 			players.add(new Player());
 		}
-
-		makePlayerDrawInitialHand();
 	}
 
-	private void makePlayerDrawInitialHand() {
+	public void makePlayerDrawInitialHand() {
 
 		for (int i = 0; i < players.size(); i++) {
 			for (int j = 0; j < INITIAL_HAND_NUMBER_OF_CARDS_TO_DRAW; j++) {

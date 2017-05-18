@@ -104,18 +104,18 @@ public class PlayerManagerTest {
 
 	@Test
 	public void testPlayersHandsInitialized() throws InvalidNumberofPlayersException {
-		MainDeck.tearDown();
-		MainDeck.getInstance();
+		MainDeck.getInstance().initStartingDeck();
+		
 		PlayerManager playerManager = new PlayerManager();
 
 		playerManager.addPlayers(4);
+		
+		playerManager.makePlayerDrawInitialHand();
 
 		Map<Player, List<Card>> hands = playerManager.getHands();
 
 		for (Player player : hands.keySet()) {
 			assertEquals(hands.get(player).size(), 5);
 		}
-
-		MainDeck.tearDown();
 	}
 }

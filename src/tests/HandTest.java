@@ -57,6 +57,7 @@ public class HandTest {
 	@Test
 	public void testDrawFromMainDeck() {
 		Hand handMng = new Hand();
+		MainDeck.getInstance().initStartingDeck();
 
 		handMng.draw();
 
@@ -67,6 +68,7 @@ public class HandTest {
 	@Test
 	public void testSelectCard() throws IncorrectNumberOfCardsException {
 		Hand handMng = new Hand();
+		MainDeck.getInstance().initStartingDeck();
 
 		handMng.draw();
 

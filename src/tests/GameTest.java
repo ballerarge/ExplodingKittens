@@ -218,60 +218,20 @@ public class GameTest {
 	@Test
 	public void testDeckInitializedOnStart() throws InvalidNumberofPlayersException {
 		MainDeck deck = MainDeck.getInstance();
-		assertTrue(deck.getCardCount() == 0);
 
 		Game game = new Game();
 		game.start(3);
 		
-		boolean attack = false, defuse = false, kitten = false, favor = false, normal = false, nope = false,
-		        scry = false, shuffle = false, skip = false;
-
-		for (Card card : deck.getCards()) {
-			if (card instanceof AttackCard) {
-				attack = true;
-			} else if (card instanceof DefuseCard) {
-				defuse = true;
-			} else if (card instanceof ExplodingKittenCard) {
-				kitten = true;
-			} else if (card instanceof FavorCard) {
-				favor = true;
-			} else if (card instanceof NormalCard) {
-				normal = true;
-			} else if (card instanceof NopeCard) {
-				nope = true;
-			} else if (card instanceof ScryCard) {
-				scry = true;
-			} else if (card instanceof ShuffleCard) {
-				shuffle = true;
-			} else if (card instanceof SkipCard) {
-				skip = true;
-			} else {
-				System.out.println("NOT ANY");
-			}
-		}
-
-		assertTrue(attack);
-		assertTrue(nope);
-		assertTrue(defuse);
-		assertTrue(kitten);
-		assertTrue(favor);
-		assertTrue(normal);
-		assertTrue(scry);
-		assertTrue(shuffle);
-		assertTrue(skip);
+		assertTrue(verifyAllTypesInitialized(deck));
 	}
 
 	private boolean verifyAllTypesInitialized(MainDeck deck) {
-		boolean attack = false, defuse = false, kitten = false, favor = false, normal = false, nope = false,
+		boolean attack = false, favor = false, normal = false, nope = false,
 		        scry = false, shuffle = false, skip = false;
 
 		for (Card card : deck.getCards()) {
 			if (card instanceof AttackCard) {
 				attack = true;
-			} else if (card instanceof DefuseCard) {
-				defuse = true;
-			} else if (card instanceof ExplodingKittenCard) {
-				kitten = true;
 			} else if (card instanceof FavorCard) {
 				favor = true;
 			} else if (card instanceof NormalCard) {
@@ -287,7 +247,7 @@ public class GameTest {
 			}
 		}
 
-		return attack && defuse && kitten && favor && normal && nope && scry && shuffle && skip;
+		return attack && favor && normal && nope && scry && shuffle && skip;
 	}
 	
 	@Test

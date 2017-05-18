@@ -20,7 +20,6 @@ public class Hand {
 		selectedCards = new ArrayList<Card>();
 		mainDeck = MainDeck.getInstance();
 		cardStack = CardStack.getInstance();
-		this.mainDeck.initStartingDeck();
 	}
 
 	public Card draw() {

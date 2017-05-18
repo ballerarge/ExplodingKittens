@@ -1,24 +1,47 @@
 
 package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Stack;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import code.Card;
 import code.CardStack;
 import code.DiscardDeck;
+import code.MainDeck;
 import code.NormalCard;
+import code.PriorityManager;
+import code.TurnManager;
 
 public class CardStackTest {
+	
+	@Before
+	public void initialize() {
+		TurnManager.tearDown();
+		MainDeck.tearDown();
+		DiscardDeck.tearDown();
+		PriorityManager.tearDown();
+		CardStack.tearDown();
+	}
+	
+	@After
+	public void tearDown() {
+		TurnManager.tearDown();
+		MainDeck.tearDown();
+		DiscardDeck.tearDown();
+		PriorityManager.tearDown();
+		CardStack.tearDown();
+	}
 
 	@Test
 	public void testCardstackConstructor() {
 		CardStack cardStack = CardStack.getInstance();
 		assertEquals(cardStack, CardStack.getInstance());
-		CardStack.tearDown();
 	}
 
 	@Test
@@ -26,8 +49,6 @@ public class CardStackTest {
 		CardStack cardStack = CardStack.getInstance();
 
 		assertTrue(cardStack.getStack() instanceof Stack<?>);
-
-		CardStack.tearDown();
 	}
 
 	@Test
@@ -41,8 +62,6 @@ public class CardStackTest {
 		cardStack.setStack(testingStack);
 
 		assertTrue(cardStack.peek() instanceof NormalCard);
-
-		CardStack.tearDown();
 	}
 
 	@Test
@@ -55,8 +74,5 @@ public class CardStackTest {
 
 		assertTrue(cardStack.getStack().isEmpty());
 		assertEquals(discardDeck.getCardCount(), 1);
-
-		CardStack.tearDown();
-		DiscardDeck.tearDown();
 	}
 }

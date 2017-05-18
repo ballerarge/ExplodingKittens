@@ -111,7 +111,11 @@ public class GameController {
 				if (selectedCards.size() == 1) { // Resolve one card
 
 					CardStack.getInstance().addCard(selectedCards.get(0));
-					CardStack.getInstance().resolveTopCard();
+					if (cardNeedsNoTargets(selectedCards.get(0))) {
+						CardStack.getInstance().resolveTopCard();
+					} else {
+						CardStack.getInstance().resolveTopCard();
+					}
 					window.clearSelected();
 					DiscardDeck.getInstance().addAll(selectedCards);
 					window.displayGameState(game);
@@ -124,6 +128,11 @@ public class GameController {
 		});
 
 		window.openStartWindow();
+	}
+
+	protected static boolean cardNeedsNoTargets(Card card) {
+		return (card.getID() == CardFactory.EXPLODING_KITTEN_CARD || card.getID() == CardFactory.NOPE_CARD
+		        || card.getID() == CardFactory.SHUFFLE_CARD || card.getID() == CardFactory.SKIP_CARD);
 	}
 
 	protected static void addCardListeners(Game game, MainWindow window, List<CardComponent> displayedCards) {

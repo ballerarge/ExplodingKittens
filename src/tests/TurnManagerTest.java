@@ -199,15 +199,16 @@ public class TurnManagerTest {
 		Player player3 = game.getPlayers().get(2);
 		mainDeck.insertCard(factory.createCard(CardFactory.NORMAL_CARD), 0);
 		mainDeck.insertCard(factory.createCard(CardFactory.NORMAL_CARD), 0);
+		mainDeck.insertCard(factory.createCard(CardFactory.NORMAL_CARD), 0);
 		
 		turnManager.makeCurrentPlayerLose();
+		turnManager.endTurnAndDraw();
 		turnManager.makeCurrentPlayerLose();
+		turnManager.endTurnAndDraw();
 		
-		assertTrue(priorityManager.getActivePlayer().equals(player3));
+		
 		assertEquals(1, priorityManager.getPlayerCount());
-		turnManager.endTurnAndDraw();
 		assertEquals(player3, turnManager.getCurrentPlayer());
-		turnManager.endTurnAndDraw();
 		assertEquals(0, turnManager.getTurnOrder().size());
 		
 	}

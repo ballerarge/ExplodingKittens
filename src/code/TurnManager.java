@@ -113,4 +113,8 @@ public class TurnManager {
 			}
 		}	
 	}
+
+	public List<Player> getTurnOrder() {
+		return turnOrder;
+	}
 }

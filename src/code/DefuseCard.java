@@ -33,7 +33,7 @@ public class DefuseCard extends Card implements Cloneable {
 			return;
 		}
 
-		if (stack.getStack().elementAt(0) instanceof ExplodingKittenCard) {
+		if (stack.getStack().elementAt(0).getID() == 5) {
 			stack.setStack(new Stack<Card>());
 
 			// Here is where the user will need to decide where to put the

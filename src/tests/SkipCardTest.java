@@ -60,7 +60,7 @@ public class SkipCardTest {
 	private void removeAllKittens() {
 		List<Card> tempCards = new ArrayList<Card>();
 		for (Card card : deck.getCards()) {
-			if (!(card instanceof ExplodingKittenCard)) {
+			if (!(card.getID() == 5)) {
 				tempCards.add(card);
 			}
 		}

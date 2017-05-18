@@ -55,37 +55,47 @@ public class CardFactory {
 	}
 
 	public Card createCard(int cardID) {
+		Card card;
 		switch (cardID) {
 			case NORMAL_CARD:
 				normalCardCount = (normalCardCount) % normalCardMax + 1;
 				return new NormalCard("card_images\\NormalCard" + normalCardCount + ".png");
 			case NOPE_CARD:
 				nopeCardCount = (nopeCardCount) % nopeCardMax + 1;
-				return new NopeCard("card_images\\NopeCard" + nopeCardCount + ".png");
+				card =  new NopeCard("card_images\\NopeCard" + nopeCardCount + ".png");
+				break;
 			case DEFUSE_CARD:
 				defuseCardCount = (defuseCardCount) % defuseCardMax + 1;
-				return new DefuseCard("card_images\\DefuseCard" + defuseCardCount + ".png");
+				card = new DefuseCard("card_images\\DefuseCard" + defuseCardCount + ".png");
+				break;
 			case ATTACK_CARD:
 				attackCardCount = (attackCardCount) % attackCardMax + 1;
-				return new AttackCard("card_images\\AttackCard" + attackCardCount + ".png");
+				card = new AttackCard("card_images\\AttackCard" + attackCardCount + ".png");
+				break;
 			case SKIP_CARD:
 				skipCardCount = (skipCardCount) % skipCardMax + 1;
-				return new SkipCard("card_images\\SkipCard" + skipCardCount + ".png");
+				card = new SkipCard("card_images\\SkipCard" + skipCardCount + ".png");
+				break;
 			case EXPLODING_KITTEN_CARD:
 				explodingKittenCardCount = (explodingKittenCardCount) % explodingKittenCardMax + 1;
-				return new ExplodingKittenCard("card_images\\ExplodingKittenCard" + explodingKittenCardCount + ".png");
+				card = new ExplodingKittenCard("card_images\\ExplodingKittenCard" + explodingKittenCardCount + ".png");
+				break;
 			case SHUFFLE_CARD:
 				shuffleCardCount = (shuffleCardCount) % shuffleCardMax + 1;
-				return new ShuffleCard("card_images\\ShuffleCard" + shuffleCardCount + ".png");
+				card = new ShuffleCard("card_images\\ShuffleCard" + shuffleCardCount + ".png");
+				break;
 			case SCRY_CARD:
 				scryCardCount = (scryCardCount) % scryCardMax + 1;
-				return new ScryCard("card_images\\ScryCard" + scryCardCount + ".png");
+				card = new ScryCard("card_images\\ScryCard" + scryCardCount + ".png");
+				break;
 			case FAVOR_CARD:
 				favorCardCount = (favorCardCount) % favorCardMax + 1;
-				return new FavorCard("card_images\\FavorCard" + favorCardCount + ".png");
+				card = new FavorCard("card_images\\FavorCard" + favorCardCount + ".png");
+				break;
 			default:
 				throw new CardNotFoundException("CardID incorrect for create card in Card Factory");
 		}
+		return new CardLogger(card);
 	}
 
 	public List<Card> createCards(int cardID, int numCards) throws IncorrectNumberOfCardsException {

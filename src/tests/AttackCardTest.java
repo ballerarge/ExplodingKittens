@@ -59,7 +59,7 @@ public class AttackCardTest {
 	private void removeAllKittens() {
 		List<Card> tempCards = new ArrayList<Card>();
 		for (Card card : deck.getCards()) {
-			if (!(card instanceof ExplodingKittenCard)) {
+			if (!(card.getID() == 5)) {
 				tempCards.add(card);
 			}
 		}
@@ -89,8 +89,9 @@ public class AttackCardTest {
 	public void testNextPlayerHasTwoTurns() {
 		Card attackCard = factory.createCard(CardFactory.ATTACK_CARD);
 
-		stack.addCard(attackCard);
-		pManager.resolveCard();
+		//stack.addCard(attackCard);
+		//pManager.resolveCard();
+		attackCard.cardAction(null, null);
 
 		assertEquals(player2, game.getCurrentPlayer());
 		game.nextTurn();
@@ -101,8 +102,7 @@ public class AttackCardTest {
 	public void testTurnsNotScrewyAfterAttack() {
 		Card attackCard = factory.createCard(CardFactory.ATTACK_CARD);
 
-		stack.addCard(attackCard);
-		pManager.resolveCard();
+		attackCard.cardAction(null, null);
 
 		assertEquals(player2, game.getCurrentPlayer());
 		game.nextTurn();
@@ -122,10 +122,13 @@ public class AttackCardTest {
 		Card attack1 = factory.createCard(CardFactory.ATTACK_CARD);
 		Card attack2 = factory.createCard(CardFactory.ATTACK_CARD);
 
-		stack.addCard(attack1);
-		pManager.resolveCard();
-		stack.addCard(attack2);
-		pManager.resolveCard();
+		attack1.cardAction(null, null);
+		attack2.cardAction(null, null);
+		
+//		stack.addCard(attack1);
+//		pManager.resolveCard();
+//		stack.addCard(attack2);
+//		pManager.resolveCard();
 
 		assertEquals(player3, game.getCurrentPlayer());
 		game.nextTurn();

@@ -179,7 +179,7 @@ public class GameTest {
 	private void removeAllKittens() {
 		List<Card> tempCards = new ArrayList<Card>();
 		for (Card card : MainDeck.getInstance().getCards()) {
-			if (!(card instanceof ExplodingKittenCard)) {
+			if (!(card.getID() == 5)) {
 				tempCards.add(card);
 			}
 		}

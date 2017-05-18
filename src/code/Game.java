@@ -14,8 +14,15 @@ public class Game {
 	public Game() {
 		MainDeck.tearDown();
 		mainDeck = MainDeck.getInstance();
+		PriorityManager.tearDown();
 		priorityManager = PriorityManager.getInstance();
+		TurnManager.tearDown();
+		TurnManager.InstantiateLogger();
 		turnManager = TurnManager.getInstance();
+	}
+
+	protected Game(int n) { // This should only be called when initiallizing
+	                     // GameLogger
 	}
 
 	public void start(int n) throws InvalidNumberofPlayersException {
@@ -57,5 +64,13 @@ public class Game {
 
 	public List<Player> getPlayers() {
 		return playerManager.getPlayers();
+	}
+
+	public PlayerManager getPlayerManager() {
+		return playerManager;
+	}
+
+	public TurnManager getTurnManager() {
+		return turnManager;
 	}
 }

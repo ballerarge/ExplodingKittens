@@ -195,4 +195,14 @@ public class GameTest {
 		
 		assertTrue(game.isMainDeckEmpty());
 	}
+	
+	@Test
+	public void testDeckNotEmptyBeforeGameInitialized() {
+		MainDeck deck = MainDeck.getInstance();
+		deck.populateDeck(3);
+		
+		Game game = new Game();
+		
+		assertTrue(game.isMainDeckEmpty());
+	}
 }

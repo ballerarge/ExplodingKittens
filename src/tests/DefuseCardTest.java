@@ -157,4 +157,35 @@ public class DefuseCardTest {
 		
 		assertEquals(numCardsInHandBefore + 1, player1.getHand().size());
 	}
+	
+	@Test
+	public void testDefuseBackToHandStackNotEmpty() throws NoCardsToMoveException, InvalidBundleException {
+		Player player1 = TurnManager.getInstance().getCurrentPlayer();
+		
+		int cardIndex = -1;
+		int firstToSelect = -1;
+		for (int i = 0; i < player1.getHand().size(); i++) {
+			if (!(player1.getHand().get(i) instanceof DefuseCard)) {
+				firstToSelect = i;
+			}
+		}
+		 
+		player1.getHandManager().selectCard(firstToSelect);
+		player1.getHandManager().moveSelectedToStack();
+		
+		for (int i = 0; i < player1.getHand().size(); i++) {
+			if (player1.getHand().get(i) instanceof DefuseCard) {
+				cardIndex = i;
+			}
+		}
+		
+		player1.getHandManager().selectCard(cardIndex);
+		player1.getHandManager().moveSelectedToStack();
+		
+		int numCardsInHandBefore = player1.getHand().size();
+		
+		stack.resolveTopCard();
+		
+		assertEquals(numCardsInHandBefore + 1, player1.getHand().size());
+	}
 }

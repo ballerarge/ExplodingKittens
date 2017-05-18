@@ -276,4 +276,32 @@ public class MainDeckTest {
 		assertEquals(previousSize, mDeck.getCardCount());
 		MainDeck.tearDown();
 	}
+	
+	@Test
+	public void testCorrectIcons() {
+		MainDeck mDeck = MainDeck.getInstance();
+		boolean zero = false, one = false, two = false, three = false;
+		
+		mDeck.initStartingDeck();
+		
+		for (Card card : mDeck.getCards()) {
+			if (card instanceof NormalCard) {
+				if (((NormalCard) card).getIcon() == 0) {
+					zero = true;
+				} else if (((NormalCard) card).getIcon() == 1) {
+					one = true;
+				} else if (((NormalCard) card).getIcon() == 2) {
+					two = true;
+				} else if (((NormalCard) card).getIcon() == 3) {
+					three = true;
+				}
+			}
+			
+		}
+		
+		assertTrue(zero);
+		assertTrue(one);
+		assertTrue(two);
+		assertTrue(three);
+	}
 }

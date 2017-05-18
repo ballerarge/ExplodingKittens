@@ -12,15 +12,17 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import code.AttackCard;
 import code.Card;
 import code.CardFactory;
 import code.CardStack;
 import code.DiscardDeck;
+import code.FiveCardBundle;
 import code.Hand;
 import code.MainDeck;
 import code.PriorityManager;
+import code.ThreeCardBundle;
 import code.TurnManager;
+import code.TwoCardBundle;
 import exceptions.IncorrectNumberOfCardsException;
 import exceptions.InvalidBundleException;
 import exceptions.NoCardsToMoveException;
@@ -98,6 +100,8 @@ public class HandTest {
 		handMng.moveSelectedToStack();
 
 		assertEquals(0, handMng.getSelectedCards().size());
+		assertEquals(1, CardStack.getInstance().getStack().size());
+		assertTrue(CardStack.getInstance().getStack().get(0) instanceof TwoCardBundle);
 	}
 	
 	@Test
@@ -116,6 +120,8 @@ public class HandTest {
 		handMng.moveSelectedToStack();
 
 		assertEquals(0, handMng.getSelectedCards().size());
+		assertEquals(1, CardStack.getInstance().getStack().size());
+		assertTrue(CardStack.getInstance().getStack().get(0) instanceof ThreeCardBundle);
 	}
 	
 	@Test
@@ -136,6 +142,7 @@ public class HandTest {
 		handMng.moveSelectedToStack();
 
 		assertEquals(0, handMng.getSelectedCards().size());
+		assertEquals(0, CardStack.getInstance().getStack().size());
 	}
 	
 	@Test
@@ -158,6 +165,8 @@ public class HandTest {
 		handMng.moveSelectedToStack();
 
 		assertEquals(0, handMng.getSelectedCards().size());
+		assertEquals(1, CardStack.getInstance().getStack().size());
+		assertTrue(CardStack.getInstance().getStack().get(0) instanceof FiveCardBundle);
 	}
 	
 	

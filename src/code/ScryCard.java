@@ -14,6 +14,11 @@ public class ScryCard extends Card implements Cloneable {
 		this.cardID = 7;
 	}
 
+	public ScryCard(String path) {
+		this();
+		this.imagePath = path;
+	}
+
 	@Override
 	public void cardAction(Player p1, Player p2) {
 		int numberOfCardsToScry = 3;

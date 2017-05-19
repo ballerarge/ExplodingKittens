@@ -54,11 +54,11 @@ public class Game {
 		priorityManager.nextPlayer();
 	}
 
-	public Player getCurrentPlayer() {
+	public Player getActivePlayer() {
 		return priorityManager.getActivePlayer();
 	}
 
-	public Player getCurrentTurnPlayer() {
+	public Player getCurrentPlayer() {
 		return turnManager.getCurrentPlayer();
 	}
 

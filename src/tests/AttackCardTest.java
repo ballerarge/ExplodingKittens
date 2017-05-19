@@ -48,11 +48,11 @@ public class AttackCardTest {
 
 		removeAllKittens();
 
-		player1 = game.getCurrentTurnPlayer();
+		player1 = game.getCurrentPlayer();
 		game.nextTurn();
-		player2 = game.getCurrentTurnPlayer();
+		player2 = game.getCurrentPlayer();
 		game.nextTurn();
-		player3 = game.getCurrentTurnPlayer();
+		player3 = game.getCurrentPlayer();
 		game.nextTurn();
 	}
 
@@ -82,7 +82,7 @@ public class AttackCardTest {
 		stack.addCard(attackCard);
 		pManager.resolveCard();
 
-		assertEquals(player2, game.getCurrentTurnPlayer());
+		assertEquals(player2, game.getCurrentPlayer());
 	}
 
 	@Test
@@ -93,9 +93,9 @@ public class AttackCardTest {
 		//pManager.resolveCard();
 		attackCard.cardAction(null, null);
 
-		assertEquals(player2, game.getCurrentTurnPlayer());
+		assertEquals(player2, game.getCurrentPlayer());
 		game.nextTurn();
-		assertEquals(player2, game.getCurrentTurnPlayer());
+		assertEquals(player2, game.getCurrentPlayer());
 	}
 
 	@Test
@@ -104,17 +104,17 @@ public class AttackCardTest {
 
 		attackCard.cardAction(null, null);
 
-		assertEquals(player2, game.getCurrentTurnPlayer());
+		assertEquals(player2, game.getCurrentPlayer());
 		game.nextTurn();
-		assertEquals(player2, game.getCurrentTurnPlayer());
+		assertEquals(player2, game.getCurrentPlayer());
 		game.nextTurn();
-		assertEquals(player3, game.getCurrentTurnPlayer());
+		assertEquals(player3, game.getCurrentPlayer());
 		game.nextTurn();
-		assertEquals(player1, game.getCurrentTurnPlayer());
+		assertEquals(player1, game.getCurrentPlayer());
 		game.nextTurn();
-		assertEquals(player2, game.getCurrentTurnPlayer());
+		assertEquals(player2, game.getCurrentPlayer());
 		game.nextTurn();
-		assertEquals(player3, game.getCurrentTurnPlayer());
+		assertEquals(player3, game.getCurrentPlayer());
 	}
 
 	@Test
@@ -130,11 +130,11 @@ public class AttackCardTest {
 //		stack.addCard(attack2);
 //		pManager.resolveCard();
 
-		assertEquals(player3, game.getCurrentTurnPlayer());
+		assertEquals(player3, game.getCurrentPlayer());
 		game.nextTurn();
-		assertEquals(player3, game.getCurrentTurnPlayer());
+		assertEquals(player3, game.getCurrentPlayer());
 		game.nextTurn();
-		assertEquals(player1, game.getCurrentTurnPlayer());
+		assertEquals(player1, game.getCurrentPlayer());
 	}
 	
 	@Test

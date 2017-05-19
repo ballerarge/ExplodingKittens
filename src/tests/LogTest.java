@@ -47,9 +47,9 @@ public class LogTest {
 		log.addEntry(entry1);
 		log.addEntry(entry2);
 		ArrayList<Entry> entries = log.getEntries();
-		assertEquals(entries.get(0), entry0);
+		assertEquals(entries.get(2), entry0);
 		assertEquals(entries.get(1), entry1);
-		assertEquals(entries.get(2), entry2);
+		assertEquals(entries.get(0), entry2);
 	}
 
 	@Test
@@ -98,7 +98,7 @@ public class LogTest {
 		game.nextTurn();
 		EasyMock.verify(log);
 	}
-	
+
 	@After
 	public void tearDown() {
 		Log.tearDown();

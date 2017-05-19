@@ -35,10 +35,10 @@ public class CardStack {
 	}
 
 	// Might be used later, but currently not used or tested for.
-	
-//	public void resolveTopCard(Player player1, Player player2) {
-//		this.stack.pop().cardAction(player1, player2);
-//	}
+
+	public void resolveTopCard(Player player1, Player player2) {
+		this.stack.pop().cardAction(player1, player2);
+	}
 
 	public void moveCardsToDiscardDeck() {
 		// Implement this as part of integration testing.
@@ -71,7 +71,8 @@ public class CardStack {
 	}
 
 	public void counterTopCard() { // Only called by Nope cards
-		if (stack.isEmpty() || stack.peek().getID() == 5 || stack.peek().getID() == 2) {
+		if (stack.isEmpty() || stack.peek().getID() == CardFactory.EXPLODING_KITTEN_CARD || stack.peek().getID() == CardFactory.DEFUSE_CARD) {
+
 			throw new InvalidNopeTargetException();
 		}
 		stack.pop();

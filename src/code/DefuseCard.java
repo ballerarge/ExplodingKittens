@@ -35,10 +35,6 @@ public class DefuseCard extends Card implements Cloneable {
 
 		if (stack.getStack().elementAt(0).getID() == 5) {
 			stack.setStack(new Stack<Card>());
-
-			// Here is where the user will need to decide where to put the
-			// Exploding kitten card. For now, it will be placed onto the
-			// bottom of the deck.
 			mDeck.insertCard(factory.createCard(CardFactory.EXPLODING_KITTEN_CARD), mDeck.getCardCount() - 1);
 			dDeck.addCard(factory.createCard(CardFactory.DEFUSE_CARD));
 		} else {

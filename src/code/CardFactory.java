@@ -18,41 +18,25 @@ public class CardFactory {
 	public static final int SCRY_CARD = 7;
 	public static final int FAVOR_CARD = 8;
 
-	private int attackCardCount;
-	private int defuseCardCount;
-	private int explodingKittenCardCount;
-	private int favorCardCount;
-	private int nopeCardCount;
-	private int normalCardCount;
-	private int scryCardCount;
-	private int shuffleCardCount;
-	private int skipCardCount;
+	public int attackCardCount;
+	public int defuseCardCount;
+	public int explodingKittenCardCount;
+	public int favorCardCount;
+	public int nopeCardCount;
+	public int normalCardCount;
+	public int scryCardCount;
+	public int shuffleCardCount;
+	public int skipCardCount;
 
-	private final int attackCardMax = 4;
-	private final int defuseCardMax = 5;
-	private final int explodingKittenCardMax = 3;
-	private final int favorCardMax = 4;
-	private final int nopeCardMax = 4;
-	private final int normalCardMax = 4;
-	private final int scryCardMax = 3;
-	private final int shuffleCardMax = 3;
-	private final int skipCardMax = 3;
-
-	public CardFactory() {
-		initCardCounts();
-	}
-
-	private void initCardCounts() {
-		attackCardCount = 0;
-		defuseCardCount = 0;
-		explodingKittenCardCount = 0;
-		favorCardCount = 0;
-		nopeCardCount = 0;
-		normalCardCount = 0;
-		scryCardCount = 0;
-		shuffleCardCount = 0;
-		skipCardCount = 0;
-	}
+	public final int attackCardMax = 4;
+	public final int defuseCardMax = 5;
+	public final int explodingKittenCardMax = 3;
+	public final int favorCardMax = 4;
+	public final int nopeCardMax = 4;
+	public final int normalCardMax = 4;
+	public final int scryCardMax = 3;
+	public final int shuffleCardMax = 3;
+	public final int skipCardMax = 3;
 
 	public Card createCard(int cardID) {
 		Card card;
@@ -62,7 +46,7 @@ public class CardFactory {
 				return new NormalCard("card_images\\NormalCard" + normalCardCount + ".png");
 			case NOPE_CARD:
 				nopeCardCount = (nopeCardCount) % nopeCardMax + 1;
-				card =  new NopeCard("card_images\\NopeCard" + nopeCardCount + ".png");
+				card = new NopeCard("card_images\\NopeCard" + nopeCardCount + ".png");
 				break;
 			case DEFUSE_CARD:
 				defuseCardCount = (defuseCardCount) % defuseCardMax + 1;

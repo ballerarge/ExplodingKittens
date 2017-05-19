@@ -34,14 +34,11 @@ public class CardStack {
 		this.stack.pop().cardAction(null, null);
 	}
 
-	// Might be used later, but currently not used or tested for.
-
 	public void resolveTopCard(Player player1, Player player2) {
 		this.stack.pop().cardAction(player1, player2);
 	}
 
 	public void moveCardsToDiscardDeck() {
-		// Implement this as part of integration testing.
 		discardDeck.addAll(stack);
 		stack.clear();
 	}
@@ -50,15 +47,12 @@ public class CardStack {
 		cardStack = null;
 	}
 
-	@SuppressWarnings("unchecked") // Cloning a stack will always return a
-	                               // stack.
+	@SuppressWarnings("unchecked")
 	public Stack<Card> getStack() {
 		return (Stack<Card>) stack.clone();
 	}
 
 	public Card peek() {
-		// Consider returning a clone or even just the card ID.
-		// Figure out in integration testing.
 		return stack.peek().clone();
 	}
 
@@ -70,8 +64,9 @@ public class CardStack {
 		stack.addAll(cardsToMove);
 	}
 
-	public void counterTopCard() { // Only called by Nope cards
-		if (stack.isEmpty() || stack.peek().getID() == CardFactory.EXPLODING_KITTEN_CARD || stack.peek().getID() == CardFactory.DEFUSE_CARD) {
+	public void counterTopCard() {
+		if (stack.isEmpty() || stack.peek().getID() == CardFactory.EXPLODING_KITTEN_CARD
+		        || stack.peek().getID() == CardFactory.DEFUSE_CARD) {
 
 			throw new InvalidNopeTargetException();
 		}

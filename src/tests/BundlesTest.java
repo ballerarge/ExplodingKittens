@@ -14,6 +14,8 @@ import org.junit.Test;
 
 import code.AttackCard;
 import code.Card;
+import code.CardFactory;
+import code.CardLogger;
 import code.CardStack;
 import code.DefuseCard;
 import code.DiscardDeck;
@@ -29,7 +31,7 @@ import code.TwoCardBundle;
 import exceptions.InvalidBundleException;
 
 public class BundlesTest {
-	
+
 	@Before
 	public void initialize() {
 		TurnManager.tearDown();
@@ -38,7 +40,7 @@ public class BundlesTest {
 		PriorityManager.tearDown();
 		CardStack.tearDown();
 	}
-	
+
 	@After
 	public void tearDown() {
 		TurnManager.tearDown();
@@ -281,14 +283,14 @@ public class BundlesTest {
 		fiveBundle.setDiscardDeckType(AttackCard.class);
 		DiscardDeck deck = DiscardDeck.getInstance();
 		deck.addCard(new AttackCard());
-		
+
 		fiveBundle.cardAction(player1, null);
-		
+
 		assertEquals(1, player1.getHand().size());
 		assertEquals(0, deck.getCardCount());
 		assertTrue(player1.getHand().get(0).getID() == 3);
 	}
-	
+
 	@Test
 	public void testFiveBundleCardActionEmptyDiscard() {
 		Player player1 = new Player();
@@ -296,11 +298,31 @@ public class BundlesTest {
 		        new NormalCard(), new NormalCard(), new NormalCard()));
 		fiveBundle.setDiscardDeckType(AttackCard.class);
 		DiscardDeck deck = DiscardDeck.getInstance();
-		
+
 		fiveBundle.cardAction(player1, null);
-		
+
 		assertEquals(0, player1.getHand().size());
 		assertEquals(0, deck.getCardCount());
+	}
+
+	@Test
+	public void testThreeBundleNotWrappedInLogger() {
+		CardFactory factory = new CardFactory();
+		Player player1 = new Player();
+		Player player2 = new Player();
+		ThreeCardBundle threeBundle = new ThreeCardBundle(
+		        Arrays.asList(new NormalCard(), new NormalCard(), new NormalCard()));
+		Card defuseCard = factory.createCard(CardFactory.DEFUSE_CARD);
+		defuseCard = ((CardLogger) defuseCard).getCard();
+		player1.getHand().add(defuseCard);
+		threeBundle.setTargetCardClass(DefuseCard.class);
+
+		threeBundle.cardAction(player2, player1);
+
+		assertEquals(DefuseCard.class, defuseCard.getClass());
+		assertEquals(1, player2.getHand().size());
+		assertEquals(0, player1.getHand().size());
+
 	}
 
 }

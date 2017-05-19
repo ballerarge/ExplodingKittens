@@ -23,9 +23,9 @@ import code.ScryCard;
 import code.TurnManager;
 
 public class ScryCardTest {
-	
+
 	CardFactory factory;
-	
+
 	@Before
 	public void initialize() {
 		factory = new CardFactory();
@@ -122,7 +122,7 @@ public class ScryCardTest {
 			assertEquals(mainDeck.draw(), prediction.get(i));
 		}
 	}
-	
+
 	@Test
 	public void testScry0CardDeck() {
 		MainDeck mainDeck = MainDeck.getInstance();
@@ -135,13 +135,13 @@ public class ScryCardTest {
 		assertEquals(0, prediction.size());
 		assertEquals(0, mainDeck.getCardCount());
 	}
-	
+
 	@Test
 	public void testScryClone() {
 		Card scry = factory.createCard(CardFactory.SCRY_CARD);
-		
+
 		Card clone = scry.clone();
-		
+
 		assertFalse(clone == null);
 	}
 

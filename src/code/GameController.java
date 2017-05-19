@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Map;
 
 import exceptions.InvalidNumberofPlayersException;
-import exceptions.NoSuchPlayerException;
 import gui.CardComponent;
 import gui.EKPlayerSelectionWindow;
 import gui.LanguageMenu;
@@ -35,9 +34,6 @@ public class GameController {
 		test.add(player3);
 		test.add(player4);
 
-		// EKPlayerSelectionWindow playerSelect = new
-		// EKPlayerSelectionWindow(player1, test, "Player to act upon");
-		// playerSelect.display();
 		NumberofPlayersMenu menu = new NumberofPlayersMenu();
 
 		LanguageMenu languageMenu = new LanguageMenu();
@@ -206,6 +202,7 @@ public class GameController {
 		}
 	}
 
+	@SuppressWarnings("unused")
 	private static void printPlayerHands(Game game) {
 		Map<Player, List<Card>> playerHands = game.getPlayerHands();
 

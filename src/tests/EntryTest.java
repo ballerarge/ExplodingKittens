@@ -1,3 +1,4 @@
+
 package tests;
 
 import static org.junit.Assert.*;
@@ -12,8 +13,8 @@ public class EntryTest {
 	public void testEntry() {
 		String message = "this is a test";
 		Entry entry = new Entry(message);
-		assertEquals(message,entry.message);
-		assertEquals(message,entry.getMessage());
+		assertEquals(message, entry.message);
+		assertEquals(message, entry.getMessage());
 	}
 
-}
+}

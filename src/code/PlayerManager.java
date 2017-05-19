@@ -37,18 +37,19 @@ public class PlayerManager {
 		}
 	}
 
-	// to be re-implemented after merge
 	public Map<Player, List<Card>> getHands() {
 		Map<Player, List<Card>> hands = new HashMap<Player, List<Card>>();
-		for (int a = 0; a < players.size(); a++)
+		for (int a = 0; a < players.size(); a++) {
 			hands.put(players.get(a), players.get(a).getHand());
+		}
 		return hands;
 	}
 
 	public Map<Player, Boolean> getPlayerStatus() {
 		Map<Player, Boolean> status = new HashMap<Player, Boolean>();
-		for (int a = 0; a < players.size(); a++)
+		for (int a = 0; a < players.size(); a++) {
 			status.put(players.get(a), true);
+		}
 		return status;
 	}
 

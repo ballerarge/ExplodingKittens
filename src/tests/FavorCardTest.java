@@ -19,9 +19,9 @@ import code.PriorityManager;
 import code.TurnManager;
 
 public class FavorCardTest {
-	
+
 	CardFactory factory;
-	
+
 	@Before
 	public void initialize() {
 		MainDeck.tearDown();
@@ -63,13 +63,13 @@ public class FavorCardTest {
 		assertEquals(player1.getHand().size(), 3);
 		assertEquals(player2.getHand().size(), 0);
 	}
-	
+
 	@Test
 	public void testFavorClone() {
 		Card favor = factory.createCard(CardFactory.FAVOR_CARD);
-		
+
 		Card clone = favor.clone();
-		
+
 		assertFalse(clone == null);
 	}
 

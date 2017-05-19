@@ -61,7 +61,7 @@ public class TurnManager {
 		return currentPlayer;
 	}
 
-	public void endTurnAndDraw() {
+	public void endTurnAndDraw() throws NoCardsToMoveException, InvalidBundleException {
 		Player player = turnOrder.remove(0);
 		Card drawnCard = player.drawCard();
 		if (drawnCard.getID() == CardFactory.EXPLODING_KITTEN_CARD) {
@@ -71,11 +71,8 @@ public class TurnManager {
 			for (Card card : player.getHand()) {
 				if (card.getID() == CardFactory.DEFUSE_CARD) {
 					player.getHandManager().selectCard(player.getHand().indexOf(card));
-					try {
-						player.getHandManager().moveSelectedToStack();
-					} catch (NoCardsToMoveException | InvalidBundleException e) {
-						e.printStackTrace();
-					}
+
+					player.getHandManager().moveSelectedToStack();
 					break;
 				}
 			}

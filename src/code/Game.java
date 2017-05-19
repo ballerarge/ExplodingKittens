@@ -4,7 +4,10 @@ package code;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import exceptions.InvalidBundleException;
 import exceptions.InvalidNumberofPlayersException;
+import exceptions.NoCardsToMoveException;
 
 public class Game {
 	private PlayerManager playerManager;
@@ -51,7 +54,7 @@ public class Game {
 		return (mainDeck.getCardCount() == 0);
 	}
 
-	public void nextTurn() {
+	public void nextTurn() throws NoCardsToMoveException, InvalidBundleException {
 		turnManager.endTurnAndDraw();// Change later to allow for ending a turn
 		                             // without drawing.
 		priorityManager.nextPlayer();

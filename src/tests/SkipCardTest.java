@@ -21,7 +21,9 @@ import code.MainDeck;
 import code.Player;
 import code.PriorityManager;
 import code.TurnManager;
+import exceptions.InvalidBundleException;
 import exceptions.InvalidNumberofPlayersException;
+import exceptions.NoCardsToMoveException;
 
 public class SkipCardTest {
 	CardFactory factory;
@@ -35,7 +37,7 @@ public class SkipCardTest {
 	MainDeck deck;
 
 	@Before
-	public void initialize() throws InvalidNumberofPlayersException {
+	public void initialize() throws InvalidNumberofPlayersException, NoCardsToMoveException, InvalidBundleException {
 		TurnManager.tearDown();
 		PriorityManager.tearDown();
 		CardStack.tearDown();
@@ -92,7 +94,7 @@ public class SkipCardTest {
 	}
 
 	@Test
-	public void testSkipPlayedAfterAttack() {
+	public void testSkipPlayedAfterAttack() throws NoCardsToMoveException, InvalidBundleException {
 		Card skipCard = factory.createCard(CardFactory.SKIP_CARD);
 		Card attackCard = factory.createCard(CardFactory.ATTACK_CARD);
 

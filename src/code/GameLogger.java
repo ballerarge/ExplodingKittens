@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+import exceptions.InvalidBundleException;
 import exceptions.InvalidNumberofPlayersException;
+import exceptions.NoCardsToMoveException;
 
 public class GameLogger extends Game{
 	
@@ -16,7 +18,7 @@ public class GameLogger extends Game{
 	}
 	
 	@Override
-	public void nextTurn(){
+	public void nextTurn() throws NoCardsToMoveException, InvalidBundleException{
 		game.nextTurn();
 		logStartofTurn();
 	}

@@ -4,6 +4,9 @@ package code;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import exceptions.InvalidBundleException;
+import exceptions.NoCardsToMoveException;
+
 public class TurnManagerLogger extends TurnManager {
 
 	public TurnManager turnManager;
@@ -43,7 +46,7 @@ public class TurnManagerLogger extends TurnManager {
 	}
 
 	@Override
-	public void endTurnAndDraw() {
+	public void endTurnAndDraw() throws NoCardsToMoveException, InvalidBundleException {
 		turnManager.endTurnAndDraw();
 	}
 

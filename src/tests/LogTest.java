@@ -25,7 +25,9 @@ import code.PriorityManager;
 import code.ScryCard;
 import code.TurnManager;
 import code.TurnManagerLogger;
+import exceptions.InvalidBundleException;
 import exceptions.InvalidNumberofPlayersException;
+import exceptions.NoCardsToMoveException;
 import exceptions.NoSuchPlayerException;
 
 public class LogTest {
@@ -88,7 +90,7 @@ public class LogTest {
 	}
 
 	@Test
-	public void testStartofTurn() throws InvalidNumberofPlayersException {
+	public void testStartofTurn() throws InvalidNumberofPlayersException, NoCardsToMoveException, InvalidBundleException {
 		Log log = EasyMock.mock(Log.class);
 		log.locale = Locale.ENGLISH;
 		Log.setLog(log);

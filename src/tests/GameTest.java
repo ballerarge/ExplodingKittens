@@ -32,7 +32,9 @@ import code.ScryCard;
 import code.ShuffleCard;
 import code.SkipCard;
 import code.TurnManager;
+import exceptions.InvalidBundleException;
 import exceptions.InvalidNumberofPlayersException;
+import exceptions.NoCardsToMoveException;
 
 public class GameTest {
 
@@ -135,7 +137,7 @@ public class GameTest {
 	}
 
 	@Test
-	public void testNextTurnDrawing() throws InvalidNumberofPlayersException {
+	public void testNextTurnDrawing() throws InvalidNumberofPlayersException, NoCardsToMoveException, InvalidBundleException {
 		Game game = new Game();
 		game.start(3);
 		removeAllKittens();
@@ -162,7 +164,7 @@ public class GameTest {
 	}
 
 	@Test
-	public void testNextTurnDifferentPlayer() throws InvalidNumberofPlayersException {
+	public void testNextTurnDifferentPlayer() throws InvalidNumberofPlayersException, NoCardsToMoveException, InvalidBundleException {
 		Game game = new Game();
 		game.start(3);
 		Player player1 = game.getActivePlayer();
@@ -173,7 +175,7 @@ public class GameTest {
 	}
 
 	@Test
-	public void testPlayerRotation() throws InvalidNumberofPlayersException {
+	public void testPlayerRotation() throws InvalidNumberofPlayersException, NoCardsToMoveException, InvalidBundleException {
 		Game game = new Game();
 		game.start(3);
 		removeAllKittens();

@@ -104,10 +104,17 @@ public class LogTest {
 		Game game = new GameLogger(new Game());
 		game.start(3);
 		
-		game.getPlayerHands();
-		
 		assertEquals(3, game.getPlayerHands().keySet().size());
 		assertEquals(3, game.getPlayerHands().values().size());
+	}
+	
+	@Test
+	public void testGetPlayerStatus() throws InvalidNumberofPlayersException {
+		Game game = new GameLogger(new Game());
+		game.start(3);
+		
+		assertEquals(3, game.getPlayerStatus().keySet().size());
+		assertEquals(3, game.getPlayerStatus().values().size());
 	}
 
 	@After

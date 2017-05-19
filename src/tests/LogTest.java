@@ -131,6 +131,18 @@ public class LogTest {
 		
 		assertTrue(game.isMainDeckEmpty());
 	}
+	
+	@Test
+	public void testGetCurrentPlayer() throws InvalidNumberofPlayersException {
+		Game game = new GameLogger(new Game());
+		game.start(3);
+		
+		Player player = game.getCurrentPlayer();
+		
+		assertTrue(player instanceof Player);
+	}
+	
+	
 
 	@After
 	public void tearDown() {

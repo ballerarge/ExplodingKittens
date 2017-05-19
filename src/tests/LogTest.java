@@ -1,7 +1,9 @@
 
 package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +15,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import code.Card;
+import code.CardFactory;
 import code.CardLogger;
 import code.Entry;
 import code.Game;
@@ -24,7 +27,6 @@ import code.PlayerManager;
 import code.PriorityManager;
 import code.ScryCard;
 import code.TurnManager;
-import code.TurnManagerLogger;
 import exceptions.InvalidBundleException;
 import exceptions.InvalidNumberofPlayersException;
 import exceptions.NoCardsToMoveException;
@@ -179,6 +181,14 @@ public class LogTest {
 		
 		assertTrue(game.getTurnManager() instanceof TurnManager);
 		assertTrue(game.getTurnManager() != null);
+	}
+	
+	@Test
+	public void testToString() {
+		CardFactory factory = new CardFactory();
+		Card card = new CardLogger(factory.createCard(CardFactory.NORMAL_CARD));
+		
+		assertEquals("code.NormalCard", card.toString());
 	}
 	
 	

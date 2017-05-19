@@ -98,6 +98,17 @@ public class LogTest {
 		game.nextTurn();
 		EasyMock.verify(log);
 	}
+	
+	@Test
+	public void testGetPlayerHands() throws InvalidNumberofPlayersException {
+		Game game = new GameLogger(new Game());
+		game.start(3);
+		
+		game.getPlayerHands();
+		
+		assertEquals(3, game.getPlayerHands().keySet().size());
+		assertEquals(3, game.getPlayerHands().values().size());
+	}
 
 	@After
 	public void tearDown() {

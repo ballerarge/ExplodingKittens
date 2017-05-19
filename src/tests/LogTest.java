@@ -20,6 +20,7 @@ import code.GameLogger;
 import code.Log;
 import code.MainDeck;
 import code.Player;
+import code.PlayerManager;
 import code.PriorityManager;
 import code.ScryCard;
 import code.TurnManager;
@@ -158,6 +159,15 @@ public class LogTest {
 		game.start(3);
 		
 		assertEquals(3, game.getPlayers().size());
+	}
+	
+	@Test
+	public void testGetPlayerManager() throws InvalidNumberofPlayersException {
+		Game game = new GameLogger(new Game());
+		game.start(3);
+		
+		assertTrue(game.getPlayerManager() instanceof PlayerManager);
+		assertTrue(game.getPlayerManager() != null);
 	}
 	
 	

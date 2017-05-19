@@ -1,6 +1,6 @@
 Definition of Done:  
 We used tools such as EclEmma to calculate basis path coverage, Pitclipse to cover all possible mutations, and FindBugs to make sure there weren't any dangerous bugs in our code.  
-    Boundary Value Analysis Guidelines: [link] (www.exampler.com/testing-com/writings/catalog.pdf)  
+    Boundary Value Analysis Guidelines:(www.exampler.com/testing-com/writings/catalog.pdf)  
     :cat:1. All boolean functions that check if a user can perform an action are tested with the rules for Booleans in Boundary Value Analysis.  
     :bomb:2. All counts (hand size, deck size, card inclusions) are tested with the rules for Counts in Boundary Value Analysis.  
     :cat:3. All intervals (See The Future, Pairs, Three of a Kinds, Five of a Kinds, putting cards into the deck) are tested with the rules for Intervals in Boundary Value Analysis.  

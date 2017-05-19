@@ -1,7 +1,6 @@
 
 package code;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -18,15 +17,13 @@ public class Game {
 	public Game() {
 		MainDeck.tearDown();
 		mainDeck = MainDeck.getInstance();
-		PriorityManager.tearDown();
 		priorityManager = PriorityManager.getInstance();
-		TurnManager.tearDown();
 		TurnManager.InstantiateLogger();
 		turnManager = TurnManager.getInstance();
 	}
 
 	protected Game(int n) { // This should only be called when initiallizing
-	                     // GameLogger
+	                        // GameLogger
 	}
 
 	public void start(int n) throws InvalidNumberofPlayersException {
@@ -35,7 +32,7 @@ public class Game {
 		}
 		mainDeck.initStartingDeck();
 		playerManager = new PlayerManager();
-		playerManager.addPlayers(n);	
+		playerManager.addPlayers(n);
 		priorityManager.addPlayers(playerManager.getPlayers());
 		playerManager.makePlayerDrawInitialHand();
 		mainDeck.populateDeck(n);

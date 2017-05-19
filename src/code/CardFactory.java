@@ -18,25 +18,25 @@ public class CardFactory {
 	public static final int SCRY_CARD = 7;
 	public static final int FAVOR_CARD = 8;
 
-	private int attackCardCount;
-	private int defuseCardCount;
-	private int explodingKittenCardCount;
-	private int favorCardCount;
-	private int nopeCardCount;
-	private int normalCardCount;
-	private int scryCardCount;
-	private int shuffleCardCount;
-	private int skipCardCount;
+	public int attackCardCount;
+	public int defuseCardCount;
+	public int explodingKittenCardCount;
+	public int favorCardCount;
+	public int nopeCardCount;
+	public int normalCardCount;
+	public int scryCardCount;
+	public int shuffleCardCount;
+	public int skipCardCount;
 
-	private final int attackCardMax = 4;
-	private final int defuseCardMax = 5;
-	private final int explodingKittenCardMax = 3;
-	private final int favorCardMax = 4;
-	private final int nopeCardMax = 4;
-	private final int normalCardMax = 4;
-	private final int scryCardMax = 3;
-	private final int shuffleCardMax = 3;
-	private final int skipCardMax = 3;
+	public final int attackCardMax = 4;
+	public final int defuseCardMax = 5;
+	public final int explodingKittenCardMax = 3;
+	public final int favorCardMax = 4;
+	public final int nopeCardMax = 4;
+	public final int normalCardMax = 4;
+	public final int scryCardMax = 3;
+	public final int shuffleCardMax = 3;
+	public final int skipCardMax = 3;
 
 	public Card createCard(int cardID) {
 		Card card;

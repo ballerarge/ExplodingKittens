@@ -10,7 +10,7 @@ public class MainDeck {
 	private static MainDeck mainDeck;
 
 	Deck deck;
-	CardFactory factory;
+	public CardFactory factory;
 
 	public static MainDeck getInstance() {
 		if (mainDeck == null) {

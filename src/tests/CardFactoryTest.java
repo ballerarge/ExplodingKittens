@@ -111,13 +111,13 @@ public class CardFactoryTest {
 		@SuppressWarnings("unused")
 		List<Card> cards = cardFactory.createCards(CardFactory.NORMAL_CARD, -1);
 	}
-	
+
 	@Test
 	public void testCreateCardZeroMultiple() throws IncorrectNumberOfCardsException {
 		CardFactory cardFactory = new CardFactory();
-		
+
 		exception.expect(IncorrectNumberOfCardsException.class);
-		
+
 		@SuppressWarnings("unused")
 		List<Card> cards = cardFactory.createCards(CardFactory.NORMAL_CARD, 0);
 	}
@@ -292,8 +292,7 @@ public class CardFactoryTest {
 	@Test
 	public void testCreatedCardsHaveCorrectImagePath() {
 
-		File path = new File(
-		        System.getProperty("user.dir") + "/src/gui/card_images/");
+		File path = new File(System.getProperty("user.dir") + "/src/gui/card_images/");
 
 		File[] files = path.listFiles();
 		List<String> fileList = new ArrayList<String>();
@@ -302,12 +301,17 @@ public class CardFactoryTest {
 				fileList.add(files[i].getPath().toString());
 			}
 		}
-		
 
 		MainDeck.tearDown();
 
 		MainDeck.getInstance().initStartingDeck();
 		MainDeck.getInstance().populateDeck(5);
+
+		CardFactory factory = MainDeck.getInstance().factory;
+
+		for (int i = 0; i < 5; i++) {
+			MainDeck.getInstance().insertCard(factory.createCard(CardFactory.DEFUSE_CARD), 0);
+		}
 
 		List<Card> cardList = MainDeck.getInstance().getCards();
 
@@ -316,12 +320,22 @@ public class CardFactoryTest {
 				if (!filePath.endsWith(".png") || filePath.contains(card.getImagePath())) {
 					fileList.remove(filePath);
 					break;
-				} 
+				}
 			}
 		}
 
-		assertTrue(fileList.size() == 4 || fileList.size() == 5); // Number of Defuse cards not in deck
-
-		MainDeck.tearDown();
+		assertTrue(fileList.size() == 0 || fileList.size() == 1); // Number of
+		                                                          // Defuse
+		                                                          // cards not
+		                                                          // in deck
+		assertTrue(factory.defuseCardCount <= factory.defuseCardMax);
+		assertTrue(factory.attackCardCount <= factory.attackCardMax);
+		assertTrue(factory.explodingKittenCardCount <= factory.explodingKittenCardMax);
+		assertTrue(factory.favorCardCount <= factory.favorCardMax);
+		assertTrue(factory.nopeCardCount <= factory.nopeCardMax);
+		assertTrue(factory.normalCardCount <= factory.normalCardMax);
+		assertTrue(factory.scryCardCount <= factory.scryCardMax);
+		assertTrue(factory.shuffleCardCount <= factory.shuffleCardMax);
+		assertTrue(factory.skipCardCount <= factory.skipCardMax);
 	}
 }

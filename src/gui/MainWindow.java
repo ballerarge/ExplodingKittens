@@ -461,7 +461,7 @@ public class MainWindow {
 		}
 
 		for (CardComponent component : selectedCards) {
-			if (!(component.getCard() instanceof NormalCard)) {
+			if (!(component.getCard().getID() == CardFactory.NORMAL_CARD)) {
 				return false;
 			}
 		}

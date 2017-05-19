@@ -3,6 +3,7 @@ package gui;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -11,9 +12,9 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.WindowConstants;
 
 import code.Card;
+import code.CardFactory;
 import code.DiscardDeck;
 import code.Player;
 
@@ -95,7 +96,7 @@ public class EKCardSelectionWindow {
 
 		return returnedCard;
 	}
-	
+
 	public Card displayFiveCardBundleWindow() {
 		Card[] options = new Card[DiscardDeck.getInstance().getCardCount()];
 		int index = 0;
@@ -105,13 +106,35 @@ public class EKCardSelectionWindow {
 		}
 
 		Card returnedCard = (Card) JOptionPane.showInputDialog(null,
-		        getStringFromBundle("FIVE_CARD_BUNDLE_SELECTION_MESSAGE"), getStringFromBundle("FIVE_CARD_BUNDLE_SELECT_TITLE"),
-		        JOptionPane.QUESTION_MESSAGE, null, options, null);
+		        getStringFromBundle("FIVE_CARD_BUNDLE_SELECTION_MESSAGE"),
+		        getStringFromBundle("FIVE_CARD_BUNDLE_SELECT_TITLE"), JOptionPane.QUESTION_MESSAGE, null, options,
+		        null);
 
 		return returnedCard;
 	}
 
 	private String getStringFromBundle(String key) {
 		return ResourceBundle.getBundle("resources/resources", locale).getString(key);
+	}
+
+	public String displayThreeCardBundleWindow() {
+		CardFactory factory = new CardFactory();
+
+		Card[] options = new Card[7];
+
+		options[0] = factory.createCard(CardFactory.ATTACK_CARD);
+		options[1] = factory.createCard(CardFactory.DEFUSE_CARD);
+		options[2] = factory.createCard(CardFactory.SKIP_CARD);
+		options[3] = factory.createCard(CardFactory.FAVOR_CARD);
+		options[4] = factory.createCard(CardFactory.NOPE_CARD);
+		options[5] = factory.createCard(CardFactory.SCRY_CARD);
+		options[6] = factory.createCard(CardFactory.SHUFFLE_CARD);
+
+		Card returnedCard = (Card) JOptionPane.showInputDialog(null,
+		        getStringFromBundle("THREE_CARD_BUNDLE_SELECTION_MESSAGE"),
+		        getStringFromBundle("THREE_CARD_BUNDLE_SELECT_TITLE"), JOptionPane.QUESTION_MESSAGE, null, options,
+		        null);
+
+		return returnedCard.toString();
 	}
 }

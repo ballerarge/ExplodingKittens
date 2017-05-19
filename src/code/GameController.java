@@ -8,6 +8,7 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import exceptions.InvalidNumberofPlayersException;
 import gui.CardComponent;
@@ -88,6 +89,9 @@ public class GameController {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try {
+					game.getCurrentPlayer().getHandManager()
+					        .addCards(game.getCurrentPlayer().getHandManager().getSelectedCards());
+					window.clearSelected();
 					game.nextTurn();
 					window.displayGameState(game);
 					addCardListeners(game, window, window.getDisplayedCards());
@@ -126,6 +130,7 @@ public class GameController {
 
 							cardSelect.displayScryWindow(cardsScryed);
 						}
+						game.getCurrentPlayer().getHandManager().clearSelectedCards();
 					} else if (cardNeedsPlayerTarget(selectedCards.get(0))) {
 						List<Player> otherPlayers = new ArrayList<Player>();
 						for (Player player : game.getPlayers()) {
@@ -142,15 +147,17 @@ public class GameController {
 						// EKDialogWindow.displayInfoMessage(title, toDisplay,
 						// args);
 
-						window.unhideHand();
-
 						if (selectedCards.get(0).getID() == CardFactory.FAVOR_CARD) {
 							EKCardSelectionWindow cardSelector = new EKCardSelectionWindow(window.locale, "");
 							Card selectedCard = cardSelector.displayFavorWindow(targetedPlayer);
 							targetedPlayer.getHandManager().selectCard(targetedPlayer.getHand().indexOf(selectedCard));
 						}
 
-						CardStack.getInstance().resolveTopCard(game.getActivePlayer(), targetedPlayer);
+						window.unhideHand();
+
+						game.getCurrentPlayer().getHandManager().clearSelectedCards();
+
+						CardStack.getInstance().resolveTopCard(game.getCurrentPlayer(), targetedPlayer);
 					}
 					window.clearSelected();
 					DiscardDeck.getInstance().addAll(selectedCards);
@@ -164,11 +171,68 @@ public class GameController {
 						cardsToAdd.add(selectedCard);
 						DiscardDeck.getInstance().removeCard(selectedCard.getClass());
 						game.getActivePlayer().getHandManager().addCards(cardsToAdd);
-
 					} else if (selectedCards.size() == 3) {
-						System.out.println("Three card bundle.");
+
+						List<Player> otherPlayers = new ArrayList<Player>();
+						for (Player player : game.getPlayers()) {
+							if (player != game.getActivePlayer()) {
+								otherPlayers.add(player);
+							}
+						}
+						window.hideHand();
+						EKPlayerSelectionWindow playerSelectWindow = new EKPlayerSelectionWindow(game.getActivePlayer(),
+						        otherPlayers, window.locale, "");
+						Player targetedPlayer = playerSelectWindow.display();
+
+						EKCardSelectionWindow cardSelector = new EKCardSelectionWindow(window.locale, "");
+						String selectedCardName = cardSelector.displayThreeCardBundleWindow().toString();
+						List<Card> cardsToAdd = new ArrayList<Card>();
+
+						// Check for nope from targeted player
+						// EKDialogWindow.displayInfoMessage(title, toDisplay,
+						// args);
+
+						window.unhideHand();
+						System.out.println(selectedCardName);
+						for (Card card : targetedPlayer.getHand()) {
+							System.out.println(card.toString());
+							if (card.toString().equals(selectedCardName)) {
+								cardsToAdd.add(card);
+								targetedPlayer.getHandManager().selectCard(targetedPlayer.getHand().indexOf(card));
+								targetedPlayer.getHandManager().clearSelectedCards();
+								break;
+							}
+						}
+						game.getCurrentPlayer().getHandManager().clearSelectedCards();
+						game.getCurrentPlayer().getHandManager().addCards(cardsToAdd);
 					} else if (selectedCards.size() == 2) {
-						System.out.println("Two card bundle.");
+						List<Player> otherPlayers = new ArrayList<Player>();
+						for (Player player : game.getPlayers()) {
+							if (player != game.getActivePlayer()) {
+								otherPlayers.add(player);
+							}
+						}
+						window.hideHand();
+						EKPlayerSelectionWindow playerSelectWindow = new EKPlayerSelectionWindow(game.getActivePlayer(),
+						        otherPlayers, window.locale, "");
+						Player targetedPlayer = playerSelectWindow.display();
+
+						List<Card> cardsToAdd = new ArrayList<Card>();
+
+						int index = new Random().nextInt(targetedPlayer.getHand().size());
+						Card selectedCard = targetedPlayer.getHand().get(index);
+
+						targetedPlayer.getHandManager().selectCard(index);
+						targetedPlayer.getHandManager().clearSelectedCards();
+
+						cardsToAdd.add(selectedCard);
+
+						// Check for nope from targeted player
+						// EKDialogWindow.displayInfoMessage(title, toDisplay,
+						// args);
+
+						game.getCurrentPlayer().getHandManager().clearSelectedCards();
+						game.getCurrentPlayer().getHandManager().addCards(cardsToAdd);
 					}
 
 					window.clearSelected();

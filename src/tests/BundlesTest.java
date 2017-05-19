@@ -14,6 +14,8 @@ import org.junit.Test;
 
 import code.AttackCard;
 import code.Card;
+import code.CardFactory;
+import code.CardLogger;
 import code.CardStack;
 import code.DefuseCard;
 import code.DiscardDeck;
@@ -301,6 +303,26 @@ public class BundlesTest {
 		
 		assertEquals(0, player1.getHand().size());
 		assertEquals(0, deck.getCardCount());
+	}
+	
+	@Test
+	public void testThreeBundleNotWrappedInLogger() {
+		CardFactory factory = new CardFactory();
+		Player player1 = new Player();
+		Player player2 = new Player();
+		ThreeCardBundle threeBundle = new ThreeCardBundle(
+		        Arrays.asList(new NormalCard(), new NormalCard(), new NormalCard()));
+		Card defuseCard = factory.createCard(CardFactory.DEFUSE_CARD);
+		defuseCard = ((CardLogger) defuseCard).getCard();
+		player1.getHand().add(defuseCard);
+		threeBundle.setTargetCardClass(DefuseCard.class);
+		
+		threeBundle.cardAction(player2, player1);
+		
+		assertEquals(DefuseCard.class, defuseCard.getClass());
+		assertEquals(1, player2.getHand().size());
+		assertEquals(0, player1.getHand().size());
+		
 	}
 
 }

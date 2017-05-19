@@ -370,7 +370,7 @@ public class MainWindow {
 	}
 
 	public void endGame() {
-		System.out.println("You win!");
+		EKDialogWindow.displayInfoMessage(getStringFromBundle("WIN_TITLE"), getStringFromBundle("WIN_MESSAGE"));
 		exitGame();
 	}
 

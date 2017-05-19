@@ -33,8 +33,8 @@ public class EKPlayerSelectionWindow extends JOptionPane {
 		System.out.println(icon == null);
 
 		String playerName = (String) showInputDialog(null, message,
-		        ResourceBundle.getBundle("resources/resources").getString("PLAYER_SELECT_TITLE"), QUESTION_MESSAGE,
-		        icon, options, currentPlayer);
+		        ResourceBundle.getBundle("resources/resources", locale).getString("PLAYER_SELECT_TITLE"),
+		        QUESTION_MESSAGE, icon, options, currentPlayer);
 
 		return getPlayerFromName(playerName);
 	}

@@ -7,11 +7,10 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-import java.util.Scanner;
 
 import exceptions.InvalidNumberofPlayersException;
+import exceptions.NoSuchPlayerException;
 import gui.CardComponent;
 import gui.EKPlayerSelectionWindow;
 import gui.LanguageMenu;
@@ -91,9 +90,13 @@ public class GameController {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				game.nextTurn();
-				window.displayGameState(game);
-				addCardListeners(game, window, window.getDisplayedCards());
+				try {
+					game.nextTurn();
+					window.displayGameState(game);
+					addCardListeners(game, window, window.getDisplayedCards());
+				} catch (Exception e) {
+					window.endGame();
+				}
 			}
 
 		});
@@ -121,9 +124,21 @@ public class GameController {
 								otherPlayers.add(player);
 							}
 						}
+						window.hideHand();
 						EKPlayerSelectionWindow playerSelectWindow = new EKPlayerSelectionWindow(game.getActivePlayer(),
 						        otherPlayers, window.locale, "");
 						Player targetedPlayer = playerSelectWindow.display();
+
+						// Check for nope from targeted player
+						// EKDialogWindow.displayInfoMessage(title, toDisplay,
+						// args);
+
+						window.unhideHand();
+
+						if (selectedCards.get(0).getID() == CardFactory.FAVOR_CARD) {
+							System.out.println("");
+						}
+
 						CardStack.getInstance().resolveTopCard(game.getActivePlayer(), targetedPlayer);
 					}
 					window.clearSelected();

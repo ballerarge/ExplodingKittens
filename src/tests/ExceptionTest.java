@@ -3,6 +3,7 @@ package tests;
 import org.junit.Test;
 
 import exceptions.IncorrectCardIconIDException;
+import exceptions.InvalidBundleException;
 
 public class ExceptionTest {
 
@@ -14,6 +15,11 @@ public class ExceptionTest {
 	@Test(expected = IncorrectCardIconIDException.class)
 	public void testIncorrectCardIconIDExceptionMessage() throws IncorrectCardIconIDException {
 		throw new IncorrectCardIconIDException("Error");
+	}
+	
+	@Test(expected = InvalidBundleException.class) 
+	public void testInvalidBundleException() throws InvalidBundleException {
+		throw new InvalidBundleException();
 	}
 
 }

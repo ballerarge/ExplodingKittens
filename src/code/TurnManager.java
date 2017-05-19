@@ -64,10 +64,12 @@ public class TurnManager {
 	public void endTurnAndDraw() {
 		Player player = turnOrder.remove(0);
 		Card drawnCard = player.drawCard();
-		if (drawnCard.getID() == 5) {
+		if (drawnCard.getID() == CardFactory.EXPLODING_KITTEN_CARD) {
 			CardStack.getInstance().addCard(drawnCard);
+			player.getHandManager().selectCard(player.getHand().indexOf(drawnCard));
+			player.getHandManager().clearSelectedCards();
 			for (Card card : player.getHand()) {
-				if (card instanceof DefuseCard) {
+				if (card.getID() == CardFactory.DEFUSE_CARD) {
 					player.getHandManager().selectCard(player.getHand().indexOf(card));
 					try {
 						player.getHandManager().moveSelectedToStack();
@@ -78,7 +80,8 @@ public class TurnManager {
 				}
 			}
 			PriorityManager.getInstance().resolveCard();
-		} else if (turnOrder.size() > 0 && !turnOrder.get(turnOrder.size() - 1).equals(player)) {// Don't
+		}
+		if (turnOrder.size() > 0 && !turnOrder.get(turnOrder.size() - 1).equals(player)) {// Don't
 			// circulate
 			// turns from
 			// attacks

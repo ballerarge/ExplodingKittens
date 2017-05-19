@@ -163,7 +163,7 @@ public class TurnManagerTest {
 
 		mainDeck.insertCard(factory.createCard(CardFactory.EXPLODING_KITTEN_CARD), 0);
 		for (Card card : turnManager.getCurrentPlayer().getHand()) {
-			if (card instanceof DefuseCard) {
+			if (card.getID() == CardFactory.DEFUSE_CARD) {
 				turnManager.getCurrentPlayer().getHandManager()
 				        .selectCard((turnManager.getCurrentPlayer().getHand().indexOf(card)));
 				turnManager.getCurrentPlayer().getHandManager().clearSelectedCards();

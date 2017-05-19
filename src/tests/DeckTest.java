@@ -6,13 +6,38 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import code.Deck;
+import code.DiscardDeck;
+import code.MainDeck;
 import code.NormalCard;
+import code.PriorityManager;
+import code.TurnManager;
 import code.Card;
+import code.CardStack;
 
 public class DeckTest {
+	
+	@Before
+	public void initialize() {
+		MainDeck.tearDown();
+		PriorityManager.tearDown();
+		TurnManager.tearDown();
+		DiscardDeck.tearDown();
+		CardStack.tearDown();
+	}
+
+	@After
+	public void tearDown() {
+		MainDeck.tearDown();
+		PriorityManager.tearDown();
+		TurnManager.tearDown();
+		DiscardDeck.tearDown();
+		CardStack.tearDown();
+	}
 
 	@Test
 	public void testDeckConstructor() {
@@ -200,6 +225,24 @@ public class DeckTest {
 		assertTrue(check);
 		assertEquals(3, deck.getCards().size());
 		assertEquals(thirdCard, deck.getCards().get(2));
+	}
+	
+	@Test
+	public void testAddAll() {
+		List<Card> cards = new ArrayList<Card>();
+		Card firstCard = new NormalCard();
+		Card secondCard = new NormalCard();
+		Card thirdCard = new NormalCard();
+		cards.add(firstCard);
+		cards.add(secondCard);
+		cards.add(thirdCard);
+		Deck deck = new Deck();
+		
+		boolean check = deck.addAll(cards);
+		
+		assertTrue(check);
+		assertEquals(3, deck.getCards().size());
+		
 	}
 
 }

@@ -11,6 +11,7 @@ import org.junit.Test;
 import code.Card;
 import code.CardFactory;
 import code.CardStack;
+import code.DiscardDeck;
 import code.Game;
 import code.MainDeck;
 import code.PriorityManager;
@@ -28,6 +29,7 @@ public class ExplodingKittenTest {
 		PriorityManager.tearDown();
 		CardStack.tearDown();
 		MainDeck.tearDown();
+		DiscardDeck.tearDown();
 		factory = new CardFactory();
 		game = new Game();
 		stack = CardStack.getInstance();
@@ -40,6 +42,7 @@ public class ExplodingKittenTest {
 		PriorityManager.tearDown();
 		CardStack.tearDown();
 		MainDeck.tearDown();
+		DiscardDeck.tearDown();
 	}
 
 	@Test

@@ -13,6 +13,7 @@ import org.junit.Test;
 import code.Card;
 import code.CardFactory;
 import code.CardStack;
+import code.DiscardDeck;
 import code.ExplodingKittenCard;
 import code.Game;
 import code.MainDeck;
@@ -38,6 +39,7 @@ public class AttackCardTest {
 		PriorityManager.tearDown();
 		CardStack.tearDown();
 		MainDeck.tearDown();
+		DiscardDeck.tearDown();
 		factory = new CardFactory();
 		game = new Game();
 		stack = CardStack.getInstance();

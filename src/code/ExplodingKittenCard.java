@@ -1,10 +1,8 @@
 
 package code;
 
-import exceptions.NoSuchPlayerException;
-
 public class ExplodingKittenCard extends Card implements Cloneable {
-	
+
 	PlayerManager playerManager;
 	TurnManager turnManager;
 
@@ -21,15 +19,11 @@ public class ExplodingKittenCard extends Card implements Cloneable {
 
 	@Override
 	public void cardAction(Player p1, Player p2) {
-		try {
-			turnManager.makeCurrentPlayerLose();
-		} catch (NoSuchPlayerException e) {
-			e.printStackTrace();
-		}
+		turnManager.makeCurrentPlayerLose();
 	}
 
 	@Override
 	public Card clone() {
 		return new ExplodingKittenCard();
 	}
-}
+}

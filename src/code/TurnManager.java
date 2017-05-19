@@ -123,7 +123,7 @@ public class TurnManager {
 		turnOrder.add(1, currentPlayer);
 	}
 
-	public void makeCurrentPlayerLose() throws NoSuchPlayerException {
+	public void makeCurrentPlayerLose() {
 		playerManager.removePlayerFromGame(currentPlayer);
 		PriorityManager.getInstance().removePlayer(currentPlayer);
 		removeAllInstancesFromTurnOrder();
@@ -136,5 +136,9 @@ public class TurnManager {
 				turnOrder.remove(checkPlayer);
 			}
 		}
+	}
+
+	public List<Player> getTurnOrder() {
+		return turnOrder;
 	}
 }

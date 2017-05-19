@@ -4,13 +4,19 @@ package tests;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import code.Card;
 import code.CardFactory;
+import code.CardStack;
+import code.DiscardDeck;
 import code.FavorCard;
+import code.MainDeck;
 import code.Player;
+import code.PriorityManager;
+import code.TurnManager;
 
 public class FavorCardTest {
 	
@@ -18,7 +24,21 @@ public class FavorCardTest {
 	
 	@Before
 	public void initialize() {
+		MainDeck.tearDown();
+		PriorityManager.tearDown();
+		TurnManager.tearDown();
+		DiscardDeck.tearDown();
+		CardStack.tearDown();
 		factory = new CardFactory();
+	}
+
+	@After
+	public void tearDown() {
+		MainDeck.tearDown();
+		PriorityManager.tearDown();
+		TurnManager.tearDown();
+		DiscardDeck.tearDown();
+		CardStack.tearDown();
 	}
 
 	@Test

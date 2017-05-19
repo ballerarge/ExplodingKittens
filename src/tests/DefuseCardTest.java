@@ -1,7 +1,9 @@
 
 package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
 import org.junit.Before;
@@ -15,9 +17,12 @@ import code.DiscardDeck;
 import code.ExplodingKittenCard;
 import code.Game;
 import code.MainDeck;
+import code.Player;
 import code.PriorityManager;
 import code.TurnManager;
+import exceptions.InvalidBundleException;
 import exceptions.InvalidNumberofPlayersException;
+import exceptions.NoCardsToMoveException;
 
 public class DefuseCardTest {
 
@@ -132,5 +137,50 @@ public class DefuseCardTest {
 		Card clone = defuse.clone();
 		
 		assertFalse(clone == null);
+	}
+	
+	@Test
+	public void testDefuseBackToHand() throws NoCardsToMoveException, InvalidBundleException {
+		Player player1 = TurnManager.getInstance().getCurrentPlayer();
+		
+		int cardIndex = -1;
+		for (int i = 0; i < player1.getHand().size(); i++) {
+			if (player1.getHand().get(i) instanceof DefuseCard) {
+				cardIndex = i;
+			}
+		}
+		player1.getHandManager().selectCard(cardIndex);
+		player1.getHandManager().moveSelectedToStack();
+		int numCardsInHandBefore = player1.getHand().size();
+		
+		stack.resolveTopCard();
+		
+		assertEquals(numCardsInHandBefore + 1, player1.getHand().size());
+	}
+	
+	@Test
+	public void testDefuseBackToHandStackNotEmpty() throws NoCardsToMoveException, InvalidBundleException {
+		Player player1 = TurnManager.getInstance().getCurrentPlayer();
+		CardFactory factory = new CardFactory();
+		
+		int cardIndex = -1;
+		
+		for (int i = 0; i < player1.getHand().size(); i++) {
+			if (player1.getHand().get(i) instanceof DefuseCard) {
+				cardIndex = i;
+			}
+		}
+		
+		stack.addCard(factory.createCard(CardFactory.ATTACK_CARD));
+		
+		player1.getHandManager().selectCard(cardIndex);
+		player1.getHandManager().moveSelectedToStack();
+		
+		int numCardsInHandBefore = player1.getHand().size();
+		
+		stack.resolveTopCard();
+		
+		assertEquals(numCardsInHandBefore + 1, player1.getHand().size());
+		assertTrue(player1.getHand().get(player1.getHand().size() - 1) instanceof DefuseCard);
 	}
 }

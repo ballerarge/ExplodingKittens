@@ -67,7 +67,6 @@ public class TurnManager {
 		if (drawnCard.getID() == CardFactory.EXPLODING_KITTEN_CARD) {
 			CardStack.getInstance().addCard(drawnCard);
 			player.getHandManager().selectCard(player.getHand().indexOf(drawnCard));
-			player.getHandManager().clearSelectedCards();
 			for (Card card : player.getHand()) {
 				if (card.getID() == CardFactory.DEFUSE_CARD) {
 					player.getHandManager().selectCard(player.getHand().indexOf(card));

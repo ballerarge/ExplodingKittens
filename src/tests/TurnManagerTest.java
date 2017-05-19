@@ -267,5 +267,21 @@ public class TurnManagerTest {
 		
 		assertEquals(currentPlayer, turnManager.getCurrentPlayer());
 	}
+	
+	@Test
+	public void testCardsClearedWhenKittenDrawn() throws InvalidNumberofPlayersException, NoCardsToMoveException, InvalidBundleException {
+		CardFactory factory = new CardFactory();
+		Game game = new Game();
+		game.start(3);
+		Player player1 = game.getCurrentPlayer();
+		MainDeck.getInstance().insertCard(factory.createCard(CardFactory.EXPLODING_KITTEN_CARD), 0);
+		player1.getHand().add(factory.createCard(CardFactory.NORMAL_CARD));
+		
+		player1.getHandManager().selectCard(0);
+		
+		TurnManager.getInstance().endTurnAndDraw();
+		
+		assertEquals(0, player1.getHandManager().getSelectedCards().size());
+	}
 
 }

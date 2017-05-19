@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import exceptions.IncorrectCardIconIDException;
 import exceptions.InvalidBundleException;
+import exceptions.NoSuchPlayerException;
 
 public class ExceptionTest {
 
@@ -25,6 +26,11 @@ public class ExceptionTest {
 	@Test(expected = InvalidBundleException.class) 
 	public void testInvalidBundleExceptionMessage() throws InvalidBundleException {
 		throw new InvalidBundleException("Error");
+	}
+	
+	@Test(expected = NoSuchPlayerException.class) 
+	public void testNoSuchPlayerException() throws NoSuchPlayerException {
+		throw new NoSuchPlayerException();
 	}
 
 }

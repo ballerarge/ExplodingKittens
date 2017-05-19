@@ -63,7 +63,7 @@ public class CardsTest {
 		boolean res = false;
 
 		File path = new File(
-		        "C:/Users/wilejd/Documents/Junior Year/CSSE-376/exploding-kittens/exploding-kittens/src/gui/card_images/");
+		        System.getProperty("user.dir") + "/src/gui/card_images/");
 
 		File[] files = path.listFiles();
 		for (int i = 0; i < files.length; i++) {

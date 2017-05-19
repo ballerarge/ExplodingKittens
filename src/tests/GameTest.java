@@ -217,15 +217,16 @@ public class GameTest {
 
 	@Test
 	public void testDeckInitializedOnStart() throws InvalidNumberofPlayersException {
-		MainDeck deck = MainDeck.getInstance();
 
 		Game game = new Game();
 		game.start(3);
+		
+		MainDeck deck = MainDeck.getInstance();
 
-		assertTrue(verifyAllTypesInitialized(deck));
+		assertTrue(verifyAllTypesInitialized(deck, game.getPlayerHands()));
 	}
 
-	private boolean verifyAllTypesInitialized(MainDeck deck) {
+	private boolean verifyAllTypesInitialized(MainDeck deck, Map<Player, List<Card>> map) {
 		boolean attack = false, favor = false, normal = false, nope = false, scry = false, shuffle = false,
 		        skip = false;
 
@@ -244,6 +245,26 @@ public class GameTest {
 				shuffle = true;
 			} else if (card.getID() == CardFactory.SKIP_CARD) {
 				skip = true;
+			}
+		}
+		
+		for (List<Card> cards : map.values()) {
+			for (Card card : cards) {
+				if (card.getID() == CardFactory.ATTACK_CARD) {
+					attack = true;
+				} else if (card.getID() == CardFactory.FAVOR_CARD) {
+					favor = true;
+				} else if (card.getID() == CardFactory.NORMAL_CARD) {
+					normal = true;
+				} else if (card.getID() == CardFactory.NOPE_CARD) {
+					nope = true;
+				} else if (card.getID() == CardFactory.SCRY_CARD) {
+					scry = true;
+				} else if (card.getID() == CardFactory.SHUFFLE_CARD) {
+					shuffle = true;
+				} else if (card.getID() == CardFactory.SKIP_CARD) {
+					skip = true;
+				}
 			}
 		}
 

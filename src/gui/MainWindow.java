@@ -28,20 +28,20 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import javax.swing.WindowConstants;
 import javax.swing.text.DefaultCaret;
 
 import code.Card;
 import code.CardFactory;
-import code.DefuseCard;
 import code.DiscardDeck;
 import code.Entry;
 import code.Game;
 import code.Log;
 import code.MainDeck;
-import code.NopeCard;
 import code.NormalCard;
+import code.Player;
 
 public class MainWindow {
 	// Main Window Frame
@@ -271,7 +271,7 @@ public class MainWindow {
 
 		selectedCards = new ArrayList<CardComponent>();
 
-		displayOtherPlayers(game.getPlayers().size() - 1);
+		displayOtherPlayers(game.getPlayers().size() - 1, game.getPlayers(), game.getCurrentPlayer());
 		displayMainDeck(MainDeck.getInstance());
 		displayDiscardDeck(DiscardDeck.getInstance());
 		displayHand(game.getCurrentPlayer().getHand());
@@ -341,22 +341,47 @@ public class MainWindow {
 		deckDisplayPanel.repaint();
 	}
 
-	private void displayOtherPlayers(int numOtherPlayers) {
+	private void displayOtherPlayers(int numOtherPlayers, List<Player> players, Player currentPlayer) {
 		for (Component component : playerDisplayPanel.getComponents()) {
 			if (!component.equals(playerDisplayPanel)) {
 				playerDisplayPanel.remove(component);
 			}
 		}
 
+		List<Player> otherPlayers = new ArrayList<Player>();
+		for (Player player : players) {
+			if (!player.equals(currentPlayer)) {
+				otherPlayers.add(player);
+			}
+		}
+
 		GridBagConstraints gbc = new GridBagConstraints();
 
 		for (int i = 0; i < numOtherPlayers; i++) {
-			gbc.gridx = i;
-			gbc.gridy = 0;
 
 			ImageIcon image = new ImageIcon(getClass().getResource("player.png"));
 			JLabel imageLabel = new JLabel(image);
-			playerDisplayPanel.add(imageLabel, gbc);
+
+			JPanel indivPanel = new JPanel();
+			indivPanel.setLayout(new GridBagLayout());
+
+			gbc.gridx = 0;
+			gbc.gridy = 0;
+
+			indivPanel.add(imageLabel, gbc);
+
+			gbc.gridy++;
+
+			JTextArea nameLabel = new JTextArea();
+			nameLabel.setText(otherPlayers.get(i).getName());
+			nameLabel.setEditable(false);
+
+			indivPanel.add(nameLabel, gbc);
+
+			gbc.gridx = i;
+			gbc.gridy = 0;
+
+			playerDisplayPanel.add(indivPanel, gbc);
 			imageLabel.setVisible(true);
 		}
 

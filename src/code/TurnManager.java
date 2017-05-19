@@ -6,7 +6,6 @@ import java.util.List;
 
 import exceptions.InvalidBundleException;
 import exceptions.NoCardsToMoveException;
-import exceptions.NoSuchPlayerException;
 
 public class TurnManager {
 
@@ -61,30 +60,23 @@ public class TurnManager {
 		return currentPlayer;
 	}
 
-	public void endTurnAndDraw() {
+	public void endTurnAndDraw() throws NoCardsToMoveException, InvalidBundleException {
 		Player player = turnOrder.remove(0);
 		Card drawnCard = player.drawCard();
 		if (drawnCard.getID() == CardFactory.EXPLODING_KITTEN_CARD) {
 			CardStack.getInstance().addCard(drawnCard);
 			player.getHandManager().selectCard(player.getHand().indexOf(drawnCard));
-			player.getHandManager().clearSelectedCards();
 			for (Card card : player.getHand()) {
 				if (card.getID() == CardFactory.DEFUSE_CARD) {
 					player.getHandManager().selectCard(player.getHand().indexOf(card));
-					try {
-						player.getHandManager().moveSelectedToStack();
-					} catch (NoCardsToMoveException | InvalidBundleException e) {
-						e.printStackTrace();
-					}
+
+					player.getHandManager().moveSelectedToStack();
 					break;
 				}
 			}
 			PriorityManager.getInstance().resolveCard();
 		}
-		if (turnOrder.size() > 0 && !turnOrder.get(turnOrder.size() - 1).equals(player)) {// Don't
-			// circulate
-			// turns from
-			// attacks
+		if (turnOrder.size() > 0 && !turnOrder.get(turnOrder.size() - 1).equals(player)) {
 			turnOrder.add(player);
 		}
 		if (turnOrder.size() == 0) {
@@ -97,10 +89,7 @@ public class TurnManager {
 	public void endTurnWithoutDraw() {
 		Player player = turnOrder.remove(0);
 		boolean nextTurnIsSamePlayer = turnOrder.get(0).equals(player);
-		if (!nextTurnIsSamePlayer) {// Don't
-		                            // circulate
-		                            // turns from
-		                            // attacks
+		if (!nextTurnIsSamePlayer) {
 			turnOrder.add(player);
 		}
 

@@ -53,13 +53,13 @@ public class ExplodingKittenTest {
 		stack.resolveTopCard();
 		assertEquals(2, game.getPlayers().size());
 	}
-	
+
 	@Test
 	public void testKittenClone() {
 		Card kitten = factory.createCard(CardFactory.EXPLODING_KITTEN_CARD);
-		
+
 		Card clone = kitten.clone();
-		
+
 		assertFalse(clone == null);
 	}
 

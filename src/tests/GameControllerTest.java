@@ -11,7 +11,7 @@ public class GameControllerTest {
 	@Test
 	public void testGameControllerCreation() {
 		GameController gameController = new GameController();
-		
+
 		assertTrue(gameController != null);
 	}
 }

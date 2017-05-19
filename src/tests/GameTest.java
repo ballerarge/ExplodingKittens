@@ -14,25 +14,18 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import code.AttackCard;
 import code.Card;
 import code.CardFactory;
 import code.CardStack;
-import code.DefuseCard;
 import code.DiscardDeck;
-import code.ExplodingKittenCard;
-import code.FavorCard;
 import code.Game;
 import code.MainDeck;
-import code.NopeCard;
-import code.NormalCard;
 import code.Player;
 import code.PriorityManager;
-import code.ScryCard;
-import code.ShuffleCard;
-import code.SkipCard;
 import code.TurnManager;
+import exceptions.InvalidBundleException;
 import exceptions.InvalidNumberofPlayersException;
+import exceptions.NoCardsToMoveException;
 
 public class GameTest {
 
@@ -135,7 +128,8 @@ public class GameTest {
 	}
 
 	@Test
-	public void testNextTurnDrawing() throws InvalidNumberofPlayersException {
+	public void testNextTurnDrawing()
+	        throws InvalidNumberofPlayersException, NoCardsToMoveException, InvalidBundleException {
 		Game game = new Game();
 		game.start(3);
 		removeAllKittens();
@@ -162,7 +156,8 @@ public class GameTest {
 	}
 
 	@Test
-	public void testNextTurnDifferentPlayer() throws InvalidNumberofPlayersException {
+	public void testNextTurnDifferentPlayer()
+	        throws InvalidNumberofPlayersException, NoCardsToMoveException, InvalidBundleException {
 		Game game = new Game();
 		game.start(3);
 		Player player1 = game.getActivePlayer();
@@ -173,7 +168,8 @@ public class GameTest {
 	}
 
 	@Test
-	public void testPlayerRotation() throws InvalidNumberofPlayersException {
+	public void testPlayerRotation()
+	        throws InvalidNumberofPlayersException, NoCardsToMoveException, InvalidBundleException {
 		Game game = new Game();
 		game.start(3);
 		removeAllKittens();
@@ -217,15 +213,16 @@ public class GameTest {
 
 	@Test
 	public void testDeckInitializedOnStart() throws InvalidNumberofPlayersException {
-		MainDeck deck = MainDeck.getInstance();
 
 		Game game = new Game();
 		game.start(3);
 
-		assertTrue(verifyAllTypesInitialized(deck));
+		MainDeck deck = MainDeck.getInstance();
+
+		assertTrue(verifyAllTypesInitialized(deck, game.getPlayerHands()));
 	}
 
-	private boolean verifyAllTypesInitialized(MainDeck deck) {
+	private boolean verifyAllTypesInitialized(MainDeck deck, Map<Player, List<Card>> map) {
 		boolean attack = false, favor = false, normal = false, nope = false, scry = false, shuffle = false,
 		        skip = false;
 
@@ -244,6 +241,26 @@ public class GameTest {
 				shuffle = true;
 			} else if (card.getID() == CardFactory.SKIP_CARD) {
 				skip = true;
+			}
+		}
+
+		for (List<Card> cards : map.values()) {
+			for (Card card : cards) {
+				if (card.getID() == CardFactory.ATTACK_CARD) {
+					attack = true;
+				} else if (card.getID() == CardFactory.FAVOR_CARD) {
+					favor = true;
+				} else if (card.getID() == CardFactory.NORMAL_CARD) {
+					normal = true;
+				} else if (card.getID() == CardFactory.NOPE_CARD) {
+					nope = true;
+				} else if (card.getID() == CardFactory.SCRY_CARD) {
+					scry = true;
+				} else if (card.getID() == CardFactory.SHUFFLE_CARD) {
+					shuffle = true;
+				} else if (card.getID() == CardFactory.SKIP_CARD) {
+					skip = true;
+				}
 			}
 		}
 

@@ -1,4 +1,6 @@
-  Definition of Done:  
+  Definition of Done:
+    We used tools such as EclEmma to calculate basis path coverage, Pitclipse to cover all possible mutations, and FindBugs to make sure there weren't any dangerous bugs in our code.
+  
     Boundary Value Analysis Guidelines: [link] (www.exampler.com/testing-com/writings/catalog.pdf)  
     :cat:1. All boolean functions that check if a user can perform an action are tested with the rules for Booleans in Boundary Value Analysis.  
     :bomb:2. All counts (hand size, deck size, card inclusions) are tested with the rules for Counts in Boundary Value Analysis.  
@@ -12,7 +14,7 @@
 <br><br>Edge Cases for Rules:  
 	<br>:+1:EXPLODING KITTEN CARD DRAWN:  
 	    1. If no "Defuse" card in hand, game lost. Kitten card does not go back in deck.(https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/03198c9c5419a614348ef1287403100634d552da)  
-			-If one player remains after person loses, game is over and remaining player wins.:skull:  
+			-If one player remains after person loses, game is over and remaining player wins.(https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/8a30373aa31f925419d1358d87115cde104b4db2)  
 			-Test case: Player draws Exploding Kitten card, no defuse cards.
 		    Player removed from the game, Exploding Kitten Card removed from game, game continues with next person's turn. (https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/03198c9c5419a614348ef1287403100634d552da)  
 	    2. If "Defuse" card is played to counteract, "Defuse" card goes on discard pile and 
@@ -39,7 +41,7 @@
 	    2. If "Exploding Kitten" was not the last card drawn, Defuse card is not allowed to be
 		played onto the discard pile.(https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/61a05cc44c67f7fb53d2b3f83e110a2686659a48)  
 	<br><br>:+1:CARDS WITHOUT INSTRUCTIONS (CWI) PLAYED  
-	    1. CWI is not allowed to be played by itself onto discard pile.:skull:  
+	    1. CWI is not allowed to be played by itself onto discard pile.(https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/864598510c88941371f9087ffc56e0e8324072e6)   
 	    2. CWI can be played onto discard pile with card of same type. Invoke Pair Method.(https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/9c7fb9af5c8a68ee42407df3ac938dcfa414ee0c)  
 	    3. CWI can be played onto discard pile with two other cards of same type. Invoke Three Of A Kind Method.(https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/9fc6f1659c03f74e423333550c8861abd30451bd)  
 	    4. CWI can be played onto discard pile with group of five cards, provided none of the cards are of the same type or description.(https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/70d14f869a6c1140abe5ba12f07667613b15816e)  

@@ -10,7 +10,7 @@ public class MainDeck {
 	private static MainDeck mainDeck;
 
 	Deck deck;
-	CardFactory factory;
+	public CardFactory factory;
 
 	public static MainDeck getInstance() {
 		if (mainDeck == null) {
@@ -19,7 +19,6 @@ public class MainDeck {
 		return mainDeck;
 	}
 
-	// Use carefully.
 	public static void tearDown() {
 		mainDeck = null;
 	}
@@ -29,16 +28,16 @@ public class MainDeck {
 		factory = new CardFactory();
 	}
 
+	public int getCardCount() {
+		return mainDeck.getCards().size();
+	}
+
 	public List<Card> getCards() {
 		return mainDeck.deck.getCards();
 	}
 
 	public void setCards(List<Card> cards) {
 		mainDeck.deck = new Deck(cards);
-	}
-
-	public int getCardCount() {
-		return mainDeck.getCards().size();
 	}
 
 	public boolean insertCard(Card card, int position) {

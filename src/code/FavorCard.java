@@ -20,6 +20,7 @@ public class FavorCard extends Card implements Cloneable {
 		Hand hand2 = p2.getHandManager();
 		List<Card> cards = hand2.getSelectedCards();
 		hand1.addCards(cards);
+		hand1.clearSelectedCards();
 		hand2.clearSelectedCards();
 	}
 

@@ -44,11 +44,11 @@ public class PlayerManagerTest {
 		DiscardDeck.tearDown();
 		CardStack.tearDown();
 	}
-	
+
 	@Test
 	public void testPlayerManagerCreation() {
 		PlayerManager playerManager = new PlayerManager();
-		
+
 		assertTrue(playerManager != null);
 	}
 
@@ -105,11 +105,11 @@ public class PlayerManagerTest {
 	@Test
 	public void testPlayersHandsInitialized() throws InvalidNumberofPlayersException {
 		MainDeck.getInstance().initStartingDeck();
-		
+
 		PlayerManager playerManager = new PlayerManager();
 
 		playerManager.addPlayers(4);
-		
+
 		playerManager.makePlayerDrawInitialHand();
 
 		Map<Player, List<Card>> hands = playerManager.getHands();

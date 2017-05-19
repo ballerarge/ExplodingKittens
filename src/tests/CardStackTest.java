@@ -89,9 +89,11 @@ public class CardStackTest {
 		Player player1 = new Player();
 		Player player2 = new Player();
 		stack.addCard(factory.createCard(CardFactory.DEFUSE_CARD));
+		int previousStackSize = stack.getStack().size();
 		
 		stack.resolveTopCard(player1, player2);
 		
+		assertEquals(1, previousStackSize);
 		assertEquals(0, stack.getStack().size());
 	}
 }

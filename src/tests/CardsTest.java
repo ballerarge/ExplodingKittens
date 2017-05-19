@@ -66,14 +66,17 @@ public class CardsTest {
 		        System.getProperty("user.dir") + "/src/gui/card_images/");
 
 		File[] files = path.listFiles();
-		for (int i = 0; i < files.length; i++) {
-			if (files[i].isFile()) {
-				if (files[i].toPath().toString().contains(card.getImagePath())) {
-					res = true;
-					break;
+		if (files != null) {
+			for (int i = 0; i < files.length; i++) {
+				if (files[i].isFile()) {
+					if (files[i].toPath().toString().contains(card.getImagePath())) {
+						res = true;
+						break;
+					}
 				}
 			}
 		}
+		
 
 		assertTrue(res);
 	}

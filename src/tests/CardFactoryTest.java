@@ -291,16 +291,18 @@ public class CardFactoryTest {
 
 	@Test
 	public void testCreatedCardsHaveCorrectImagePath() {
-		CardFactory cardFactory = new CardFactory();
 
 		File path = new File(
 		        System.getProperty("user.dir") + "/src/gui/card_images/");
 
 		File[] files = path.listFiles();
 		List<String> fileList = new ArrayList<String>();
-		for (int i = 0; i < files.length; i++) {
-			fileList.add(files[i].getPath().toString());
+		if (files != null) {
+			for (int i = 0; i < files.length; i++) {
+				fileList.add(files[i].getPath().toString());
+			}
 		}
+		
 
 		MainDeck.tearDown();
 

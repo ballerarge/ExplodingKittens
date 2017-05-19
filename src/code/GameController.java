@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.Map;
 
 import exceptions.InvalidNumberofPlayersException;
-import exceptions.NoSuchPlayerException;
 import gui.CardComponent;
+import gui.EKCardSelectionWindow;
 import gui.EKPlayerSelectionWindow;
 import gui.LanguageMenu;
 import gui.MainWindow;
@@ -35,9 +35,6 @@ public class GameController {
 		test.add(player3);
 		test.add(player4);
 
-		// EKPlayerSelectionWindow playerSelect = new
-		// EKPlayerSelectionWindow(player1, test, "Player to act upon");
-		// playerSelect.display();
 		NumberofPlayersMenu menu = new NumberofPlayersMenu();
 
 		LanguageMenu languageMenu = new LanguageMenu();
@@ -117,6 +114,18 @@ public class GameController {
 
 					if (cardNeedsNoTargets(selectedCards.get(0))) {
 						CardStack.getInstance().resolveTopCard();
+						if (selectedCards.get(0).getID() == CardFactory.SCRY_CARD) {
+							EKCardSelectionWindow cardSelect = new EKCardSelectionWindow(window.locale, null);
+
+							List<Card> cardsScryed = new ArrayList<Card>();
+
+							for (int i = 0; i < (MainDeck.getInstance().getCardCount() < 3
+							        ? MainDeck.getInstance().getCardCount() : 3); i++) {
+								cardsScryed.add(MainDeck.getInstance().getCards().get(i));
+							}
+
+							cardSelect.displayScryWindow(cardsScryed);
+						}
 					} else if (cardNeedsPlayerTarget(selectedCards.get(0))) {
 						List<Player> otherPlayers = new ArrayList<Player>();
 						for (Player player : game.getPlayers()) {
@@ -136,7 +145,9 @@ public class GameController {
 						window.unhideHand();
 
 						if (selectedCards.get(0).getID() == CardFactory.FAVOR_CARD) {
-							System.out.println("");
+							EKCardSelectionWindow cardSelector = new EKCardSelectionWindow(window.locale, "");
+							Card selectedCard = cardSelector.displayFavorWindow(targetedPlayer);
+							targetedPlayer.getHandManager().selectCard(targetedPlayer.getHand().indexOf(selectedCard));
 						}
 
 						CardStack.getInstance().resolveTopCard(game.getActivePlayer(), targetedPlayer);
@@ -161,7 +172,8 @@ public class GameController {
 
 	protected static boolean cardNeedsNoTargets(Card card) {
 		return (card.getID() == CardFactory.EXPLODING_KITTEN_CARD || card.getID() == CardFactory.NOPE_CARD
-		        || card.getID() == CardFactory.SHUFFLE_CARD || card.getID() == CardFactory.SKIP_CARD);
+		        || card.getID() == CardFactory.SHUFFLE_CARD || card.getID() == CardFactory.SKIP_CARD
+		        || card.getID() == CardFactory.SCRY_CARD);
 	}
 
 	protected static void addCardListeners(Game game, MainWindow window, List<CardComponent> displayedCards) {

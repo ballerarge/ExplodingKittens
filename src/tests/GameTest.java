@@ -221,35 +221,35 @@ public class GameTest {
 
 		Game game = new Game();
 		game.start(3);
-		
+
 		assertTrue(verifyAllTypesInitialized(deck));
 	}
 
 	private boolean verifyAllTypesInitialized(MainDeck deck) {
-		boolean attack = false, favor = false, normal = false, nope = false,
-		        scry = false, shuffle = false, skip = false;
+		boolean attack = false, favor = false, normal = false, nope = false, scry = false, shuffle = false,
+		        skip = false;
 
 		for (Card card : deck.getCards()) {
-			if (card instanceof AttackCard) {
+			if (card.getID() == CardFactory.ATTACK_CARD) {
 				attack = true;
-			} else if (card instanceof FavorCard) {
+			} else if (card.getID() == CardFactory.FAVOR_CARD) {
 				favor = true;
-			} else if (card instanceof NormalCard) {
+			} else if (card.getID() == CardFactory.NORMAL_CARD) {
 				normal = true;
-			} else if (card instanceof NopeCard) {
+			} else if (card.getID() == CardFactory.NOPE_CARD) {
 				nope = true;
-			} else if (card instanceof ScryCard) {
+			} else if (card.getID() == CardFactory.SCRY_CARD) {
 				scry = true;
-			} else if (card instanceof ShuffleCard) {
+			} else if (card.getID() == CardFactory.SHUFFLE_CARD) {
 				shuffle = true;
-			} else if (card instanceof SkipCard) {
+			} else if (card.getID() == CardFactory.SKIP_CARD) {
 				skip = true;
 			}
 		}
 
 		return attack && favor && normal && nope && scry && shuffle && skip;
 	}
-	
+
 	@Test
 	public void testDeckStaysSameIfExistsAlready() throws InvalidNumberofPlayersException {
 		MainDeck deck = MainDeck.getInstance();
@@ -260,7 +260,7 @@ public class GameTest {
 			deck.insertCard(factory.createCard(CardFactory.ATTACK_CARD), 0);
 		}
 		game.start(3);
-		
+
 		assertEquals(23, deck.getCardCount());
 	}
 }

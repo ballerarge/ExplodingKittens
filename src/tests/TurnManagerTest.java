@@ -177,43 +177,42 @@ public class TurnManagerTest {
 		assertEquals(2, game.getPlayers().size());
 
 	}
-	
+
 	@Test
 	public void testPlayerDoesNotRotateOnAttack() throws InvalidNumberofPlayersException {
-		TurnManager turnManager = TurnManager.getInstance();
 		CardFactory factory = new CardFactory();
 		MainDeck mainDeck = MainDeck.getInstance();
 		Game game = new Game();
 		game.start(3);
+		TurnManager turnManager = TurnManager.getInstance();
 		Player player1 = game.getPlayers().get(0);
 		Player player2 = game.getPlayers().get(1);
 		Player player3 = game.getPlayers().get(2);
-		
-		
+
 		mainDeck.insertCard(factory.createCard(CardFactory.NORMAL_CARD), 0);
 		turnManager.addTurnForCurrentPlayer();
 		turnManager.endTurnAndDraw();
-		
-		//Player 1's turn again.
+
+		// Player 1's turn again.
 		turnManager.endTurnWithoutDraw();
-		//Player 2's turn.
+		// Player 2's turn.
 		turnManager.endTurnWithoutDraw();
-		//Player 3's turn.
+		// Player 3's turn.
 		turnManager.endTurnWithoutDraw();
-		//Player 1's turn.
+		// Player 1's turn.
 		turnManager.endTurnWithoutDraw();
-		
+
 		assertEquals(player1, turnManager.getCurrentPlayer());
 	}
-	
+
 	@Test
 	public void testGameOver() throws InvalidNumberofPlayersException {
-		TurnManager turnManager = TurnManager.getInstance();
 		CardFactory factory = new CardFactory();
-		PriorityManager priorityManager = PriorityManager.getInstance();
-		MainDeck mainDeck = MainDeck.getInstance();
 		Game game = new Game();
 		game.start(3);
+		PriorityManager priorityManager = PriorityManager.getInstance();
+		MainDeck mainDeck = MainDeck.getInstance();
+		TurnManager turnManager = TurnManager.getInstance();
 		Player player1 = game.getPlayers().get(0);
 		Player player2 = game.getPlayers().get(1);
 		Player player3 = game.getPlayers().get(2);
@@ -223,7 +222,7 @@ public class TurnManagerTest {
 		ByteArrayOutputStream os = new ByteArrayOutputStream(100);
 		PrintStream capture = new PrintStream(os);
 		System.setOut(capture);
-		
+
 		turnManager.makeCurrentPlayerLose();
 		turnManager.endTurnAndDraw();
 		turnManager.makeCurrentPlayerLose();
@@ -231,11 +230,11 @@ public class TurnManagerTest {
 		capture.flush();
 		String result = os.toString();
 		result = result.trim();
-		
+
 		assertEquals(1, priorityManager.getPlayerCount());
 		assertEquals(player3, turnManager.getCurrentPlayer());
 		assertEquals(0, turnManager.getTurnOrder().size());
 		assertEquals("Game over!", result);
 	}
-	
-}
+
+}

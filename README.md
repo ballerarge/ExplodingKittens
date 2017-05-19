@@ -1,28 +1,18 @@
-Definition of Done:
-
-    Boundary Value Analysis Guidelines: www.exampler.com/testing-com/writings/catalog.pdf
-
-    1. All boolean functions that check if a user can perform an action are tested with the rules for Booleans in Boundary Value Analysis.
-    
-    2. All counts (hand size, deck size, card inclusions) are tested with the rules for Counts in Boundary Value Analysis.
-    
-    3. All intervals (See The Future, Pairs, Three of a Kinds, Five of a Kinds, putting cards into the deck) are tested with the rules for Intervals in Boundary Value Analysis.
-    
-    4. All strings (Card identifiers) are tested with the rules for Strings in Boundary Value Analysis.
-    
-    5. All collections (lists of cards, lists of players, etc) are tested with the rules for Sizes of Collections in Boundary Value Analysis.
-    
-    6. Selection of elements in a collection (players hands) are tested with the rules for Using an Element of a Sequencable Collection in Boundary Value Analysis.
-    
-    7. Subsets of collections (Pairs, Three of a Kinds, Five of a Kinds) are tested with the rules for Using a Subset of a Collection in Boundary Value Analysis.
-    
-    8. All pairs of counts and intervals are tested with the rules for Pairs of Counts/Intervals in Boundary Value Analysis
-    
-    9. All pairs of collections (players' hands) are tested with the rules for Pairs of Collections in Boundary Value Analysis. 
+Definition of Done:  
+    Boundary Value Analysis Guidelines: (www.exampler.com/testing-com/writings/catalog.pdf)  
+    :cat:1. All boolean functions that check if a user can perform an action are tested with the rules for Booleans in Boundary Value Analysis.  
+    :cat:2. All counts (hand size, deck size, card inclusions) are tested with the rules for Counts in Boundary Value Analysis.  
+    :cat:3. All intervals (See The Future, Pairs, Three of a Kinds, Five of a Kinds, putting cards into the deck) are tested with the rules for Intervals in Boundary Value Analysis.  
+    :cat:4. All strings (Card identifiers) are tested with the rules for Strings in Boundary Value Analysis.  
+    :cat:5. All collections (lists of cards, lists of players, etc) are tested with the rules for Sizes of Collections in Boundary Value Analysis.  
+    :cat:6. Selection of elements in a collection (players hands) are tested with the rules for Using an Element of a Sequencable Collection in Boundary Value Analysis.  
+    :cat:7. Subsets of collections (Pairs, Three of a Kinds, Five of a Kinds) are tested with the rules for Using a Subset of a Collection in Boundary Value Analysis.  
+    :cat:8. All pairs of counts and intervals are tested with the rules for Pairs of Counts/Intervals in Boundary Value Analysis  
+    :cat:9. All pairs of collections (players' hands) are tested with the rules for Pairs of Collections in Boundary Value Analysis.  
     
 Edge Cases for Rules:  
 	:+1:EXPLODING KITTEN CARD DRAWN:  
-	    1. If no "Defuse" card in hand, game lost. Kitten card does not go back in deck.   
+	    1. If no "Defuse" card in hand, game lost. Kitten card does not go back in deck.(https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/03198c9c5419a614348ef1287403100634d552da)  
 			-If one player remains after person loses, game is over and remaining player wins.:skull:  
 			-Test case: Player draws Exploding Kitten card and has no defuse cards.
 		    Player is then removed from the game, Exploding Kitten Card removed from game, game continues with next person's turn. (https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/03198c9c5419a614348ef1287403100634d552da)  
@@ -50,7 +40,7 @@ Edge Cases for Rules:
 	    2. If "Exploding Kitten" was not the last card drawn, Defuse card is not allowed to be
 		played onto the discard pile.(https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/61a05cc44c67f7fb53d2b3f83e110a2686659a48)  
 	:+1:CARDS WITHOUT INSTRUCTIONS (CWI) PLAYED  
-	    1. CWI is not allowed to be played by itself onto discard pile.  
+	    1. CWI is not allowed to be played by itself onto discard pile.:skull:  
 	    2. CWI can be played onto discard pile with card of same type. Invoke Pair Method.(https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/9c7fb9af5c8a68ee42407df3ac938dcfa414ee0c)  
 	    3. CWI can be played onto discard pile with two other cards of same type. Invoke Three Of A Kind Method.(https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/9fc6f1659c03f74e423333550c8861abd30451bd)  
 	    4. CWI can be played onto discard pile with group of five cards, provided none of the cards are of the same type or description.(https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/70d14f869a6c1140abe5ba12f07667613b15816e)  
@@ -76,7 +66,7 @@ Edge Cases for Rules:
 	    	- Test case: Play attack card, end current turn 
 	    	(goes to next player), make sure that when
 			next turn is ended it is still that players turn.(https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/8b5fd630741918cb2a13e52aa92f95c1c9009d75)  
-	:+1:SKIP CARD PLAYED
+	:+1:SKIP CARD PLAYED  
 	    1. When skip card is played, current player's turn ends.
 			-Test Case: Have it be current player's turn, have them put skip
 			card in discard pile. The draw step should be skipped and then the
@@ -101,15 +91,15 @@ Edge Cases for Rules:
 			selected picks one of their cards to give up to player with favor
 			card. Player selected loses card in hand, and player who played
 			favor card gains the selected card. Favor card goes to discard pile.(https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/cebb1f2ad51997a821c822be81febbb0cfde1b6a)  
-	:+1:SHUFFLE CARD PLAYED
+	:+1:SHUFFLE CARD PLAYED  
 	    1. Shuffle the Deck randomly without viewing any of the cards.
 			-Test case: Run shuffle on the deck. Make sure that after shuffling,
 			deck has same number of cards as it did beforehand.((https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/3e4151249d16f2b69596b01ca95d43de5ce251f3)  
 			-(Can't actually simulate shuffling, because deck could be in same
 			order it was when it started. Just run a few test cases to ensure
 			that the order gets mixed up most of the time.)  
-	:+1:SEE THE FUTURE CARD PLAYED
-	    1. Peek at the top 3 cards from the draw pile, put them back in same order.
+	:+1:SEE THE FUTURE CARD PLAYED  
+	    1. Peek at the top 3 cards from the draw pile, put them back in same order.  
 			-Test case: There are more than 3 cards in the deck. Check the top three cards.
                         Verify they are the top cards in the deck.(https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/746d96dfd7d7eea5848e2ed981105c1d20fa534c)  
 			-Test case: There are exactly 3 cards in the deck. Check the top three cards.

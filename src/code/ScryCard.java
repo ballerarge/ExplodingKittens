@@ -20,12 +20,11 @@ public class ScryCard extends Card implements Cloneable {
 		cardsToReveal = new ArrayList<>();// top card of deck is at
 		                                  // index 0.
 		MainDeck mainDeck = MainDeck.getInstance();
-		List<Card> deckOrder = mainDeck.getCards();
-		if (deckOrder.size() <= numberOfCardsToScry) {
-			numberOfCardsToScry = deckOrder.size();
+		if (mainDeck.getCardCount() < numberOfCardsToScry) {
+			numberOfCardsToScry = mainDeck.getCardCount();
 		}
 		for (int i = 0; i < numberOfCardsToScry; i++) {
-			cardsToReveal.add(deckOrder.get(i));
+			cardsToReveal.add(mainDeck.getCards().get(i));
 		}
 		// do something with cardsToReveal later, once GUI has been integrated.
 	}

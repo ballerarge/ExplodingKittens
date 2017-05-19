@@ -61,8 +61,9 @@ public class ScryCardTest {
 		List<Card> prediction = scry.cardsToReveal;
 		assertEquals(3, prediction.size());
 		assertEquals(4, mainDeck.getCardCount());
-		for (int i = 0; i < prediction.size(); i++)
+		for (int i = 0; i < prediction.size(); i++) {
 			assertEquals(mainDeck.draw(), prediction.get(i));
+		}
 	}
 
 	@Test
@@ -80,8 +81,9 @@ public class ScryCardTest {
 		List<Card> prediction = scry.cardsToReveal;
 		assertEquals(3, prediction.size());
 		assertEquals(3, mainDeck.getCardCount());
-		for (int i = 0; i < prediction.size(); i++)
-			assertEquals(mainDeck.draw(), prediction.get(i));
+		for (int i = 0; i < prediction.size(); i++) {
+			assertEquals(mainDeck.getCards().get(i), prediction.get(i));
+		}
 	}
 
 	@Test
@@ -98,8 +100,9 @@ public class ScryCardTest {
 		List<Card> prediction = scry.cardsToReveal;
 		assertEquals(2, prediction.size());
 		assertEquals(2, mainDeck.getCardCount());
-		for (int i = 0; i < prediction.size(); i++)
+		for (int i = 0; i < prediction.size(); i++) {
 			assertEquals(mainDeck.draw(), prediction.get(i));
+		}
 	}
 
 	@Test

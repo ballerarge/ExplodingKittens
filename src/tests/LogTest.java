@@ -170,6 +170,15 @@ public class LogTest {
 		assertTrue(game.getPlayerManager() != null);
 	}
 	
+	@Test
+	public void testGetTurnManager() throws InvalidNumberofPlayersException {
+		Game game = new GameLogger(new Game());
+		game.start(3);
+		
+		assertTrue(game.getTurnManager() instanceof TurnManager);
+		assertTrue(game.getTurnManager() != null);
+	}
+	
 	
 
 	@After

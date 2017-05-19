@@ -160,6 +160,7 @@ public class PriorityManagerTest {
 
 		pm.resolveCard();
 
+		assertEquals(4, pm.getCycleCount());
 		assertEquals(0, CardStack.getInstance().getStack().size());
 		assertTrue(pm.getActivePlayer().getName().equals("Player 1"));
 	}

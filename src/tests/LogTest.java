@@ -152,6 +152,14 @@ public class LogTest {
 		assertTrue(player instanceof Player);
 	}
 	
+	@Test
+	public void testGetPlayers() throws InvalidNumberofPlayersException {
+		Game game = new GameLogger(new Game());
+		game.start(3);
+		
+		assertEquals(3, game.getPlayers().size());
+	}
+	
 	
 
 	@After

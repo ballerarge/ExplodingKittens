@@ -4,6 +4,9 @@ package tests;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -13,12 +16,15 @@ import org.junit.rules.ExpectedException;
 import code.Card;
 import code.CardFactory;
 import code.CardStack;
+import code.FiveCardBundle;
+import code.ThreeCardBundle;
+import code.TwoCardBundle;
 import exceptions.InvalidNopeTargetException;
 
 public class NopeCardTest {
 	@Rule
 	public final ExpectedException exception = ExpectedException.none();
-	
+
 	private CardStack cardStack;
 	private CardFactory factory;
 
@@ -39,10 +45,10 @@ public class NopeCardTest {
 		cardStack.addCard(factory.createCard(CardFactory.NOPE_CARD));
 
 		exception.expect(InvalidNopeTargetException.class);
-		
+
 		cardStack.resolveTopCard();
 	}
-	
+
 	@Test
 	public void testResolveNopeWithOneCardUnderneath() {
 		cardStack.addCard(factory.createCard(CardFactory.ATTACK_CARD));
@@ -65,33 +71,71 @@ public class NopeCardTest {
 
 		assertEquals(3, cardStack.getStack().size());
 	}
-	
+
+	@Test
+	public void testNopeWithVariousCardsUnderneath() {
+		cardStack.addCard(factory.createCard(CardFactory.NOPE_CARD));
+		cardStack.addCard(factory.createCard(CardFactory.NOPE_CARD));
+		cardStack.resolveTopCard();
+		cardStack.addCard(factory.createCard(CardFactory.ATTACK_CARD));
+		cardStack.addCard(factory.createCard(CardFactory.NOPE_CARD));
+		cardStack.resolveTopCard();
+		cardStack.addCard(factory.createCard(CardFactory.SCRY_CARD));
+		cardStack.addCard(factory.createCard(CardFactory.NOPE_CARD));
+		cardStack.resolveTopCard();
+		cardStack.addCard(factory.createCard(CardFactory.FAVOR_CARD));
+		cardStack.addCard(factory.createCard(CardFactory.NOPE_CARD));
+		cardStack.resolveTopCard();
+		cardStack.addCard(factory.createCard(CardFactory.SHUFFLE_CARD));
+		cardStack.addCard(factory.createCard(CardFactory.NOPE_CARD));
+		cardStack.resolveTopCard();
+
+		assertEquals(0, cardStack.getStack().size());
+	}
+
+	@Test
+	public void testNopeWithBundleUnderneath() {
+		TwoCardBundle bundle2 = new TwoCardBundle(new ArrayList());
+		ThreeCardBundle bundle3 = new ThreeCardBundle(new ArrayList());
+		FiveCardBundle bundle5 = new FiveCardBundle(new ArrayList());
+		cardStack.addCard(bundle2);
+		cardStack.addCard(factory.createCard(CardFactory.NOPE_CARD));
+		cardStack.resolveTopCard();
+		cardStack.addCard(bundle3);
+		cardStack.addCard(factory.createCard(CardFactory.NOPE_CARD));
+		cardStack.resolveTopCard();
+		cardStack.addCard(bundle5);
+		cardStack.addCard(factory.createCard(CardFactory.NOPE_CARD));
+		cardStack.resolveTopCard();
+		assertEquals(0, cardStack.getStack().size());
+	}
+
 	@Test
 	public void testResolveNopeWithExplodingKittenUnderneath() {
 		cardStack.addCard(factory.createCard(CardFactory.EXPLODING_KITTEN_CARD));
 		cardStack.addCard(factory.createCard(CardFactory.NOPE_CARD));
-		
+
 		exception.expect(InvalidNopeTargetException.class);
-		
+
 		cardStack.resolveTopCard();
 	}
-	
+
 	@Test
 	public void testResolveNopeWithDefuseUnderneath() {
 		cardStack.addCard(factory.createCard(CardFactory.DEFUSE_CARD));
 		cardStack.addCard(factory.createCard(CardFactory.NOPE_CARD));
-		
+
 		exception.expect(InvalidNopeTargetException.class);
-		
+
 		cardStack.resolveTopCard();
 	}
-	
+
 	@Test
 	public void testNopeClone() {
 		Card nope = factory.createCard(CardFactory.NOPE_CARD);
-		
+
 		Card clone = nope.clone();
-		
+
 		assertFalse(clone == null);
 	}
 }

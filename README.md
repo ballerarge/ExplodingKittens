@@ -55,27 +55,21 @@ PLAYING CARDS
 		2. If "Exploding Kitten" was not the last card drawn, Defuse card is not allowed to be
 		played onto the discard pile.(https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/61a05cc44c67f7fb53d2b3f83e110a2686659a48)  
 
-	CARDS WITHOUT INSTRUCTIONS (CWI) PLAYED
-		1. CWI is not allowed to be played by itself onto discard pile.
-
-		2. CWI can be played onto discard pile with card of same type. Invoke Pair Method.
-
-		3. CWI can be played onto discard pile with two other cards of same type. Invoke Three Of
-		A Kind Method.
-
-		4. CWI can be played onto discard pile with group of five cards, provided none of the cards
-		are of the same type or description.
-
-	NOPE CARD PLAYED
-		1. Nope is not allowed to be played in response to drawing an Exploding Kitten.
-			- Test case: Player draws Exploding Kitten, other players cannot play Nope card.
-		2. Nope is not allowed to be played in response to a Defuse card going in the discard pile.
-			- Test case: Player plays Defuse Card, other players cannot respond with Nope card.
-		3. Nope can be played when it is not a person's turn.
+	CARDS WITHOUT INSTRUCTIONS (CWI) PLAYED  
+		1. CWI is not allowed to be played by itself onto discard pile.  
+		2. CWI can be played onto discard pile with card of same type. Invoke Pair Method.(https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/9c7fb9af5c8a68ee42407df3ac938dcfa414ee0c)  
+		3. CWI can be played onto discard pile with two other cards of same type. Invoke Three Of A Kind Method.(https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/9fc6f1659c03f74e423333550c8861abd30451bd)  
+		4. CWI can be played onto discard pile with group of five cards, provided none of the cards are of the same type or description.(https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/70d14f869a6c1140abe5ba12f07667613b15816e)  
+	NOPE CARD PLAYED  
+		1. Nope is not allowed to be played in response to drawing an Exploding Kitten.  
+			- Test case: Player draws Exploding Kitten, other players cannot play Nope card.(https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/dc6b2db406a366727f299a945ea0b1c0800ce149)  
+		2. Nope is not allowed to be played in response to a Defuse card going in the discard pile.  
+			- Test case: Player plays Defuse Card, other players cannot respond with Nope card.(https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/a7e571fee5798f598aa7c90d85d7be9ed995057b)  
+		3. Nope can be played when it is not a person's turn.  
 			- Multiple Test Cases: Player plays Pair, Three of Kind, 5 set, Nope card,
-			Attack card, See the future card, Skip card, Favor Card, Shuffle card. 
+			Attack card, See the future card, Skip card, Favor Card, Shuffle card.
 			Nope card will negate their effects, cards will go to discard pile, play will
-			continue with user who played original card.
+			continue with user who played original card.  
 
 	ATTACK CARD PLAYED
 		1. When attack card is played, current player's turn ends.

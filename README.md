@@ -1,6 +1,5 @@
-  Definition of Done:
-    We used tools such as EclEmma to calculate basis path coverage, Pitclipse to cover all possible mutations, and FindBugs to make sure there weren't any dangerous bugs in our code.
-  
+Definition of Done:  
+We used tools such as EclEmma to calculate basis path coverage, Pitclipse to cover all possible mutations, and FindBugs to make sure there weren't any dangerous bugs in our code.  
     Boundary Value Analysis Guidelines: [link] (www.exampler.com/testing-com/writings/catalog.pdf)  
     :cat:1. All boolean functions that check if a user can perform an action are tested with the rules for Booleans in Boundary Value Analysis.  
     :bomb:2. All counts (hand size, deck size, card inclusions) are tested with the rules for Counts in Boundary Value Analysis.  
@@ -21,10 +20,6 @@
 		Kitten card is put by player back into deck at any location.   
 			-Test case: Player draws Exploding Kitten card and has defuse card
 			in hand. Defuse card is put onto discard pile. Exploding kitten card put into deck.  (https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/f9ef7d32467c2ef22f1bd878e9778ca5fcc369c1)  
-				-Test case: Exploding kitten card put on top of deck. Verify it is on top of deck.:skull:  
-				-Test case: Exploding kitten card put on bottom of deck. Verify it is on bottom of deck.  (https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/f9ef7d32467c2ef22f1bd878e9778ca5fcc369c1)  
-				-Test case: Exploding kitten card tried to put somewhere outside of deck. Verify that 
-				exception is thrown and proper message is given to user.:skull:  
     <br><br>:+1:PUTTING CARDS ONTO DISCARD PILE  
 	-Test case: One card is put onto discard pile. Discard pile grows by one. Player's
 	hand decreases by one. (https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/417b9f0aa3a50302b606af74a49abf161b67153a)  
@@ -108,12 +103,12 @@
 			-Test case: There are less than 3 cards in the deck. Look at the remaining cards.
                         Verify they are the top cards in the deck.(https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/746d96dfd7d7eea5848e2ed981105c1d20fa534c)  
 			
-<br>Priority System
+<br>:+1:Priority System  
     Similar to Magic: The Gathering, our system will have a priority system in place for
         handling the complex interactions of Nope cards. After a player plays a card, 
         priority will have to be passed to each other player before that card can be
         resolved, as to give each player a chance to Nope their card. Nopes will only be
-        able to target things already in the priority stack, and if there is every a case
+        able to target things already in the priority stack, and if there is ever a case
         for a Nope being on the stack and not having a valid target, it will be considered
-        played and will be discarded.:skull:  
+        played and will be discarded.(https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/2a8eca8d7e3f7782b2752c913e09c42d78fb6d04)  
 

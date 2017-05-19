@@ -98,10 +98,22 @@ public class LogTest {
 		Log.setLog(log);
 		Game game = new GameLogger(new Game());
 		game.start(3);
+		removeAllKittens();
 		log.addEntry(EasyMock.anyObject());
 		EasyMock.replay(log);
 		game.nextTurn();
 		EasyMock.verify(log);
+	}
+	
+	private void removeAllKittens() {
+		List<Card> tempCards = new ArrayList<Card>();
+		for (Card card : MainDeck.getInstance().getCards()) {
+			if (!(card.getID() == 5)) {
+				tempCards.add(card);
+			}
+		}
+
+		MainDeck.getInstance().setCards(tempCards);
 	}
 	
 	@Test

@@ -23,7 +23,7 @@ import exceptions.CardNotInDiscardDeckException;
 import exceptions.EmptyDiscardDeckException;
 
 public class DiscardDeckTest {
-	
+
 	@Before
 	public void initialize() {
 		MainDeck.tearDown();

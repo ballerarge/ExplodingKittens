@@ -4,8 +4,6 @@ package code;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sun.xml.internal.ws.encoding.policy.SelectOptimalEncodingFeatureConfigurator;
-
 public class ThreeCardBundle extends Card implements Cloneable {
 
 	public static final int BUNDLE_SIZE = 3;
@@ -40,7 +38,7 @@ public class ThreeCardBundle extends Card implements Cloneable {
 
 		// Otherwise, active won't get a card.
 	}
-	
+
 	public void setTargetCardClass(Class<?> cardClass) {
 		targetCardClass = cardClass;
 	}

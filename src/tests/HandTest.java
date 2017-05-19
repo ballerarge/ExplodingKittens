@@ -28,7 +28,7 @@ import exceptions.InvalidBundleException;
 import exceptions.NoCardsToMoveException;
 
 public class HandTest {
-	
+
 	@Before
 	public void initialize() {
 		TurnManager.tearDown();
@@ -37,7 +37,7 @@ public class HandTest {
 		PriorityManager.tearDown();
 		CardStack.tearDown();
 	}
-	
+
 	@After
 	public void tearDown() {
 		TurnManager.tearDown();
@@ -50,7 +50,7 @@ public class HandTest {
 	@Test
 	public void testHandManagerCreation() {
 		Hand handMng = new Hand();
-		
+
 		assertTrue(handMng != null);
 	}
 
@@ -89,7 +89,8 @@ public class HandTest {
 	}
 
 	@Test
-	public void testMoveSelectedToStackTwoNormal() throws IncorrectNumberOfCardsException, NoCardsToMoveException, InvalidBundleException {
+	public void testMoveSelectedToStackTwoNormal()
+	        throws IncorrectNumberOfCardsException, NoCardsToMoveException, InvalidBundleException {
 		Hand handMng = new Hand();
 		CardFactory factory = new CardFactory();
 		List<Card> cards = new ArrayList<Card>();
@@ -105,9 +106,10 @@ public class HandTest {
 		assertEquals(1, CardStack.getInstance().getStack().size());
 		assertTrue(CardStack.getInstance().getStack().get(0) instanceof TwoCardBundle);
 	}
-	
+
 	@Test
-	public void testMoveSelectedToStackThreeNormal() throws IncorrectNumberOfCardsException, NoCardsToMoveException, InvalidBundleException {
+	public void testMoveSelectedToStackThreeNormal()
+	        throws IncorrectNumberOfCardsException, NoCardsToMoveException, InvalidBundleException {
 		Hand handMng = new Hand();
 		CardFactory factory = new CardFactory();
 		List<Card> cards = new ArrayList<Card>();
@@ -125,9 +127,10 @@ public class HandTest {
 		assertEquals(1, CardStack.getInstance().getStack().size());
 		assertTrue(CardStack.getInstance().getStack().get(0) instanceof ThreeCardBundle);
 	}
-	
+
 	@Test
-	public void testMoveSelectedToStackFourNormal() throws IncorrectNumberOfCardsException, NoCardsToMoveException, InvalidBundleException {
+	public void testMoveSelectedToStackFourNormal()
+	        throws IncorrectNumberOfCardsException, NoCardsToMoveException, InvalidBundleException {
 		Hand handMng = new Hand();
 		CardFactory factory = new CardFactory();
 		List<Card> cards = new ArrayList<Card>();
@@ -146,9 +149,10 @@ public class HandTest {
 		assertEquals(0, handMng.getSelectedCards().size());
 		assertEquals(0, CardStack.getInstance().getStack().size());
 	}
-	
+
 	@Test
-	public void testMoveSelectedToStackFiveNormal() throws IncorrectNumberOfCardsException, NoCardsToMoveException, InvalidBundleException {
+	public void testMoveSelectedToStackFiveNormal()
+	        throws IncorrectNumberOfCardsException, NoCardsToMoveException, InvalidBundleException {
 		Hand handMng = new Hand();
 		CardFactory factory = new CardFactory();
 		List<Card> cards = new ArrayList<Card>();
@@ -170,8 +174,6 @@ public class HandTest {
 		assertEquals(1, CardStack.getInstance().getStack().size());
 		assertTrue(CardStack.getInstance().getStack().get(0) instanceof FiveCardBundle);
 	}
-	
-	
 
 	@Test(expected = NoCardsToMoveException.class)
 	public void testMoveSelectedToStackException() throws NoCardsToMoveException, InvalidBundleException {
@@ -179,7 +181,7 @@ public class HandTest {
 
 		handMng.moveSelectedToStack();
 	}
-	
+
 	@Test
 	public void testMoveSelectedToStackNonNormal() throws NoCardsToMoveException, InvalidBundleException {
 		Hand handMng = new Hand();
@@ -187,10 +189,10 @@ public class HandTest {
 		List<Card> cards = new ArrayList<Card>();
 		cards.add(factory.createCard(CardFactory.ATTACK_CARD));
 		handMng.addCards(cards);
-		
+
 		handMng.selectCard(0);
 		handMng.moveSelectedToStack();
-		
+
 		assertEquals(0, handMng.getSelectedCards().size());
 	}
 

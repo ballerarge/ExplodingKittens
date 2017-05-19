@@ -7,7 +7,7 @@ import java.util.Locale;
 public class Log {
 
 	private static Log log;
-	private ArrayList<Entry> entries;// 0 is the earliest event
+	private ArrayList<Entry> entries;
 	public Locale locale = Locale.ENGLISH;
 
 	public static Log getInstance() {
@@ -36,4 +36,4 @@ public class Log {
 		return entries;
 	}
 
-}
+}

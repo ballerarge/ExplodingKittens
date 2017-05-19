@@ -4,8 +4,6 @@ package code;
 import java.util.ArrayList;
 import java.util.List;
 
-import exceptions.NoSuchPlayerException;
-
 public class PriorityManager {
 	private static PriorityManager priorityManager;
 	private ArrayList<Player> playerList;
@@ -64,7 +62,7 @@ public class PriorityManager {
 
 	public void setCycleCount(int i) {
 		cycleCount = i;
-		
+
 	}
 
 	public int getCycleCount() {

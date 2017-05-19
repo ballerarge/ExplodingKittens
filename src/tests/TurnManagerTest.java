@@ -16,7 +16,6 @@ import org.junit.Test;
 import code.Card;
 import code.CardFactory;
 import code.CardStack;
-import code.DefuseCard;
 import code.DiscardDeck;
 import code.Game;
 import code.Log;
@@ -26,7 +25,6 @@ import code.PlayerManager;
 import code.PriorityManager;
 import code.TurnManager;
 import exceptions.InvalidBundleException;
-import code.TurnManagerLogger;
 import exceptions.InvalidNumberofPlayersException;
 import exceptions.NoCardsToMoveException;
 
@@ -53,6 +51,7 @@ public class TurnManagerTest {
 
 	@Test
 	public void testConstruction() {
+		@SuppressWarnings("unused")
 		TurnManager manager = TurnManager.getInstance();
 	}
 
@@ -121,7 +120,7 @@ public class TurnManagerTest {
 	}
 
 	@Test
-	public void testEndTurnAndDraw() {
+	public void testEndTurnAndDraw() throws NoCardsToMoveException, InvalidBundleException {
 		ArrayList<Player> players = new ArrayList<>();
 		Card mockCard = EasyMock.mock(Card.class);
 		Player mockPlayer1 = EasyMock.mock(Player.class);
@@ -156,7 +155,8 @@ public class TurnManagerTest {
 	}
 
 	@Test
-	public void testEndTurnAndDrawWithKittenOnTop() throws InvalidNumberofPlayersException {
+	public void testEndTurnAndDrawWithKittenOnTop()
+	        throws InvalidNumberofPlayersException, NoCardsToMoveException, InvalidBundleException {
 		CardFactory factory = new CardFactory();
 		MainDeck mainDeck = MainDeck.getInstance();
 		Game game = new Game();
@@ -179,15 +179,34 @@ public class TurnManagerTest {
 	}
 
 	@Test
-	public void testPlayerDoesNotRotateOnAttack() throws InvalidNumberofPlayersException {
+	public void testDrawKittenWithDefuse()
+	        throws InvalidNumberofPlayersException, NoCardsToMoveException, InvalidBundleException {
+		CardFactory factory = new CardFactory();
+		MainDeck mainDeck = MainDeck.getInstance();
+		Game game = new Game();
+		game.start(3);
+		TurnManager turnManager = TurnManager.getInstance();
+		mainDeck.insertCard(factory.createCard(CardFactory.EXPLODING_KITTEN_CARD), 0);
+		int discardDeckSize = DiscardDeck.getInstance().getCardCount();
+		Player player = turnManager.getCurrentPlayer();
+		int currentHandSize = player.getHand().size();
+
+		turnManager.endTurnAndDraw();
+
+		assertEquals(3, game.getPlayers().size());
+		assertEquals(discardDeckSize + 1, DiscardDeck.getInstance().getCardCount());
+		assertEquals(currentHandSize - 1, player.getHand().size());
+	}
+
+	@Test
+	public void testPlayerDoesNotRotateOnAttack()
+	        throws InvalidNumberofPlayersException, NoCardsToMoveException, InvalidBundleException {
 		CardFactory factory = new CardFactory();
 		MainDeck mainDeck = MainDeck.getInstance();
 		Game game = new Game();
 		game.start(3);
 		TurnManager turnManager = TurnManager.getInstance();
 		Player player1 = game.getPlayers().get(0);
-		Player player2 = game.getPlayers().get(1);
-		Player player3 = game.getPlayers().get(2);
 
 		mainDeck.insertCard(factory.createCard(CardFactory.NORMAL_CARD), 0);
 		turnManager.addTurnForCurrentPlayer();
@@ -206,15 +225,13 @@ public class TurnManagerTest {
 	}
 
 	@Test
-	public void testGameOver() throws InvalidNumberofPlayersException {
+	public void testGameOver() throws InvalidNumberofPlayersException, NoCardsToMoveException, InvalidBundleException {
 		CardFactory factory = new CardFactory();
 		Game game = new Game();
 		game.start(3);
 		PriorityManager priorityManager = PriorityManager.getInstance();
 		MainDeck mainDeck = MainDeck.getInstance();
 		TurnManager turnManager = TurnManager.getInstance();
-		Player player1 = game.getPlayers().get(0);
-		Player player2 = game.getPlayers().get(1);
 		Player player3 = game.getPlayers().get(2);
 		mainDeck.insertCard(factory.createCard(CardFactory.NORMAL_CARD), 0);
 		mainDeck.insertCard(factory.createCard(CardFactory.NORMAL_CARD), 0);
@@ -235,6 +252,35 @@ public class TurnManagerTest {
 		assertEquals(player3, turnManager.getCurrentPlayer());
 		assertEquals(0, turnManager.getTurnOrder().size());
 		assertEquals("Game over!", result);
+	}
+
+	@Test
+	public void testSetPlayerManagerPlayerAlreadyExists() throws InvalidNumberofPlayersException {
+		Game game = new Game();
+		game.start(3);
+		TurnManager turnManager = TurnManager.getInstance();
+		Player currentPlayer = turnManager.getCurrentPlayer();
+
+		turnManager.setPlayerManager(new PlayerManager());
+
+		assertEquals(currentPlayer, turnManager.getCurrentPlayer());
+	}
+
+	@Test
+	public void testCardsClearedWhenKittenDrawn()
+	        throws InvalidNumberofPlayersException, NoCardsToMoveException, InvalidBundleException {
+		CardFactory factory = new CardFactory();
+		Game game = new Game();
+		game.start(3);
+		Player player1 = game.getCurrentPlayer();
+		MainDeck.getInstance().insertCard(factory.createCard(CardFactory.EXPLODING_KITTEN_CARD), 0);
+		player1.getHand().add(factory.createCard(CardFactory.NORMAL_CARD));
+
+		player1.getHandManager().selectCard(0);
+
+		TurnManager.getInstance().endTurnAndDraw();
+
+		assertEquals(0, player1.getHandManager().getSelectedCards().size());
 	}
 
 }

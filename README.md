@@ -1,4 +1,6 @@
-  Definition of Done:  
+  Definition of Done:
+    We used tools such as EclEmma to calculate basis path coverage, Pitclipse to cover all possible mutations, and FindBugs to make sure there weren't any dangerous bugs in our code.
+  
     Boundary Value Analysis Guidelines: [link] (www.exampler.com/testing-com/writings/catalog.pdf)  
     :cat:1. All boolean functions that check if a user can perform an action are tested with the rules for Booleans in Boundary Value Analysis.  
     :bomb:2. All counts (hand size, deck size, card inclusions) are tested with the rules for Counts in Boundary Value Analysis.  
@@ -12,7 +14,7 @@
 <br><br>Edge Cases for Rules:  
 	<br>:+1:EXPLODING KITTEN CARD DRAWN:  
 	    1. If no "Defuse" card in hand, game lost. Kitten card does not go back in deck.(https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/03198c9c5419a614348ef1287403100634d552da)  
-			-If one player remains after person loses, game is over and remaining player wins.:skull:  
+			-If one player remains after person loses, game is over and remaining player wins.(https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/47bdda8625344ee3cc512d83d785661df7fd06ac)  
 			-Test case: Player draws Exploding Kitten card, no defuse cards.
 		    Player removed from the game, Exploding Kitten Card removed from game, game continues with next person's turn. (https://ada.csse.rose-hulman.edu/wilejd/exploding-kittens/commit/03198c9c5419a614348ef1287403100634d552da)  
 	    2. If "Defuse" card is played to counteract, "Defuse" card goes on discard pile and 

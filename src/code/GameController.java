@@ -350,4 +350,4 @@ public class GameController {
 	private static String getStringFromBundle(String key, Locale locale) {
 		return ResourceBundle.getBundle("resources/resources", locale).getString(key);
 	}
-}
+}

@@ -85,44 +85,6 @@ public class NopeCardTest {
 	}
 
 	@Test
-	public void testNopeWithVariousCardsUnderneath() {
-		cardStack.addCard(factory.createCard(CardFactory.NOPE_CARD));
-		cardStack.addCard(factory.createCard(CardFactory.NOPE_CARD));
-		cardStack.resolveTopCard();
-		cardStack.addCard(factory.createCard(CardFactory.ATTACK_CARD));
-		cardStack.addCard(factory.createCard(CardFactory.NOPE_CARD));
-		cardStack.resolveTopCard();
-		cardStack.addCard(factory.createCard(CardFactory.SCRY_CARD));
-		cardStack.addCard(factory.createCard(CardFactory.NOPE_CARD));
-		cardStack.resolveTopCard();
-		cardStack.addCard(factory.createCard(CardFactory.FAVOR_CARD));
-		cardStack.addCard(factory.createCard(CardFactory.NOPE_CARD));
-		cardStack.resolveTopCard();
-		cardStack.addCard(factory.createCard(CardFactory.SHUFFLE_CARD));
-		cardStack.addCard(factory.createCard(CardFactory.NOPE_CARD));
-		cardStack.resolveTopCard();
-
-		assertEquals(0, cardStack.getStack().size());
-	}
-
-	@Test
-	public void testNopeWithBundleUnderneath() {
-		TwoCardBundle bundle2 = new TwoCardBundle(new ArrayList());
-		ThreeCardBundle bundle3 = new ThreeCardBundle(new ArrayList());
-		FiveCardBundle bundle5 = new FiveCardBundle(new ArrayList());
-		cardStack.addCard(bundle2);
-		cardStack.addCard(factory.createCard(CardFactory.NOPE_CARD));
-		cardStack.resolveTopCard();
-		cardStack.addCard(bundle3);
-		cardStack.addCard(factory.createCard(CardFactory.NOPE_CARD));
-		cardStack.resolveTopCard();
-		cardStack.addCard(bundle5);
-		cardStack.addCard(factory.createCard(CardFactory.NOPE_CARD));
-		cardStack.resolveTopCard();
-		assertEquals(0, cardStack.getStack().size());
-	}
-
-	@Test
 	public void testResolveNopeWithExplodingKittenUnderneath() {
 		cardStack.addCard(factory.createCard(CardFactory.EXPLODING_KITTEN_CARD));
 		cardStack.addCard(factory.createCard(CardFactory.NOPE_CARD));
@@ -150,4 +112,4 @@ public class NopeCardTest {
 
 		assertFalse(clone == null);
 	}
-}
+}

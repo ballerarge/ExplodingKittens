@@ -203,6 +203,20 @@ public class LogTest {
 		assertEquals("code.NormalCard", card.toString());
 	}
 	
+	@Test
+	public void testNextTurnChangesPlayer() throws InvalidNumberofPlayersException, NoCardsToMoveException, InvalidBundleException {
+		Game game = new GameLogger(new Game());
+		game.start(3);
+		removeAllKittens();
+		
+		Player player1 = game.getPlayers().get(0);
+		Player player2 = game.getPlayers().get(1);
+		
+		assertEquals(player1, game.getCurrentPlayer());
+		game.nextTurn();
+		assertEquals(player2, game.getCurrentPlayer());
+	}
+	
 	
 
 	@After

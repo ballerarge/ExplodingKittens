@@ -41,7 +41,6 @@ public class PlayerManager {
 	public Map<Player, List<Card>> getHands() {
 		Map<Player, List<Card>> hands = new HashMap<Player, List<Card>>();
 		for (int a = 0; a < players.size(); a++)
-
 			hands.put(players.get(a), players.get(a).getHand());
 		return hands;
 	}
@@ -56,9 +55,8 @@ public class PlayerManager {
 	public List<Player> getPlayers() {
 		return this.players;
 	}
-	
+
 	public void removePlayerFromGame(Player player) {
 		players.remove(player);
 	}
-
 }

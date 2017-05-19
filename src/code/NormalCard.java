@@ -8,6 +8,11 @@ public class NormalCard extends Card implements Cloneable {
 		this.cardID = 0;
 	}
 
+	public NormalCard(String path) {
+		this();
+		this.imagePath = path;
+	}
+
 	@Override
 	public void cardAction(Player p1, Player p2) {
 

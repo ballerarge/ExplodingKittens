@@ -2,29 +2,46 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.ResourceBundle;
 
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextPane;
 import javax.swing.WindowConstants;
+import javax.swing.text.DefaultCaret;
 
 import code.Card;
+import code.CardFactory;
+import code.DefuseCard;
+import code.DiscardDeck;
+import code.Entry;
 import code.Game;
+import code.Log;
 import code.MainDeck;
-import code.Player;
+import code.NopeCard;
+import code.NormalCard;
 
 public class MainWindow {
 	// Main Window Frame
@@ -46,30 +63,37 @@ public class MainWindow {
 	private JButton nextTurnButton;
 	private JButton playSelectedCardButton;
 
-	private JPanel cardDisplayPanel;
+	private JScrollPane handScrollerPane;
+	private JPanel handDisplayPanel;
 	private JPanel playerDisplayPanel;
 	private JPanel deckDisplayPanel;
+	private JScrollPane logScrollerPane;
+	private JPanel logDisplayPanel;
 
-	private List<JComponent> cardComponentList;
+	private List<CardComponent> cardComponentList;
 
 	public Locale locale;
 	ResourceBundle resourceBundle;
 
+	private List<CardComponent> selectedCards;
+
 	public MainWindow() {
-		init();
+		playMeow(); // You're welcome, Mark :^)
 
-		playGameButton = new JButton(resourceBundle.getString("PLAY_GAME_BUTTON_LABEL"));
-		setLanguageButton = new JButton(resourceBundle.getString("SELECT_LANGUAGE_BUTTON_LABEL"));
+		init(Locale.ENGLISH);
 
-		nextTurnButton = new JButton(resourceBundle.getString("NEXT_TURN_BUTTON_LABEL"));
-		playSelectedCardButton = new JButton(resourceBundle.getString("PLAY_SELECTED_CARD_BUTTON_LABEL"));
+		playGameButton = new JButton(getStringFromBundle(("PLAY_GAME_BUTTON_LABEL")));
+		setLanguageButton = new JButton(getStringFromBundle(("SELECT_LANGUAGE_BUTTON_LABEL")));
+
+		nextTurnButton = new JButton(getStringFromBundle(("NEXT_TURN_BUTTON_LABEL")));
+		playSelectedCardButton = new JButton(getStringFromBundle(("PLAY_SELECTED_CARD_BUTTON_LABEL")));
 	}
 
-	private void init() {
-		locale = Locale.ENGLISH;
+	private void init(Locale newLocale) {
+		locale = newLocale;
 		resourceBundle = ResourceBundle.getBundle("resources/resources", locale);
 
-		mainFrame = new JFrame(resourceBundle.getString("EXPLODING_KITTENS"));
+		mainFrame = new JFrame(getStringFromBundle(("EXPLODING_KITTENS")));
 
 		mainPanel = new JPanel();
 
@@ -86,17 +110,39 @@ public class MainWindow {
 
 		deckDisplayPanel = new JPanel();
 		deckDisplayPanel.setLayout(new GridBagLayout());
+
+		cardComponentList = new ArrayList<CardComponent>();
+
+		handDisplayPanel = new JPanel();
+		handDisplayPanel.setLayout(new GridBagLayout());
+
+		handScrollerPane = new JScrollPane(handDisplayPanel);
+		handScrollerPane.setPreferredSize(new Dimension(170 * 5, 220));
+		handDisplayPanel.setAutoscrolls(true);
+
+		logDisplayPanel = new JPanel();
+		logDisplayPanel.setLayout(new GridBagLayout());
+
+		logScrollerPane = new JScrollPane(logDisplayPanel);
+		logScrollerPane.setPreferredSize(new Dimension(170 * 5, 220));
+		logDisplayPanel.setBackground(Color.WHITE);
+		logDisplayPanel.setAutoscrolls(true);
 	}
 
 	public void setLocale(Locale locale) {
 		this.locale = locale;
 
+		Log.getInstance().locale = locale;
+
 		resourceBundle = ResourceBundle.getBundle("resources/resources", locale);
 
-		mainFrame.setTitle(resourceBundle.getString("EXPLODING_KITTENS"));
+		mainFrame.setTitle(getStringFromBundle(("EXPLODING_KITTENS")));
 
-		playGameButton.setText(resourceBundle.getString("PLAY_GAME_BUTTON_LABEL"));
-		setLanguageButton.setText(resourceBundle.getString("SELECT_LANGUAGE_BUTTON_LABEL"));
+		playGameButton.setText(getStringFromBundle(("PLAY_GAME_BUTTON_LABEL")));
+		setLanguageButton.setText(getStringFromBundle(("SELECT_LANGUAGE_BUTTON_LABEL")));
+
+		nextTurnButton.setText(getStringFromBundle(("NEXT_TURN_BUTTON_LABEL")));
+		playSelectedCardButton.setText(getStringFromBundle(("PLAY_SELECTED_CARD_BUTTON_LABEL")));
 	}
 
 	private void open() {
@@ -133,12 +179,13 @@ public class MainWindow {
 
 	public void openGameWindow() {
 		mainFrame.setVisible(false);
-
-		init();
+		System.out.println(locale.toString());
+		init(locale);
+		System.out.println(locale.toString());
 
 		GridBagConstraints gbc = new GridBagConstraints();
 
-		mainFrame = new JFrame("Exploding Kittens");
+		mainFrame = new JFrame(getStringFromBundle("EXPLODING_KITTENS"));
 		mainFrame.setSize(1200, 1000);
 		mainFrame.setResizable(false);
 		mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -153,19 +200,33 @@ public class MainWindow {
 		gbc.gridy = 1;
 		mainPanel.add(deckDisplayPanel, gbc);
 
-		// Buttons
+		// Hand
 		gbc.gridx = 0;
+		gbc.gridy = 2;
+		mainPanel.add(handScrollerPane, gbc);
+
+		// Buttons
+		gbc.gridx = 1;
 		gbc.gridy = 2;
 		buttonPanel.add(playSelectedCardButton);
 		buttonPanel.add(nextTurnButton);
 
 		mainPanel.add(buttonPanel, gbc);
 
+		// Log
+		gbc.gridx = 0;
+		gbc.gridy = 3;
+		mainPanel.add(logScrollerPane, gbc);
+
 		mainFrame.add(mainPanel, BorderLayout.CENTER);
 		mainPanel.setAlignmentX(JComponent.CENTER_ALIGNMENT);
 		mainPanel.setMaximumSize(new Dimension(100, 100));
 
 		mainFrame.setVisible(true);
+	}
+
+	private String getStringFromBundle(String key) {
+		return ResourceBundle.getBundle("resources/resources", locale).getString(key);
 	}
 
 	public void setPlayGameListener(ActionListener listener) {
@@ -208,10 +269,44 @@ public class MainWindow {
 	public void displayGameState(Game game) {
 		System.out.printf("%s's turn.\n\t", game.getCurrentPlayer().getName());
 
+		selectedCards = new ArrayList<CardComponent>();
+
 		displayOtherPlayers(game.getPlayers().size() - 1);
 		displayMainDeck(MainDeck.getInstance());
+		displayDiscardDeck(DiscardDeck.getInstance());
+		displayHand(game.getCurrentPlayer().getHand());
+		displayLog(Log.getInstance().getEntries());
 
 		System.out.println(game.getCurrentPlayer().getHand().toString());
+	}
+
+	private void displayDiscardDeck(DiscardDeck discardDeck) {
+		GridBagConstraints gbc = new GridBagConstraints();
+
+		deckDisplayPanel.add(new JLabel("  "));
+		gbc.gridx = 1;
+		gbc.gridy = 0;
+
+		ImageIcon image;
+
+		if (discardDeck.getCardCount() > 0) {
+			image = new ImageIcon(
+			        getClass().getResource(discardDeck.getCards().get(discardDeck.getCardCount() - 1).getImagePath()));
+		} else {
+			image = new ImageIcon(getClass().getResource("EmptyDiscardDeck.png"));
+		}
+		Image firstImage = image.getImage();
+		Image newimg = firstImage.getScaledInstance(110, 150, java.awt.Image.SCALE_SMOOTH);
+		JLabel imageLabel = new JLabel(new ImageIcon(newimg));
+
+		gbc.gridx = 2;
+		gbc.gridy = 0;
+		deckDisplayPanel.add(imageLabel, gbc);
+		imageLabel.setVisible(true);
+
+		deckDisplayPanel.revalidate();
+		deckDisplayPanel.repaint();
+		deckDisplayPanel.setVisible(true);
 	}
 
 	private void displayMainDeck(MainDeck mainDeck) {
@@ -237,10 +332,13 @@ public class MainWindow {
 				break;
 		}
 		JLabel imageLabel = new JLabel(image);
-		deckDisplayPanel.add(imageLabel, gbc);
-		imageLabel.setVisible(true);
 
-		deckDisplayPanel.setVisible(true);
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+		imageLabel.setVisible(true);
+		deckDisplayPanel.add(imageLabel, gbc);
+		deckDisplayPanel.revalidate();
+		deckDisplayPanel.repaint();
 	}
 
 	private void displayOtherPlayers(int numOtherPlayers) {
@@ -262,6 +360,139 @@ public class MainWindow {
 			imageLabel.setVisible(true);
 		}
 
+		playerDisplayPanel.revalidate();
+		playerDisplayPanel.repaint();
 		playerDisplayPanel.setVisible(true);
+
+		if (numOtherPlayers == 0) {
+			endGame();
+		}
+	}
+
+	public void endGame() {
+		System.out.println("You win!");
+		exitGame();
+	}
+
+	private void displayHand(List<Card> list) {
+		for (Component component : handDisplayPanel.getComponents()) {
+			if (!component.equals(handDisplayPanel)) {
+				component.setVisible(false);
+				handDisplayPanel.remove(component);
+			}
+		}
+
+		for (Component component : cardComponentList) {
+			handDisplayPanel.remove(component);
+		}
+
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+
+		for (Card card : list) {
+			CardComponent comp = new CardComponent(card);
+
+			gbc.gridx++;
+
+			comp.setMaximumSize(new Dimension(40, 80));
+			handDisplayPanel.add(comp, gbc);
+			cardComponentList.add(comp);
+			comp.setVisible(true);
+		}
+		handDisplayPanel.setVisible(true);
+	}
+
+	private void displayLog(ArrayList<Entry> entries) {
+		for (Component component : logDisplayPanel.getComponents()) {
+			if (!component.equals(logDisplayPanel)) {
+				component.setVisible(false);
+				logDisplayPanel.remove(component);
+			}
+		}
+
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+
+		for (Entry entry : entries) {
+			JTextPane entryArea = new JTextPane();
+			DefaultCaret caret = (DefaultCaret) entryArea.getCaret();
+			caret.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
+			entryArea.setText(entry.getMessage());
+			logDisplayPanel.add(entryArea, gbc);
+			entryArea.setEditable(false);
+			entryArea.setVisible(true);
+			gbc.gridy++;
+		}
+		logDisplayPanel.setVisible(true);
+		// logDisplayPanel.
+	}
+
+	public void hideHand() {
+		handDisplayPanel.setVisible(false);
+	}
+
+	public void unhideHand() {
+		handDisplayPanel.setVisible(true);
+	}
+
+	public List<CardComponent> getDisplayedCards() {
+		return cardComponentList;
+	}
+
+	public void toggleSelected(CardComponent component) {
+		if (selectedCards.contains(component)) {
+			selectedCards.remove(component);
+			component.toggleSelected();
+		} else if (component.getCard().getID() == CardFactory.NORMAL_CARD && onlyNormalCardsSelected()) {
+			selectedCards.add(component);
+			component.toggleSelected();
+		} else if (selectedCards.size() == 0 && !(component.getCard().getID() == CardFactory.DEFUSE_CARD
+		        || component.getCard().getID() == CardFactory.NOPE_CARD)) {
+			selectedCards.add(component);
+			component.toggleSelected();
+		}
+	}
+
+	private boolean onlyNormalCardsSelected() {
+		if (selectedCards.size() == 0) {
+			return true;
+		}
+
+		for (CardComponent component : selectedCards) {
+			if (!(component.getCard() instanceof NormalCard)) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	public List<CardComponent> getSelectedCards() {
+		return selectedCards;
+	}
+
+	private void playMeow() {
+		try {
+			File file = new File(System.getProperty("user.dir") + "/src/gui/wav/" + "cat.wav");
+			AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+
+			AudioFormat format = audioStream.getFormat();
+			DataLine.Info info = new DataLine.Info(Clip.class, format);
+			Clip audioClip = (Clip) AudioSystem.getLine(info);
+
+			audioClip.open(audioStream);
+			audioClip.start();
+		} catch (Exception ex) {
+			System.err.println(ex.getMessage());;
+		}
+	}
+
+	public void clearSelected() {
+		for (CardComponent component : selectedCards) {
+			component.toggleSelected();
+		}
+		selectedCards = new ArrayList<CardComponent>();
 	}
 }

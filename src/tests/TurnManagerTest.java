@@ -16,17 +16,22 @@ import org.junit.Test;
 import code.Card;
 import code.CardFactory;
 import code.CardStack;
+import code.DefuseCard;
 import code.DiscardDeck;
 import code.Game;
+import code.Log;
 import code.MainDeck;
 import code.Player;
 import code.PlayerManager;
 import code.PriorityManager;
 import code.TurnManager;
+import exceptions.InvalidBundleException;
+import code.TurnManagerLogger;
 import exceptions.InvalidNumberofPlayersException;
+import exceptions.NoCardsToMoveException;
 
 public class TurnManagerTest {
-	
+
 	@Before
 	public void initialize() {
 		TurnManager.tearDown();
@@ -34,8 +39,9 @@ public class TurnManagerTest {
 		DiscardDeck.tearDown();
 		PriorityManager.tearDown();
 		CardStack.tearDown();
+		Log.tearDown();
 	}
-	
+
 	@After
 	public void tearDown() {
 		TurnManager.tearDown();
@@ -51,7 +57,8 @@ public class TurnManagerTest {
 	}
 
 	@Test
-	public void testHandlesPlayerManager() {PlayerManager pmgr = EasyMock.mock(PlayerManager.class);
+	public void testHandlesPlayerManager() {
+		PlayerManager pmgr = EasyMock.mock(PlayerManager.class);
 		List<Player> players = new ArrayList<>();
 		players.add(new Player());
 		EasyMock.expect(pmgr.getPlayers()).andReturn(players);
@@ -128,10 +135,13 @@ public class TurnManagerTest {
 
 		EasyMock.expect(mockPM.getPlayers()).andReturn(players);
 		EasyMock.expect(mockPlayer1.drawCard()).andReturn(mockCard);
+		EasyMock.expect(mockCard.getID()).andReturn(0);
 		EasyMock.expect(mockPlayer2.drawCard()).andReturn(mockCard);
+		EasyMock.expect(mockCard.getID()).andReturn(0);
 		EasyMock.expect(mockPlayer3.drawCard()).andReturn(mockCard);
+		EasyMock.expect(mockCard.getID()).andReturn(0);
 
-		EasyMock.replay(mockPM, mockPlayer1, mockPlayer2, mockPlayer3);
+		EasyMock.replay(mockPM, mockPlayer1, mockPlayer2, mockPlayer3, mockCard);
 
 		manager.setPlayerManager(mockPM);
 		assertEquals(mockPlayer1, manager.getCurrentPlayer());
@@ -142,18 +152,26 @@ public class TurnManagerTest {
 		manager.endTurnAndDraw();
 		assertEquals(mockPlayer1, manager.getCurrentPlayer());
 
-		EasyMock.verify(mockPM, mockPlayer1, mockPlayer2, mockPlayer3);
+		EasyMock.verify(mockPM, mockPlayer1, mockPlayer2, mockPlayer3, mockCard);
 	}
 
 	@Test
 	public void testEndTurnAndDrawWithKittenOnTop() throws InvalidNumberofPlayersException {
-		TurnManager turnManager = TurnManager.getInstance();
 		CardFactory factory = new CardFactory();
 		MainDeck mainDeck = MainDeck.getInstance();
 		Game game = new Game();
 		game.start(3);
+		TurnManager turnManager = TurnManager.getInstance();
 
 		mainDeck.insertCard(factory.createCard(CardFactory.EXPLODING_KITTEN_CARD), 0);
+		for (Card card : turnManager.getCurrentPlayer().getHand()) {
+			if (card.getID() == CardFactory.DEFUSE_CARD) {
+				turnManager.getCurrentPlayer().getHandManager()
+				        .selectCard((turnManager.getCurrentPlayer().getHand().indexOf(card)));
+				turnManager.getCurrentPlayer().getHandManager().clearSelectedCards();
+				break;
+			}
+		}
 		turnManager.endTurnAndDraw();
 
 		assertEquals(2, game.getPlayers().size());
@@ -220,4 +238,4 @@ public class TurnManagerTest {
 		assertEquals("Game over!", result);
 	}
 	
-}
+}

@@ -156,7 +156,7 @@ public class GameTest {
 		Game game = new Game();
 		game.start(3);
 
-		Player player1 = game.getCurrentPlayer();
+		Player player1 = game.getActivePlayer();
 
 		assertTrue(player1 instanceof Player);
 	}
@@ -165,11 +165,11 @@ public class GameTest {
 	public void testNextTurnDifferentPlayer() throws InvalidNumberofPlayersException {
 		Game game = new Game();
 		game.start(3);
-		Player player1 = game.getCurrentPlayer();
+		Player player1 = game.getActivePlayer();
 
 		game.nextTurn();
 
-		assertFalse(player1.equals(game.getCurrentPlayer()));
+		assertFalse(player1.equals(game.getActivePlayer()));
 	}
 
 	@Test
@@ -177,19 +177,19 @@ public class GameTest {
 		Game game = new Game();
 		game.start(3);
 		removeAllKittens();
-		Player player1 = game.getCurrentPlayer();
+		Player player1 = game.getActivePlayer();
 
 		game.nextTurn();
 		game.nextTurn();
 		game.nextTurn();
 
-		assertEquals(player1, game.getCurrentPlayer());
+		assertEquals(player1, game.getActivePlayer());
 	}
 
 	private void removeAllKittens() {
 		List<Card> tempCards = new ArrayList<Card>();
 		for (Card card : MainDeck.getInstance().getCards()) {
-			if (!(card instanceof ExplodingKittenCard)) {
+			if (!(card.getID() == 5)) {
 				tempCards.add(card);
 			}
 		}

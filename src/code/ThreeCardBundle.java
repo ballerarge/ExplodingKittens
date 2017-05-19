@@ -24,7 +24,10 @@ public class ThreeCardBundle extends Card implements Cloneable {
 		List<Card> targetHand = target.getHand();
 		int indexOfCardPicked = -1;
 		for (int i = 0; i < targetHand.size(); i++) {
-			if (targetHand.get(i).getClass().equals(targetCardClass)) {
+			Card card = targetHand.get(i);
+			if (card.getClass().equals(CardLogger.class))
+				card = ((CardLogger) card).getCard();
+			if (card.getClass().equals(targetCardClass)) {
 				indexOfCardPicked = i;
 				break;
 			}

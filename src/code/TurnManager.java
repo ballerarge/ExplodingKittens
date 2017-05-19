@@ -4,15 +4,17 @@ package code;
 import java.util.ArrayList;
 import java.util.List;
 
+import exceptions.InvalidBundleException;
+import exceptions.NoCardsToMoveException;
 import exceptions.NoSuchPlayerException;
 
 public class TurnManager {
 
 	private static TurnManager turnManager;
-	Player currentPlayer;
-	PlayerManager playerManager;
-	ArrayList<Player> turnOrder;// current player is at
-	                            // index 0
+	private Player currentPlayer;
+	private PlayerManager playerManager;
+	private ArrayList<Player> turnOrder;// current player is at
+	// index 0
 
 	public static TurnManager getInstance() {
 		if (turnManager == null) {
@@ -25,8 +27,16 @@ public class TurnManager {
 		turnManager = null;
 	}
 
-	private TurnManager() {
+	protected TurnManager() {
 		turnOrder = new ArrayList<>();
+	}
+
+	protected TurnManager(int n) {// this should only be called when
+	                              // Initializing TurnManagerLogger
+	}
+
+	public static void InstantiateLogger() {
+		turnManager = new TurnManagerLogger(new TurnManager());
 	}
 
 	public void setPlayerManager(PlayerManager pm) {
@@ -54,10 +64,24 @@ public class TurnManager {
 	public void endTurnAndDraw() {
 		Player player = turnOrder.remove(0);
 		Card drawnCard = player.drawCard();
-		if (drawnCard instanceof ExplodingKittenCard) {
+		if (drawnCard.getID() == CardFactory.EXPLODING_KITTEN_CARD) {
 			CardStack.getInstance().addCard(drawnCard);
+			player.getHandManager().selectCard(player.getHand().indexOf(drawnCard));
+			player.getHandManager().clearSelectedCards();
+			for (Card card : player.getHand()) {
+				if (card.getID() == CardFactory.DEFUSE_CARD) {
+					player.getHandManager().selectCard(player.getHand().indexOf(card));
+					try {
+						player.getHandManager().moveSelectedToStack();
+					} catch (NoCardsToMoveException | InvalidBundleException e) {
+						e.printStackTrace();
+					}
+					break;
+				}
+			}
 			PriorityManager.getInstance().resolveCard();
-		} else if (turnOrder.size() > 0 && !turnOrder.get(turnOrder.size() - 1).equals(player)) {// Don't
+		}
+		if (turnOrder.size() > 0 && !turnOrder.get(turnOrder.size() - 1).equals(player)) {// Don't
 			// circulate
 			// turns from
 			// attacks
@@ -106,12 +130,12 @@ public class TurnManager {
 	}
 
 	private void removeAllInstancesFromTurnOrder() {
-		for(int i = turnOrder.size() - 1; i >= 0; i--) {
+		for (int i = turnOrder.size() - 1; i >= 0; i--) {
 			Player checkPlayer = turnOrder.get(i);
 			if (checkPlayer.equals(currentPlayer)) {
 				turnOrder.remove(checkPlayer);
 			}
-		}	
+		}
 	}
 
 	public List<Player> getTurnOrder() {

@@ -50,18 +50,18 @@ public class SkipCardTest {
 
 		removeAllKittens();
 
-		player1 = game.getCurrentTurnPlayer();
+		player1 = game.getCurrentPlayer();
 		game.nextTurn();
-		player2 = game.getCurrentTurnPlayer();
+		player2 = game.getCurrentPlayer();
 		game.nextTurn();
-		player3 = game.getCurrentTurnPlayer();
+		player3 = game.getCurrentPlayer();
 		game.nextTurn();
 	}
 
 	private void removeAllKittens() {
 		List<Card> tempCards = new ArrayList<Card>();
 		for (Card card : deck.getCards()) {
-			if (!(card instanceof ExplodingKittenCard)) {
+			if (!(card.getID() == 5)) {
 				tempCards.add(card);
 			}
 		}
@@ -88,7 +88,7 @@ public class SkipCardTest {
 
 		assertEquals(player1, game.getPlayers().get(0));
 		assertEquals(handSize, player1.getHand().size());
-		assertEquals(player2, game.getCurrentTurnPlayer());
+		assertEquals(player2, game.getCurrentPlayer());
 	}
 
 	@Test
@@ -101,9 +101,9 @@ public class SkipCardTest {
 		stack.addCard(skipCard);
 		pManager.resolveCard();
 
-		assertEquals(player2, game.getCurrentTurnPlayer());
+		assertEquals(player2, game.getCurrentPlayer());
 		game.nextTurn();
-		assertEquals(player3, game.getCurrentTurnPlayer());
+		assertEquals(player3, game.getCurrentPlayer());
 	}
 	
 	@Test

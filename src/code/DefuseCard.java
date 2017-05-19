@@ -15,6 +15,11 @@ public class DefuseCard extends Card implements Cloneable {
 		this.cardID = 2;
 	}
 
+	public DefuseCard(String path) {
+		this();
+		this.imagePath = path;
+	}
+
 	@Override
 	public void cardAction(Player p1, Player p2) {
 		stack = CardStack.getInstance();
@@ -28,7 +33,7 @@ public class DefuseCard extends Card implements Cloneable {
 			return;
 		}
 
-		if (stack.getStack().elementAt(0) instanceof ExplodingKittenCard) {
+		if (stack.getStack().elementAt(0).getID() == 5) {
 			stack.setStack(new Stack<Card>());
 
 			// Here is where the user will need to decide where to put the

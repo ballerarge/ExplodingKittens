@@ -164,20 +164,11 @@ public class PriorityManagerTest {
 		assertTrue(pm.getActivePlayer().getName().equals("Player 1"));
 	}
 	
-//	@Test
-//	public void testRotationOnResolveCard() {
-//		CardFactory cf = new CardFactory();
-//		PriorityManager pm = EasyMock.createNiceMock(PriorityManager.class);
-//		
-//		CardStack.getInstance().addCard(cf.createCard(CardFactory.NORMAL_CARD));
-//		
-//		pm.nextPlayer();
-//		pm.nextPlayer();
-//		EasyMock.expectLastCall().anyTimes();
-//		EasyMock.replay(pm);
-//
-//		pm.resolveCard();
-//		EasyMock.verify(pm);
-//	}
+	@Test
+	public void testGetAndSetCycleCount() {
+		PriorityManager priorityManager = PriorityManager.getInstance();
+		priorityManager.setCycleCount(3);
+		assertEquals(3, priorityManager.getCycleCount());
+	}
 
 }

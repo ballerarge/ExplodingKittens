@@ -46,7 +46,7 @@ public class CardFactory {
 				return new NormalCard("card_images\\NormalCard" + normalCardCount + ".png");
 			case NOPE_CARD:
 				nopeCardCount = (nopeCardCount) % nopeCardMax + 1;
-				card =  new NopeCard("card_images\\NopeCard" + nopeCardCount + ".png");
+				card = new NopeCard("card_images\\NopeCard" + nopeCardCount + ".png");
 				break;
 			case DEFUSE_CARD:
 				defuseCardCount = (defuseCardCount) % defuseCardMax + 1;

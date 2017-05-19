@@ -28,13 +28,11 @@ public class DiscardDeck {
 	}
 
 	public List<Card> getCards() {
-		// TODO Auto-generated method stub
 		return discardDeck.deck.getCards();
 	}
 
 	public int getCardCount() {
-		// TODO Auto-generated method stub
-		return discardDeck.deck.getCards().size();
+		return discardDeck.getCards().size();
 	}
 
 	public Card removeCard(Class<?> cardType) {

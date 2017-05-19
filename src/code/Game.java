@@ -22,7 +22,7 @@ public class Game {
 		turnManager = TurnManager.getInstance();
 	}
 
-	protected Game(int n) { // This should only be called when initiallizing
+	protected Game(int n) { // This should only be called when initializing
 	                        // GameLogger
 	}
 
@@ -52,8 +52,7 @@ public class Game {
 	}
 
 	public void nextTurn() throws NoCardsToMoveException, InvalidBundleException {
-		turnManager.endTurnAndDraw();// Change later to allow for ending a turn
-		                             // without drawing.
+		turnManager.endTurnAndDraw();
 		priorityManager.nextPlayer();
 	}
 

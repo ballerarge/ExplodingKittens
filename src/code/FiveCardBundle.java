@@ -17,7 +17,6 @@ public class FiveCardBundle extends Card implements Cloneable {
 
 	@Override
 	public void cardAction(Player active, Player target) {
-		// Somehow, let player look at the discard deck and pick a card from it.
 
 		DiscardDeck discardDeck = DiscardDeck.getInstance();
 

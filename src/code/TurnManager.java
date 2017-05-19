@@ -6,7 +6,6 @@ import java.util.List;
 
 import exceptions.InvalidBundleException;
 import exceptions.NoCardsToMoveException;
-import exceptions.NoSuchPlayerException;
 
 public class TurnManager {
 
@@ -77,10 +76,7 @@ public class TurnManager {
 			}
 			PriorityManager.getInstance().resolveCard();
 		}
-		if (turnOrder.size() > 0 && !turnOrder.get(turnOrder.size() - 1).equals(player)) {// Don't
-			// circulate
-			// turns from
-			// attacks
+		if (turnOrder.size() > 0 && !turnOrder.get(turnOrder.size() - 1).equals(player)) {
 			turnOrder.add(player);
 		}
 		if (turnOrder.size() == 0) {
@@ -93,10 +89,7 @@ public class TurnManager {
 	public void endTurnWithoutDraw() {
 		Player player = turnOrder.remove(0);
 		boolean nextTurnIsSamePlayer = turnOrder.get(0).equals(player);
-		if (!nextTurnIsSamePlayer) {// Don't
-		                            // circulate
-		                            // turns from
-		                            // attacks
+		if (!nextTurnIsSamePlayer) {
 			turnOrder.add(player);
 		}
 

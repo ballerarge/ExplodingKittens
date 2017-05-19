@@ -22,7 +22,7 @@ import exceptions.InvalidNopeTargetException;
 public class NopeCardTest {
 	@Rule
 	public final ExpectedException exception = ExpectedException.none();
-	
+
 	private CardStack cardStack;
 	private CardFactory factory;
 
@@ -51,10 +51,10 @@ public class NopeCardTest {
 		cardStack.addCard(factory.createCard(CardFactory.NOPE_CARD));
 
 		exception.expect(InvalidNopeTargetException.class);
-		
+
 		cardStack.resolveTopCard();
 	}
-	
+
 	@Test
 	public void testResolveNopeWithOneCardUnderneath() {
 		cardStack.addCard(factory.createCard(CardFactory.ATTACK_CARD));
@@ -77,33 +77,33 @@ public class NopeCardTest {
 
 		assertEquals(3, cardStack.getStack().size());
 	}
-	
+
 	@Test
 	public void testResolveNopeWithExplodingKittenUnderneath() {
 		cardStack.addCard(factory.createCard(CardFactory.EXPLODING_KITTEN_CARD));
 		cardStack.addCard(factory.createCard(CardFactory.NOPE_CARD));
-		
+
 		exception.expect(InvalidNopeTargetException.class);
-		
+
 		cardStack.resolveTopCard();
 	}
-	
+
 	@Test
 	public void testResolveNopeWithDefuseUnderneath() {
 		cardStack.addCard(factory.createCard(CardFactory.DEFUSE_CARD));
 		cardStack.addCard(factory.createCard(CardFactory.NOPE_CARD));
-		
+
 		exception.expect(InvalidNopeTargetException.class);
-		
+
 		cardStack.resolveTopCard();
 	}
-	
+
 	@Test
 	public void testNopeClone() {
 		Card nope = factory.createCard(CardFactory.NOPE_CARD);
-		
+
 		Card clone = nope.clone();
-		
+
 		assertFalse(clone == null);
 	}
 }

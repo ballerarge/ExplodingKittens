@@ -1,7 +1,8 @@
 
 package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
@@ -19,7 +20,7 @@ import code.PriorityManager;
 import code.TurnManager;
 
 public class PlayerTest {
-	
+
 	@Before
 	public void initialize() {
 		MainDeck.tearDown();
@@ -41,14 +42,14 @@ public class PlayerTest {
 	@Test
 	public void testPlayerCreation() {
 		Player player = new Player();
-		
+
 		assertTrue(player != null);
 	}
 
 	@Test
 	public void testPlayerCreationWithName() {
 		Player player = new Player("Khaleeeeed");
-		
+
 		assertTrue(player != null);
 	}
 

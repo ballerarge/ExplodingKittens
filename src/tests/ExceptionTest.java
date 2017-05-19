@@ -1,3 +1,4 @@
+
 package tests;
 
 import org.junit.Test;
@@ -12,23 +13,23 @@ public class ExceptionTest {
 	public void testIncorrectCardIconIDException() throws IncorrectCardIconIDException {
 		throw new IncorrectCardIconIDException();
 	}
-	
+
 	@Test(expected = IncorrectCardIconIDException.class)
 	public void testIncorrectCardIconIDExceptionMessage() throws IncorrectCardIconIDException {
 		throw new IncorrectCardIconIDException("Error");
 	}
-	
-	@Test(expected = InvalidBundleException.class) 
+
+	@Test(expected = InvalidBundleException.class)
 	public void testInvalidBundleException() throws InvalidBundleException {
 		throw new InvalidBundleException();
 	}
-	
-	@Test(expected = InvalidBundleException.class) 
+
+	@Test(expected = InvalidBundleException.class)
 	public void testInvalidBundleExceptionMessage() throws InvalidBundleException {
 		throw new InvalidBundleException("Error");
 	}
-	
-	@Test(expected = NoSuchPlayerException.class) 
+
+	@Test(expected = NoSuchPlayerException.class)
 	public void testNoSuchPlayerException() throws NoSuchPlayerException {
 		throw new NoSuchPlayerException();
 	}

@@ -15,7 +15,6 @@ import code.Card;
 import code.CardFactory;
 import code.CardStack;
 import code.DiscardDeck;
-import code.ExplodingKittenCard;
 import code.Game;
 import code.MainDeck;
 import code.Player;
@@ -107,13 +106,13 @@ public class SkipCardTest {
 		game.nextTurn();
 		assertEquals(player3, game.getCurrentPlayer());
 	}
-	
+
 	@Test
 	public void testSkipClone() {
 		Card skip = factory.createCard(CardFactory.SKIP_CARD);
-		
+
 		Card clone = skip.clone();
-		
+
 		assertFalse(clone == null);
 	}
 

@@ -165,44 +165,44 @@ public class PriorityManagerTest {
 		assertEquals(0, CardStack.getInstance().getStack().size());
 		assertTrue(pm.getActivePlayer().getName().equals("Player 1"));
 	}
-	
+
 	@Test
 	public void testGetAndSetCycleCount() {
 		PriorityManager priorityManager = PriorityManager.getInstance();
 		priorityManager.setCycleCount(3);
 		assertEquals(3, priorityManager.getCycleCount());
 	}
-	
+
 	@Test
 	public void testCycleCountOne() {
 		PriorityManager priorityManager = PriorityManager.getInstance();
 		priorityManager.setCycleCount(1);
 		assertEquals(1, priorityManager.getCycleCount());
 	}
-	
+
 	@Test
 	public void testCycleCountZero() {
 		PriorityManager priorityManager = PriorityManager.getInstance();
 		priorityManager.setCycleCount(0);
 		assertEquals(0, priorityManager.getCycleCount());
 	}
-	
+
 	@Test
 	public void testCycleCount800() {
 		PriorityManager priorityManager = PriorityManager.getInstance();
 		priorityManager.setCycleCount(800);
 		assertEquals(800, priorityManager.getCycleCount());
 	}
-	
+
 	@Test
 	public void testAddPlayerGameAlreadyStarted() throws InvalidNumberofPlayersException {
 		Game game = new Game();
 		game.start(3);
 		List<Player> players = new ArrayList<Player>();
 		players.add(new Player());
-		
+
 		PriorityManager.getInstance().addPlayers(players);
-		
+
 		assertEquals(4, PriorityManager.getInstance().getPlayerCount());
 	}
 

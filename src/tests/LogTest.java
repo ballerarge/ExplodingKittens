@@ -92,7 +92,8 @@ public class LogTest {
 	}
 
 	@Test
-	public void testStartofTurn() throws InvalidNumberofPlayersException, NoCardsToMoveException, InvalidBundleException {
+	public void testStartofTurn()
+	        throws InvalidNumberofPlayersException, NoCardsToMoveException, InvalidBundleException {
 		Log log = EasyMock.mock(Log.class);
 		log.locale = Locale.ENGLISH;
 		Log.setLog(log);
@@ -104,7 +105,7 @@ public class LogTest {
 		game.nextTurn();
 		EasyMock.verify(log);
 	}
-	
+
 	private void removeAllKittens() {
 		List<Card> tempCards = new ArrayList<Card>();
 		for (Card card : MainDeck.getInstance().getCards()) {
@@ -115,109 +116,108 @@ public class LogTest {
 
 		MainDeck.getInstance().setCards(tempCards);
 	}
-	
+
 	@Test
 	public void testGetPlayerHands() throws InvalidNumberofPlayersException {
 		Game game = new GameLogger(new Game());
 		game.start(3);
-		
+
 		assertEquals(3, game.getPlayerHands().keySet().size());
 		assertEquals(3, game.getPlayerHands().values().size());
 	}
-	
+
 	@Test
 	public void testGetPlayerStatus() throws InvalidNumberofPlayersException {
 		Game game = new GameLogger(new Game());
 		game.start(3);
-		
+
 		assertEquals(3, game.getPlayerStatus().keySet().size());
 		assertEquals(3, game.getPlayerStatus().values().size());
 	}
-	
+
 	@Test
 	public void testIsMainDeckEmptyFalse() throws InvalidNumberofPlayersException {
 		Game game = new GameLogger(new Game());
 		game.start(3);
-		
+
 		assertFalse(game.isMainDeckEmpty());
 	}
-	
+
 	@Test
 	public void testIsMainDeckEmptyTrue() throws InvalidNumberofPlayersException {
 		Game game = new GameLogger(new Game());
-		
+
 		assertTrue(game.isMainDeckEmpty());
 	}
-	
+
 	@Test
 	public void testGetCurrentPlayer() throws InvalidNumberofPlayersException {
 		Game game = new GameLogger(new Game());
 		game.start(3);
-		
+
 		Player player = game.getCurrentPlayer();
-		
+
 		assertTrue(player instanceof Player);
 	}
-	
+
 	@Test
 	public void testGetActivePlayer() throws InvalidNumberofPlayersException {
 		Game game = new GameLogger(new Game());
 		game.start(3);
-		
+
 		Player player = game.getActivePlayer();
-		
+
 		assertTrue(player instanceof Player);
 	}
-	
+
 	@Test
 	public void testGetPlayers() throws InvalidNumberofPlayersException {
 		Game game = new GameLogger(new Game());
 		game.start(3);
-		
+
 		assertEquals(3, game.getPlayers().size());
 	}
-	
+
 	@Test
 	public void testGetPlayerManager() throws InvalidNumberofPlayersException {
 		Game game = new GameLogger(new Game());
 		game.start(3);
-		
+
 		assertTrue(game.getPlayerManager() instanceof PlayerManager);
 		assertTrue(game.getPlayerManager() != null);
 	}
-	
+
 	@Test
 	public void testGetTurnManager() throws InvalidNumberofPlayersException {
 		Game game = new GameLogger(new Game());
 		game.start(3);
-		
+
 		assertTrue(game.getTurnManager() instanceof TurnManager);
 		assertTrue(game.getTurnManager() != null);
 	}
-	
+
 	@Test
 	public void testToString() {
 		CardFactory factory = new CardFactory();
 		Card card = new CardLogger(factory.createCard(CardFactory.NORMAL_CARD));
-		
+
 		assertEquals("code.NormalCard", card.toString());
 	}
-	
+
 	@Test
-	public void testNextTurnChangesPlayer() throws InvalidNumberofPlayersException, NoCardsToMoveException, InvalidBundleException {
+	public void testNextTurnChangesPlayer()
+	        throws InvalidNumberofPlayersException, NoCardsToMoveException, InvalidBundleException {
 		Game game = new GameLogger(new Game());
 		game.start(3);
 		removeAllKittens();
-		
+
 		Player player1 = game.getPlayers().get(0);
 		Player player2 = game.getPlayers().get(1);
-		
+
 		assertEquals(player1, game.getCurrentPlayer());
 		game.nextTurn();
 		assertEquals(player2, game.getCurrentPlayer());
 	}
-	
-	
 
 	@After
 	public void tearDown() {

@@ -1,7 +1,8 @@
 
 package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,6 @@ import code.Card;
 import code.CardFactory;
 import code.CardStack;
 import code.DiscardDeck;
-import code.ExplodingKittenCard;
 import code.Game;
 import code.MainDeck;
 import code.Player;
@@ -93,8 +93,8 @@ public class AttackCardTest {
 	public void testNextPlayerHasTwoTurns() throws NoCardsToMoveException, InvalidBundleException {
 		Card attackCard = factory.createCard(CardFactory.ATTACK_CARD);
 
-		//stack.addCard(attackCard);
-		//pManager.resolveCard();
+		// stack.addCard(attackCard);
+		// pManager.resolveCard();
 		attackCard.cardAction(null, null);
 
 		assertEquals(player2, game.getCurrentPlayer());
@@ -128,11 +128,11 @@ public class AttackCardTest {
 
 		attack1.cardAction(null, null);
 		attack2.cardAction(null, null);
-		
-//		stack.addCard(attack1);
-//		pManager.resolveCard();
-//		stack.addCard(attack2);
-//		pManager.resolveCard();
+
+		// stack.addCard(attack1);
+		// pManager.resolveCard();
+		// stack.addCard(attack2);
+		// pManager.resolveCard();
 
 		assertEquals(player3, game.getCurrentPlayer());
 		game.nextTurn();
@@ -140,13 +140,13 @@ public class AttackCardTest {
 		game.nextTurn();
 		assertEquals(player1, game.getCurrentPlayer());
 	}
-	
+
 	@Test
 	public void testAttackClone() {
 		Card attack = factory.createCard(CardFactory.ATTACK_CARD);
-		
+
 		Card clone = attack.clone();
-		
+
 		assertFalse(clone == null);
 	}
 

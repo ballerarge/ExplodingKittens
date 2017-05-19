@@ -5,24 +5,23 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
-import java.util.Iterator;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import code.Card;
+import code.CardFactory;
 import code.CardStack;
 import code.DiscardDeck;
 import code.MainDeck;
-import code.CardFactory;
 import code.NormalCard;
 import code.PriorityManager;
 import code.SkipCard;
 import code.TurnManager;
 
 public class CardsTest {
-	
+
 	@Before
 	public void initialize() {
 		MainDeck.tearDown();
@@ -62,8 +61,7 @@ public class CardsTest {
 
 		boolean res = false;
 
-		File path = new File(
-		        System.getProperty("user.dir") + "/src/gui/card_images/");
+		File path = new File(System.getProperty("user.dir") + "/src/gui/card_images/");
 
 		File[] files = path.listFiles();
 		if (files != null) {
@@ -76,7 +74,6 @@ public class CardsTest {
 				}
 			}
 		}
-		
 
 		assertTrue(res);
 	}

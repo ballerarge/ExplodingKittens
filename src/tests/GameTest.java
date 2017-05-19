@@ -14,23 +14,14 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import code.AttackCard;
 import code.Card;
 import code.CardFactory;
 import code.CardStack;
-import code.DefuseCard;
 import code.DiscardDeck;
-import code.ExplodingKittenCard;
-import code.FavorCard;
 import code.Game;
 import code.MainDeck;
-import code.NopeCard;
-import code.NormalCard;
 import code.Player;
 import code.PriorityManager;
-import code.ScryCard;
-import code.ShuffleCard;
-import code.SkipCard;
 import code.TurnManager;
 import exceptions.InvalidBundleException;
 import exceptions.InvalidNumberofPlayersException;
@@ -137,7 +128,8 @@ public class GameTest {
 	}
 
 	@Test
-	public void testNextTurnDrawing() throws InvalidNumberofPlayersException, NoCardsToMoveException, InvalidBundleException {
+	public void testNextTurnDrawing()
+	        throws InvalidNumberofPlayersException, NoCardsToMoveException, InvalidBundleException {
 		Game game = new Game();
 		game.start(3);
 		removeAllKittens();
@@ -164,7 +156,8 @@ public class GameTest {
 	}
 
 	@Test
-	public void testNextTurnDifferentPlayer() throws InvalidNumberofPlayersException, NoCardsToMoveException, InvalidBundleException {
+	public void testNextTurnDifferentPlayer()
+	        throws InvalidNumberofPlayersException, NoCardsToMoveException, InvalidBundleException {
 		Game game = new Game();
 		game.start(3);
 		Player player1 = game.getActivePlayer();
@@ -175,7 +168,8 @@ public class GameTest {
 	}
 
 	@Test
-	public void testPlayerRotation() throws InvalidNumberofPlayersException, NoCardsToMoveException, InvalidBundleException {
+	public void testPlayerRotation()
+	        throws InvalidNumberofPlayersException, NoCardsToMoveException, InvalidBundleException {
 		Game game = new Game();
 		game.start(3);
 		removeAllKittens();
@@ -222,7 +216,7 @@ public class GameTest {
 
 		Game game = new Game();
 		game.start(3);
-		
+
 		MainDeck deck = MainDeck.getInstance();
 
 		assertTrue(verifyAllTypesInitialized(deck, game.getPlayerHands()));
@@ -249,7 +243,7 @@ public class GameTest {
 				skip = true;
 			}
 		}
-		
+
 		for (List<Card> cards : map.values()) {
 			for (Card card : cards) {
 				if (card.getID() == CardFactory.ATTACK_CARD) {

@@ -14,6 +14,7 @@ import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
 
 import code.Card;
+import code.DiscardDeck;
 import code.Player;
 
 public class EKCardSelectionWindow {
@@ -90,6 +91,21 @@ public class EKCardSelectionWindow {
 
 		Card returnedCard = (Card) JOptionPane.showInputDialog(null,
 		        getStringFromBundle("FAVOR_CARD_SELECTION_MESSAGE"), getStringFromBundle("FAVOR_CARD_SELECT_TITLE"),
+		        JOptionPane.QUESTION_MESSAGE, null, options, null);
+
+		return returnedCard;
+	}
+	
+	public Card displayFiveCardBundleWindow() {
+		Card[] options = new Card[DiscardDeck.getInstance().getCardCount()];
+		int index = 0;
+		for (Card card : DiscardDeck.getInstance().getCards()) {
+			options[index] = card;
+			index++;
+		}
+
+		Card returnedCard = (Card) JOptionPane.showInputDialog(null,
+		        getStringFromBundle("FIVE_CARD_BUNDLE_SELECTION_MESSAGE"), getStringFromBundle("FIVE_CARD_BUNDLE_SELECT_TITLE"),
 		        JOptionPane.QUESTION_MESSAGE, null, options, null);
 
 		return returnedCard;

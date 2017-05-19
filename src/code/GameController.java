@@ -157,7 +157,24 @@ public class GameController {
 					window.displayGameState(game);
 					addCardListeners(game, window, window.getDisplayedCards());
 				} else { // Resolve bundle
-					System.out.println("Bundle logic goes here.");
+					if (selectedCards.size() == 5) {
+						EKCardSelectionWindow cardSelector = new EKCardSelectionWindow(window.locale, "");
+						Card selectedCard = cardSelector.displayFiveCardBundleWindow();
+						List<Card> cardsToAdd = new ArrayList<Card>();
+						cardsToAdd.add(selectedCard);
+						DiscardDeck.getInstance().removeCard(selectedCard.getClass());
+						game.getActivePlayer().getHandManager().addCards(cardsToAdd);
+
+					} else if (selectedCards.size() == 3) {
+						System.out.println("Three card bundle.");
+					} else if (selectedCards.size() == 2) {
+						System.out.println("Two card bundle.");
+					}
+
+					window.clearSelected();
+					DiscardDeck.getInstance().addAll(selectedCards);
+					window.displayGameState(game);
+					addCardListeners(game, window, window.getDisplayedCards());
 				}
 			}
 

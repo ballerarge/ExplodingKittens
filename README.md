@@ -1,4 +1,5 @@
-Definition of Done:  
+The game is started by running GameController.java  
+<br><br>Definition of Done:  
 We used tools such as EclEmma to calculate basis path coverage, Pitclipse to cover all possible mutations, and FindBugs to make sure there weren't any dangerous bugs in our code.  
     Boundary Value Analysis Guidelines:(www.exampler.com/testing-com/writings/catalog.pdf)  
     :cat:1. All boolean functions that check if a user can perform an action are tested with the rules for Booleans in Boundary Value Analysis.  

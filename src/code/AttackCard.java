@@ -6,6 +6,11 @@ public class AttackCard extends Card implements Cloneable {
 		this.cardID = 3;
 	}
 
+	public AttackCard(String path) {
+		this();
+		this.imagePath = path;
+	}
+
 	@Override
 	public void cardAction(Player p1, Player p2) {
 		TurnManager.getInstance().endTurnWithoutDrawForAttacks();

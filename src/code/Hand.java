@@ -10,13 +10,16 @@ import exceptions.NoCardsToMoveException;
 
 public class Hand {
 
-	private List<Card> hand = new ArrayList<Card>();
-	private List<Card> selectedCards = new ArrayList<Card>();
-	private MainDeck mainDeck = MainDeck.getInstance();
-	private CardStack cardStack = CardStack.getInstance();
+	private List<Card> hand;
+	private List<Card> selectedCards;
+	private MainDeck mainDeck;
+	private CardStack cardStack;
 
 	public Hand() {
-		this.mainDeck.initStartingDeck();
+		hand = new ArrayList<Card>();
+		selectedCards = new ArrayList<Card>();
+		mainDeck = MainDeck.getInstance();
+		cardStack = CardStack.getInstance();
 	}
 
 	public Card draw() {

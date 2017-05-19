@@ -57,8 +57,8 @@ public class GameLogger extends Game{
 	}
 	
 	@Override
-	public Player getCurrentTurnPlayer() {
-		return game.getCurrentTurnPlayer();
+	public Player getActivePlayer() {
+		return game.getActivePlayer();
 	}
 	
 	@Override

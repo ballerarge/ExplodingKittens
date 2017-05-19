@@ -1,6 +1,7 @@
 
 package code;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import exceptions.InvalidNumberofPlayersException;
@@ -26,12 +27,14 @@ public class Game {
 	}
 
 	public void start(int n) throws InvalidNumberofPlayersException {
-		if (n < 2 || n > 5)
+		if (n < 2 || n > 5) {
 			throw new InvalidNumberofPlayersException();
+		}
 		mainDeck.initStartingDeck();
 		playerManager = new PlayerManager();
-		playerManager.addPlayers(n);
+		playerManager.addPlayers(n);	
 		priorityManager.addPlayers(playerManager.getPlayers());
+		playerManager.makePlayerDrawInitialHand();
 		mainDeck.populateDeck(n);
 		turnManager.setPlayerManager(playerManager);
 	}
@@ -54,11 +57,11 @@ public class Game {
 		priorityManager.nextPlayer();
 	}
 
-	public Player getCurrentPlayer() {
+	public Player getActivePlayer() {
 		return priorityManager.getActivePlayer();
 	}
 
-	public Player getCurrentTurnPlayer() {
+	public Player getCurrentPlayer() {
 		return turnManager.getCurrentPlayer();
 	}
 

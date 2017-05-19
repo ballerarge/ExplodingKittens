@@ -1,8 +1,10 @@
 
 package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +16,7 @@ import org.junit.Test;
 import code.Card;
 import code.CardFactory;
 import code.CardStack;
+import code.DefuseCard;
 import code.DiscardDeck;
 import code.Game;
 import code.Log;
@@ -22,11 +25,13 @@ import code.Player;
 import code.PlayerManager;
 import code.PriorityManager;
 import code.TurnManager;
+import exceptions.InvalidBundleException;
 import code.TurnManagerLogger;
 import exceptions.InvalidNumberofPlayersException;
+import exceptions.NoCardsToMoveException;
 
 public class TurnManagerTest {
-	
+
 	@Before
 	public void initialize() {
 		TurnManager.tearDown();
@@ -36,7 +41,7 @@ public class TurnManagerTest {
 		CardStack.tearDown();
 		Log.tearDown();
 	}
-	
+
 	@After
 	public void tearDown() {
 		TurnManager.tearDown();
@@ -52,7 +57,8 @@ public class TurnManagerTest {
 	}
 
 	@Test
-	public void testHandlesPlayerManager() {PlayerManager pmgr = EasyMock.mock(PlayerManager.class);
+	public void testHandlesPlayerManager() {
+		PlayerManager pmgr = EasyMock.mock(PlayerManager.class);
 		List<Player> players = new ArrayList<>();
 		players.add(new Player());
 		EasyMock.expect(pmgr.getPlayers()).andReturn(players);
@@ -158,10 +164,77 @@ public class TurnManagerTest {
 		TurnManager turnManager = TurnManager.getInstance();
 
 		mainDeck.insertCard(factory.createCard(CardFactory.EXPLODING_KITTEN_CARD), 0);
+		for (Card card : turnManager.getCurrentPlayer().getHand()) {
+			if (card.getID() == CardFactory.DEFUSE_CARD) {
+				turnManager.getCurrentPlayer().getHandManager()
+				        .selectCard((turnManager.getCurrentPlayer().getHand().indexOf(card)));
+				turnManager.getCurrentPlayer().getHandManager().clearSelectedCards();
+				break;
+			}
+		}
 		turnManager.endTurnAndDraw();
 
 		assertEquals(2, game.getPlayers().size());
 
 	}
-	
+
+	@Test
+	public void testPlayerDoesNotRotateOnAttack() throws InvalidNumberofPlayersException {
+		CardFactory factory = new CardFactory();
+		MainDeck mainDeck = MainDeck.getInstance();
+		Game game = new Game();
+		game.start(3);
+		TurnManager turnManager = TurnManager.getInstance();
+		Player player1 = game.getPlayers().get(0);
+		Player player2 = game.getPlayers().get(1);
+		Player player3 = game.getPlayers().get(2);
+
+		mainDeck.insertCard(factory.createCard(CardFactory.NORMAL_CARD), 0);
+		turnManager.addTurnForCurrentPlayer();
+		turnManager.endTurnAndDraw();
+
+		// Player 1's turn again.
+		turnManager.endTurnWithoutDraw();
+		// Player 2's turn.
+		turnManager.endTurnWithoutDraw();
+		// Player 3's turn.
+		turnManager.endTurnWithoutDraw();
+		// Player 1's turn.
+		turnManager.endTurnWithoutDraw();
+
+		assertEquals(player1, turnManager.getCurrentPlayer());
+	}
+
+	@Test
+	public void testGameOver() throws InvalidNumberofPlayersException {
+		CardFactory factory = new CardFactory();
+		Game game = new Game();
+		game.start(3);
+		PriorityManager priorityManager = PriorityManager.getInstance();
+		MainDeck mainDeck = MainDeck.getInstance();
+		TurnManager turnManager = TurnManager.getInstance();
+		Player player1 = game.getPlayers().get(0);
+		Player player2 = game.getPlayers().get(1);
+		Player player3 = game.getPlayers().get(2);
+		mainDeck.insertCard(factory.createCard(CardFactory.NORMAL_CARD), 0);
+		mainDeck.insertCard(factory.createCard(CardFactory.NORMAL_CARD), 0);
+		mainDeck.insertCard(factory.createCard(CardFactory.NORMAL_CARD), 0);
+		ByteArrayOutputStream os = new ByteArrayOutputStream(100);
+		PrintStream capture = new PrintStream(os);
+		System.setOut(capture);
+
+		turnManager.makeCurrentPlayerLose();
+		turnManager.endTurnAndDraw();
+		turnManager.makeCurrentPlayerLose();
+		turnManager.endTurnAndDraw();
+		capture.flush();
+		String result = os.toString();
+		result = result.trim();
+
+		assertEquals(1, priorityManager.getPlayerCount());
+		assertEquals(player3, turnManager.getCurrentPlayer());
+		assertEquals(0, turnManager.getTurnOrder().size());
+		assertEquals("Game over!", result);
+	}
+
 }

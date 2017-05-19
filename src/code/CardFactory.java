@@ -18,31 +18,80 @@ public class CardFactory {
 	public static final int SCRY_CARD = 7;
 	public static final int FAVOR_CARD = 8;
 
-	public CardFactory() {
+	private int attackCardCount;
+	private int defuseCardCount;
+	private int explodingKittenCardCount;
+	private int favorCardCount;
+	private int nopeCardCount;
+	private int normalCardCount;
+	private int scryCardCount;
+	private int shuffleCardCount;
+	private int skipCardCount;
 
+	private final int attackCardMax = 4;
+	private final int defuseCardMax = 5;
+	private final int explodingKittenCardMax = 3;
+	private final int favorCardMax = 4;
+	private final int nopeCardMax = 4;
+	private final int normalCardMax = 4;
+	private final int scryCardMax = 3;
+	private final int shuffleCardMax = 3;
+	private final int skipCardMax = 3;
+
+	public CardFactory() {
+		initCardCounts();
+	}
+
+	private void initCardCounts() {
+		attackCardCount = 0;
+		defuseCardCount = 0;
+		explodingKittenCardCount = 0;
+		favorCardCount = 0;
+		nopeCardCount = 0;
+		normalCardCount = 0;
+		scryCardCount = 0;
+		shuffleCardCount = 0;
+		skipCardCount = 0;
 	}
 
 	public Card createCard(int cardID) {
 		Card card;
 		switch (cardID) {
 			case NORMAL_CARD:
-				return new NormalCard();
+				normalCardCount = (normalCardCount) % normalCardMax + 1;
+				return new NormalCard("card_images\\NormalCard" + normalCardCount + ".png");
 			case NOPE_CARD:
-				card = new NopeCard(); break;
+				nopeCardCount = (nopeCardCount) % nopeCardMax + 1;
+				card =  new NopeCard("card_images\\NopeCard" + nopeCardCount + ".png");
+				break;
 			case DEFUSE_CARD:
-				card = new DefuseCard(); break;
+				defuseCardCount = (defuseCardCount) % defuseCardMax + 1;
+				card = new DefuseCard("card_images\\DefuseCard" + defuseCardCount + ".png");
+				break;
 			case ATTACK_CARD:
-				card = new AttackCard(); break;
+				attackCardCount = (attackCardCount) % attackCardMax + 1;
+				card = new AttackCard("card_images\\AttackCard" + attackCardCount + ".png");
+				break;
 			case SKIP_CARD:
-				card = new SkipCard(); break;
+				skipCardCount = (skipCardCount) % skipCardMax + 1;
+				card = new SkipCard("card_images\\SkipCard" + skipCardCount + ".png");
+				break;
 			case EXPLODING_KITTEN_CARD:
-				card = new ExplodingKittenCard(); break;
+				explodingKittenCardCount = (explodingKittenCardCount) % explodingKittenCardMax + 1;
+				card = new ExplodingKittenCard("card_images\\ExplodingKittenCard" + explodingKittenCardCount + ".png");
+				break;
 			case SHUFFLE_CARD:
-				card = new ShuffleCard(); break;
+				shuffleCardCount = (shuffleCardCount) % shuffleCardMax + 1;
+				card = new ShuffleCard("card_images\\ShuffleCard" + shuffleCardCount + ".png");
+				break;
 			case SCRY_CARD:
-				card = new ScryCard(); break;
+				scryCardCount = (scryCardCount) % scryCardMax + 1;
+				card = new ScryCard("card_images\\ScryCard" + scryCardCount + ".png");
+				break;
 			case FAVOR_CARD:
-				card = new FavorCard(); break;
+				favorCardCount = (favorCardCount) % favorCardMax + 1;
+				card = new FavorCard("card_images\\FavorCard" + favorCardCount + ".png");
+				break;
 			default:
 				throw new CardNotFoundException("CardID incorrect for create card in Card Factory");
 		}

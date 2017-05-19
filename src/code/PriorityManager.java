@@ -10,6 +10,7 @@ public class PriorityManager {
 	private static PriorityManager priorityManager;
 	private ArrayList<Player> playerList;
 	private Player activePlayer;
+	private int cycleCount;
 
 	private PriorityManager() {
 		this.playerList = new ArrayList<Player>();
@@ -22,11 +23,9 @@ public class PriorityManager {
 		return priorityManager;
 	}
 
-	public void removePlayer(Player player) throws NoSuchPlayerException {
+	public void removePlayer(Player player) {
 		if (this.playerList.contains(player)) {
 			this.playerList.remove(player);
-		} else {
-			throw new NoSuchPlayerException();
 		}
 	}
 
@@ -55,19 +54,20 @@ public class PriorityManager {
 
 	public void resolveCard() {
 		Player startingPlayer = getActivePlayer();
-
-		nextPlayer();
-
-		while (!startingPlayer.equals(getActivePlayer())) {
+		do {
 			nextPlayer();
-			// Something else needs to happen here. Will probably be in the GUI
-			// where if a button is pressed, then this method will be called
-			// again. If not, there needs to be a method call here that waits
-			// for further input to be given from the GUI. It can't just loop
-			// through the players when called without giving them a chance
-			// to respond.
-		}
+			setCycleCount(getCycleCount() + 1);
+		} while (!startingPlayer.equals(getActivePlayer()));
 
 		CardStack.getInstance().resolveTopCard();
+	}
+
+	public void setCycleCount(int i) {
+		cycleCount = i;
+		
+	}
+
+	public int getCycleCount() {
+		return cycleCount;
 	}
 }

@@ -7,20 +7,44 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Map;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import code.Card;
+import code.CardStack;
+import code.DiscardDeck;
 import code.MainDeck;
 import code.Player;
 import code.PlayerManager;
+import code.PriorityManager;
+import code.TurnManager;
 import exceptions.InvalidNumberofPlayersException;
 
 public class PlayerManagerTest {
 	@Rule
 	public final ExpectedException exception = ExpectedException.none();
 
+	@Before
+	public void initialize() {
+		MainDeck.tearDown();
+		PriorityManager.tearDown();
+		TurnManager.tearDown();
+		DiscardDeck.tearDown();
+		CardStack.tearDown();
+	}
+
+	@After
+	public void tearDown() {
+		MainDeck.tearDown();
+		PriorityManager.tearDown();
+		TurnManager.tearDown();
+		DiscardDeck.tearDown();
+		CardStack.tearDown();
+	}
+	
 	@Test
 	public void testPlayerManagerCreation() {
 		PlayerManager playerManager = new PlayerManager();
@@ -80,18 +104,18 @@ public class PlayerManagerTest {
 
 	@Test
 	public void testPlayersHandsInitialized() throws InvalidNumberofPlayersException {
-		MainDeck.tearDown();
-		MainDeck.getInstance();
+		MainDeck.getInstance().initStartingDeck();
+		
 		PlayerManager playerManager = new PlayerManager();
 
 		playerManager.addPlayers(4);
+		
+		playerManager.makePlayerDrawInitialHand();
 
 		Map<Player, List<Card>> hands = playerManager.getHands();
 
 		for (Player player : hands.keySet()) {
 			assertEquals(hands.get(player).size(), 5);
 		}
-
-		MainDeck.tearDown();
 	}
 }

@@ -5,13 +5,38 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import code.Card;
+import code.CardStack;
+import code.DiscardDeck;
 import code.Hand;
+import code.MainDeck;
 import code.Player;
+import code.PriorityManager;
+import code.TurnManager;
 
 public class PlayerTest {
+	
+	@Before
+	public void initialize() {
+		MainDeck.tearDown();
+		PriorityManager.tearDown();
+		TurnManager.tearDown();
+		DiscardDeck.tearDown();
+		CardStack.tearDown();
+	}
+
+	@After
+	public void tearDown() {
+		MainDeck.tearDown();
+		PriorityManager.tearDown();
+		TurnManager.tearDown();
+		DiscardDeck.tearDown();
+		CardStack.tearDown();
+	}
 
 	@Test
 	public void testPlayerCreation() {
@@ -65,6 +90,7 @@ public class PlayerTest {
 	@Test
 	public void testDrawCard() {
 		Player player = new Player();
+		MainDeck.getInstance().initStartingDeck();
 
 		player.drawCard();
 

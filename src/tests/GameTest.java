@@ -14,14 +14,23 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import code.AttackCard;
 import code.Card;
+import code.CardFactory;
 import code.CardStack;
+import code.DefuseCard;
 import code.DiscardDeck;
 import code.ExplodingKittenCard;
+import code.FavorCard;
 import code.Game;
 import code.MainDeck;
+import code.NopeCard;
+import code.NormalCard;
 import code.Player;
 import code.PriorityManager;
+import code.ScryCard;
+import code.ShuffleCard;
+import code.SkipCard;
 import code.TurnManager;
 import exceptions.InvalidNumberofPlayersException;
 
@@ -48,7 +57,7 @@ public class GameTest {
 	@Test
 	public void testGameCreation() {
 		Game game = new Game();
-		
+
 		assertTrue(game != null);
 	}
 
@@ -129,6 +138,7 @@ public class GameTest {
 	public void testNextTurnDrawing() throws InvalidNumberofPlayersException {
 		Game game = new Game();
 		game.start(3);
+		removeAllKittens();
 		Map<Player, List<Card>> handsBefore = game.getPlayerHands();
 		int cardCountBefore = 0;
 		for (Player player : handsBefore.keySet())
@@ -146,7 +156,7 @@ public class GameTest {
 		Game game = new Game();
 		game.start(3);
 
-		Player player1 = game.getCurrentPlayer();
+		Player player1 = game.getActivePlayer();
 
 		assertTrue(player1 instanceof Player);
 	}
@@ -155,11 +165,11 @@ public class GameTest {
 	public void testNextTurnDifferentPlayer() throws InvalidNumberofPlayersException {
 		Game game = new Game();
 		game.start(3);
-		Player player1 = game.getCurrentPlayer();
+		Player player1 = game.getActivePlayer();
 
 		game.nextTurn();
 
-		assertFalse(player1.equals(game.getCurrentPlayer()));
+		assertFalse(player1.equals(game.getActivePlayer()));
 	}
 
 	@Test
@@ -167,13 +177,13 @@ public class GameTest {
 		Game game = new Game();
 		game.start(3);
 		removeAllKittens();
-		Player player1 = game.getCurrentPlayer();
+		Player player1 = game.getActivePlayer();
 
 		game.nextTurn();
 		game.nextTurn();
 		game.nextTurn();
 
-		assertEquals(player1, game.getCurrentPlayer());
+		assertEquals(player1, game.getActivePlayer());
 	}
 
 	private void removeAllKittens() {
@@ -186,12 +196,71 @@ public class GameTest {
 
 		MainDeck.getInstance().setCards(tempCards);
 	}
-	
+
 	@Test
 	public void testDeckEmptyBeforeGameInitialized() {
 		Game game = new Game();
 		MainDeck.getInstance();
-		
+
 		assertTrue(game.isMainDeckEmpty());
+	}
+
+	@Test
+	public void testDeckNotEmptyBeforeGameInitialized() {
+		MainDeck deck = MainDeck.getInstance();
+		deck.populateDeck(3);
+
+		Game game = new Game();
+
+		assertTrue(game.isMainDeckEmpty());
+	}
+
+	@Test
+	public void testDeckInitializedOnStart() throws InvalidNumberofPlayersException {
+		MainDeck deck = MainDeck.getInstance();
+
+		Game game = new Game();
+		game.start(3);
+
+		assertTrue(verifyAllTypesInitialized(deck));
+	}
+
+	private boolean verifyAllTypesInitialized(MainDeck deck) {
+		boolean attack = false, favor = false, normal = false, nope = false, scry = false, shuffle = false,
+		        skip = false;
+
+		for (Card card : deck.getCards()) {
+			if (card.getID() == CardFactory.ATTACK_CARD) {
+				attack = true;
+			} else if (card.getID() == CardFactory.FAVOR_CARD) {
+				favor = true;
+			} else if (card.getID() == CardFactory.NORMAL_CARD) {
+				normal = true;
+			} else if (card.getID() == CardFactory.NOPE_CARD) {
+				nope = true;
+			} else if (card.getID() == CardFactory.SCRY_CARD) {
+				scry = true;
+			} else if (card.getID() == CardFactory.SHUFFLE_CARD) {
+				shuffle = true;
+			} else if (card.getID() == CardFactory.SKIP_CARD) {
+				skip = true;
+			}
+		}
+
+		return attack && favor && normal && nope && scry && shuffle && skip;
+	}
+
+	@Test
+	public void testDeckStaysSameIfExistsAlready() throws InvalidNumberofPlayersException {
+		MainDeck deck = MainDeck.getInstance();
+		CardFactory factory = new CardFactory();
+
+		Game game = new Game();
+		for (int i = 0; i < 30; i++) {
+			deck.insertCard(factory.createCard(CardFactory.ATTACK_CARD), 0);
+		}
+		game.start(3);
+
+		assertEquals(23, deck.getCardCount());
 	}
 }

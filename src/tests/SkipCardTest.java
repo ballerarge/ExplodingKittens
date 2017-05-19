@@ -14,6 +14,7 @@ import org.junit.Test;
 import code.Card;
 import code.CardFactory;
 import code.CardStack;
+import code.DiscardDeck;
 import code.ExplodingKittenCard;
 import code.Game;
 import code.MainDeck;
@@ -49,11 +50,11 @@ public class SkipCardTest {
 
 		removeAllKittens();
 
-		player1 = game.getCurrentTurnPlayer();
+		player1 = game.getCurrentPlayer();
 		game.nextTurn();
-		player2 = game.getCurrentTurnPlayer();
+		player2 = game.getCurrentPlayer();
 		game.nextTurn();
-		player3 = game.getCurrentTurnPlayer();
+		player3 = game.getCurrentPlayer();
 		game.nextTurn();
 	}
 
@@ -74,6 +75,7 @@ public class SkipCardTest {
 		PriorityManager.tearDown();
 		CardStack.tearDown();
 		MainDeck.tearDown();
+		DiscardDeck.tearDown();
 	}
 
 	@Test
@@ -86,7 +88,7 @@ public class SkipCardTest {
 
 		assertEquals(player1, game.getPlayers().get(0));
 		assertEquals(handSize, player1.getHand().size());
-		assertEquals(player2, game.getCurrentTurnPlayer());
+		assertEquals(player2, game.getCurrentPlayer());
 	}
 
 	@Test
@@ -99,9 +101,9 @@ public class SkipCardTest {
 		stack.addCard(skipCard);
 		pManager.resolveCard();
 
-		assertEquals(player2, game.getCurrentTurnPlayer());
+		assertEquals(player2, game.getCurrentPlayer());
 		game.nextTurn();
-		assertEquals(player3, game.getCurrentTurnPlayer());
+		assertEquals(player3, game.getCurrentPlayer());
 	}
 	
 	@Test

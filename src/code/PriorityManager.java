@@ -56,6 +56,7 @@ public class PriorityManager {
 		Player startingPlayer = getActivePlayer();
 		do {
 			nextPlayer();
+			setCycleCount(getCycleCount() + 1);
 		} while (!startingPlayer.equals(getActivePlayer()));
 
 		CardStack.getInstance().resolveTopCard();

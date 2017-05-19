@@ -124,6 +124,13 @@ public class LogTest {
 		
 		assertFalse(game.isMainDeckEmpty());
 	}
+	
+	@Test
+	public void testIsMainDeckEmptyTrue() throws InvalidNumberofPlayersException {
+		Game game = new GameLogger(new Game());
+		
+		assertTrue(game.isMainDeckEmpty());
+	}
 
 	@After
 	public void tearDown() {

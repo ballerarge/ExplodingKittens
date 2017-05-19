@@ -38,22 +38,6 @@ public class CardFactory {
 	private final int shuffleCardMax = 3;
 	private final int skipCardMax = 3;
 
-	public CardFactory() {
-		initCardCounts();
-	}
-
-	private void initCardCounts() {
-		attackCardCount = 0;
-		defuseCardCount = 0;
-		explodingKittenCardCount = 0;
-		favorCardCount = 0;
-		nopeCardCount = 0;
-		normalCardCount = 0;
-		scryCardCount = 0;
-		shuffleCardCount = 0;
-		skipCardCount = 0;
-	}
-
 	public Card createCard(int cardID) {
 		Card card;
 		switch (cardID) {

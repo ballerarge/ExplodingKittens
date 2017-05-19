@@ -21,5 +21,10 @@ public class ExceptionTest {
 	public void testInvalidBundleException() throws InvalidBundleException {
 		throw new InvalidBundleException();
 	}
+	
+	@Test(expected = InvalidBundleException.class) 
+	public void testInvalidBundleExceptionMessage() throws InvalidBundleException {
+		throw new InvalidBundleException("Error");
+	}
 
 }

@@ -63,4 +63,4 @@ public class NormalCardTest {
 		assertEquals(card3.getIcon(), 2);
 		assertEquals(card4.getIcon(), 3);
 	}
-}
+}

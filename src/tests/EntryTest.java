@@ -17,4 +17,4 @@ public class EntryTest {
 		assertEquals(message, entry.getMessage());
 	}
 
-}
+}

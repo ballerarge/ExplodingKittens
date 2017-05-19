@@ -4,6 +4,9 @@ package tests;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -13,6 +16,9 @@ import org.junit.rules.ExpectedException;
 import code.Card;
 import code.CardFactory;
 import code.CardStack;
+import code.FiveCardBundle;
+import code.ThreeCardBundle;
+import code.TwoCardBundle;
 import code.DiscardDeck;
 import code.MainDeck;
 import code.PriorityManager;
@@ -106,4 +112,4 @@ public class NopeCardTest {
 
 		assertFalse(clone == null);
 	}
-}
+}

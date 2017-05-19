@@ -69,4 +69,4 @@ public class TurnManagerLogger extends TurnManager {
 	public List<Player> getTurnOrder() {
 		return turnManager.getTurnOrder();
 	}
-}
+}

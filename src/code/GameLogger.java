@@ -78,4 +78,4 @@ public class GameLogger extends Game {
 	public TurnManager getTurnManager() {
 		return game.getTurnManager();
 	}
-}
+}

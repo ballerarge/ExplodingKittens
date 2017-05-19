@@ -226,4 +226,4 @@ public class LogTest {
 		PriorityManager.tearDown();
 		MainDeck.tearDown();
 	}
-}
+}

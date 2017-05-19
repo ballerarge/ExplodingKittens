@@ -7,12 +7,14 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+import java.util.Locale;
 import java.util.Random;
+import java.util.ResourceBundle;
 
 import exceptions.InvalidNumberofPlayersException;
 import gui.CardComponent;
 import gui.EKCardSelectionWindow;
+import gui.EKDialogWindow;
 import gui.EKPlayerSelectionWindow;
 import gui.LanguageMenu;
 import gui.MainWindow;
@@ -112,11 +114,11 @@ public class GameController {
 					selectedCards.add(component.getCard());
 				}
 
-				if (selectedCards.size() == 1) { // Resolve one card
-
+				if (selectedCards.size() == 1 && selectedCards.get(0).getID() != CardFactory.NORMAL_CARD) {
 					CardStack.getInstance().addCard(selectedCards.get(0));
 
 					if (cardNeedsNoTargets(selectedCards.get(0))) {
+						nopeChecker(game.getCurrentPlayer(), game, window);
 						CardStack.getInstance().resolveTopCard();
 						if (selectedCards.get(0).getID() == CardFactory.SCRY_CARD) {
 							EKCardSelectionWindow cardSelect = new EKCardSelectionWindow(window.locale, null);
@@ -143,15 +145,14 @@ public class GameController {
 						        otherPlayers, window.locale, "");
 						Player targetedPlayer = playerSelectWindow.display();
 
-						// Check for nope from targeted player
-						// EKDialogWindow.displayInfoMessage(title, toDisplay,
-						// args);
-
 						if (selectedCards.get(0).getID() == CardFactory.FAVOR_CARD) {
+							notifyToPassTo(targetedPlayer, window);
 							EKCardSelectionWindow cardSelector = new EKCardSelectionWindow(window.locale, "");
 							Card selectedCard = cardSelector.displayFavorWindow(targetedPlayer);
 							targetedPlayer.getHandManager().selectCard(targetedPlayer.getHand().indexOf(selectedCard));
 						}
+
+						nopeChecker(game.getCurrentPlayer(), game, window);
 
 						window.unhideHand();
 
@@ -171,8 +172,12 @@ public class GameController {
 						cardsToAdd.add(selectedCard);
 						DiscardDeck.getInstance().removeCard(selectedCard.getClass());
 						game.getActivePlayer().getHandManager().addCards(cardsToAdd);
-					} else if (selectedCards.size() == 3) {
 
+						window.clearSelected();
+						DiscardDeck.getInstance().addAll(selectedCards);
+						window.displayGameState(game);
+						addCardListeners(game, window, window.getDisplayedCards());
+					} else if (selectedCards.size() == 3) {
 						List<Player> otherPlayers = new ArrayList<Player>();
 						for (Player player : game.getPlayers()) {
 							if (player != game.getActivePlayer()) {
@@ -184,16 +189,13 @@ public class GameController {
 						        otherPlayers, window.locale, "");
 						Player targetedPlayer = playerSelectWindow.display();
 
+						notifyToPassTo(targetedPlayer, window);
+
 						EKCardSelectionWindow cardSelector = new EKCardSelectionWindow(window.locale, "");
 						String selectedCardName = cardSelector.displayThreeCardBundleWindow().toString();
 						List<Card> cardsToAdd = new ArrayList<Card>();
 
-						// Check for nope from targeted player
-						// EKDialogWindow.displayInfoMessage(title, toDisplay,
-						// args);
-
 						window.unhideHand();
-						System.out.println(selectedCardName);
 						for (Card card : targetedPlayer.getHand()) {
 							System.out.println(card.toString());
 							if (card.toString().equals(selectedCardName)) {
@@ -205,6 +207,11 @@ public class GameController {
 						}
 						game.getCurrentPlayer().getHandManager().clearSelectedCards();
 						game.getCurrentPlayer().getHandManager().addCards(cardsToAdd);
+
+						window.clearSelected();
+						DiscardDeck.getInstance().addAll(selectedCards);
+						window.displayGameState(game);
+						addCardListeners(game, window, window.getDisplayedCards());
 					} else if (selectedCards.size() == 2) {
 						List<Player> otherPlayers = new ArrayList<Player>();
 						for (Player player : game.getPlayers()) {
@@ -233,12 +240,12 @@ public class GameController {
 
 						game.getCurrentPlayer().getHandManager().clearSelectedCards();
 						game.getCurrentPlayer().getHandManager().addCards(cardsToAdd);
-					}
 
-					window.clearSelected();
-					DiscardDeck.getInstance().addAll(selectedCards);
-					window.displayGameState(game);
-					addCardListeners(game, window, window.getDisplayedCards());
+						window.clearSelected();
+						DiscardDeck.getInstance().addAll(selectedCards);
+						window.displayGameState(game);
+						addCardListeners(game, window, window.getDisplayedCards());
+					}
 				}
 			}
 
@@ -299,11 +306,48 @@ public class GameController {
 		}
 	}
 
-	private static void printPlayerHands(Game game) {
-		Map<Player, List<Card>> playerHands = game.getPlayerHands();
+	private static void nopeChecker(Player startingPlayer, Game game, MainWindow window) {
+		List<Player> otherPlayers = new ArrayList<Player>();
 
-		for (Player playa : playerHands.keySet()) {
-			System.out.printf("Player %s's hand:\n\t%s\n", playa.getName(), playerHands.get(playa).toString());
+		for (Player player : game.getPlayers()) {
+			if (!player.equals(startingPlayer)) {
+				otherPlayers.add(player);
+			}
 		}
+
+		for (Player player : otherPlayers) {
+			notifyToPassTo(player, window);
+			boolean wantsToNope = EKDialogWindow.displayYesNo(
+			        getStringFromBundle("NOPE_NOTIFICATION_TITLE", window.locale), "NOPE_NOTIFICATION_MESSAGE",
+			        window.locale);
+
+			Card nopeToPlay = getNopeInHand(player);
+
+			if (wantsToNope && nopeToPlay != null) {
+				CardStack.getInstance().addCard(nopeToPlay);
+				player.getHandManager().selectCard(player.getHand().indexOf(nopeToPlay));
+				player.getHandManager().clearSelectedCards();
+				nopeChecker(player, game, window);
+			}
+		}
+		notifyToPassTo(startingPlayer, window);
+	}
+
+	private static void notifyToPassTo(Player player, MainWindow window) {
+		EKDialogWindow.displayInfoMessage(getStringFromBundle("PASS_NOTIFICATION_TITLE", window.locale),
+		        getStringFromBundle("PASS_NOTIFICATION_MESSAGE", window.locale) + player.getName());
+	}
+
+	private static Card getNopeInHand(Player player) {
+		for (Card card : player.getHand()) {
+			if (card.getID() == CardFactory.NOPE_CARD) {
+				return card;
+			}
+		}
+		return null;
+	}
+
+	private static String getStringFromBundle(String key, Locale locale) {
+		return ResourceBundle.getBundle("resources/resources", locale).getString(key);
 	}
 }

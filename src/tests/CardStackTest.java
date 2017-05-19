@@ -11,12 +11,16 @@ import org.junit.Before;
 import org.junit.Test;
 
 import code.Card;
+import code.CardFactory;
 import code.CardStack;
 import code.DiscardDeck;
+import code.Game;
 import code.MainDeck;
 import code.NormalCard;
+import code.Player;
 import code.PriorityManager;
 import code.TurnManager;
+import exceptions.InvalidNumberofPlayersException;
 
 public class CardStackTest {
 	
@@ -74,5 +78,20 @@ public class CardStackTest {
 
 		assertTrue(cardStack.getStack().isEmpty());
 		assertEquals(discardDeck.getCardCount(), 1);
+	}
+	
+	@Test
+	public void testResolveTopCard() throws InvalidNumberofPlayersException {
+		Game game = new Game();
+		game.start(3);
+		CardStack stack = CardStack.getInstance();
+		CardFactory factory = new CardFactory();
+		Player player1 = new Player();
+		Player player2 = new Player();
+		stack.addCard(factory.createCard(CardFactory.DEFUSE_CARD));
+		
+		stack.resolveTopCard(player1, player2);
+		
+		assertEquals(0, stack.getStack().size());
 	}
 }

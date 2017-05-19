@@ -170,5 +170,12 @@ public class PriorityManagerTest {
 		priorityManager.setCycleCount(3);
 		assertEquals(3, priorityManager.getCycleCount());
 	}
+	
+	@Test
+	public void testCycleCountOne() {
+		PriorityManager priorityManager = PriorityManager.getInstance();
+		priorityManager.setCycleCount(1);
+		assertEquals(1, priorityManager.getCycleCount());
+	}
 
 }

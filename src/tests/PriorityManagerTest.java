@@ -184,5 +184,12 @@ public class PriorityManagerTest {
 		priorityManager.setCycleCount(0);
 		assertEquals(0, priorityManager.getCycleCount());
 	}
+	
+	@Test
+	public void testCycleCount800() {
+		PriorityManager priorityManager = PriorityManager.getInstance();
+		priorityManager.setCycleCount(800);
+		assertEquals(800, priorityManager.getCycleCount());
+	}
 
 }

@@ -7,7 +7,6 @@ import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.easymock.EasyMock;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -17,10 +16,12 @@ import org.junit.rules.ExpectedException;
 import code.CardFactory;
 import code.CardStack;
 import code.DiscardDeck;
+import code.Game;
 import code.MainDeck;
 import code.Player;
 import code.PriorityManager;
 import code.TurnManager;
+import exceptions.InvalidNumberofPlayersException;
 import exceptions.NoSuchPlayerException;
 
 public class PriorityManagerTest {
@@ -191,6 +192,18 @@ public class PriorityManagerTest {
 		PriorityManager priorityManager = PriorityManager.getInstance();
 		priorityManager.setCycleCount(800);
 		assertEquals(800, priorityManager.getCycleCount());
+	}
+	
+	@Test
+	public void testAddPlayerGameAlreadyStarted() throws InvalidNumberofPlayersException {
+		Game game = new Game();
+		game.start(3);
+		List<Player> players = new ArrayList<Player>();
+		players.add(new Player());
+		
+		PriorityManager.getInstance().addPlayers(players);
+		
+		assertEquals(4, PriorityManager.getInstance().getPlayerCount());
 	}
 
 }

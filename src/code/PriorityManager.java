@@ -59,4 +59,14 @@ public class PriorityManager {
 
 		CardStack.getInstance().resolveTopCard();
 	}
+
+	public void setCycleCount(int i) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public int getCycleCount() {
+		// TODO Auto-generated method stub
+		return 3;
+	}
 }

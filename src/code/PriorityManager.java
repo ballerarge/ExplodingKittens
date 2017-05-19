@@ -10,6 +10,7 @@ public class PriorityManager {
 	private static PriorityManager priorityManager;
 	private ArrayList<Player> playerList;
 	private Player activePlayer;
+	private int cycleCount;
 
 	private PriorityManager() {
 		this.playerList = new ArrayList<Player>();
@@ -61,12 +62,11 @@ public class PriorityManager {
 	}
 
 	public void setCycleCount(int i) {
-		// TODO Auto-generated method stub
+		cycleCount = i;
 		
 	}
 
 	public int getCycleCount() {
-		// TODO Auto-generated method stub
-		return 3;
+		return cycleCount;
 	}
 }

@@ -1,7 +1,7 @@
 
 package tests;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -235,6 +235,18 @@ public class TurnManagerTest {
 		assertEquals(player3, turnManager.getCurrentPlayer());
 		assertEquals(0, turnManager.getTurnOrder().size());
 		assertEquals("Game over!", result);
+	}
+	
+	@Test
+	public void testSetPlayerManagerPlayerAlreadyExists() throws InvalidNumberofPlayersException {
+		Game game = new Game();
+		game.start(3);
+		TurnManager turnManager = TurnManager.getInstance();
+		Player currentPlayer = turnManager.getCurrentPlayer();
+		
+		turnManager.setPlayerManager(new PlayerManager());
+		
+		assertEquals(currentPlayer, turnManager.getCurrentPlayer());
 	}
 
 }
